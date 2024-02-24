@@ -30,3 +30,5 @@ class Submarine extends Ship {
 class Destroyer extends Ship {
   size = 2;
 }
+
+export const testShip = new Battleship();
