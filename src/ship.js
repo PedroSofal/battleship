@@ -1,6 +1,8 @@
 class Ship {
-  size = null;
-  hits = 0;
+  constructor(size) {
+    this.size = size;
+    this.hits = 0;
+  }
   
   hit() {
     this.hits++;
@@ -11,24 +13,8 @@ class Ship {
   }
 }
 
-class Carrier extends Ship {
-  size = 5;
-}
-
-class Battleship extends Ship {
-  size = 4;
-}
-
-class Cruiser extends Ship {
-  size = 3;
-}
-
-class Submarine extends Ship {
-  size = 3;
-}
-
-class Destroyer extends Ship {
-  size = 2;
-}
-
-export const testShip = new Battleship();
+export const carrier = new Ship(5);
+export const battleship = new Ship(4);
+export const cruiser = new Ship(3);
+export const submarine = new Ship(3);
+export const destroyer = new Ship(2);

@@ -1,6 +1,7 @@
-class Gameboard {
-  constructor(row, col) {
+export default class Gameboard {
+  constructor(row, col, set) {
     this.board = this.buildGrid(row, col);
+    this.ships = set;
     this.occupied = [];
     this.attacked = [];
   }
@@ -65,6 +66,11 @@ class Gameboard {
       result: result
     });
   }
-}
 
-export const testBoard = new Gameboard(10, 10);
+  isGameOver() {
+    for (const ship of this.ships) {
+      if (!ship.isSunk()) return false;
+    }
+    return true;
+  }
+}
