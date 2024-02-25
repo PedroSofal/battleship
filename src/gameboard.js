@@ -2,6 +2,7 @@ class Gameboard {
   constructor(row, col) {
     this.board = this.buildGrid(row, col);
     this.occupied = [];
+    this.attacked = [];
   }
 
   buildGrid(row, col) {
@@ -19,7 +20,10 @@ class Gameboard {
 
     if (isSquareAvailable) {
       for (let i = 0; i < ship.size; i++) {
-        this.occupied.push([row, col]);
+        this.occupied.push({
+          ship: ship,
+          coords: [row, col]
+        });
         axis === 'row' ? row++ : col++;
       }
     }
@@ -27,8 +31,8 @@ class Gameboard {
 
   verifySquareAvailability(row, col, axis, ship) {
     for (let i = 0; i < ship.size; i++) {
-      const isOverlaped = this.occupied.find(coord => {
-        return JSON.stringify(coord) === JSON.stringify([row, col]);
+      const isOverlaped = this.occupied.find(square => {
+        return JSON.stringify(square.coords) === JSON.stringify([row, col]);
       });
       
       axis === 'row' ? row++ : col++;
@@ -41,6 +45,25 @@ class Gameboard {
       }
     }
     return true;
+  }
+
+  receiveAttack(row, col) {
+    let result;
+    const isSquareOccupied = this.occupied.find(square => {
+      return JSON.stringify(square.coords) === JSON.stringify([row, col]);
+    });
+
+    if (isSquareOccupied) {
+      isSquareOccupied.ship.hit();
+      result = 'hit';
+    } else {
+      result = 'miss';
+    }
+
+    this.attacked.push({
+      coords: [row, col],
+      result: result
+    });
   }
 }
 
