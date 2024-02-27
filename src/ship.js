@@ -13,8 +13,12 @@ class Ship {
   }
 }
 
-export const carrier = new Ship(5);
-export const battleship = new Ship(4);
-export const cruiser = new Ship(3);
-export const submarine = new Ship(3);
-export const destroyer = new Ship(2);
+export default class standardSet {
+  constructor() {
+    this.carrier = new Ship(5);
+    this.battleship = new Ship(4);
+    this.cruiser = new Ship(3);
+    this.submarine = new Ship(3);
+    this.destroyer = new Ship(2);
+  }
+}

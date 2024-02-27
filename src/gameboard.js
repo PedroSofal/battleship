@@ -32,7 +32,7 @@ export default class Gameboard {
 
   verifySquareAvailability(row, col, axis, ship) {
     for (let i = 0; i < ship.size; i++) {
-      const isOverlaped = this.occupied.find(square => {
+      const overlapedSquare = this.occupied.find(square => {
         return JSON.stringify(square.coords) === JSON.stringify([row, col]);
       });
       
@@ -41,7 +41,7 @@ export default class Gameboard {
       const isOutOfBounds = row > this.board[this.board.length - 1][0]
         || col > this.board[this.board.length - 1][1];
 
-      if (isOverlaped || isOutOfBounds) {
+      if (overlapedSquare || isOutOfBounds) {
         return false;
       }
     }
@@ -50,12 +50,12 @@ export default class Gameboard {
 
   receiveAttack(row, col) {
     let result;
-    const isSquareOccupied = this.occupied.find(square => {
+    const occupiedSquare = this.occupied.find(square => {
       return JSON.stringify(square.coords) === JSON.stringify([row, col]);
     });
 
-    if (isSquareOccupied) {
-      isSquareOccupied.ship.hit();
+    if (occupiedSquare) {
+      occupiedSquare.ship.hit();
       result = 'hit';
     } else {
       result = 'miss';
@@ -68,7 +68,7 @@ export default class Gameboard {
   }
 
   isGameOver() {
-    for (const ship of this.ships) {
+    for (const ship of Object.values(this.ships)) {
       if (!ship.isSunk()) return false;
     }
     return true;
