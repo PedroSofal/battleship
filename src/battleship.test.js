@@ -1,4 +1,4 @@
-import { activePlayers } from "./bot.js";
+import { activePlayers } from "./gameLoop.js";
 let player1;
 let player2;
 
@@ -133,7 +133,7 @@ describe('player movement', () => {
 describe('bot movement', () => {
   test("performs random attack on player1's board", () => {
     player1.gameboard.attacked = [];
-    player2.playRound();
+    player2.attack(player1);
     expect(player1.gameboard.attacked.length).not.toBe(0);
   });
 
@@ -141,8 +141,8 @@ describe('bot movement', () => {
     player1.gameboard.ships.destroyer.hits = 0;
     player1.gameboard.attacked = [];
     player1.gameboard.placeShip(0, 0, 'row', player1.gameboard.ships.destroyer);
-    player2.attack(0, 0, player1);
-    player2.playRound();
+    player1.gameboard.receiveAttack(0, 0);
+    player2.attack(player1);
     expect(player1.gameboard.attacked[1].coords[0]).toBeLessThanOrEqual(1);
     expect(player1.gameboard.attacked[1].coords[0]).toBeGreaterThanOrEqual(0);
     expect(player1.gameboard.attacked[1].coords[1]).toBeLessThanOrEqual(1);
@@ -154,8 +154,8 @@ describe('bot movement', () => {
     player1.gameboard.ships.destroyer.hits = 1;
     player1.gameboard.attacked = [];
     player1.gameboard.placeShip(0, 0, 'row', player1.gameboard.ships.destroyer);
-    player2.attack(0, 0, player1);
-    player2.playRound();
+    player1.gameboard.receiveAttack(0, 0);
+    player2.attack(player1);
     expect(randomAttackSpy).toHaveBeenCalled();
   });
 });

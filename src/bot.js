@@ -1,10 +1,10 @@
-import Player from "./player.js";
+import standardSet from "./ship.js";
+import Gameboard from "./gameboard.js";
 
-export const activePlayers = [];
-
-export default class Bot extends Player {
+export default class Bot {
   constructor(name) {
-    super(name);
+    this.name = name;
+    this.gameboard = new Gameboard(10, 10, new standardSet());
   }
 
   getRandomRow() {
@@ -19,11 +19,18 @@ export default class Bot extends Player {
     return Math.floor(Math.random() * (numberOfCols + 1));
   }
 
-  randomAttack() {
-    this.attack(this.getRandomRow(), this.getRandomCol(), activePlayers[0]);
+  randomAttack(enemy) {
+    let row = this.getRandomRow();
+    let col = this.getRandomCol();
+
+    if (!this.alreadyAttackedSquare(row, col, enemy)) {
+      enemy.gameboard.receiveAttack(row, col);
+    } else {
+      this.randomAttack(enemy);
+    }
   }
 
-  smartAttack(lastHit) {
+  smartAttack(lastHit, enemy) {
     let row = lastHit[0];
     let col = lastHit[1];
     
@@ -45,11 +52,15 @@ export default class Bot extends Player {
       }
     }
 
-    this.attack(row, col, activePlayers[0]);
+    if (!this.alreadyAttackedSquare(row, col, enemy)) {
+      enemy.gameboard.receiveAttack(row, col);
+    } else {
+      this.smartAttack(lastHit, enemy);
+    }
   }
 
-  playRound() {
-    const attackList = activePlayers[0].gameboard.attacked;
+  attack(enemy) {
+    const attackList = enemy.gameboard.attacked;
     let lastAttack;
     let lastResult;
     let sankShip;
@@ -57,19 +68,21 @@ export default class Bot extends Player {
     if (attackList.length > 0) {
       lastAttack = attackList[attackList.length - 1];
       lastResult = lastAttack.result;
-      sankShip = activePlayers[0].gameboard.occupied.find(square => {
+      sankShip = enemy.gameboard.occupied.find(square => {
         return JSON.stringify(square.coords) === JSON.stringify(lastAttack.coords);
       }).ship.isSunk();
     }
 
     if (lastResult === 'hit' && !sankShip) {
-      this.smartAttack(lastAttack.coords);
+      this.smartAttack(lastAttack.coords, enemy);
     } else {
-      this.randomAttack();
+      this.randomAttack(enemy);
     }
   }
-}
 
-// temporary instanciation
-activePlayers.push(new Player('Human'));
-activePlayers.push(new Bot('Bot'));
+  alreadyAttackedSquare(row, col, enemy) {
+    return enemy.gameboard.attacked.find(square => {
+      return JSON.stringify(square.coords) === JSON.stringify([row, col]);
+    });
+  }
+}
