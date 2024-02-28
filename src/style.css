@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  margin: 0;
+}
+
+/* GAMEBOARDS ***********/
+
+#gameboards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.board {
+  display: grid;
+  grid-template: repeat(10, 50px) / repeat(10, 50px);
+  width: 500px;
+  height: 500px;
+}
+
+.human-board {
+  background-color: aqua;
+}
+
+.bot-board {
+  background-color: pink;
+}
+
+.square {
+  outline: 1px solid black;
+}

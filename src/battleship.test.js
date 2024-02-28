@@ -1,10 +1,17 @@
-import { activePlayers } from "./gameLoop.js";
-let player1;
-let player2;
+import Game from "./gameLoop.js";
+import Player from "./player.js";
+import Bot from "./bot.js";
+import DOM from "./DOM";
+
+jest.mock("./DOM");
+
+const game = new Game();
+game.addPlayer(new Player('Jack Sparrow', 'human'));
+game.addPlayer(new Bot('Dave Jones', 'bot'));
+const player1 = game.players[0];
+const player2 = game.players[1];
 
 beforeEach(() => {
-  player1 = activePlayers[0];
-  player2 = activePlayers[1];
   player1.gameboard.occupied = [];
   player2.gameboard.occupied = [];
 });
@@ -89,30 +96,6 @@ describe('attack detection system', () => {
     player1.gameboard.receiveAttack(2, 2);
     expect(player1.gameboard.ships.destroyer.isSunk()).toBeTruthy();
   });
-
-  test('game is over because all ships have been sunk', () => {
-    let col = 0;
-    for (const ship of Object.values(player1.gameboard.ships)) {
-      player1.gameboard.placeShip(0, col, 'row', ship);
-      col++;
-    }
-
-    for (let i = 0; i < 5; i++) {
-      for (let j = 0; j < 5; j++) {
-        player1.gameboard.receiveAttack(j, i);
-      }
-    }
-    expect(player1.gameboard.isGameOver()).toBeTruthy();
-  });
-
-  test('game is not over because not all ships have been sunk', () => {
-    player1.gameboard.ships.battleship.hits = 0;
-    player1.gameboard.placeShip(1, 2, 'row', player1.gameboard.ships.battleship);
-    player1.gameboard.receiveAttack(1, 2);
-    player1.gameboard.receiveAttack(2, 2);
-    player1.gameboard.receiveAttack(3, 2);
-    expect(player1.gameboard.isGameOver()).toBeFalsy();
-  });
 });
 
 describe('player movement', () => {
@@ -157,5 +140,31 @@ describe('bot movement', () => {
     player1.gameboard.receiveAttack(0, 0);
     player2.attack(player1);
     expect(randomAttackSpy).toHaveBeenCalled();
+  });
+});
+
+describe('game loop', () => {
+  test('game is over because all ships have been sunk', () => {
+    let col = 0;
+    for (const ship of Object.values(player1.gameboard.ships)) {
+      player1.gameboard.placeShip(0, col, 'row', ship);
+      col++;
+    }
+
+    for (let i = 0; i < 5; i++) {
+      for (let j = 0; j < 5; j++) {
+        player1.gameboard.receiveAttack(j, i);
+      }
+    }
+    expect(game.gameOver()).toBeTruthy();
+  });
+
+  test('game is not over because not all ships have been sunk', () => {
+    player1.gameboard.ships.battleship.hits = 0;
+    player1.gameboard.placeShip(1, 2, 'row', player1.gameboard.ships.battleship);
+    player1.gameboard.receiveAttack(1, 2);
+    player1.gameboard.receiveAttack(2, 2);
+    player1.gameboard.receiveAttack(3, 2);
+    expect(game.gameOver()).toBeFalsy();
   });
 });

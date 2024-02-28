@@ -1,0 +1,7 @@
+import './ship.js'
+import './gameboard.js'
+import './player.js'
+import './bot.js'
+import './gameLoop.js'
+import './DOM.js'
+import './style.css'

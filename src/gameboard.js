@@ -4,6 +4,8 @@ export default class Gameboard {
     this.ships = set;
     this.occupied = [];
     this.attacked = [];
+    this.maxRow = this.board[this.board.length - 1][0];
+    this.maxCol = this.board[this.board.length - 1][1];
   }
 
   buildGrid(row, col) {
@@ -38,8 +40,7 @@ export default class Gameboard {
       
       axis === 'row' ? row++ : col++;
 
-      const isOutOfBounds = row > this.board[this.board.length - 1][0]
-        || col > this.board[this.board.length - 1][1];
+      const isOutOfBounds = row > this.maxRow || col > this.maxCol;
 
       if (overlapedSquare || isOutOfBounds) {
         return false;
@@ -67,7 +68,7 @@ export default class Gameboard {
     });
   }
 
-  isGameOver() {
+  areAllShipsSunk() {
     for (const ship of Object.values(this.ships)) {
       if (!ship.isSunk()) return false;
     }
