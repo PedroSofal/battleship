@@ -52,13 +52,17 @@ export default class Bot extends Player {
     const attackList = activePlayers[0].gameboard.attacked;
     let lastAttack;
     let lastResult;
+    let sankShip;
 
     if (attackList.length > 0) {
       lastAttack = attackList[attackList.length - 1];
       lastResult = lastAttack.result;
+      sankShip = activePlayers[0].gameboard.occupied.find(square => {
+        return JSON.stringify(square.coords) === JSON.stringify(lastAttack.coords);
+      }).ship.isSunk();
     }
 
-    if (lastResult === 'hit') {
+    if (lastResult === 'hit' && !sankShip) {
       this.smartAttack(lastAttack.coords);
     } else {
       this.randomAttack();

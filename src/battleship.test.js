@@ -137,14 +137,25 @@ describe('bot movement', () => {
     expect(player1.gameboard.attacked.length).not.toBe(0);
   });
 
-  test("performs smart attack on player1's board within board limits", () => {
+  test("performs smart attack on player1's board within boundaries", () => {
+    player1.gameboard.ships.destroyer.hits = 0;
     player1.gameboard.attacked = [];
-    player1.gameboard.placeShip(0, 0, 'row', player2.gameboard.ships.battleship);
+    player1.gameboard.placeShip(0, 0, 'row', player1.gameboard.ships.destroyer);
     player2.attack(0, 0, player1);
     player2.playRound();
     expect(player1.gameboard.attacked[1].coords[0]).toBeLessThanOrEqual(1);
     expect(player1.gameboard.attacked[1].coords[0]).toBeGreaterThanOrEqual(0);
     expect(player1.gameboard.attacked[1].coords[1]).toBeLessThanOrEqual(1);
     expect(player1.gameboard.attacked[1].coords[1]).toBeGreaterThanOrEqual(0);
+  });
+
+  test("performs random attack for last attack sank player1's ship", () => {
+    const randomAttackSpy = jest.spyOn(player2, 'randomAttack');
+    player1.gameboard.ships.destroyer.hits = 1;
+    player1.gameboard.attacked = [];
+    player1.gameboard.placeShip(0, 0, 'row', player1.gameboard.ships.destroyer);
+    player2.attack(0, 0, player1);
+    player2.playRound();
+    expect(randomAttackSpy).toHaveBeenCalled();
   });
 });
