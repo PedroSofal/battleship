@@ -1,13 +1,16 @@
-import Player from "./player.js";
+import { activePlayers } from "./bot.js";
 let player1;
+let player2;
 
 beforeEach(() => {
-  player1 = new Player();
+  player1 = activePlayers[0];
+  player2 = activePlayers[1];
+  player1.gameboard.occupied = [];
+  player2.gameboard.occupied = [];
 });
 
 describe('ship placement', () => {
   test('ship is placed on gameboard', () => {
-    player1.gameboard.occupied = [];
     player1.gameboard.placeShip(0, 0, 'row', player1.gameboard.ships.battleship);
     expect(player1.gameboard.occupied).toEqual([
       {
@@ -46,7 +49,6 @@ describe('ship placement', () => {
   });
 
   test('ship is not placed on gameboard due to invalid coords (out of bounds)', () => {
-    player1.gameboard.occupied = [];
     player1.gameboard.placeShip(9, 9, 'row', player1.gameboard.ships.battleship);
     expect(player1.gameboard.occupied).toEqual([]);
   });
@@ -54,6 +56,8 @@ describe('ship placement', () => {
 
 describe('attack detection system', () => {
   test('attack hits ship', () => {
+    player1.gameboard.ships.battleship.hits = 0;
+    player1.gameboard.attacked = [];
     player1.gameboard.placeShip(1, 2, 'row', player1.gameboard.ships.battleship);
     player1.gameboard.receiveAttack(1, 2);
     expect(player1.gameboard.ships.battleship.hits).toBe(1);
@@ -66,6 +70,8 @@ describe('attack detection system', () => {
   });
 
   test('attack hits sea', () => {
+    player1.gameboard.ships.battleship.hits = 0;
+    player1.gameboard.attacked = [];
     player1.gameboard.placeShip(1, 2, 'row', player1.gameboard.ships.battleship);
     player1.gameboard.receiveAttack(5, 3);
     expect(player1.gameboard.ships.battleship.hits).toBe(0);
@@ -100,6 +106,7 @@ describe('attack detection system', () => {
   });
 
   test('game is not over because not all ships have been sunk', () => {
+    player1.gameboard.ships.battleship.hits = 0;
     player1.gameboard.placeShip(1, 2, 'row', player1.gameboard.ships.battleship);
     player1.gameboard.receiveAttack(1, 2);
     player1.gameboard.receiveAttack(2, 2);
@@ -108,19 +115,36 @@ describe('attack detection system', () => {
   });
 });
 
-describe('player move', () => {
+describe('player movement', () => {
   test("attack the other player's board succesfully", () => {
-    const player2 = new Player();
     player2.gameboard.placeShip(1, 2, 'row', player2.gameboard.ships.battleship);
     player1.attack(1, 2, player2);
     expect(player2.gameboard.ships.battleship.hits).toBe(1);
   });
 
   test("tries to attack an already attacked square", () => {
-    const player2 = new Player();
     player2.gameboard.placeShip(1, 2, 'row', player2.gameboard.ships.battleship);
     player1.attack(1, 2, player2);
     player1.attack(1, 2, player2);
     expect(player2.gameboard.ships.battleship.hits).toBe(1);
+  });
+});
+
+describe('bot movement', () => {
+  test("performs random attack on player1's board", () => {
+    player1.gameboard.attacked = [];
+    player2.playRound();
+    expect(player1.gameboard.attacked.length).not.toBe(0);
+  });
+
+  test("performs smart attack on player1's board within board limits", () => {
+    player1.gameboard.attacked = [];
+    player1.gameboard.placeShip(0, 0, 'row', player2.gameboard.ships.battleship);
+    player2.attack(0, 0, player1);
+    player2.playRound();
+    expect(player1.gameboard.attacked[1].coords[0]).toBeLessThanOrEqual(1);
+    expect(player1.gameboard.attacked[1].coords[0]).toBeGreaterThanOrEqual(0);
+    expect(player1.gameboard.attacked[1].coords[1]).toBeLessThanOrEqual(1);
+    expect(player1.gameboard.attacked[1].coords[1]).toBeGreaterThanOrEqual(0);
   });
 });
