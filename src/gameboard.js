@@ -25,7 +25,8 @@ export default class Gameboard {
       for (let i = 0; i < ship.size; i++) {
         this.occupied.push({
           ship: ship,
-          coords: [row, col]
+          coords: [row, col],
+          class: 'occupied',
         });
         axis === 'row' ? row++ : col++;
       }
@@ -40,7 +41,8 @@ export default class Gameboard {
       
       axis === 'row' ? row++ : col++;
 
-      const isOutOfBounds = row > this.maxRow || col > this.maxCol;
+      const isOutOfBounds = row > this.maxRow + 1 || row < 0
+        || col > this.maxCol + 1 || col < 0;
 
       if (overlapedSquare || isOutOfBounds) {
         return false;
@@ -64,7 +66,8 @@ export default class Gameboard {
 
     this.attacked.push({
       coords: [row, col],
-      result: result
+      result: result,
+      class: result,
     });
   }
 

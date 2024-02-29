@@ -21,7 +21,7 @@ body {
 
 .board {
   display: grid;
-  grid-template: repeat(10, 50px) / repeat(10, 50px);
+  grid-template-rows: repeat(10, 50px);
   width: 500px;
   height: 500px;
 }
@@ -34,6 +34,25 @@ body {
   background-color: pink;
 }
 
+.row {
+  display: grid;
+  grid-template-columns: repeat(10, 50px);
+}
+
 .square {
   outline: 1px solid black;
+}
+
+/* MARKINGS ***********/
+
+.occupied {
+  background-color: blue;
+}
+
+.miss {
+  background-color: lightskyblue;
+}
+
+.hit {
+  background-color: red;
 }
