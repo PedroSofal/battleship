@@ -1,4 +1,4 @@
-import Game from "./gameLoop.js";
+import Game from "./gameHelpers.js";
 import Player from "./player.js";
 import Bot from "./bot.js";
 import DOM from "./DOM";
@@ -22,19 +22,23 @@ describe('ship placement', () => {
     expect(player1.gameboard.occupied).toEqual([
       {
         ship: player1.gameboard.ships.battleship,
-        coords: [0, 0]
+        coords: [0, 0],
+        class: 'occupied',
       },
       {
         ship: player1.gameboard.ships.battleship,
-        coords: [1, 0]
+        coords: [1, 0],
+        class: 'occupied',
       },
       {
         ship: player1.gameboard.ships.battleship,
-        coords: [2, 0]
+        coords: [2, 0],
+        class: 'occupied',
       },
       {
         ship: player1.gameboard.ships.battleship,
-        coords: [3, 0]
+        coords: [3, 0],
+        class: 'occupied',
       },
     ]);
   });
@@ -43,14 +47,16 @@ describe('ship placement', () => {
     player1.gameboard.occupied = [
       {
         ship: player1.gameboard.ships.battleship,
-        coords: [1, 2]
+        coords: [1, 2],
+        class: 'occupied',
       },
     ];
     player1.gameboard.placeShip(1, 2, 'row', player1.gameboard.ships.battleship);
     expect(player1.gameboard.occupied).toEqual([
       {
         ship: player1.gameboard.ships.battleship,
-        coords: [1, 2]
+        coords: [1, 2],
+        class: 'occupied',
       },
     ]);
   });
@@ -71,7 +77,8 @@ describe('attack detection system', () => {
     expect(player1.gameboard.attacked).toEqual([
       {
         coords: [1, 2],
-        result: 'hit'
+        result: 'hit',
+        class: 'hit',
       },
     ]);
   });
@@ -85,7 +92,8 @@ describe('attack detection system', () => {
     expect(player1.gameboard.attacked).toEqual([
       {
         coords: [5, 3],
-        result: 'miss'
+        result: 'miss',
+        class: 'miss',
       },
     ]);
   });

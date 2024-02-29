@@ -1,6 +1,6 @@
-import { game } from './gameLoop.js';
+import { playerPlays } from "./gameControl.js";
 
-export default class DOM { 
+export default class DOM {
   static gameboards = document.querySelector('#gameboards');
   
   static createBoard(player) {
@@ -16,7 +16,7 @@ export default class DOM {
       for (let j = 0; j < numberOfCols; j++) {
         const boardCol = document.createElement('div');
         boardCol.className = 'col square';
-        if (player.type === 'bot') boardCol.onclick = () => this.handleClick(i, j, player);
+        if (player.type === 'bot') boardCol.onclick = () => playerPlays(i, j, player);
         boardRow.appendChild(boardCol);
       }
     }
@@ -25,21 +25,16 @@ export default class DOM {
     this.gameboards.appendChild(boardContainer);
   }
 
-  static gridFromHtmlSquares(gameboard) {
-    const rows = Array.from(gameboard.children);
+  static gridFromHtmlSquares(squares) {
+    const rows = Array.from(squares);
     const grid = [];
     rows.forEach(row => grid.push(Array.from(row.children)));
     return grid;
   }
 
-  static handleClick(row, col, enemy) {
-    game.players[0].attack(row, col, enemy);
-    this.updateBoard(enemy);
-  }
-
   static updateBoard(player) {
     const gameboard = document.querySelector(`.${player.type}-board`);
-    const grid = this.gridFromHtmlSquares(gameboard);
+    const grid = this.gridFromHtmlSquares(gameboard.children);
 
     player.gameboard.attacked.forEach(attackedSquare => {
       this.setClass(grid, attackedSquare);

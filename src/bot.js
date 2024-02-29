@@ -69,9 +69,11 @@ export default class Bot {
     if (attackList.length > 0) {
       lastAttack = attackList[attackList.length - 1];
       lastResult = lastAttack.result;
-      sankShip = enemy.gameboard.occupied.find(square => {
-        return JSON.stringify(square.coords) === JSON.stringify(lastAttack.coords);
-      }).ship.isSunk();
+      if (lastResult === 'hit') {
+        sankShip = enemy.gameboard.occupied.find(square => {
+          return JSON.stringify(square.coords) === JSON.stringify(lastAttack.coords);
+        }).ship.isSunk();
+      }
     }
 
     if (lastResult === 'hit' && !sankShip) {

@@ -28,13 +28,6 @@ export default class Game {
 
   nextPlayer() {
     this.turn = this.turn === 0 ? 1 : 0;
-    this.gameLoop();
-  }
-
-  gameLoop() {
-    if (!gameOver) {
-
-    }
   }
 
   gameOver() {
@@ -49,6 +42,7 @@ export default class Game {
 }
 
 export const game = new Game();
+
 game.addPlayer(new Player('Jack Sparrow', 'human'));
 game.addPlayer(new Bot('Dave Jones', 'bot'));
 game.startGame();
