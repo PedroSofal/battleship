@@ -7,23 +7,35 @@ export default class DOM {
     const boardContainer = document.createElement('div');
     const numberOfRows = player.gameboard.maxRow + 1;
     const numberOfCols = player.gameboard.maxCol + 1;
-
+  
     for (let i = 0; i < numberOfRows; i++) {
       const boardRow = document.createElement('div');
       boardRow.className = 'row';
       boardContainer.appendChild(boardRow);
-
+  
       for (let j = 0; j < numberOfCols; j++) {
         const boardCol = document.createElement('div');
         boardCol.className = 'col square';
-        if (player.type === 'bot') boardCol.onclick = () => playerPlays(i, j, player);
+  
+        if (player.type === 'bot') {
+          const clickHandler = this.createClickHandler(i, j, player);
+          boardCol.addEventListener('click', clickHandler);
+        }
+  
         boardRow.appendChild(boardCol);
       }
     }
-
+  
     boardContainer.className = `board ${player.type}-board`;
     this.gameboards.appendChild(boardContainer);
   }
+  
+  static createClickHandler(i, j, player) {
+    return function handleClick() {
+      playerPlays(i, j, player);
+      this.removeEventListener('click', handleClick);
+    };
+  }  
 
   static gridFromHtmlSquares(squares) {
     const rows = Array.from(squares);
@@ -36,20 +48,20 @@ export default class DOM {
     const gameboard = document.querySelector(`.${player.type}-board`);
     const grid = this.gridFromHtmlSquares(gameboard.children);
 
-    player.gameboard.attacked.forEach(attackedSquare => {
-      this.setClass(grid, attackedSquare);
+    player.gameboard.squares.forEach(square => {
+      this.setClass(grid, square);
     });
 
     if (player.type === 'bot') return;
 
-    player.gameboard.occupied.forEach(occupiedSquare => {
+    player.gameboard.squares.forEach(occupiedSquare => {
       this.setClass(grid, occupiedSquare);
     });
   }
 
-  static setClass(grid, squareStatus) {
-    const row = squareStatus.coords[0];
-    const col = squareStatus.coords[1];
-    grid[row][col].classList.add(`${squareStatus.class}`);
+  static setClass(grid, square) {
+    const row = square.coords[0];
+    const col = square.coords[1];
+    grid[row][col].classList.add(`${square.className}`);
   }
 }

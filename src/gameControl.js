@@ -14,5 +14,5 @@ function botPlays() {
     game.players[1].attack(game.players[0]);
     game.updateBoards();
     game.nextPlayer();
-  }, 2000);
+  }, 0);
 };

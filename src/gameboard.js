@@ -1,11 +1,23 @@
+class SquareInfo {
+  constructor(coords, content, attacked, className) {
+    this.coords = coords;
+    this.content = content;
+    this.attacked = attacked;
+    this.className = className;
+  }
+}
+
 export default class Gameboard {
   constructor(row, col, set) {
-    this.board = this.buildGrid(row, col);
+    this.squares = [];
     this.ships = set;
-    this.occupied = [];
-    this.attacked = [];
+    this.board = this.buildGrid(row, col);
     this.maxRow = this.board[this.board.length - 1][0];
     this.maxCol = this.board[this.board.length - 1][1];
+    this.sequence = {
+      start: null,
+      next: null,
+    };
   }
 
   buildGrid(row, col) {
@@ -13,31 +25,25 @@ export default class Gameboard {
     for (let i = 0; i < row; i++) {
       for (let j = 0; j < col; j++) {
         grid.push([i, j]);
+        this.squares.push(new SquareInfo([i, j], 'water', false, null));
       }
     }
     return grid;
   }
 
-  placeShip(row, col, axis, ship) {
-    const isSquareAvailable = this.verifySquareAvailability(row, col, axis, ship);
-
-    if (isSquareAvailable) {
-      for (let i = 0; i < ship.size; i++) {
-        this.occupied.push({
-          ship: ship,
-          coords: [row, col],
-          class: 'occupied',
-        });
-        axis === 'row' ? row++ : col++;
-      }
-    }
+  findSquare(row, col) {
+    const square = this.squares.find(square => {
+      return JSON.stringify(square.coords) === JSON.stringify([row, col]);
+    });
+    return square;
   }
 
   verifySquareAvailability(row, col, axis, ship) {
     for (let i = 0; i < ship.size; i++) {
-      const overlapedSquare = this.occupied.find(square => {
-        return JSON.stringify(square.coords) === JSON.stringify([row, col]);
-      });
+      const square = this.findSquare(row, col);
+      if (!square) return; false; 
+
+      const overlapedSquare = square.content !== 'water' ? true : false;
       
       axis === 'row' ? row++ : col++;
 
@@ -51,24 +57,35 @@ export default class Gameboard {
     return true;
   }
 
-  receiveAttack(row, col) {
-    let result;
-    const occupiedSquare = this.occupied.find(square => {
-      return JSON.stringify(square.coords) === JSON.stringify([row, col]);
-    });
+  placeShip(row, col, axis, ship) {
+    const isSquareAvailable = this.verifySquareAvailability(row, col, axis, ship);
 
-    if (occupiedSquare) {
-      occupiedSquare.ship.hit();
-      result = 'hit';
-    } else {
-      result = 'miss';
+    if (isSquareAvailable) {
+      for (let i = 0; i < ship.size; i++) {
+        const square = this.findSquare(row, col);
+        square.content = ship;
+        square.className = 'occupied';
+        axis === 'row' ? row++ : col++;
+      }
     }
+  }
 
-    this.attacked.push({
-      coords: [row, col],
-      result: result,
-      class: result,
-    });
+  receiveAttack(row, col) {
+    const square = this.findSquare(row, col);
+    square.attacked = true;
+
+    if (square.content !== 'water') {
+      square.content.hit();
+      square.className = 'hit';
+      if (square.content.hits === 1) this.sequence.start = square;
+      if (!square.content.isSunk()) this.sequence.next = square;
+      if (square.content.isSunk()) {
+        this.sequence.start = null;
+        this.sequence.next = null;
+      }
+    } else {
+      square.className = 'miss';
+    }
   }
 
   areAllShipsSunk() {

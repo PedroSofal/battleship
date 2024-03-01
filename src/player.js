@@ -9,12 +9,21 @@ export default class Player {
   }
 
   attack(row, col, enemy) {
-    const alreadyAttackedSquare = enemy.gameboard.attacked.find(square => {
-      return JSON.stringify(square.coords) === JSON.stringify([row, col]);
+    if (this.isSquareAvailable(row, col, enemy)) {
+      enemy.gameboard.receiveAttack(row, col);
+    }
+  }
+
+  isSquareAvailable(row, col, enemy) {
+    const isAlreadyAttacked = enemy.gameboard.squares.find(square => {
+      return JSON.stringify(square.coords) === JSON.stringify([row, col])
+      && square.attacked === true;
     });
 
-    if (!alreadyAttackedSquare) {
-      enemy.gameboard.receiveAttack(row, col);
+    if (isAlreadyAttacked) {
+      return false;
+    } else {
+      return true;
     }
   }
 }

@@ -1,5 +1,6 @@
 class Ship {
-  constructor(size) {
+  constructor(name, size) {
+    this.name = name;
     this.size = size;
     this.hits = 0;
   }
@@ -15,10 +16,10 @@ class Ship {
 
 export default class standardSet {
   constructor() {
-    this.carrier = new Ship(5);
-    this.battleship = new Ship(4);
-    this.cruiser = new Ship(3);
-    this.submarine = new Ship(3);
-    this.destroyer = new Ship(2);
+    this.carrier = new Ship('Carrier', 5);
+    this.battleship = new Ship('Battleship', 4);
+    this.cruiser = new Ship('Cruiser', 3);
+    this.submarine = new Ship('Submarine', 3);
+    this.destroyer = new Ship('Destroyer', 2);
   }
 }

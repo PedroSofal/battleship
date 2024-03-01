@@ -46,7 +46,15 @@ export const game = new Game();
 game.addPlayer(new Player('Jack Sparrow', 'human'));
 game.addPlayer(new Bot('Dave Jones', 'bot'));
 game.startGame();
-game.players[0].gameboard.placeShip(2, 0, 'col', game.players[0].gameboard.ships.carrier);
-game.players[0].gameboard.placeShip(5, 3, 'col', game.players[0].gameboard.ships.destroyer);
-game.players[1].gameboard.placeShip(5, 5, 'col', game.players[0].gameboard.ships.carrier);
+game.players[0].gameboard.placeShip(5, 5, 'col', game.players[0].gameboard.ships.carrier);
+game.players[0].gameboard.placeShip(2, 5, 'col', game.players[0].gameboard.ships.battleship);
+game.players[0].gameboard.placeShip(4, 1, 'col', game.players[0].gameboard.ships.cruiser);
+game.players[0].gameboard.placeShip(7, 3, 'col', game.players[0].gameboard.ships.submarine);
+game.players[0].gameboard.placeShip(0, 1, 'row', game.players[0].gameboard.ships.destroyer);
+
+game.players[1].gameboard.placeShip(5, 5, 'col', game.players[1].gameboard.ships.carrier);
+game.players[1].gameboard.placeShip(2, 5, 'col', game.players[1].gameboard.ships.battleship);
+game.players[1].gameboard.placeShip(4, 1, 'col', game.players[1].gameboard.ships.cruiser);
+game.players[1].gameboard.placeShip(7, 3, 'col', game.players[1].gameboard.ships.submarine);
+game.players[1].gameboard.placeShip(0, 1, 'row', game.players[1].gameboard.ships.destroyer);
 game.updateBoards();
