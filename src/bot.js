@@ -134,4 +134,29 @@ export default class Bot {
     const adjacencies = moves.filter(move => this.isSquareAvailable(...move, enemy));
     return adjacencies[Math.floor(Math.random() * adjacencies.length)];
   }
+
+  setFormationRandomly(isSquareAvailable = false, shipCounter = 0, placingParameters = false) {
+    if (shipCounter >= Object.keys(this.gameboard.ships).length) {
+      return;
+    }
+
+    if (isSquareAvailable) {
+      this.gameboard.placeShip(...placingParameters);
+      shipCounter++;
+      isSquareAvailable = false;
+      placingParameters = false;
+      return this.setFormationRandomly(isSquareAvailable, shipCounter);
+    }
+    
+    if (!isSquareAvailable) {
+      const row = this.getRandomRow();
+      const col = this.getRandomCol();
+      const axis = Math.random() < 0.5 ? 'row' : 'col';
+      const ship = Object.values(this.gameboard.ships)[shipCounter];
+      const placingParameters = [row, col, axis, ship];
+
+      isSquareAvailable = this.gameboard.verifySquareAvailability(row, col, axis, ship);
+      return this.setFormationRandomly(isSquareAvailable, shipCounter, placingParameters);
+    }
+  }
 }

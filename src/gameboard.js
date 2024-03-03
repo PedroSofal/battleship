@@ -67,6 +67,9 @@ export default class Gameboard {
         square.className = 'occupied';
         axis === 'row' ? row++ : col++;
       }
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -93,5 +96,12 @@ export default class Gameboard {
       if (!ship.isSunk()) return false;
     }
     return true;
+  }
+
+  resetGameboard() {
+    this.squares = [];
+    for (const coord of this.board) {
+      this.squares.push(new SquareInfo([coord[0], coord[1]], 'water', false, null));
+    }
   }
 }
