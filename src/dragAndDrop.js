@@ -99,7 +99,7 @@ export default class DragAndDrop {
       let row = this.hoveredSquare[0];
       let col = this.hoveredSquare[1];
 
-      this.axis === 'row' ? row += i : col += i;
+      this.axis === 'row' ? col += i : row += i;
       if (row > this.grid.length - 1 || col > this.grid[0].length - 1) {
         break;
       }

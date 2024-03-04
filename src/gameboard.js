@@ -41,11 +41,25 @@ export default class Gameboard {
   verifySquareAvailability(row, col, axis, ship) {
     for (let i = 0; i < ship.size; i++) {
       const square = this.findSquare(row, col);
+
+      const posX = row + 1 === 10 ? 9 : row + 1;
+      const posY = col + 1 === 10 ? 9 : col + 1;
+      const negX = row - 1 === -1 ? 0 : row - 1;
+      const negY = col - 1 === -1 ? 0 : col - 1;
+      const adjacentPosX = this.findSquare(posX, col);
+      const adjacentPosY = this.findSquare(row, posY);
+      const adjacentNegX = this.findSquare(negX, col);
+      const adjacentNegY = this.findSquare(row, negY);
+
       if (!square) return; false; 
 
-      const overlapedSquare = square.content !== 'water' ? true : false;
+      const overlapedSquare = square.content !== 'water'
+        || adjacentPosX.content !== 'water'
+        || adjacentPosY.content !== 'water'
+        || adjacentNegX.content !== 'water'
+        || adjacentNegY.content !== 'water';
       
-      axis === 'row' ? row++ : col++;
+      axis === 'row' ? col++ : row++;
 
       const isOutOfBounds = row > this.maxRow + 1 || row < 0
         || col > this.maxCol + 1 || col < 0;
@@ -65,7 +79,7 @@ export default class Gameboard {
         const square = this.findSquare(row, col);
         square.content = ship;
         square.className = 'occupied';
-        axis === 'row' ? row++ : col++;
+        axis === 'row' ? col++ : row++;
       }
       return true;
     } else {
