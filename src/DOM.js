@@ -67,7 +67,13 @@ export default class DOM {
       const row = square.coords[0];
       const col = square.coords[1];
       const classListValue = `col square ${square.className}`;
-      grid[row][col].classList = classListValue;
+      
+      if (square.className === 'occupied'
+      && player.type === 'bot') {
+        return;
+      } else {
+        grid[row][col].classList = classListValue;
+      }
     });
   }
 }
