@@ -4,30 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Battleship</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main-menu.css">
 </head>
 <body>
-  <div id="gameboards"></div>
+  <div class="main-menu-wrapper">
+    <div class="name-options-wrapper">
+      <h1 class="game-title">BATTLE<br>SHIP</h1>
+      <div class="player-name">
+        <label class="label" for="player-name">Enter your name:</label>
+        <input class="name-input" type="text" name="name" id="player-name">
+      </div>
+      <div class="options">
+        <div class="options__language">
+          <input class="language-radio" type="radio" name="language" id="lang-pt" value="pt" onchange='changeLanguage("pt")'>
+          <label class="label" for="lang-pt">
+            <img class="icon icon--flag" id="brazilFlag" src="./assets/icons/flag-brazil.jpg" alt="brazil's flag">
+          </label>
+          <input class="language-radio" type="radio" name="language" id="lang-en" value="en" onchange='changeLanguage("en")'>
+          <label class="label" for="lang-en">
+            <img class="icon icon--flag" id="ukFlag" src="./assets/icons/flag-united-kingdom.jpg" alt="united kingdom's flag">
+          </label>
+        </div>
+        <div class="options__audio">
+          <label class="label" for="audio">Audio</label>
+          <input class="icon icon--speaker" type="radio" name="audio" id="audio-on">
+          <input class="icon icon--speaker" type="radio" name="audio" id="audio-off">
+        </div>
+      </div>
+      <button class="main-button" id="set-formation">Set formation</button>
+    </div>
 
-  <dialog class="modal modal--place-ship" id="setUpModal">
-    <div class="modal__content">
-      <div class="header">
-        <p class="header__instructions">Plan our formation</p>
-      </div>
-      <div class="main">
-        <div class="main__options">
-          <button class="main__button" id="flipAxis">Flip axis</button>
-        </div>
-        <div class="main__content">
-          <div class="main__fleet" id="fleetContainer"></div>
-          <div class="main__gameboard" id="boardContainer"></div>
-        </div>
-      </div>
-      <div class="footer">
-        <button class="footer__button" id="resetBtn">Reset</button>
-        <button class="footer__button" id="confirmBtn">Confirm</button>
+    <div class="character-selection-wrapper">
+      <div class="character-option" id="char0"></div>
+      <div class="character-option" id="char1"></div>
+      <div class="character-option" id="char2"></div>
+      <div class="character-option" id="char3"></div>
+      <div class="character-option" id="char4"></div>
+      <div class="character-option" id="char5"></div>
+
+      <div class="characters-revealer">
+        <p class="characters-revealer__paragraph">Choose your character</p>
       </div>
     </div>
-  </dialog>
+  </div>
 </body>
 </html>
