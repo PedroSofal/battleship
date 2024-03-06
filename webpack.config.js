@@ -5,9 +5,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
-  entry: './src/index.js',
+  entry: {
+    main: './src/index.js',
+    placeShips: './src/place-ships.js',
+  },
   output: {
-    filename: 'main.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'images/[name].[hash][ext]',
   },
@@ -54,7 +57,15 @@ export default {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Battleship',
-      template: './src/index.html'
-    })
+      filename: 'index.html',
+      template: './src/index.html',
+      chunks: ['main']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Battleship',
+      filename: 'place-ships.html',
+      template: './src/place-ships.html',
+      chunks: ['placeShips']
+    }),
   ]
 }

@@ -17,7 +17,6 @@ export default class SetUpModal {
   static setUp() {
     this.loadFleet(Game.players[0]);
     this.gameboardContainer.appendChild(DOM.getPlayerBoard());
-    this.modal.showModal();
     DragAndDrop.init();
   }
 
@@ -52,4 +51,4 @@ export default class SetUpModal {
   }
 }
 
-SetUpModal.init();
+// SetUpModal.init();

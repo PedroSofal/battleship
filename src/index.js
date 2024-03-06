@@ -1,13 +1,7 @@
-import './ship.js'
-import './gameboard.js'
-import './player.js'
-import './bot.js'
-// import './gameControl.js'
-// import './DOM.js'
-// import './dragAndDrop.js'
 import './style.css'
 import './main-menu.css'
 
+const placeShipsBtn = document.querySelector('#place-ships');
 const languageOptions = document.querySelectorAll('.language-radio');
 
 languageOptions.forEach(option => option.addEventListener('change', () => {
@@ -15,5 +9,9 @@ languageOptions.forEach(option => option.addEventListener('change', () => {
 }));
 
 function changeLanguage(language) {
-
 }
+
+console.log(placeShipsBtn)
+placeShipsBtn.addEventListener('click', () => {
+  window.location.href = 'place-ships.html';
+});
