@@ -19,31 +19,56 @@
       </div>
       <div class="options">
         <div class="options__language">
-          <input class="language-radio" type="radio" name="language" id="lang-pt" value="pt" onchange='changeLanguage("pt")'>
+          <label class="label">Language</label>
+          <input class="language-radio" type="radio" name="language" id="lang-pt" value="pt">
           <label class="label" for="lang-pt">
             <img class="icon icon--flag" id="brazilFlag" src="./assets/icons/flag-brazil.jpg" alt="brazil's flag">
           </label>
-          <input class="language-radio" type="radio" name="language" id="lang-en" value="en" onchange='changeLanguage("en")'>
+          <input class="language-radio" type="radio" name="language" id="lang-en" value="en">
           <label class="label" for="lang-en">
             <img class="icon icon--flag" id="ukFlag" src="./assets/icons/flag-united-kingdom.jpg" alt="united kingdom's flag">
           </label>
         </div>
         <div class="options__audio">
-          <label class="label" for="audio">Audio</label>
-          <input class="icon icon--speaker" type="radio" name="audio" id="audio-on">
-          <input class="icon icon--speaker" type="radio" name="audio" id="audio-off">
+          <label class="label">Audio</label>
+          <input class="audio-radio" type="radio" name="audio" id="audio-on" value="on">
+          <label class="label" for="audio-on">
+            <img class="icon icon--speaker" id="audioOn" src="./assets/icons/audio-enabled.png" alt="speaker on">
+          </label>
+          <input class="audio-radio" type="radio" name="audio" id="audio-off" value="off">
+          <label class="label" for="audio-off">
+            <img class="icon icon--speaker" id="audioOff" src="./assets/icons/audio-disabled.png" alt="speaker off">
+          </label>
         </div>
       </div>
       <button class="main-button" id="set-formation">Set formation</button>
     </div>
 
     <div class="character-selection-wrapper">
-      <div class="character-option" id="char0"></div>
-      <div class="character-option" id="char1"></div>
-      <div class="character-option" id="char2"></div>
-      <div class="character-option" id="char3"></div>
-      <div class="character-option" id="char4"></div>
-      <div class="character-option" id="char5"></div>
+      <input class="character-radio" type="radio" name="character" id="char1" value="char1">
+      <label class="label label--character" for="char1">
+        <img class="character-option" id="char0" width="280" src="./assets/characters/char1.jpg" alt="char1"/>
+      </label>
+      <input class="character-radio" type="radio" name="character" id="char2" value="char2">
+      <label class="label label--character" for="char2">
+        <img class="character-option" id="char0" width="280" src="./assets/characters/char2.jpg" alt="char2"/>
+      </label>
+      <input class="character-radio" type="radio" name="character" id="char3" value="char3">
+      <label class="label label--character" for="char3">
+        <img class="character-option" id="char0" width="280" src="./assets/characters/char3.jpg" alt="char3"/>
+      </label>
+      <input class="character-radio" type="radio" name="character" id="char4" value="char4">
+      <label class="label label--character" for="char4">
+        <img class="character-option" id="char0" width="280" src="./assets/characters/char4.jpg" alt="char4"/>
+      </label>
+      <input class="character-radio" type="radio" name="character" id="char5" value="char5">
+      <label class="label label--character" for="char5">
+        <img class="character-option" id="char0" width="280" src="./assets/characters/char5.jpg" alt="char5"/>
+      </label>
+      <input class="character-radio" type="radio" name="character" id="char6" value="char6">
+      <label class="label label--character" for="char6">
+        <img class="character-option" id="char0" width="280" src="./assets/characters/char6.jpg" alt="char6"/>
+      </label>
 
       <div class="characters-revealer">
         <p class="characters-revealer__paragraph">Choose your character</p>
