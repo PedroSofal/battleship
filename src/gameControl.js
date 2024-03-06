@@ -1,7 +1,7 @@
 import Player from "./player.js";
 import Bot from "./bot.js";
 import DOM from "./DOM.js";
-import SetUpModal from "./setUpModal.js";
+import PlaceShips from "./setUpModal.js";
 
 export default class Game {
   static players = [];
@@ -11,7 +11,7 @@ export default class Game {
     DOM.loadBoard(this.players[0]);
     DOM.loadBoard(this.players[1], this.playerPlays);
     this.players[1].setFormationRandomly();
-    SetUpModal.setUp(this.players[0]);
+    PlaceShips.setUp(this.players[0]);
   }
   
   static playerPlays(row, col, enemy) {

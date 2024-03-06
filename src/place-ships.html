@@ -6,7 +6,58 @@
   <title>Place Ships</title>
 </head>
 <body>
-  <div id="gameboards"></div>
+
+  <div class="place-ships-wrapper">
+    <div class="wrapper wrapper--fleet" id="fleet">
+      <!-- <div class="ship">
+        <p class="ship__name">Carrier</p>
+        <div class="ship__yard">
+          <div class="ship__icon"></div>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="wrapper wrapper--gameboard">
+      <p class="gameboard-name">Area of operations</p>
+      <div class="gameboard-display">
+        <div class="gameboard-display__radar-signal"></div>
+        <svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
+          <rect
+            class="dashed-border"
+            width='100%'
+            height='100%'
+            fill='none'
+            stroke-linecap='square'
+          />
+        </svg>
+        <div id="strategy-board"></div>
+      </div>
+    </div>
+
+    <div class="wrapper wrapper--character">
+      <img class="character" src="./assets/characters/char1.jpg" alt="char1" width="300px">
+    </div>
+
+    <div class="wrapper wrapper--sayings">
+      <p class="sayings">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente exercitationem nihil aperiam.</p>
+    </div>
+
+    <div class="wrapper wrapper--footer">
+      <p class="instructions">Change the axis with <span>Z</span> and <span>X</span></p>
+      <div>
+        <button class="secondary-button" id="resetFormation">Reset</button>
+        <button class="main-button" id="confirmFormation">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!-- <div id="gameboards"></div>
 
   <dialog class="modal modal--place-ship" id="setUpModal" open>
     <div class="modal__content">
@@ -27,6 +78,6 @@
         <button class="footer__button" id="confirmBtn">Confirm</button>
       </div>
     </div>
-  </dialog>
+  </dialog> -->
 </body>
 </html>

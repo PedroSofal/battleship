@@ -2,9 +2,8 @@ import DOM from "./DOM.js";
 import Game from "./gameControl.js";
 
 export default class DragAndDrop {
-  static board = document.querySelector('#boardContainer');
-  static fleet = document.querySelector('#fleetContainer');
-  static setUpModal_flipAxis = document.querySelector('#flipAxis');
+  static board = document.querySelector('#strategy-board');
+  static fleet = document.querySelector('#fleet');
   static grid = [];
   static axis = 'row';
   static hoveredSquare = null;
@@ -12,7 +11,18 @@ export default class DragAndDrop {
   static shipsPlaced = 0;
 
   static setEventListeners() {
-    this.setUpModal_flipAxis.addEventListener('click', this.flipAxis);
+    window.addEventListener('keypress', function handleWheelScroll(e) {
+      if (e.key === 'x') {
+        DragAndDrop.axis = 'row';
+      }
+
+      if (e.key === 'z') {
+        DragAndDrop.axis = 'col';
+      }
+    });
+
+    this.addFleetEventListeners();
+    this.addBoardEventListeners();
   }
 
   static gridFromHtmlSquares(squares) {
@@ -40,17 +50,13 @@ export default class DragAndDrop {
     }
   }
 
-  static flipAxis() {
-    DragAndDrop.axis = DragAndDrop.axis === 'row' ? 'col' : 'row';
-  }
-
   static getSquaresFromBoard() {
     const squares = this.board.firstChild.querySelectorAll('.square');
     return Array.from(squares);
   }
 
   static getShipsFromFleet() {
-    const ships = this.fleet.querySelectorAll('div');
+    const ships = this.fleet.querySelectorAll('.ship__icon');
     return Array.from(ships);
   }
 
@@ -80,7 +86,7 @@ export default class DragAndDrop {
 
   static dragEnd(e) {
     e.target.classList.remove('dragging');
-
+    
     const placedShip = Game.players[0].gameboard.placeShip(
       this.hoveredSquare[0], this.hoveredSquare[1], this.axis, this.selectedShip
     );
@@ -98,7 +104,6 @@ export default class DragAndDrop {
     for (let i = 0; i < this.selectedShip.size; i++) {
       let row = this.hoveredSquare[0];
       let col = this.hoveredSquare[1];
-
       this.axis === 'row' ? col += i : row += i;
       if (row > this.grid.length - 1 || col > this.grid[0].length - 1) {
         break;
@@ -117,9 +122,7 @@ export default class DragAndDrop {
   }
 
   static init() {
-    this.setEventListeners();
     this.gridFromHtmlSquares(this.board.children);
-    this.addFleetEventListeners();
-    this.addBoardEventListeners();
+    this.setEventListeners();
   }
 }

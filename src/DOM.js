@@ -2,7 +2,7 @@ export default class DOM {
   static loadedPlayerBoard = null;
   static loadedCpuBoard = null;
 
-  static gameboards = document.querySelector('#gameboards');
+  // static gameboards = document.querySelector('#gameboards');
 
   static getPlayerBoard() {
     return this.loadedPlayerBoard;
@@ -13,8 +13,8 @@ export default class DOM {
   }
 
   static startBattle() {
-    gameboards.appendChild(DOM.getPlayerBoard());
-    gameboards.appendChild(DOM.getCpuBoard());
+    // gameboards.appendChild(DOM.getPlayerBoard());
+    // gameboards.appendChild(DOM.getCpuBoard());
   }
   
   static loadBoard(player, eventCallback) {

@@ -2,43 +2,54 @@ import Game from "./gameControl.js";
 import DOM from "./DOM.js";
 import DragAndDrop from "./dragAndDrop.js";
 
-export default class SetUpModal {
-  static modal = document.querySelector('#setUpModal');
-  static fleetContainer = this.modal.querySelector('#fleetContainer');
-  static gameboardContainer = this.modal.querySelector('#boardContainer');
-  static confirmBtn = this.modal.querySelector('#confirmBtn');
-  static resetBtn = this.modal.querySelector('#resetBtn');
+export default class PlaceShips {
+  static fleet = document.querySelector('#fleet');
+  static strategyBoard = document.querySelector('#strategy-board');
+  static confirmBtn = document.querySelector('#confirmFormation');
+  static resetBtn = document.querySelector('#resetFormation');
 
   static setEventListeners() {
     this.confirmBtn.addEventListener('click', this.confirmFormation);
-    this.resetBtn.addEventListener('click', this.resetFleet);
+    this.resetBtn.addEventListener('click', this.resetFormation);
   }
 
   static setUp() {
     this.loadFleet(Game.players[0]);
-    this.gameboardContainer.appendChild(DOM.getPlayerBoard());
+    this.strategyBoard.appendChild(DOM.getPlayerBoard());
     DragAndDrop.init();
   }
 
   static loadFleet() {
-    for (const ship of Object.values(Game.players[0].gameboard.ships)) {
+    for (const shipObject of Object.values(Game.players[0].gameboard.ships)) {
+      const ship = document.createElement('div');
+      const shipName = document.createElement('p');
+      const shipYard = document.createElement('div');
       const shipIcon = document.createElement('div');
-      shipIcon.className = 'ship-icon';
-      shipIcon.id = ship.name;
+
+      ship.classList = 'ship';
+      shipName.classList = 'ship__name';
+      shipYard.classList = 'ship__yard';
+      shipIcon.classList = 'ship__icon';
+      
+      shipName.textContent = shipObject.name;
+      shipIcon.id = shipObject.name;
       shipIcon.setAttribute('draggable', 'true');
-      this.fleetContainer.appendChild(shipIcon);
+      
+      shipYard.appendChild(shipIcon);
+      ship.appendChild(shipName);
+      ship.appendChild(shipYard);
+      this.fleet.appendChild(ship);
     }
   }
 
   static confirmFormation() {
     if (DragAndDrop.shipsPlaced === 5) {
-      SetUpModal.modal.close();
       DOM.startBattle();
     }
   }
 
-  static resetFleet() {
-    SetUpModal.fleetContainer.querySelectorAll('.ship-icon').forEach(ship => {
+  static resetFormation() {
+    PlaceShips.fleet.querySelectorAll('.ship__icon').forEach(ship => {
       ship.classList.remove('placed');
     });
     Game.players[0].gameboard.resetGameboard();
@@ -51,4 +62,4 @@ export default class SetUpModal {
   }
 }
 
-// SetUpModal.init();
+PlaceShips.init();
