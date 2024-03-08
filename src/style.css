@@ -64,13 +64,13 @@ body {
 
 /* GAMEBOARDS ***********/
 
-/* #gameboards {
+#gameboards {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-content: center;
   justify-content: center;
   justify-items: center;
-} */
+}
 
 .board {
   display: grid;
@@ -93,9 +93,13 @@ body {
   outline: 1px solid var(--color-char1);
 }
 
-/* .bot-board {
-  background-color: pink;
-} */
+.bot-board {
+  background-color: var(--color-900);
+}
+
+.bot-board .square {
+  outline: 1px solid var(--color-600);
+}
 
 .occupied {
   background-color: blue;

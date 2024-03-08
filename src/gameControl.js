@@ -1,17 +1,14 @@
 import Player from "./player.js";
 import Bot from "./bot.js";
 import DOM from "./DOM.js";
-import PlaceShips from "./setUpModal.js";
 
 export default class Game {
   static players = [];
   static turn = 0;
 
   static newGame() {
-    DOM.loadBoard(this.players[0]);
-    DOM.loadBoard(this.players[1], this.playerPlays);
-    this.players[1].setFormationRandomly();
-    PlaceShips.setUp(this.players[0]);
+    DOM.loadBoard(Game.players[0]);
+    DOM.loadBoard(Game.players[1]);
   }
   
   static playerPlays(row, col, enemy) {
@@ -26,31 +23,36 @@ export default class Game {
   
   static botPlays() {
     setTimeout(() => {
-      this.players[1].attack(this.players[0]);
-      DOM.updateBoard(this.players[0]);
-      DOM.updateBoard(this.players[1]);
-      this.nextPlayer();
+      Game.players[1].attack(Game.players[0]);
+      DOM.updateBoard(Game.players[0]);
+      DOM.updateBoard(Game.players[1]);
+      Game.nextPlayer();
     }, 0);
   };
 
   static addPlayer(player) {
-    this.players.push(player);
+    Game.players.push(player);
   }
 
   static nextPlayer() {
-    this.turn = this.turn === 0 ? 1 : 0;
+    Game.turn = Game.turn === 0 ? 1 : 0;
   }
 
   static gameOver() {
     let isGameOver = false;
-    this.players.forEach(player => {
+    Game.players.forEach(player => {
       if (player.gameboard.areAllShipsSunk()) {
         isGameOver = true;
       }
     });
     return isGameOver;
   }
+
+  static init() {
+    Game.addPlayer(new Player(sessionStorage.getItem('player1-name')));
+    Game.addPlayer(new Bot(sessionStorage.getItem('player2-char')));
+    Game.newGame();
+  }
 }
-Game.addPlayer(new Player('Jack Sparrow', 'human'));
-Game.addPlayer(new Bot('Dave Jones', 'bot'));
-Game.newGame();
+
+Game.init();

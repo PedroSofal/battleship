@@ -2,9 +2,9 @@ import standardSet from "./ship.js";
 import Gameboard from "./gameboard.js";
 
 export default class Bot {
-  constructor(name, type) {
+  constructor(name) {
     this.name = name;
-    this.type = type;
+    this.type = 'bot';
     this.gameboard = new Gameboard(10, 10, new standardSet());
     this.aim = 'random';
     this.sequence = [];

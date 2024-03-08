@@ -92,6 +92,10 @@ export default class DragAndDrop {
     );
 
     if (placedShip) {
+      sessionStorage.setItem(this.selectedShip.name + '-row', this.hoveredSquare[0]);
+      sessionStorage.setItem(this.selectedShip.name + '-col', this.hoveredSquare[1]);
+      sessionStorage.setItem(this.selectedShip.name + '-axis', this.axis);
+
       e.target.classList.add('placed');
       this.shipsPlaced++;
     }

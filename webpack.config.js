@@ -8,6 +8,7 @@ export default {
   entry: {
     main: './src/index.js',
     placeShips: './src/place-ships.js',
+    battle: './src/battle.js',
   },
   output: {
     filename: '[name].bundle.js',
@@ -56,16 +57,22 @@ export default {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Battleship',
+      title: 'Battleship | Main Menu',
       filename: 'index.html',
       template: './src/index.html',
       chunks: ['main']
     }),
     new HtmlWebpackPlugin({
-      title: 'Battleship',
+      title: 'Battleship | Place Ships',
       filename: 'place-ships.html',
       template: './src/place-ships.html',
       chunks: ['placeShips']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Battleship | Battle',
+      filename: 'battle.html',
+      template: './src/battle.html',
+      chunks: ['battle']
     }),
   ]
 }
