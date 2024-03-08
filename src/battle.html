@@ -6,6 +6,83 @@
   <title>Battle</title>
 </head>
 <body>
-  <div id="gameboards"></div>
+  <header class="header">
+    <h2 class="header__title">Battle</h2>
+    <div class="header__options">
+      <button class="header__button">
+        <img class="header__icon" id="ukFlag" src="./assets/icons/flag-united-kingdom.jpg" alt="united kingdom's flag">
+      </button>
+      <button class="header__button">
+        <img class="header__icon" id="audioOn" src="./assets/icons/audio-enabled.png" alt="speaker on">
+      </button>
+    </div>
+  </header>
+
+  <div class="messages-wrapper">
+    <div class="wrapper wrapper--character">
+      <img class="character-photo" width="180" height="180" src="./assets/characters/char1.jpg" alt="char1">
+    </div>
+    <div class="wrapper wrapper--sayings">
+      <p class="sayings">“Lorem ipsum dolor sit amet, consect elit adipiscing. Etiam eget ligula eu lectus lobortis.”</p>
+    </div>
+  </div>
+
+  <div class="battle-wrapper">
+    <div class="wrapper wrapper--radar">
+      <svg width="100%" height="100%" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="65" cy="65" r="58" stroke="#202040" stroke-width="2"/>
+        <circle cx="65" cy="65" r="36" stroke="#202040" stroke-width="2"/>
+        <circle cx="65" cy="65" r="14" stroke="#202040" stroke-width="2"/>
+        <path d="M65 0C65 5.85786 65 9.14214 65 15M65 115V130" stroke="#202040" stroke-width="2"/>
+        <path d="M110.962 19.0381C106.82 23.1802 104.497 25.5025 100.355 29.6447M29.6446 100.355L19.038 110.962" stroke="#202040" stroke-width="2"/>
+        <path d="M130 65C124.142 65 120.858 65 115 65M15 65L0 65" stroke="#202040" stroke-width="2"/>
+        <path d="M110.962 110.962C106.82 106.82 104.497 104.497 100.355 100.355M29.6446 29.6447L19.038 19.0381" stroke="#202040" stroke-width="2"/>
+        <path d="M65 24C65 27.695 65 29.7666 65 33.4615M65 96.5385V106" stroke="#202040" stroke-width="2"/>
+        <path d="M93.9915 36.0086C91.3787 38.6214 89.9139 40.0862 87.3011 42.6989M42.699 87.3011L36.0087 93.9914" stroke="#202040" stroke-width="2"/>
+        <path d="M106 65C102.305 65 100.233 65 96.5385 65M33.4615 65L24 65" stroke="#202040" stroke-width="2"/>
+        <path d="M93.9915 93.9914C91.3787 91.3786 89.9139 89.9138 87.3011 87.3011M42.699 42.6989L36.0087 36.0086" stroke="#202040" stroke-width="2"/>
+        <path d="M65 47.5V54.5M65 75.5V82.5" stroke="#202040" stroke-width="2"/>
+        <path d="M82.5 65L75.5 65M54.5 65L47.5 65" stroke="#202040" stroke-width="2"/>
+        <circle cx="59" cy="59" r="2" fill="#63FF73"/>
+        <circle cx="72" cy="63" r="2" fill="#63FF73"/>
+        <circle cx="74" cy="53" r="2" fill="#63FF73"/>
+        <circle cx="67" cy="70" r="2" fill="#63FF73"/>
+        <circle cx="53" cy="72" r="2" fill="#63FF73"/>
+        </svg>        
+    </div>
+
+    <div class="wrapper wrapper--player-board">
+      <p class="gameboard-name">Defense display</p>
+      <div class="gameboard-display">
+        <div id="player-board"></div>
+        <div class="gameboard-display__radar-signal"></div>
+        <svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
+          <rect
+            class="dashed-border"
+            width='100%'
+            height='100%'
+            fill='none'
+            stroke-linecap='square'
+          />
+        </svg>
+      </div>
+    </div>
+
+    <div class="wrapper wrapper--cpu-board">
+      <p class="gameboard-name">Attack display</p>
+      <div class="gameboard-display">
+        <svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
+          <rect
+            class="dashed-border"
+            width='100%'
+            height='100%'
+            fill='none'
+            stroke-linecap='square'
+          />
+        </svg>
+        <div id="cpu-board"></div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

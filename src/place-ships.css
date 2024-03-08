@@ -9,10 +9,6 @@
   min-height: 100vh;
 }
 
-.wrapper {
-  background-color: var(--color-800);
-}
-
 .wrapper--fleet {
   grid-row: 1 / 4;
   display: flex;
@@ -82,54 +78,6 @@
 .ship__icon {
   height: 45px;
   background-color: var(--color-char1);
-}
-
-.gameboard-name {
-  align-self: flex-start;
-  font-size: var(--fs-300);
-}
-
-.gameboard-display {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.dashed-border {
-  stroke: var(--color-char1);
-  stroke-width: 10;
-  stroke-dasharray: 250 250;
-  stroke-dashoffset: 130;
-}
-
-.gameboard-display__radar-signal {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 50%;
-  left: 50%;
-  transform-origin: 0 0;
-  background-image: linear-gradient(
-    to top right,
-    var(--color-char1) 0%,
-    transparent 50%
-  );
-  animation: sweep 5s infinite linear;
-}
-
-@keyframes sweep {
-  to { transform: rotateZ(360deg); }
-}
-
-.gameboard-display {
-  min-width: 500px;
-  min-height: 500px;
-  background-color: var(--color-900);
-}
-
-.gameboard-display > * {
-  position: absolute;
 }
 
 .sayings {

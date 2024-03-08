@@ -4,7 +4,8 @@ import DOM from "./DOM.js";
 import Game from './gameControl.js';
 
 export default class Battle {
-  static gameboards = document.querySelector('#gameboards');
+  static playerBoard = document.querySelector('#player-board');
+  static cpuBoard = document.querySelector('#cpu-board');
 
   static retrievePlayer1ShipsPositions() {
     const player1board = Game.players[0].gameboard;
@@ -18,13 +19,13 @@ export default class Battle {
       );
     }
 
-    Battle.gameboards.appendChild(DOM.getPlayerBoard());
+    Battle.playerBoard.appendChild(DOM.getPlayerBoard());
     DOM.updateBoard(Game.players[0]);
   }
 
   static setPlayer2ShipsPositions() {
     Game.players[1].setFormationRandomly();
-    Battle.gameboards.appendChild(DOM.getCpuBoard());
+    Battle.cpuBoard.appendChild(DOM.getCpuBoard());
 
     document.querySelectorAll('.bot-board .square').forEach(square => {
       square.addEventListener('click', Battle.handleClick);
