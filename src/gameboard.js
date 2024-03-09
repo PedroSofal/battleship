@@ -41,23 +41,12 @@ export default class Gameboard {
   verifySquareAvailability(row, col, axis, ship) {
     for (let i = 0; i < ship.size; i++) {
       const square = this.findSquare(row, col);
-
-      const posX = row + 1 === 10 ? 9 : row + 1;
-      const posY = col + 1 === 10 ? 9 : col + 1;
-      const negX = row - 1 === -1 ? 0 : row - 1;
-      const negY = col - 1 === -1 ? 0 : col - 1;
-      const adjacentPosX = this.findSquare(posX, col);
-      const adjacentPosY = this.findSquare(row, posY);
-      const adjacentNegX = this.findSquare(negX, col);
-      const adjacentNegY = this.findSquare(row, negY);
+      const adjacencies = this.getAdjacencies(row, col);
 
       if (!square) return; false; 
 
       const overlapedSquare = square.content !== 'water'
-        || adjacentPosX.content !== 'water'
-        || adjacentPosY.content !== 'water'
-        || adjacentNegX.content !== 'water'
-        || adjacentNegY.content !== 'water';
+        || adjacencies.some(square => square.content !== 'water');
       
       axis === 'row' ? col++ : row++;
 
@@ -93,16 +82,43 @@ export default class Gameboard {
 
     if (square.content !== 'water') {
       square.content.hit();
-      square.className = 'hit';
       if (square.content.hits === 1) this.sequence.start = square;
       if (!square.content.isSunk()) this.sequence.next = square;
       if (square.content.isSunk()) {
         this.sequence.start = null;
         this.sequence.next = null;
       }
-    } else {
-      square.className = 'miss';
+
+      square.className = 'hit';
+      return 'hit';
     }
+    
+    if (square.content === 'water') {
+      square.className = 'miss';
+      const adjacencies = this.getAdjacencies(row, col);
+
+      if (adjacencies.some(square => square.content !== 'water' && !square.attacked)) {
+        return 'close';
+      } else {
+        return 'miss';
+      }
+    }
+  }
+
+  getAdjacencies(row, col) {
+    const adjacencies = [];
+
+    const posX = row + 1 === 10 ? 9 : row + 1;
+    const posY = col + 1 === 10 ? 9 : col + 1;
+    const negX = row - 1 === -1 ? 0 : row - 1;
+    const negY = col - 1 === -1 ? 0 : col - 1;
+    const adjacentPosX = this.findSquare(posX, col);
+    const adjacentPosY = this.findSquare(row, posY);
+    const adjacentNegX = this.findSquare(negX, col);
+    const adjacentNegY = this.findSquare(row, negY);
+
+    adjacencies.push(adjacentPosX, adjacentPosY, adjacentNegX, adjacentNegY);
+    return adjacencies;
   }
 
   areAllShipsSunk() {

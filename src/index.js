@@ -17,11 +17,11 @@ class MainMenu {
 
   static setEventListeners() {
     MainMenu.langOptions.forEach(option => option.addEventListener('change', (e) => {
-      MainMenu.changelang(e.target.value);
+      MainMenu.changelang(e.target);
     }));
 
     MainMenu.audioOptions.forEach(option => option.addEventListener('change', (e) => {
-      MainMenu.changeAudio(e.target.value);
+      MainMenu.changeAudio(e.target);
     }));
 
     MainMenu.charOptions.forEach(option => {
@@ -41,27 +41,31 @@ class MainMenu {
     });
   }
 
-  static changelang(lang) {
-    MainMenu.lang = lang;
+  static changelang(input) {
+    this.langOptions.forEach(option => option.classList.remove('lang-selected'));
+    input.classList.add('lang-selected');
+    MainMenu.lang = input.value;
   }
 
-  static changeAudio(audio) {
-    MainMenu.audio = audio;
+  static changeAudio(input) {
+    this.audioOptions.forEach(option => option.classList.remove('audio-selected'));
+    input.classList.add('audio-selected');
+    MainMenu.audio = input.value;
   }
 
-  static changechar(char) {
-    char.classList.add('char-selected');
+  static changechar(input) {
+    input.classList.add('char-selected');
     
     if (MainMenu.isSelecting === 'player1') {
-      MainMenu.player1char = char.value;
-      char.classList.add('char-selected--player1');
+      MainMenu.player1char = input.value;
+      input.classList.add('char-selected--player1');
       MainMenu.isSelecting = 'player2';
       return;
     }
     
     if (MainMenu.isSelecting === 'player2') {
-      MainMenu.player2char = char.value;
-      char.classList.add('char-selected--player2');
+      MainMenu.player2char = input.value;
+      input.classList.add('char-selected--player2');
       MainMenu.isSelecting = false;
       MainMenu.deactivatePlayerSelection();
     }

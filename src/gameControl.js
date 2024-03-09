@@ -10,25 +10,6 @@ export default class Game {
     DOM.loadBoard(Game.players[0]);
     DOM.loadBoard(Game.players[1]);
   }
-  
-  static playerPlays(row, col, enemy) {
-    if (!Game.gameOver() && Game.turn === 0) {
-      Game.players[0].attack(row, col, enemy);
-      DOM.updateBoard(Game.players[0]);
-      DOM.updateBoard(Game.players[1]);
-      Game.nextPlayer();
-      Game.botPlays();
-    }
-  }
-  
-  static botPlays() {
-    setTimeout(() => {
-      Game.players[1].attack(Game.players[0]);
-      DOM.updateBoard(Game.players[0]);
-      DOM.updateBoard(Game.players[1]);
-      Game.nextPlayer();
-    }, 0);
-  };
 
   static addPlayer(player) {
     Game.players.push(player);

@@ -6,6 +6,7 @@ import Game from './gameControl.js';
 export default class Battle {
   static playerBoard = document.querySelector('#player-board');
   static cpuBoard = document.querySelector('#cpu-board');
+  static radarLockFoes = document.querySelectorAll('.radar-lock-foe > path');
 
   static retrievePlayer1ShipsPositions() {
     const player1board = Game.players[0].gameboard;
@@ -37,7 +38,50 @@ export default class Battle {
   static handleClick = function(e) {
     const col = Array.from(e.target.parentNode.children).indexOf(e.target);
     const row = Array.from(e.target.parentNode.parentNode.children).indexOf(e.target.parentNode);
-    Game.playerPlays(row, col, Game.players[1]);
+    Battle.playerPlays(row, col, Game.players[1]);
+  }
+
+  static playerPlays(row, col, enemy) {
+    if (!Game.gameOver() && Game.turn === 0) {
+      Game.players[0].attack(row, col, enemy);
+      DOM.updateBoard(Game.players[0]);
+      DOM.updateBoard(Game.players[1]);
+      Game.nextPlayer();
+      Battle.botPlays();
+    }
+  }
+  
+  static botPlays() {
+    const attack = Game.players[1].attack(Game.players[0]);
+    Battle.radarLockWarning(attack);
+    setTimeout(() => {
+      this.radarLockFoes.forEach(foe => foe.classList.remove('lightUp'));
+      DOM.updateBoard(Game.players[0]);
+      DOM.updateBoard(Game.players[1]);
+      Game.nextPlayer();
+    }, 1000);
+  };
+
+  static radarLockWarning(attack) {
+    const randomFoe = Math.floor(Math.random() * this.radarLockFoes.length);
+    console.log(randomFoe)
+
+    if (attack === 'hit') {
+      this.radarLockFoes[randomFoe].classList.add('lightUp');
+      Battle.launchCountermeasures();
+    }
+
+    if (attack === 'close') {
+      const warning = Math.random() < 0.5 ? true : false;
+      if (warning) {
+        this.radarLockFoes[randomFoe].classList.add('lightUp');
+        Battle.launchCountermeasures();
+      }
+    }
+  }
+
+  static launchCountermeasures() {
+    console.log('Launching countermeasures!')
   }
 
   static init() {

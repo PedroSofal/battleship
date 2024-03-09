@@ -29,9 +29,9 @@ export default class Bot {
     let col = this.getRandomCol();
 
     if (this.isSquareAvailable(row, col, enemy)) {
-      enemy.gameboard.receiveAttack(row, col);
+      return enemy.gameboard.receiveAttack(row, col);
     } else {
-      this.randomAttack(enemy);
+      return this.randomAttack(enemy);
     }
   }
 
@@ -41,8 +41,7 @@ export default class Bot {
       const row = sequenceStart.coords[0];
       const col = sequenceStart.coords[1];
       const nextAttack = this.spreadAim(row, col, enemy);
-      enemy.gameboard.receiveAttack(...nextAttack);
-      return;
+      return enemy.gameboard.receiveAttack(...nextAttack);
     }
 
     if (lastAttack.content !== 'water') {
@@ -50,13 +49,13 @@ export default class Bot {
 
       if (this.aim === 'lock-row' || this.aim === 'lock-col') {
         const nextAttack = this.lockAim(sequenceStart, this.aim, enemy);
-        enemy.gameboard.receiveAttack(...nextAttack);
+        return enemy.gameboard.receiveAttack(...nextAttack);
       } else {
         if (sequenceStart.coords[0] === lastAttack.coords[0]) this.aim = 'lock-row';
         if (sequenceStart.coords[1] === lastAttack.coords[1]) this.aim = 'lock-col';
         
         const nextAttack = this.lockAim(sequenceStart, this.aim, enemy);
-        enemy.gameboard.receiveAttack(...nextAttack);
+        return enemy.gameboard.receiveAttack(...nextAttack);
       }
     }
   }
@@ -66,10 +65,10 @@ export default class Bot {
     const lastAttack = enemy.gameboard.sequence.next;
 
     if (sequenceStart) {
-      this.smartAttack(sequenceStart, lastAttack, enemy)
+      return this.smartAttack(sequenceStart, lastAttack, enemy);
     } else {
       this.sequence = [];
-      this.randomAttack(enemy);
+      return this.randomAttack(enemy);
     }
   }
 

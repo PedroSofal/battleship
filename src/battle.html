@@ -28,27 +28,24 @@
   </div>
 
   <div class="battle-wrapper">
-    <div class="wrapper wrapper--radar">
-      <svg width="100%" height="100%" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="65" cy="65" r="58" stroke="#202040" stroke-width="2"/>
-        <circle cx="65" cy="65" r="36" stroke="#202040" stroke-width="2"/>
-        <circle cx="65" cy="65" r="14" stroke="#202040" stroke-width="2"/>
-        <path d="M65 0C65 5.85786 65 9.14214 65 15M65 115V130" stroke="#202040" stroke-width="2"/>
-        <path d="M110.962 19.0381C106.82 23.1802 104.497 25.5025 100.355 29.6447M29.6446 100.355L19.038 110.962" stroke="#202040" stroke-width="2"/>
-        <path d="M130 65C124.142 65 120.858 65 115 65M15 65L0 65" stroke="#202040" stroke-width="2"/>
-        <path d="M110.962 110.962C106.82 106.82 104.497 104.497 100.355 100.355M29.6446 29.6447L19.038 19.0381" stroke="#202040" stroke-width="2"/>
-        <path d="M65 24C65 27.695 65 29.7666 65 33.4615M65 96.5385V106" stroke="#202040" stroke-width="2"/>
-        <path d="M93.9915 36.0086C91.3787 38.6214 89.9139 40.0862 87.3011 42.6989M42.699 87.3011L36.0087 93.9914" stroke="#202040" stroke-width="2"/>
-        <path d="M106 65C102.305 65 100.233 65 96.5385 65M33.4615 65L24 65" stroke="#202040" stroke-width="2"/>
-        <path d="M93.9915 93.9914C91.3787 91.3786 89.9139 89.9138 87.3011 87.3011M42.699 42.6989L36.0087 36.0086" stroke="#202040" stroke-width="2"/>
-        <path d="M65 47.5V54.5M65 75.5V82.5" stroke="#202040" stroke-width="2"/>
-        <path d="M82.5 65L75.5 65M54.5 65L47.5 65" stroke="#202040" stroke-width="2"/>
-        <circle cx="59" cy="59" r="2" fill="#63FF73"/>
-        <circle cx="72" cy="63" r="2" fill="#63FF73"/>
-        <circle cx="74" cy="53" r="2" fill="#63FF73"/>
-        <circle cx="67" cy="70" r="2" fill="#63FF73"/>
-        <circle cx="53" cy="72" r="2" fill="#63FF73"/>
-        </svg>        
+    <div class="wrapper wrapper--radar-lock-warning">
+      <svg class="radar-lock-screen" width="130" height="130" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M65 0V15M65 115V130M110.962 19.0381L100.355 29.6447M29.6446 100.355L19.038 110.962M130 65H115M15 65H0M110.962 110.962L100.355 100.355M29.6446 29.6447L19.038 19.0381M65 24V33.4615M65 96.5385V106M93.9914 36.0086L87.301 42.6989M42.6989 87.3011L36.0086 93.9914M106 65H96.5385M33.4615 65H24M93.9914 93.9914L87.301 87.3011M42.6989 42.6989L36.0086 36.0086M65 47.5V54.5M65 75.5V82.5M82.5 65H75.5M54.5 65H47.5M123 65C123 97.0325 97.0325 123 65 123C32.9675 123 7 97.0325 7 65C7 32.9675 32.9675 7 65 7C97.0325 7 123 32.9675 123 65ZM101 65C101 84.8823 84.8823 101 65 101C45.1177 101 29 84.8823 29 65C29 45.1177 45.1177 29 65 29C84.8823 29 101 45.1177 101 65ZM79 65C79 72.732 72.732 79 65 79C57.268 79 51 72.732 51 65C51 57.268 57.268 51 65 51C72.732 51 79 57.268 79 65Z" stroke="#202040" stroke-width="2"/>
+        <g class="radar-lock-friendly">
+          <circle cx="59" cy="59" r="2" fill="#63FF73"/>
+          <circle cx="72" cy="63" r="2" fill="#63FF73"/>
+          <circle cx="74" cy="53" r="2" fill="#63FF73"/>
+          <circle cx="67" cy="70" r="2" fill="#63FF73"/>
+          <circle cx="53" cy="72" r="2" fill="#63FF73"/>
+        </g>
+        <g class="radar-lock-foe">
+          <path d="M124.685 96L115.5 113.818L106.315 96L124.685 96Z" stroke="#FF0000" stroke-width="2"/>
+          <path d="M21.6848 86L12.5 103.818L3.31522 86L21.6848 86Z" stroke="#FF0000" stroke-width="2"/>
+          <path d="M53.6848 8L44.5 25.8175L35.3152 8L53.6848 8Z" stroke="#FF0000" stroke-width="2"/>
+          <path d="M67.6848 84L58.5 101.818L49.3152 84L67.6848 84Z" stroke="#FF0000" stroke-width="2"/>
+          <path d="M104.685 35L95.5 52.8175L86.3152 35L104.685 35Z" stroke="#FF0000" stroke-width="2"/>
+        </g>
+      </svg>
     </div>
 
     <div class="wrapper wrapper--player-board">

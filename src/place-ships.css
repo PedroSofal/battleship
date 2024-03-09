@@ -80,6 +80,26 @@
   background-color: var(--color-char1);
 }
 
+.ship__icon#carrier {
+  width: 250px;
+}
+
+.ship__icon#battleship {
+  width: 200px;
+}
+
+.ship__icon#cruiser {
+  width: 150px;
+}
+
+.ship__icon#submarine {
+  width: 150px;
+}
+
+.ship__icon#destroyer {
+  width: 100px;
+}
+
 .sayings {
   font-family: var(--sec-ff);
   font-style: italic;
@@ -95,4 +115,18 @@
   border-radius: 5px;
   font-family: var(--main-ff);
   background-color: var(--color-900);
+}
+
+/* DRAG AND DROP ***********/
+
+.dragging {
+  opacity: 0.3;
+}
+
+.dragover {
+  background-color: #4CAF50;
+}
+
+.placed {
+  visibility: hidden;
 }
