@@ -52,14 +52,16 @@ export default class Battle {
   }
   
   static botPlays() {
-    const attack = Game.players[1].attack(Game.players[0]);
-    Battle.radarLockWarning(attack);
-    setTimeout(() => {
-      this.radarLockFoes.forEach(foe => foe.classList.remove('lightUp'));
-      DOM.updateBoard(Game.players[0]);
-      DOM.updateBoard(Game.players[1]);
-      Game.nextPlayer();
-    }, 1000);
+    if (!Game.gameOver() && Game.turn === 1) {
+      const attack = Game.players[1].attack(Game.players[0]);
+      Battle.radarLockWarning(attack);
+      setTimeout(() => {
+        this.radarLockFoes.forEach(foe => foe.classList.remove('lightUp'));
+        DOM.updateBoard(Game.players[0]);
+        DOM.updateBoard(Game.players[1]);
+        Game.nextPlayer();
+      }, 1000);
+    }
   };
 
   static radarLockWarning(attack) {
