@@ -2,8 +2,10 @@ import './style.css'
 import './battle.css'
 import DOM from "./DOM.js";
 import Game from './gameControl.js';
+import { charObjects } from './characters.js';
 
 export default class Battle {
+  static root = document.querySelector(':root');
   static playerBoard = document.querySelector('#player-board');
   static cpuBoard = document.querySelector('#cpu-board');
   static radarLockFoes = document.querySelectorAll('.radar-lock-foe > path');
@@ -28,7 +30,7 @@ export default class Battle {
     Game.players[1].setFormationRandomly();
     Battle.cpuBoard.appendChild(DOM.getCpuBoard());
 
-    document.querySelectorAll('.bot-board .square').forEach(square => {
+    document.querySelectorAll('.cpu-board .square').forEach(square => {
       square.addEventListener('click', Battle.handleClick);
     })
 
@@ -89,6 +91,9 @@ export default class Battle {
   static init() {
     Battle.retrievePlayer1ShipsPositions();
     Battle.setPlayer2ShipsPositions();
+    Battle.root.style.setProperty('--color-player1', charObjects[sessionStorage.getItem('player1-char')].color);
+    Battle.root.style.setProperty('--color-player1-alpha', charObjects[sessionStorage.getItem('player1-char')].colorAlpha);
+    Battle.root.style.setProperty('--color-player2', charObjects[sessionStorage.getItem('player2-char')].color);
   }
 }
 

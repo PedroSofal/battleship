@@ -4,7 +4,7 @@ import Gameboard from "./gameboard.js";
 export default class Bot {
   constructor(name) {
     this.name = name;
-    this.type = 'bot';
+    this.type = 'cpu';
     this.gameboard = new Gameboard(10, 10, new standardSet());
     this.aim = 'random';
     this.sequence = [];

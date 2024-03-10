@@ -29,7 +29,7 @@ export default class DOM {
   
     boardContainer.className = `board ${player.type}-board`;
     if (player.type === 'human') DOM.loadedPlayerBoard = boardContainer;
-    if (player.type === 'bot') DOM.loadedCpuBoard = boardContainer;
+    if (player.type === 'cpu') DOM.loadedCpuBoard = boardContainer;
   }
 
   static gridFromHtmlSquares(squares) {
@@ -49,7 +49,7 @@ export default class DOM {
       const classListValue = `col square ${square.className}`;
       
       if (square.className === 'occupied'
-      && player.type === 'bot') {
+      && player.type === 'cpu') {
         return;
       } else {
         grid[row][col].classList = classListValue;

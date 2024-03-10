@@ -10,8 +10,9 @@
   --color-600: #A32F80;
   --color-100: #cdcdcd;
 
-  --color-char1: #ff0020;
-  --color-char1-alpha: rgba(255, 0, 32, 0.5);
+  --color-player1: #ff0020;
+  --color-player1-alpha: rgba(255, 0, 32, 0.5);
+  --color-player2: #ff0020;
 
   --fs-300: 0.7rem;
   --fs-400: 0.8rem;
@@ -43,6 +44,8 @@ body {
   color: var(--color-100);
 }
 
+/* BUTTONS ***********/
+
 button {
   cursor: pointer;
 }
@@ -55,6 +58,10 @@ button {
   color: var(--color-100);
   background-color: var(--color-600);
   clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+}
+
+.main-button:disabled {
+  opacity: 0.3;
 }
 
 .secondary-button {
@@ -71,6 +78,18 @@ button {
 
 /* GAMEBOARDS ***********/
 
+.wrapper--board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 2rem 3rem;
+  border-top: 1.5rem solid var(--color-750);
+  border-right: 2rem solid var(--color-850);
+  border-left: 1rem solid var(--color-750);
+  border-bottom: 1.5rem solid var(--color-850);
+}
+
 .board {
   display: grid;
   grid-template-rows: repeat(10, 50px);
@@ -83,17 +102,17 @@ button {
 
 .human-board {
   background: radial-gradient(
-    var(--color-char1-alpha),
+    var(--color-player1-alpha),
     transparent
   );
 }
 
 .human-board .square {
-  outline: 1px solid var(--color-char1);
+  outline: 1px solid var(--color-player1);
 }
 
-.bot-board .square {
-  outline: 1px solid var(--color-600);
+.cpu-board .square {
+  outline: 1px solid var(--color-player2);
 }
 
 .occupied {
@@ -121,10 +140,17 @@ button {
 }
 
 .dashed-border {
-  stroke: var(--color-char1);
   stroke-width: 10;
   stroke-dasharray: 250 250;
   stroke-dashoffset: 130;
+}
+
+.wrapper--player-board .dashed-border {
+  stroke: var(--color-player1);
+}
+
+.wrapper--cpu-board .dashed-border {
+  stroke: var(--color-player2);
 }
 
 .gameboard-display__radar-signal {
@@ -136,7 +162,7 @@ button {
   transform-origin: 0 0;
   background-image: linear-gradient(
     to top right,
-    var(--color-char1) 0%,
+    var(--color-player1) 0%,
     transparent 50%
   );
   animation: sweep 5s infinite linear;

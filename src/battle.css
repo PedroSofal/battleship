@@ -7,19 +7,6 @@
   margin-top: 1rem;
 }
 
-.wrapper--player-board,
-.wrapper--cpu-board {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 2rem 3rem;
-  border-top: 1.5rem solid var(--color-750);
-  border-right: 2rem solid var(--color-850);
-  border-left: 1rem solid var(--color-750);
-  border-bottom: 1.5rem solid var(--color-850);
-}
-
 .wrapper--player-board {
   grid-column: 2 / 3;
   grid-row: 1 / 3

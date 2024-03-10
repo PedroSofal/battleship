@@ -3,22 +3,19 @@ import './place-ships.css';
 import Game from "./gameControl.js";
 import DOM from "./DOM.js";
 import DragAndDrop from "./dragAndDrop.js";
+import { charObjects } from './characters.js';
 
 export default class PlaceShips {
+  static root = document.querySelector(':root');
   static fleet = document.querySelector('#fleet');
   static strategyBoard = document.querySelector('#strategy-board');
+  static character = document.querySelector('#character');
   static confirmBtn = document.querySelector('#confirmFormation');
   static resetBtn = document.querySelector('#resetFormation');
 
   static setEventListeners() {
-    this.confirmBtn.addEventListener('click', this.confirmFormation);
-    this.resetBtn.addEventListener('click', this.resetFormation);
-  }
-
-  static setUp() {
-    this.loadFleet(Game.players[0]);
-    this.strategyBoard.appendChild(DOM.getPlayerBoard());
-    DragAndDrop.init();
+    PlaceShips.confirmBtn.addEventListener('click', PlaceShips.confirmFormation);
+    PlaceShips.resetBtn.addEventListener('click', PlaceShips.resetFormation);
   }
 
   static loadFleet() {
@@ -40,7 +37,7 @@ export default class PlaceShips {
       shipYard.appendChild(shipIcon);
       ship.appendChild(shipName);
       ship.appendChild(shipYard);
-      this.fleet.appendChild(ship);
+      PlaceShips.fleet.appendChild(ship);
     }
   }
 
@@ -60,8 +57,14 @@ export default class PlaceShips {
   }
 
   static init() {
-    this.setEventListeners();
-    this.setUp();
+    PlaceShips.setEventListeners();
+    PlaceShips.loadFleet(Game.players[0]);
+    PlaceShips.strategyBoard.appendChild(DOM.getPlayerBoard());
+    PlaceShips.character.src = charObjects[sessionStorage.getItem('player1-char')].src;
+    PlaceShips.root.style.setProperty('--color-player1', charObjects[sessionStorage.getItem('player1-char')].color);
+    PlaceShips.root.style.setProperty('--color-player1-alpha', charObjects[sessionStorage.getItem('player1-char')].colorAlpha);
+    PlaceShips.root.style.setProperty('--color-player2', charObjects[sessionStorage.getItem('player2-char')].color);
+    DragAndDrop.init();
   }
 }
 
