@@ -21,8 +21,8 @@ export default class DragAndDrop {
       }
     });
 
-    this.addFleetEventListeners();
-    this.addBoardEventListeners();
+    DragAndDrop.addFleetEventListeners();
+    DragAndDrop.addBoardEventListeners();
   }
 
   static gridFromHtmlSquares(squares) {
@@ -30,9 +30,9 @@ export default class DragAndDrop {
 
     for (let i = 0; i < matrix.length; i++) {
       const row = Array.from(matrix[i].children);
-      this.grid.push([]);
+      DragAndDrop.grid.push([]);
       for (let j = 0; j < row.length; j++) {
-        this.grid[i].push({
+        DragAndDrop.grid[i].push({
           coords: [i, j],
           htmlElement: row[j],
         });
@@ -51,82 +51,108 @@ export default class DragAndDrop {
   }
 
   static getSquaresFromBoard() {
-    const squares = this.board.firstChild.querySelectorAll('.square');
+    const squares = DragAndDrop.board.firstChild.querySelectorAll('.square');
     return Array.from(squares);
   }
 
   static getShipsFromFleet() {
-    const ships = this.fleet.querySelectorAll('.ship__icon');
+    const ships = DragAndDrop.fleet.querySelectorAll('.ship__icon');
     return Array.from(ships);
   }
 
   static addFleetEventListeners() {
-    const ships = this.getShipsFromFleet();
+    const ships = DragAndDrop.getShipsFromFleet();
     ships.forEach(ship => {
-      ship.addEventListener('dragstart', (e) => this.dragStart(e));
-      ship.addEventListener('dragend', (e) => this.dragEnd(e));
+      ship.parentNode.addEventListener('dragstart', (e) => DragAndDrop.dragStart(e));
+      ship.parentNode.addEventListener('dragend', (e) => DragAndDrop.dragEnd(e));
     });
   }
 
   static addBoardEventListeners() {
-    const squares = this.getSquaresFromBoard();
+    const squares = DragAndDrop.getSquaresFromBoard();
     squares.forEach(square => {
-      square.addEventListener('dragover', (e) => this.dragOver(e));
-      square.addEventListener('dragleave', () => this.dragLeave());
+      square.addEventListener('dragover', (e) => DragAndDrop.dragOver(e));
+      square.addEventListener('dragleave', () => DragAndDrop.dragLeave());
+      square.addEventListener('drop', (e) => DragAndDrop.drop(e));
     });
   }
 
   static dragStart(e) {
+    console.log(e.currentTarget)
     e.currentTarget.classList.add('dragging');
-
-    this.selectedShip = Object.values(Game.players[0].gameboard.ships).find(ship => {
-      return ship.name === e.currentTarget.id;
+    e.dataTransfer.setData('text/plain', e.currentTarget);
+    
+    DragAndDrop.selectedShip = Object.values(Game.players[0].gameboard.ships).find(ship => {
+      return ship.name === e.currentTarget.querySelector('.ship__icon').id;
     });
+
+    const shipDragClone = e.currentTarget.cloneNode(true);
+    shipDragClone.classList.add('ship__drag--clone');
+    
+    const shipIcon = shipDragClone.querySelector('.ship__icon');
+    if (DragAndDrop.axis === 'col') shipIcon.classList.add('drag-image-rotated');
+
+    document.body.appendChild(shipDragClone);
+    e.dataTransfer.setDragImage(shipDragClone, 20, 20);
   }
 
-  static dragEnd(e) {
-    e.target.classList.remove('dragging');
-    
-    const placedShip = Game.players[0].gameboard.placeShip(
-      this.hoveredSquare[0], this.hoveredSquare[1], this.axis, this.selectedShip
-    );
+  static drop(e) {
+    e.preventDefault();
+    let placedShip = false;
+
+    if (DragAndDrop.hoveredSquare) {
+      placedShip = Game.players[0].gameboard.placeShip(
+        DragAndDrop.hoveredSquare[0], DragAndDrop.hoveredSquare[1], DragAndDrop.axis, DragAndDrop.selectedShip
+      );
+    }
 
     if (placedShip) {
-      sessionStorage.setItem(this.selectedShip.name + '-row', this.hoveredSquare[0]);
-      sessionStorage.setItem(this.selectedShip.name + '-col', this.hoveredSquare[1]);
-      sessionStorage.setItem(this.selectedShip.name + '-axis', this.axis);
-
-      e.target.classList.add('placed');
-      this.shipsPlaced++;
+      sessionStorage.setItem(DragAndDrop.selectedShip.name + '-row', DragAndDrop.hoveredSquare[0]);
+      sessionStorage.setItem(DragAndDrop.selectedShip.name + '-col', DragAndDrop.hoveredSquare[1]);
+      sessionStorage.setItem(DragAndDrop.selectedShip.name + '-axis', DragAndDrop.axis);
+      if (DragAndDrop.axis === 'col') document.querySelector('.dragging').style.transform = 'rotateZ(90deg)'
+      e.target.appendChild(document.querySelector('.dragging'));
+      DragAndDrop.shipsPlaced++;
     }
+
     DOM.updateBoard(Game.players[0]);
   }
 
+  static dragEnd(e) {
+    e.currentTarget.classList.remove('dragging');
+    e.currentTarget.removeAttribute('draggable');
+    e.currentTarget.addEventListener('mousedown', (e) => e.preventDefault());
+    document.body.removeChild(document.querySelector('.ship__drag--clone'));
+  }
+
   static dragOver(e) {
-    this.hoveredSquare = this.extractIndicesFromGrid(this.grid, e.target);
-
-    for (let i = 0; i < this.selectedShip.size; i++) {
-      let row = this.hoveredSquare[0];
-      let col = this.hoveredSquare[1];
-      this.axis === 'row' ? col += i : row += i;
-      if (row > this.grid.length - 1 || col > this.grid[0].length - 1) {
-        break;
+    e.preventDefault();
+    DragAndDrop.hoveredSquare = DragAndDrop.extractIndicesFromGrid(DragAndDrop.grid, e.target);
+    
+    if (DragAndDrop.hoveredSquare) {
+      for (let i = 0; i < DragAndDrop.selectedShip.size; i++) {
+        let row = DragAndDrop.hoveredSquare[0];
+        let col = DragAndDrop.hoveredSquare[1];
+        DragAndDrop.axis === 'row' ? col += i : row += i;
+        if (row > DragAndDrop.grid.length - 1 || col > DragAndDrop.grid[0].length - 1) {
+          break;
+        }
+  
+        DragAndDrop.grid[row][col].htmlElement.classList.add('dragover');
       }
-
-      this.grid[row][col].htmlElement.classList.add('dragover');
     }
   }
 
   static dragLeave() {
-    for (let i = 0; i < this.grid.length; i++) {
-      for (let j = 0; j < this.grid[i].length; j++) {
-        this.grid[i][j].htmlElement.classList.remove('dragover');
+    for (let i = 0; i < DragAndDrop.grid.length; i++) {
+      for (let j = 0; j < DragAndDrop.grid[i].length; j++) {
+        DragAndDrop.grid[i][j].htmlElement.classList.remove('dragover');
       }
     }
   }
 
   static init() {
-    this.gridFromHtmlSquares(this.board.children);
-    this.setEventListeners();
+    DragAndDrop.gridFromHtmlSquares(DragAndDrop.board.children);
+    DragAndDrop.setEventListeners();
   }
 }

@@ -1,7 +1,14 @@
+import battleship from './assets/ships/battleship.svg';
+import carrier from './assets/ships/carrier.svg';
+import cruiser from './assets/ships/cruiser.svg';
+import destroyer from './assets/ships/destroyer.svg';
+import submarine from './assets/ships/submarine.svg';
+
 class Ship {
-  constructor(name, size) {
+  constructor(name, size, src) {
     this.name = name;
     this.size = size;
+    this.src = src;
     this.hits = 0;
   }
   
@@ -16,10 +23,10 @@ class Ship {
 
 export default class standardSet {
   constructor() {
-    this.carrier = new Ship('carrier', 5);
-    this.battleship = new Ship('battleship', 4);
-    this.cruiser = new Ship('cruiser', 3);
-    this.submarine = new Ship('submarine', 3);
-    this.destroyer = new Ship('destroyer', 2);
+    this.carrier = new Ship('carrier', 5, carrier);
+    this.battleship = new Ship('battleship', 4, battleship);
+    this.cruiser = new Ship('cruiser', 3, cruiser);
+    this.submarine = new Ship('submarine', 3, submarine);
+    this.destroyer = new Ship('destroyer', 2, destroyer);
   }
 }

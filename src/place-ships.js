@@ -23,18 +23,22 @@ export default class PlaceShips {
       const ship = document.createElement('div');
       const shipName = document.createElement('p');
       const shipYard = document.createElement('div');
+      const shipDrag = document.createElement('div');
       const shipIcon = document.createElement('div');
 
       ship.classList = 'ship';
       shipName.classList = 'ship__name';
       shipYard.classList = 'ship__yard';
+      shipDrag.classList = 'ship__drag';
       shipIcon.classList = 'ship__icon';
       
       shipName.textContent = shipObject.name;
+      shipDrag.setAttribute('draggable', 'true');
       shipIcon.id = shipObject.name;
-      shipIcon.setAttribute('draggable', 'true');
+      shipIcon.style.mask = `url(${shipObject.src}) no-repeat center`;
       
-      shipYard.appendChild(shipIcon);
+      shipDrag.appendChild(shipIcon);
+      shipYard.appendChild(shipDrag);
       ship.appendChild(shipName);
       ship.appendChild(shipYard);
       PlaceShips.fleet.appendChild(ship);
@@ -48,12 +52,10 @@ export default class PlaceShips {
   }
 
   static resetFormation() {
-    PlaceShips.fleet.querySelectorAll('.ship__icon').forEach(ship => {
-      ship.classList.remove('placed');
-    });
-    Game.players[0].gameboard.resetGameboard();
-    DragAndDrop.shipsPlaced = 0;
-    DOM.updateBoard(Game.players[0]);
+    location.reload();
+    // Game.players[0].gameboard.resetGameboard();
+    // DragAndDrop.shipsPlaced = 0;
+    // DOM.updateBoard(Game.players[0]);
   }
 
   static init() {

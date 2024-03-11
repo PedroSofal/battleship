@@ -115,6 +115,10 @@ button:disabled {
   outline: 1px solid var(--color-player2);
 }
 
+.square {
+  overflow: visible;
+}
+
 .occupied {
   background-color: blue;
 }
