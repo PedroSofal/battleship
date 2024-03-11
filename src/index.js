@@ -25,7 +25,7 @@ class MainMenu {
 
   static setEventListeners() {
     MainMenu.inputName.addEventListener('input', (e) => {
-      if (e.target.value.length > 0 && e.target.value.length < 16) {
+      if (e.target.value.length > 0 && e.target.value.length <= 24) {
         MainMenu.player1Name.textContent = MainMenu.inputName.value;
         MainMenu.charSelectionWrapper.classList.add('opened');
         MainMenu.charOptions.forEach(option => {

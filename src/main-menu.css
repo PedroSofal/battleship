@@ -181,6 +181,11 @@
   gap: 0.2rem;
 }
 
+.opponents__name {
+  width: 12ch;
+  overflow-wrap: break-word;
+}
+
 .opponents__type {
   font-family: var(--sec-ff);
   font-size: var(--fs-400);
