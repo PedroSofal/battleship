@@ -166,6 +166,12 @@
   gap: 1rem;
   width: 360px;
   border: 2px solid var(--color-100);
+  cursor: pointer;
+}
+
+.opponents__player:hover {
+  outline: 2px solid var(--color-100);
+  outline-offset: 5px;
 }
 
 .opponents__info {

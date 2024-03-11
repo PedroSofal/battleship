@@ -8,25 +8,34 @@ class MainMenu {
   static player1Char = null;
   static player2Char = null;
   static isSelecting = 'player1';
+  static isEditing = false;
 
   static inputName = document.querySelector('#player-name');
   static langOptions = document.querySelectorAll('.language-radio');
   static audioOptions = document.querySelectorAll('.audio-radio');
   static charOptions = document.querySelectorAll('.character-radio');
-  static chooseCharacterBtn = document.querySelector('#choose-character');
   static placeShipsBtn = document.querySelector('#place-ships');
   static charSelectionWrapper = document.querySelector('.character-selection-wrapper');
-  static player1Name = document.querySelector('#player1Name');
-  static player2Name = document.querySelector('#player2Name');
-  static player1Photo = document.querySelector('#player1Photo');
-  static player2Photo = document.querySelector('#player2Photo');
+  static player1Preview = document.querySelector('#player1-preview');
+  static player2Preview = document.querySelector('#player2-preview');
+  static player1Name = document.querySelector('#player1-name');
+  static player2Name = document.querySelector('#player2-name');
+  static player1Photo = document.querySelector('#player1-photo');
+  static player2Photo = document.querySelector('#player2-photo');
 
   static setEventListeners() {
     MainMenu.inputName.addEventListener('input', (e) => {
       if (e.target.value.length > 0 && e.target.value.length < 16) {
-        MainMenu.chooseCharacterBtn.disabled = false;
+        MainMenu.player1Name.textContent = MainMenu.inputName.value;
+        MainMenu.charSelectionWrapper.classList.add('opened');
+        MainMenu.charOptions.forEach(option => {
+          option.addEventListener('change', MainMenu.playerSelection);
+        });
+        if (MainMenu.player1Char && MainMenu.player2Char) {
+          MainMenu.placeShipsBtn.disabled = false;
+        }
       } else {
-        MainMenu.chooseCharacterBtn.disabled = true;
+        MainMenu.placeShipsBtn.disabled = true;
       }
     })
 
@@ -38,17 +47,6 @@ class MainMenu {
       MainMenu.changeAudio(e.target);
     }));
 
-    MainMenu.chooseCharacterBtn.addEventListener('click', () => {
-      if (!MainMenu.inputName.value) {
-        return;
-      }
-      MainMenu.charSelectionWrapper.classList.add('opened');
-      MainMenu.player1Name.textContent = MainMenu.inputName.value
-      MainMenu.charOptions.forEach(option => {
-        option.addEventListener('change', MainMenu.playerSelection);
-      });
-    });
-
     MainMenu.placeShipsBtn.addEventListener('click', () => {
       if (!MainMenu.inputName.value || !MainMenu.player1Char || !MainMenu.player2Char) {
         return;
@@ -59,6 +57,16 @@ class MainMenu {
       sessionStorage.setItem('player1-char', MainMenu.player1Char);
       sessionStorage.setItem('player2-char', MainMenu.player2Char);
       window.location.href = 'place-ships.html';
+    });
+
+    MainMenu.player1Preview.addEventListener('click', () => {
+      MainMenu.isSelecting = 'player1';
+      MainMenu.enableCharacterEditing();
+    });
+
+    MainMenu.player2Preview.addEventListener('click', () => {
+      MainMenu.isSelecting = 'player2';
+      MainMenu.enableCharacterEditing();
     });
   }
 
@@ -75,24 +83,41 @@ class MainMenu {
   }
 
   static changechar(input) {
-    input.classList.add('char-selected');
-    
     if (MainMenu.isSelecting === 'player1') {
+      MainMenu.charOptions.forEach(option => {
+        if (option.classList.contains('char-selected--player1')) {
+          option.classList.remove('char-selected')
+          option.classList.remove('char-selected--player1')
+        }
+      });
+
       MainMenu.player1Char = input.value;
       MainMenu.player1Photo.src = charObjects[input.value].src;
       MainMenu.player1Photo.alt = charObjects[input.value].name;
+      input.classList.add('char-selected');
       input.classList.add('char-selected--player1');
-      MainMenu.isSelecting = 'player2';
-      console.log(input)
       input.removeEventListener('change', MainMenu.playerSelection);
+      if (MainMenu.isEditing) {
+        MainMenu.deactivatePlayerSelection();
+      } else {
+        MainMenu.isSelecting = 'player2';
+      }
       return;
     }
     
     if (MainMenu.isSelecting === 'player2') {
+      MainMenu.charOptions.forEach(option => {
+        if (option.classList.contains('char-selected--player2')) {
+          option.classList.remove('char-selected')
+          option.classList.remove('char-selected--player2')
+        }
+      });
+
       MainMenu.player2Char = input.value;
       MainMenu.player2Name.textContent = charObjects[input.value].name;
       MainMenu.player2Photo.src = charObjects[input.value].src;
       MainMenu.player2Photo.alt = charObjects[input.value].name;
+      input.classList.add('char-selected');
       input.classList.add('char-selected--player2');
       MainMenu.isSelecting = false;
       MainMenu.deactivatePlayerSelection();
@@ -110,6 +135,14 @@ class MainMenu {
     });
 
     MainMenu.charSelectionWrapper.classList.add('closed');
+  }
+
+  static enableCharacterEditing() {
+    MainMenu.isEditing = true;
+    MainMenu.charSelectionWrapper.classList.remove('closed');
+    MainMenu.charOptions.forEach(option => {
+      option.addEventListener('change', MainMenu.playerSelection);
+    });
   }
 
   static init() {
