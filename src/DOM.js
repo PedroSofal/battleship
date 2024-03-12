@@ -56,4 +56,17 @@ export default class DOM {
       }
     });
   }
+
+  static showSunkenShips(player) {
+    const cpuBoard = document.querySelector('#cpu-board');
+    const shipIcons = cpuBoard.querySelectorAll('.ship__icon');
+    const cpuShips = player.gameboard.ships;
+
+    for (const ship of Object.values(cpuShips)) {
+      if (ship.isSunk()) {
+        const sunkShipIcon = Array.from(shipIcons).find(element => element.id === ship.name);
+        sunkShipIcon.classList.add('sunken');
+      }
+    }
+  }
 }

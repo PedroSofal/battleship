@@ -43,15 +43,15 @@ export default class Gameboard {
       const square = this.findSquare(row, col);
       const adjacencies = this.getAdjacencies(row, col);
 
-      if (!square) return; false; 
+      if (!square) return false; 
 
       const overlapedSquare = square.content !== 'water'
         || adjacencies.some(square => square.content !== 'water');
-      
-      axis === 'row' ? col++ : row++;
 
-      const isOutOfBounds = row > this.maxRow + 1 || row < 0
-        || col > this.maxCol + 1 || col < 0;
+      const isOutOfBounds = row > this.maxRow || row < 0
+        || col > this.maxCol || col < 0;
+
+        axis === 'row' ? col++ : row++;
 
       if (overlapedSquare || isOutOfBounds) {
         return false;
@@ -64,6 +64,8 @@ export default class Gameboard {
     const isSquareAvailable = this.verifySquareAvailability(row, col, axis, ship);
 
     if (isSquareAvailable) {
+      ship.coords = [row, col, axis];
+      
       for (let i = 0; i < ship.size; i++) {
         const square = this.findSquare(row, col);
         square.content = ship;
@@ -126,6 +128,43 @@ export default class Gameboard {
       if (!ship.isSunk()) return false;
     }
     return true;
+  }
+
+  setFormationRandomly(isSquareAvailable = false, shipCounter = 0, placingParameters = false) {
+    if (shipCounter >= Object.keys(this.ships).length) {
+      return;
+    }
+
+    if (isSquareAvailable) {
+      this.placeShip(...placingParameters);
+      shipCounter++;
+      isSquareAvailable = false;
+      placingParameters = false;
+      return this.setFormationRandomly(isSquareAvailable, shipCounter);
+    }
+    
+    if (!isSquareAvailable) {
+      const row = this.getRandomRow();
+      const col = this.getRandomCol();
+      const axis = Math.random() < 0.5 ? 'row' : 'col';
+      const ship = Object.values(this.ships)[shipCounter];
+      const placingParameters = [row, col, axis, ship];
+
+      isSquareAvailable = this.verifySquareAvailability(row, col, axis, ship);
+      return this.setFormationRandomly(isSquareAvailable, shipCounter, placingParameters);
+    }
+  }
+
+  getRandomRow() {
+    const board = this.board;
+    const numberOfRows = board[board.length - 1][0];
+    return Math.floor(Math.random() * (numberOfRows + 1));
+  }
+
+  getRandomCol() {
+    const board = this.board;
+    const numberOfCols = board[board.length - 1][1];
+    return Math.floor(Math.random() * (numberOfCols + 1));
   }
 
   resetGameboard() {

@@ -78,7 +78,6 @@ export default class DragAndDrop {
   }
 
   static dragStart(e) {
-    console.log(e.currentTarget)
     e.currentTarget.classList.add('dragging');
     e.dataTransfer.setData('text/plain', e.currentTarget);
     

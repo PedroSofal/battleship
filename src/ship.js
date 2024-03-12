@@ -9,6 +9,7 @@ class Ship {
     this.name = name;
     this.size = size;
     this.src = src;
+    this.coords = null;
     this.hits = 0;
   }
   

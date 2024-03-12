@@ -10,23 +10,11 @@ export default class Bot {
     this.sequence = [];
   }
 
-  getRandomRow() {
-    const board = this.gameboard.board;
-    const numberOfRows = board[board.length - 1][0];
-    return Math.floor(Math.random() * (numberOfRows + 1));
-  }
-
-  getRandomCol() {
-    const board = this.gameboard.board;
-    const numberOfCols = board[board.length - 1][1];
-    return Math.floor(Math.random() * (numberOfCols + 1));
-  }
-
   randomAttack(enemy) {
     this.aim = 'random';
 
-    let row = this.getRandomRow();
-    let col = this.getRandomCol();
+    let row = this.gameboard.getRandomRow();
+    let col = this.gameboard.getRandomCol();
 
     if (this.isSquareAvailable(row, col, enemy)) {
       return enemy.gameboard.receiveAttack(row, col);
@@ -132,30 +120,5 @@ export default class Bot {
   getRandomAdjacency(moves, enemy) {
     const adjacencies = moves.filter(move => this.isSquareAvailable(...move, enemy));
     return adjacencies[Math.floor(Math.random() * adjacencies.length)];
-  }
-
-  setFormationRandomly(isSquareAvailable = false, shipCounter = 0, placingParameters = false) {
-    if (shipCounter >= Object.keys(this.gameboard.ships).length) {
-      return;
-    }
-
-    if (isSquareAvailable) {
-      this.gameboard.placeShip(...placingParameters);
-      shipCounter++;
-      isSquareAvailable = false;
-      placingParameters = false;
-      return this.setFormationRandomly(isSquareAvailable, shipCounter);
-    }
-    
-    if (!isSquareAvailable) {
-      const row = this.getRandomRow();
-      const col = this.getRandomCol();
-      const axis = Math.random() < 0.5 ? 'row' : 'col';
-      const ship = Object.values(this.gameboard.ships)[shipCounter];
-      const placingParameters = [row, col, axis, ship];
-
-      isSquareAvailable = this.gameboard.verifySquareAvailability(row, col, axis, ship);
-      return this.setFormationRandomly(isSquareAvailable, shipCounter, placingParameters);
-    }
   }
 }
