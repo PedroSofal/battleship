@@ -62,12 +62,13 @@ export default class Battle {
   static handleClick = function(e) {
     const col = Array.from(e.target.parentNode.children).indexOf(e.target);
     const row = Array.from(e.target.parentNode.parentNode.children).indexOf(e.target.parentNode);
-    Battle.playerPlays(row, col, Game.players[1]);
+    Battle.playerPlays(row, col);
+    e.target.removeEventListener('click', Battle.handleClick);
   }
 
-  static playerPlays(row, col, enemy) {
+  static playerPlays(row, col) {
     if (!Game.gameOver() && Game.turn === 0) {
-      Game.players[0].attack(row, col, enemy);
+      Game.players[0].attack(row, col, Game.players[1]);
       DOM.showSunkenShips(Game.players[1]);
       DOM.updateBoard(Game.players[0]);
       DOM.updateBoard(Game.players[1]);
