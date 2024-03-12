@@ -54,7 +54,7 @@ export default class Battle {
     shipIcon.classList = 'ship__icon';
     shipIcon.id = ship.name;
     shipIcon.style.mask = `url(${ship.src}) no-repeat center`;
-    if (axis === 'col') shipIcon.style.transform = 'rotateZ(90deg)';
+    if (axis === 'col') shipIcon.classList.add('rotated');
 
     grid[row][col].htmlElement.appendChild(shipIcon);
   }

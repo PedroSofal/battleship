@@ -89,7 +89,7 @@ export default class DragAndDrop {
     shipDragClone.classList.add('ship__drag--clone');
     
     const shipIcon = shipDragClone.querySelector('.ship__icon');
-    if (DragAndDrop.axis === 'col') shipIcon.classList.add('drag-image-rotated');
+    if (DragAndDrop.axis === 'col') shipIcon.classList.add('rotated');
 
     document.body.appendChild(shipDragClone);
     e.dataTransfer.setDragImage(shipDragClone, 20, 20);
@@ -106,11 +106,16 @@ export default class DragAndDrop {
     }
 
     if (placedShip) {
+      const draggingShip = document.querySelector('.dragging');
+      if (DragAndDrop.axis === 'col') draggingShip.classList.add('rotated');
+
       sessionStorage.setItem(DragAndDrop.selectedShip.name + '-row', DragAndDrop.hoveredSquare[0]);
       sessionStorage.setItem(DragAndDrop.selectedShip.name + '-col', DragAndDrop.hoveredSquare[1]);
       sessionStorage.setItem(DragAndDrop.selectedShip.name + '-axis', DragAndDrop.axis);
-      if (DragAndDrop.axis === 'col') document.querySelector('.dragging').style.transform = 'rotateZ(90deg)'
-      e.target.appendChild(document.querySelector('.dragging'));
+
+      draggingShip.classList.add('placed');
+      e.target.appendChild(draggingShip);
+      
       DragAndDrop.shipsPlaced++;
     }
 
@@ -119,9 +124,12 @@ export default class DragAndDrop {
 
   static dragEnd(e) {
     e.currentTarget.classList.remove('dragging');
-    e.currentTarget.removeAttribute('draggable');
-    e.currentTarget.addEventListener('mousedown', (e) => e.preventDefault());
     document.body.removeChild(document.querySelector('.ship__drag--clone'));
+    
+    if (e.currentTarget.classList.contains('placed')) {
+      e.currentTarget.removeAttribute('draggable');
+      e.currentTarget.addEventListener('mousedown', (e) => e.preventDefault());
+    }
   }
 
   static dragOver(e) {

@@ -220,6 +220,26 @@ button:disabled {
   position: absolute;
 }
 
+/* DRAG AND DROP ***********/
+
+.dragging {
+  opacity: 1;
+  cursor: grabbing;
+}
+
+.ship__drag--clone {
+  position: absolute;
+  left: -100%;
+}
+
+.rotated {
+  transform: rotate(90deg);
+}
+
+.dragover {
+  background-color: #4CAF50;
+}
+
 /* HEADER ***********/
 
 .header {
