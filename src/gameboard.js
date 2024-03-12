@@ -110,10 +110,10 @@ export default class Gameboard {
   getAdjacencies(row, col) {
     const adjacencies = [];
 
-    const posX = row + 1 === 10 ? 9 : row + 1;
-    const posY = col + 1 === 10 ? 9 : col + 1;
-    const negX = row - 1 === -1 ? 0 : row - 1;
-    const negY = col - 1 === -1 ? 0 : col - 1;
+    const posX = row + 1 > this.maxRow ? this.maxRow : row + 1;
+    const posY = col + 1 > this.maxCol ? this.maxCol : col + 1;
+    const negX = row - 1 < 0 ? 0 : row - 1;
+    const negY = col - 1 < 0 ? 0 : col - 1;
     const adjacentPosX = this.findSquare(posX, col);
     const adjacentPosY = this.findSquare(row, posY);
     const adjacentNegX = this.findSquare(negX, col);
