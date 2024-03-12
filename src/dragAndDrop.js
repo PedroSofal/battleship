@@ -95,6 +95,16 @@ export default class DragAndDrop {
     e.dataTransfer.setDragImage(shipDragClone, 20, 20);
   }
 
+  static dragEnd(e) {
+    e.currentTarget.classList.remove('dragging');
+    document.body.removeChild(document.querySelector('.ship__drag--clone'));
+    
+    if (e.currentTarget.classList.contains('placed')) {
+      e.currentTarget.removeAttribute('draggable');
+      e.currentTarget.addEventListener('mousedown', (e) => e.preventDefault());
+    }
+  }
+
   static drop(e) {
     e.preventDefault();
     let placedShip = false;
@@ -122,30 +132,29 @@ export default class DragAndDrop {
     DOM.updateBoard(Game.players[0]);
   }
 
-  static dragEnd(e) {
-    e.currentTarget.classList.remove('dragging');
-    document.body.removeChild(document.querySelector('.ship__drag--clone'));
-    
-    if (e.currentTarget.classList.contains('placed')) {
-      e.currentTarget.removeAttribute('draggable');
-      e.currentTarget.addEventListener('mousedown', (e) => e.preventDefault());
-    }
-  }
-
   static dragOver(e) {
     e.preventDefault();
     DragAndDrop.hoveredSquare = DragAndDrop.extractIndicesFromGrid(DragAndDrop.grid, e.target);
     
     if (DragAndDrop.hoveredSquare) {
+      const allowedPlacement = Game.players[0].gameboard.verifySquareAvailability(
+        DragAndDrop.hoveredSquare[0], DragAndDrop.hoveredSquare[1], DragAndDrop.axis, DragAndDrop.selectedShip
+      );
+
       for (let i = 0; i < DragAndDrop.selectedShip.size; i++) {
         let row = DragAndDrop.hoveredSquare[0];
         let col = DragAndDrop.hoveredSquare[1];
         DragAndDrop.axis === 'row' ? col += i : row += i;
+
         if (row > DragAndDrop.grid.length - 1 || col > DragAndDrop.grid[0].length - 1) {
           break;
         }
-  
-        DragAndDrop.grid[row][col].htmlElement.classList.add('dragover');
+
+        if (allowedPlacement) {
+          DragAndDrop.grid[row][col].htmlElement.classList.add('dragover--allowed-placement');
+        } else {
+          DragAndDrop.grid[row][col].htmlElement.classList.add('dragover--not-allowed-placement');
+        }
       }
     }
   }
@@ -153,7 +162,8 @@ export default class DragAndDrop {
   static dragLeave() {
     for (let i = 0; i < DragAndDrop.grid.length; i++) {
       for (let j = 0; j < DragAndDrop.grid[i].length; j++) {
-        DragAndDrop.grid[i][j].htmlElement.classList.remove('dragover');
+        DragAndDrop.grid[i][j].htmlElement.classList.remove('dragover--allowed-placement');
+        DragAndDrop.grid[i][j].htmlElement.classList.remove('dragover--not-allowed-placement');
       }
     }
   }

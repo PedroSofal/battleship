@@ -236,8 +236,12 @@ button:disabled {
   transform: rotate(90deg);
 }
 
-.dragover {
+.dragover--allowed-placement {
   background-color: #4CAF50;
+}
+
+.dragover--not-allowed-placement {
+  background-color: red;
 }
 
 /* HEADER ***********/
