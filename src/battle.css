@@ -61,3 +61,76 @@
   font-size: var(--fs-400);
   max-width: 50ch;
 }
+
+/* RESULT DIALOG ***********/
+
+.dialog {
+  position: fixed;
+  margin: auto;
+  inset: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+}
+
+.dialog::backdrop {
+  background-color: var(--color-900);
+  background-image: url(./assets/backgrounds/menu-background.jpg);
+  opacity: 0.6;
+}
+
+.result-wrapper {
+  display: grid;
+  grid-template-rows: 130px 240px 130px;
+  grid-template-columns: 240px 600px;
+  gap: 1rem;
+}
+
+.result-wrapper[data-result="win"] {
+  grid-template-columns: 240px 600px;
+}
+
+.result-wrapper[data-result="lose"] {
+  grid-template-columns: 840px;
+  column-gap: 0;
+}
+
+.result-wrapper[data-result="lose"] .wrapper--character {
+  display: none;
+}
+
+.wrapper--result-display,
+.wrapper--footer {
+  grid-column: 1 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.4rem;
+  border-top: 0.5rem solid var(--color-750);
+  border-right: 1rem solid var(--color-850);
+  border-left: 1rem solid var(--color-750);
+  border-bottom: 1rem solid var(--color-850);
+}
+
+.dialog .wrapper--sayings {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.4rem;
+}
+
+.dialog .sayings {
+  font-size: var(--fs-600);
+  max-width: 50ch;
+}
+
+.secondary-button#see-result {
+  height: fit-content;
+  visibility: hidden;
+}
+
+.secondary-button#see-result.visible {
+  visibility: visible;
+}

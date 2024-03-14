@@ -8,6 +8,7 @@
 <body>
   <header class="header">
     <h2 class="header__title">Battle</h2>
+    <button class="secondary-button" id="see-result">See results</button>
     <div class="header__options">
       <button class="header__button">
         <img class="header__icon" id="flag" src="./assets/icons/flag-united-kingdom.jpg" alt="united kingdom's flag">
@@ -81,5 +82,23 @@
       </div>
     </div>
   </div>
+
+  <dialog class="dialog" id="result-modal">
+    <div class="result-wrapper" id="result-wrapper" data-result="lose">
+      <div class="wrapper wrapper--result-display">
+        <h1 class="result-display" id="result-title">You Win!</h1>
+      </div>
+      <div class="wrapper wrapper--character">
+        <img class="character" id="result-character" width="240" src="./assets/characters/unknown.jpg" alt="question mark inside square">
+      </div>
+      <div class="wrapper wrapper--sayings">
+        <p class="sayings" id="result-quote">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente exercitationem nihil aperiam.</p>
+      </div>
+      <div class="wrapper wrapper--footer">
+        <button class="secondary-button" id="see-boards">See boards</button>
+        <button class="main-button" id="play-again">Play again</button>
+      </div>
+    </div>
+  </dialog>
 </body>
 </html>

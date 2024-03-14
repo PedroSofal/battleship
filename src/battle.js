@@ -3,6 +3,7 @@ import './battle.css'
 import DOM from "./DOM.js";
 import Game from './gameControl.js';
 import { charObjects } from './characters.js';
+import Result from './result.js';
 
 export default class Battle {
   static root = document.querySelector(':root');
@@ -67,7 +68,12 @@ export default class Battle {
   }
 
   static playerPlays(row, col) {
-    if (!Game.gameOver() && Game.turn === 0) {
+    if (Game.gameOver()) {
+      Battle.handleGameOver(Game.players[1]);
+      return;
+    }
+    
+    if (Game.turn === 0) {
       Game.players[0].attack(row, col, Game.players[1]);
       DOM.showSunkenShips(Game.players[1]);
       DOM.updateBoard(Game.players[0]);
@@ -78,7 +84,12 @@ export default class Battle {
   }
   
   static botPlays() {
-    if (!Game.gameOver() && Game.turn === 1) {
+    if (Game.gameOver()) {
+      Battle.handleGameOver(Game.players[0]);
+      return;
+    }
+
+    if (Game.turn === 1) {
       const attack = Game.players[1].attack(Game.players[0]);
       Battle.radarLockWarning(attack);
       setTimeout(() => {
@@ -86,7 +97,7 @@ export default class Battle {
         DOM.updateBoard(Game.players[0]);
         DOM.updateBoard(Game.players[1]);
         Game.nextPlayer();
-      }, 1000);
+      }, 0);
     }
   };
 
@@ -126,6 +137,13 @@ export default class Battle {
       }
     }
     return grid;
+  }
+
+  static handleGameOver(winner) {
+    Result.init(winner);
+    Battle.cpuBoard.querySelectorAll('.square').forEach(square => {
+      square.removeEventListener('click', Battle.handleClick);
+    });
   }
 
   static init() {
