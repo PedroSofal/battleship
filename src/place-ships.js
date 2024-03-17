@@ -4,14 +4,18 @@ import Game from "./gameControl.js";
 import DOM from "./DOM.js";
 import DragAndDrop from "./dragAndDrop.js";
 import { charObjects } from './characters.js';
+import PlaceShipLines from './characters-lines/place-ships.js';
 
 export default class PlaceShips {
   static root = document.querySelector(':root');
   static fleet = document.querySelector('#fleet');
   static strategyBoard = document.querySelector('#strategy-board');
-  static character = document.querySelector('#character');
+  static characterPhoto = document.querySelector('#character');
+  static lines = document.querySelector('#lines');
   static confirmBtn = document.querySelector('#confirmFormation');
   static resetBtn = document.querySelector('#resetFormation');
+
+  static character = null;
 
   static setEventListeners() {
     PlaceShips.confirmBtn.addEventListener('click', PlaceShips.confirmFormation);
@@ -52,20 +56,32 @@ export default class PlaceShips {
   }
 
   static resetFormation() {
-    location.reload();
-    // Game.players[0].gameboard.resetGameboard();
-    // DragAndDrop.shipsPlaced = 0;
-    // DOM.updateBoard(Game.players[0]);
+    PlaceShips.strategyBoard.innerHTML = '';
+    PlaceShips.fleet.innerHTML = '';
+    Game.players[0].gameboard.resetGameboard();
+    DOM.loadBoard(Game.players[0]);
+    PlaceShips.strategyBoard.appendChild(DOM.getPlayerBoard());
+    PlaceShips.loadFleet(Game.players[0]);
+    DragAndDrop.init();
+    PlaceShips.lines.textContent = PlaceShipLines.getResetLine(PlaceShips.character.name);
+  }
+
+  static updatePlaceLine(shipName) {
+    const charName = PlaceShips.character.name;
+    const placingLine = PlaceShipLines.getPlacingLine(charName, shipName);
+    PlaceShips.lines.textContent = placingLine;
   }
 
   static init() {
-    PlaceShips.setEventListeners();
     PlaceShips.loadFleet(Game.players[0]);
     PlaceShips.strategyBoard.appendChild(DOM.getPlayerBoard());
-    PlaceShips.character.src = charObjects[sessionStorage.getItem('player1-char')].src;
+    PlaceShips.character = charObjects[sessionStorage.getItem('player1-char')];
+    PlaceShips.characterPhoto.src = PlaceShips.character.src;
+    PlaceShips.lines.textContent = PlaceShipLines.getPreparationLine(PlaceShips.character.name);
     PlaceShips.root.style.setProperty('--color-player1', charObjects[sessionStorage.getItem('player1-char')].color);
     PlaceShips.root.style.setProperty('--color-player1-alpha', charObjects[sessionStorage.getItem('player1-char')].colorAlpha);
     PlaceShips.root.style.setProperty('--color-player2', charObjects[sessionStorage.getItem('player2-char')].color);
+    PlaceShips.setEventListeners();
     DragAndDrop.init();
   }
 }

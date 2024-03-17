@@ -1,5 +1,6 @@
 import DOM from "./DOM.js";
 import Game from "./gameControl.js";
+import PlaceShips from "./place-ships.js";
 
 export default class DragAndDrop {
   static board = document.querySelector('#strategy-board');
@@ -102,6 +103,7 @@ export default class DragAndDrop {
     if (e.currentTarget.classList.contains('placed')) {
       e.currentTarget.removeAttribute('draggable');
       e.currentTarget.addEventListener('mousedown', (e) => e.preventDefault());
+      PlaceShips.updatePlaceLine(e.target.firstChild.id);
     }
   }
 
@@ -135,7 +137,6 @@ export default class DragAndDrop {
   static dragOver(e) {
     e.preventDefault();
     DragAndDrop.hoveredSquare = DragAndDrop.extractIndicesFromGrid(DragAndDrop.grid, e.target);
-    
     if (DragAndDrop.hoveredSquare) {
       const allowedPlacement = Game.players[0].gameboard.verifySquareAvailability(
         DragAndDrop.hoveredSquare[0], DragAndDrop.hoveredSquare[1], DragAndDrop.axis, DragAndDrop.selectedShip
@@ -169,6 +170,8 @@ export default class DragAndDrop {
   }
 
   static init() {
+    DragAndDrop.grid = [];
+    DragAndDrop.shipsPlaced = 0;
     DragAndDrop.gridFromHtmlSquares(DragAndDrop.board.children);
     DragAndDrop.setEventListeners();
   }
