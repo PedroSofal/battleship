@@ -84,26 +84,35 @@ export default class Gameboard {
 
     if (square.content !== 'water') {
       square.content.hit();
-      if (square.content.hits === 1) this.sequence.start = square;
-      if (!square.content.isSunk()) this.sequence.next = square;
+
+      if (square.content.hits === 1) {
+        this.sequence.start = square;
+      }
+
+      if (!square.content.isSunk()) {
+        this.sequence.next = square;
+        square.className = 'hit';
+      }
+
       if (square.content.isSunk()) {
         this.sequence.start = null;
         this.sequence.next = null;
+        square.className = 'sunk';
       }
 
-      square.className = 'hit';
-      return 'hit';
+      return square;
     }
     
     if (square.content === 'water') {
-      square.className = 'miss';
       const adjacencies = this.getAdjacencies(row, col);
 
       if (adjacencies.some(square => square.content !== 'water' && !square.attacked)) {
-        return 'close';
+        square.className = 'close';
       } else {
-        return 'miss';
+        square.className = 'miss';
       }
+
+      return square;
     }
   }
 

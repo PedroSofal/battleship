@@ -123,10 +123,12 @@ button:disabled {
   background-color: blue;
 }
 
+.close,
 .miss {
   background-color: lightskyblue;
 }
 
+.sunk,
 .hit {
   background-color: red;
 }

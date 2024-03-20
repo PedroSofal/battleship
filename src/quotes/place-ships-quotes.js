@@ -1,6 +1,4 @@
-export default class PlaceShipLines {
-  static ship = null;
-
+export default class PlaceShipQuotes {
   static preparation = {
     yamato: [
       "Em uma guerra, cada movimento deve ser executado com precisão. Lutaremos com honra e lealdade à nossa terra, se necessário, até o último suspiro, mas faremos justiça!",
@@ -82,23 +80,23 @@ export default class PlaceShipLines {
     ]
   }
 
-  static randomLine(lineArray) {
-    return lineArray[Math.floor(Math.random() * lineArray.length)];
+  static randomQuote(lineArray, ship) {
+    return lineArray[Math.floor(Math.random() * lineArray.length)]
+      .replace('#SHIP', ship);
   }
 
-  static getPreparationLine(char) {
-    const lineArray = PlaceShipLines.preparation[char];
-    return PlaceShipLines.randomLine(lineArray);
+  static getPreparationQuote(char, ship) {
+    const lineArray = PlaceShipQuotes.preparation[char];
+    return PlaceShipQuotes.randomQuote(lineArray, ship);
   }
 
-  static getPlacingLine(char, ship) {
-    PlaceShipLines.ship = ship;
-    const lineArray = PlaceShipLines.placing[char];
-    return PlaceShipLines.randomLine(lineArray).replace('#SHIP', ship);
+  static getPlacingQuote(char, ship) {
+    const lineArray = PlaceShipQuotes.placing[char];
+    return PlaceShipQuotes.randomQuote(lineArray, ship);
   }
 
-  static getResetLine(char) {
-    const lineArray = PlaceShipLines.reset[char];
-    return PlaceShipLines.randomLine(lineArray);
+  static getResetQuote(char, ship) {
+    const lineArray = PlaceShipQuotes.reset[char];
+    return PlaceShipQuotes.randomQuote(lineArray, ship);
   }
 }

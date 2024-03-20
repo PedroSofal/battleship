@@ -11,7 +11,7 @@ export default class Player {
 
   attack(row, col, enemy) {
     if (this.isSquareAvailable(row, col, enemy)) {
-      enemy.gameboard.receiveAttack(row, col);
+      return enemy.gameboard.receiveAttack(row, col);
     }
   }
 
