@@ -10,9 +10,9 @@
   --color-600: #A32F80;
   --color-100: #cdcdcd;
 
-  --color-player1: #ff0020;
-  --color-player1-alpha: rgba(255, 0, 32, 0.5);
-  --color-player2: #ff0020;
+  --color-player: #0038FF;
+  --color-player-alpha: rgba(255, 0, 32, 0.5);
+  --color-cpu: #ff0020;
 
   --fs-300: 0.7rem;
   --fs-400: 0.8rem;
@@ -102,17 +102,17 @@ button:disabled {
 
 .human-board {
   background: radial-gradient(
-    var(--color-player1-alpha),
+    var(--color-player-alpha),
     transparent
   );
 }
 
 .human-board .square {
-  outline: 1px solid var(--color-player1);
+  outline: 1px solid var(--color-player);
 }
 
 .cpu-board .square {
-  outline: 1px solid var(--color-player2);
+  outline: 1px solid var(--color-cpu);
 }
 
 .square {
@@ -152,11 +152,11 @@ button:disabled {
 }
 
 .wrapper--player-board .dashed-border {
-  stroke: var(--color-player1);
+  stroke: var(--color-player);
 }
 
 .wrapper--cpu-board .dashed-border {
-  stroke: var(--color-player2);
+  stroke: var(--color-cpu);
 }
 
 .gameboard-display__radar-signal {
@@ -168,7 +168,7 @@ button:disabled {
   transform-origin: 0 0;
   background-image: linear-gradient(
     to top right,
-    var(--color-player1) 0%,
+    var(--color-player) 0%,
     transparent 50%
   );
   animation: sweep 5s infinite linear;
@@ -184,7 +184,7 @@ button:disabled {
 
 .ship__icon {
   height: 50px;
-  background-color: var(--color-player1);
+  background-color: var(--color-player);
   transform-origin: 25px 25px;
 }
 

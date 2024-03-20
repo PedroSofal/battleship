@@ -75,12 +75,12 @@ export default class PlaceShips {
   static init() {
     PlaceShips.loadFleet(Game.players[0]);
     PlaceShips.strategyBoard.appendChild(DOM.getPlayerBoard());
-    PlaceShips.character = charObjects[sessionStorage.getItem('player1-char')];
+    PlaceShips.character = charObjects[sessionStorage.getItem('player-char')];
     PlaceShips.characterPhoto.src = PlaceShips.character.src;
     PlaceShips.quotes.textContent = PlaceShipQuotes.getPreparationQuote(PlaceShips.character.name);
-    PlaceShips.root.style.setProperty('--color-player1', charObjects[sessionStorage.getItem('player1-char')].color);
-    PlaceShips.root.style.setProperty('--color-player1-alpha', charObjects[sessionStorage.getItem('player1-char')].colorAlpha);
-    PlaceShips.root.style.setProperty('--color-player2', charObjects[sessionStorage.getItem('player2-char')].color);
+    PlaceShips.root.style.setProperty('--color-player', charObjects[sessionStorage.getItem('player-char')].color);
+    PlaceShips.root.style.setProperty('--color-player-alpha', charObjects[sessionStorage.getItem('player-char')].colorAlpha);
+    PlaceShips.root.style.setProperty('--color-cpu', charObjects[sessionStorage.getItem('cpu-char')].color);
     PlaceShips.setEventListeners();
     DragAndDrop.init();
   }

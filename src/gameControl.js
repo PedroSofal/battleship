@@ -8,16 +8,16 @@ export default class Game {
   static turn = 0;
 
   static setPlayers() {
-    const player1name = sessionStorage.getItem('player1-name');
-    const player1char = charObjects[sessionStorage.getItem('player1-char')];
-    const player2name = charObjects[sessionStorage.getItem('player2-char')].name;
-    const player2char = charObjects[sessionStorage.getItem('player2-char')];
+    const playerName = sessionStorage.getItem('player-name');
+    const playerChar = charObjects[sessionStorage.getItem('player-char')];
+    const cpuName = charObjects[sessionStorage.getItem('cpu-char')].name;
+    const cpuChar = charObjects[sessionStorage.getItem('cpu-char')];
 
-    const player1 = new Player(player1name, player1char);
-    const player2 = new Bot(player2name, player2char);
+    const player = new Player(playerName, playerChar);
+    const cpu = new Bot(cpuName, cpuChar);
 
-    Game.players.push(player1);
-    Game.players.push(player2);
+    Game.players.push(player);
+    Game.players.push(cpu);
   }
 
   static newGame() {

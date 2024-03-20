@@ -14,7 +14,7 @@
       <h1 class="game-title">BATTLE<br>SHIP</h1>
       <div class="player-name">
         <label class="label" for="player-name">Enter your name:</label>
-        <input class="name-input" type="text" name="name" id="player-name" maxlength="24" required>
+        <input class="name-input" id="name-input" type="text" name="name" maxlength="24" required>
       </div>
       <div class="options">
         <div class="options__language">
@@ -71,17 +71,17 @@
 
     <div class="ready-wrapper">
       <div class="opponents">
-        <div class="opponents__player" id="player1-preview">
-          <img class="opponents__img" id="player1-photo" width="80" height="80" src="./assets/characters/unknown.jpg" alt="question mark inside square">
+        <div class="opponents__player opponents__player--selected" id="player-preview">
+          <img class="opponents__img" id="player-photo" width="80" height="80" src="./assets/characters/unknown.jpg" alt="question mark inside square">
           <div class="opponents__info">
-            <p class="opponents__name" id="player1-name">???</p>
+            <p class="opponents__name" id="player-name">???</p>
             <p class="opponents__type">Player</p>
           </div>
         </div>
-        <div class="opponents__player" id="player2-preview">
-          <img class="opponents__img" id="player2-photo" width="80" height="80" src="./assets/characters/unknown.jpg" alt="question mark inside square">
+        <div class="opponents__player" id="cpu-preview">
+          <img class="opponents__img" id="cpu-photo" width="80" height="80" src="./assets/characters/unknown.jpg" alt="question mark inside square">
           <div class="opponents__info">
-            <p class="opponents__name" id="player2-name">???</p>
+            <p class="opponents__name" id="cpu-name">???</p>
             <p class="opponents__type">CPU</p>
           </div>
         </div>

@@ -5,33 +5,34 @@ import { charObjects } from './characters.js';
 class MainMenu {
   static lang = 'pt';
   static audio = 'on';
-  static player1Char = null;
-  static player2Char = null;
-  static isSelecting = 'player1';
+  static playerChar = null;
+  static cpuChar = null;
+  static isSelecting = 'player';
   static isEditing = false;
 
-  static inputName = document.querySelector('#player-name');
+  static nameInput = document.querySelector('#name-input');
   static langOptions = document.querySelectorAll('.language-radio');
   static audioOptions = document.querySelectorAll('.audio-radio');
   static charOptions = document.querySelectorAll('.character-radio');
   static placeShipsBtn = document.querySelector('#place-ships');
   static charSelectionWrapper = document.querySelector('.character-selection-wrapper');
-  static player1Preview = document.querySelector('#player1-preview');
-  static player2Preview = document.querySelector('#player2-preview');
-  static player1Name = document.querySelector('#player1-name');
-  static player2Name = document.querySelector('#player2-name');
-  static player1Photo = document.querySelector('#player1-photo');
-  static player2Photo = document.querySelector('#player2-photo');
+  static playerPreview = document.querySelector('#player-preview');
+  static cpuPreview = document.querySelector('#cpu-preview');
+  static opponents = document.querySelectorAll('.opponents__player');
+  static playerName = document.querySelector('#player-name');
+  static cpuName = document.querySelector('#cpu-name');
+  static playerPhoto = document.querySelector('#player-photo');
+  static cpuPhoto = document.querySelector('#cpu-photo');
 
   static setEventListeners() {
-    MainMenu.inputName.addEventListener('input', (e) => {
+    MainMenu.nameInput.addEventListener('input', (e) => {
       if (e.target.value.length > 0 && e.target.value.length <= 24) {
-        MainMenu.player1Name.textContent = MainMenu.inputName.value;
+        MainMenu.playerName.textContent = MainMenu.nameInput.value;
         MainMenu.charSelectionWrapper.classList.add('opened');
         MainMenu.charOptions.forEach(option => {
-          option.addEventListener('change', MainMenu.playerSelection);
+          option.addEventListener('click', MainMenu.playerSelection);
         });
-        if (MainMenu.player1Char && MainMenu.player2Char) {
+        if (MainMenu.playerChar && MainMenu.cpuChar) {
           MainMenu.placeShipsBtn.disabled = false;
         }
       } else {
@@ -48,25 +49,17 @@ class MainMenu {
     }));
 
     MainMenu.placeShipsBtn.addEventListener('click', () => {
-      if (!MainMenu.inputName.value || !MainMenu.player1Char || !MainMenu.player2Char) {
+      if (!MainMenu.nameInput.value || !MainMenu.playerChar || !MainMenu.cpuChar) {
         return;
       }
-      sessionStorage.setItem('player1-name', MainMenu.inputName.value);
+      sessionStorage.setItem('player-name', MainMenu.nameInput.value);
       sessionStorage.setItem('lang', MainMenu.lang);
       sessionStorage.setItem('audio', MainMenu.audio);
-      sessionStorage.setItem('player1-char', MainMenu.player1Char);
-      sessionStorage.setItem('player2-char', MainMenu.player2Char);
       window.location.href = 'place-ships.html';
     });
 
-    MainMenu.player1Preview.addEventListener('click', () => {
-      MainMenu.isSelecting = 'player1';
-      MainMenu.enableCharacterEditing();
-    });
-
-    MainMenu.player2Preview.addEventListener('click', () => {
-      MainMenu.isSelecting = 'player2';
-      MainMenu.enableCharacterEditing();
+    MainMenu.opponents.forEach(opponent => {
+      opponent.addEventListener('click', (e) => MainMenu.playerEditing(e));
     });
   }
 
@@ -82,70 +75,111 @@ class MainMenu {
     MainMenu.audio = input.value;
   }
 
-  static changechar(input) {
-    if (MainMenu.isSelecting === 'player1') {
-      MainMenu.charOptions.forEach(option => {
-        if (option.classList.contains('char-selected--player1')) {
-          option.classList.remove('char-selected')
-          option.classList.remove('char-selected--player1')
-        }
-      });
+  static handleCharSelection(input) {
+    MainMenu.resetCharSelection();
+    input.classList.add('char-selected');
+    input.classList.add(`char-selected--${MainMenu.isSelecting}`);
+    MainMenu.opponents.forEach(opponent => {
+      opponent.classList.remove('opponents__player--selected');
+    });
 
-      MainMenu.player1Char = input.value;
-      MainMenu.player1Photo.src = charObjects[input.value].src;
-      MainMenu.player1Photo.alt = charObjects[input.value].name;
-      input.classList.add('char-selected');
-      input.classList.add('char-selected--player1');
-      input.removeEventListener('change', MainMenu.playerSelection);
+    if (MainMenu.isSelecting === 'player') {
+      MainMenu.associateCharToPlayer(input);
       if (MainMenu.isEditing) {
         MainMenu.deactivatePlayerSelection();
       } else {
-        MainMenu.isSelecting = 'player2';
+        MainMenu.isSelecting = 'cpu'
+        MainMenu.cpuPreview.classList.add('opponents__player--selected');
       }
       return;
     }
     
-    if (MainMenu.isSelecting === 'player2') {
-      MainMenu.charOptions.forEach(option => {
-        if (option.classList.contains('char-selected--player2')) {
-          option.classList.remove('char-selected')
-          option.classList.remove('char-selected--player2')
-        }
-      });
-
-      MainMenu.player2Char = input.value;
-      MainMenu.player2Name.textContent = charObjects[input.value].name;
-      MainMenu.player2Photo.src = charObjects[input.value].src;
-      MainMenu.player2Photo.alt = charObjects[input.value].name;
-      input.classList.add('char-selected');
-      input.classList.add('char-selected--player2');
-      MainMenu.isSelecting = false;
+    if (MainMenu.isSelecting === 'cpu') {
+      MainMenu.associateCharToCpu(input);
       MainMenu.deactivatePlayerSelection();
-      MainMenu.placeShipsBtn.disabled = false;
     }
   }
 
   static playerSelection = function(e) {
-    MainMenu.changechar(e.target);
+    MainMenu.handleCharSelection(e.target);
+  }
+
+  static playerEditing(e) {
+    const opponent = e.currentTarget.id.includes('player') ? 'player' : 'cpu';
+    if (!sessionStorage.getItem('player-char') || !sessionStorage.getItem('cpu-char')) return;
+
+    MainMenu.placeShipsBtn.disabled = true;
+    MainMenu.isSelecting = opponent;
+    MainMenu.resetCharSelection();
+    MainMenu.opponents.forEach(div => {
+      div.classList.remove('opponents__player--selected');
+      div.classList.remove('opponents__player--selectable');
+    });
+    e.currentTarget.classList.add('opponents__player--selected');
+
+    if (MainMenu.isEditing) {
+      MainMenu.restoreCharSelection(opponent);
+    } else {
+      MainMenu.isEditing = true;
+      MainMenu.enableCharacterEditing();
+    }
+  }
+
+  static enableCharacterEditing() {
+    MainMenu.charSelectionWrapper.classList.remove('closed');
+    MainMenu.charOptions.forEach(option => {
+      option.addEventListener('click', MainMenu.playerSelection);
+    });
   }
 
   static deactivatePlayerSelection() {
     MainMenu.charOptions.forEach(option => {
-      option.removeEventListener('change', MainMenu.playerSelection);
+      option.removeEventListener('click', MainMenu.playerSelection);
+    });
+
+    MainMenu.opponents.forEach(opponent => {
+      opponent.classList.remove('opponents__player--selected');
+      opponent.classList.add('opponents__player--selectable');
     });
 
     MainMenu.charSelectionWrapper.classList.add('closed');
+    MainMenu.isEditing = false;
+    MainMenu.placeShipsBtn.disabled = false;
   }
 
-  static enableCharacterEditing() {
-    MainMenu.isEditing = true;
-    MainMenu.charSelectionWrapper.classList.remove('closed');
+  static resetCharSelection() {
     MainMenu.charOptions.forEach(option => {
-      option.addEventListener('change', MainMenu.playerSelection);
+      if (option.classList.contains(`char-selected--${MainMenu.isSelecting}`)) {
+        option.classList.remove('char-selected');
+        option.classList.remove(`char-selected--${MainMenu.isSelecting}`);
+      }
     });
   }
 
+  static associateCharToPlayer(input) {
+    MainMenu.playerChar = input.value;
+    MainMenu.playerPhoto.src = charObjects[input.value].src;
+    MainMenu.playerPhoto.alt = charObjects[input.value].name;
+    sessionStorage.setItem('player-char', MainMenu.playerChar);
+  }
+
+  static associateCharToCpu(input) {
+    MainMenu.cpuChar = input.value;
+    MainMenu.cpuName.textContent = charObjects[input.value].name;
+    MainMenu.cpuPhoto.src = charObjects[input.value].src;
+    MainMenu.cpuPhoto.alt = charObjects[input.value].name;
+    sessionStorage.setItem('cpu-char', MainMenu.cpuChar);
+  }
+
+  static restoreCharSelection(opponent) {
+    const wasSelecting = MainMenu.isSelecting === 'player' ? 'cpu' : 'player';
+    const selectedChar = document.getElementById(sessionStorage.getItem(`${wasSelecting}-char`));
+    selectedChar.classList.add('char-selected');
+    selectedChar.classList.add(`char-selected--${wasSelecting}`);
+  }
+
   static init() {
+    sessionStorage.clear();
     MainMenu.setEventListeners();
   }
 }

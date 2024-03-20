@@ -14,7 +14,7 @@ export default class Battle {
   static quotes = document.querySelector('#quotes');
   static character = document.querySelector('#character');
 
-  static retrievePlayer1ShipsPositions() {
+  static retrievePlayerShipsPositions() {
     const playerBackendBoard = Game.players[0].gameboard;
     const playerFrontendBoard = DOM.getPlayerBoard();
 
@@ -31,7 +31,7 @@ export default class Battle {
     DOM.updateBoard(Game.players[0]);
   }
 
-  static setPlayer2ShipsPositions() {
+  static setCpuShipsPositions() {
     const cpuBackendBoard = Game.players[1].gameboard;
     const cpuFrontendBoard = DOM.getCpuBoard()
     cpuBackendBoard.setFormationRandomly();
@@ -202,11 +202,11 @@ export default class Battle {
   }
 
   static init() {
-    Battle.retrievePlayer1ShipsPositions();
-    Battle.setPlayer2ShipsPositions();
-    Battle.root.style.setProperty('--color-player1', charObjects[sessionStorage.getItem('player1-char')].color);
-    Battle.root.style.setProperty('--color-player1-alpha', charObjects[sessionStorage.getItem('player1-char')].colorAlpha);
-    Battle.root.style.setProperty('--color-player2', charObjects[sessionStorage.getItem('player2-char')].color);
+    Battle.retrievePlayerShipsPositions();
+    Battle.setCpuShipsPositions();
+    Battle.root.style.setProperty('--color-player', charObjects[sessionStorage.getItem('player-char')].color);
+    Battle.root.style.setProperty('--color-player-alpha', charObjects[sessionStorage.getItem('player-char')].colorAlpha);
+    Battle.root.style.setProperty('--color-cpu', charObjects[sessionStorage.getItem('cpu-char')].color);
   }
 }
 
