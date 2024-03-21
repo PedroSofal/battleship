@@ -43,50 +43,74 @@
     </div>
 
     <div class="character-selection-wrapper">
-      <input class="character-radio" type="radio" name="character" id="char1" value="char1">
-      <label class="label label--character" for="char1">
-        <img class="character-photo" id="char0" width="250" height="250" src="./assets/characters/char1.jpg" alt="char1"/>
-      </label>
-      <input class="character-radio" type="radio" name="character" id="char2" value="char2">
-      <label class="label label--character" for="char2">
-        <img class="character-photo" id="char0" width="250" height="250" src="./assets/characters/char2.jpg" alt="char2"/>
-      </label>
-      <input class="character-radio" type="radio" name="character" id="char3" value="char3">
-      <label class="label label--character" for="char3">
-        <img class="character-photo" id="char0" width="250" height="250" src="./assets/characters/char3.jpg" alt="char3"/>
-      </label>
-      <input class="character-radio" type="radio" name="character" id="char4" value="char4">
-      <label class="label label--character" for="char4">
-        <img class="character-photo" id="char0" width="250" height="250" src="./assets/characters/char4.jpg" alt="char4"/>
-      </label>
-      <input class="character-radio" type="radio" name="character" id="char5" value="char5">
-      <label class="label label--character" for="char5">
-        <img class="character-photo" id="char0" width="250" height="250" src="./assets/characters/char5.jpg" alt="char5"/>
-      </label>
-      <input class="character-radio" type="radio" name="character" id="char6" value="char6">
-      <label class="label label--character" for="char6">
-        <img class="character-photo" id="char0" width="250" height="250" src="./assets/characters/char6.jpg" alt="char6"/>
-      </label>
+      <div class="character-option" id="nimitz">
+        <label class="label label--character" for="nimitz">
+          <div class="img-container">
+            <img class="character-photo" width="250" height="250" src="./assets/characters/nimitz.jpg" alt="nimitz"/>
+          </div>
+          <p class="character-name">Nimitz</p>
+        </label>
+      </div>
+      <div class="character-option" id="yamato">
+        <label class="label label--character" for="yamato">
+          <div class="img-container">
+            <img class="character-photo" width="250" height="250" src="./assets/characters/yamato.jpg" alt="yamato"/>
+          </div>
+          <p class="character-name">Yamato</p>
+        </label>
+      </div>
+      <div class="character-option" id="olafsson">
+        <label class="label label--character" for="olafsson">
+          <div class="img-container">
+            <img class="character-photo" width="250" height="250" src="./assets/characters/olafsson.jpg" alt="olafsson"/>
+          </div>
+          <p class="character-name">Olafsson</p>
+        </label>
+      </div>
+      <div class="character-option" id="violeta">
+        <label class="label label--character" for="violeta">
+          <div class="img-container">
+            <img class="character-photo" width="250" height="250" src="./assets/characters/violeta.jpg" alt="violeta"/>
+          </div>
+          <p class="character-name">Violeta</p>
+        </label>
+      </div>
+      <div class="character-option" id="rackham">
+        <label class="label label--character" for="rackham">
+          <div class="img-container">
+            <img class="character-photo" width="250" height="250" src="./assets/characters/rackham.jpg" alt="rackham"/>
+          </div>
+          <p class="character-name">Rackham</p>
+        </label>
+      </div>
+      <div class="character-option" id="noronha">
+        <label class="label label--character" for="noronha">
+          <div class="img-container">
+            <img class="character-photo" width="250" height="250" src="./assets/characters/noronha.jpg" alt="noronha"/>
+          </div>
+          <p class="character-name">Noronha</p>
+        </label>
+      </div>
     </div>
 
     <div class="ready-wrapper">
       <div class="opponents">
         <div class="opponents__player opponents__player--selected" id="player-preview">
-          <img class="opponents__img" id="player-photo" width="80" height="80" src="./assets/characters/unknown.jpg" alt="question mark inside square">
+          <img class="opponents__img animate" id="player-photo" width="80" height="80" src="./assets/characters/unknown.jpg" alt="question mark inside square">
           <div class="opponents__info">
             <p class="opponents__name" id="player-name">???</p>
             <p class="opponents__type">Player</p>
           </div>
         </div>
         <div class="opponents__player" id="cpu-preview">
-          <img class="opponents__img" id="cpu-photo" width="80" height="80" src="./assets/characters/unknown.jpg" alt="question mark inside square">
+          <img class="opponents__img animate" id="cpu-photo" width="80" height="80" src="./assets/characters/unknown.jpg" alt="question mark inside square">
           <div class="opponents__info">
             <p class="opponents__name" id="cpu-name">???</p>
             <p class="opponents__type">CPU</p>
           </div>
         </div>
       </div>
-      <button class="main-button" id="place-ships" disabled>Place Ships</button>
+      <button class="main-button" id="place-ships" disabled><span>Place Ships</span></button>
     </div>
   </div>
 </body>

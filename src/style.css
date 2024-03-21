@@ -7,7 +7,7 @@
   --color-800: #202040;
   --color-750: #2A2A51;
   --color-500: #0038FF;
-  --color-600: #A32F80;
+  --color-600: #AF40FF;
   --color-100: #cdcdcd;
 
   --color-player: #0038FF;
@@ -51,14 +51,41 @@ button {
 }
 
 .main-button {
-  padding: 1rem 2.4rem 1rem 1.6rem;
+  border: 0;
+  border-radius: 8px;
+  padding: 1.1rem 0.8rem;
   font-family: var(--main-ff);
   font-size: var(--fs-600);
-  border-style: none;
   color: var(--color-100);
-  background-color: var(--color-600);
-  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%,#00DDEB);
+  box-shadow: rgba(64, 40, 196, 0.2) 0 15px 30px -5px;
+  /* user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation; */
 }
+
+.main-button:active,
+.main-button:hover {
+  box-shadow: rgba(151, 65, 252, 0.5) 0 15px 30px -5px;
+}
+
+.main-button span {
+  background-color: rgb(5, 6, 45);
+  padding: 1rem 1.6rem;
+  border-radius: 6px;
+  transition: all 100ms ease-in-out;
+}
+
+.main-button:hover span {
+  background: none;
+}
+
+/* @media (min-width: 768px) {
+  .main-button {
+    font-size: 24px;
+    min-width: 196px;
+  }
+} */
 
 button:disabled {
   opacity: 0.3;

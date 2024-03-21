@@ -1,9 +1,9 @@
-import char1 from './assets/characters/char1.jpg'
-import char2 from './assets/characters/char2.jpg'
-import char3 from './assets/characters/char3.jpg'
-import char4 from './assets/characters/char4.jpg'
-import char5 from './assets/characters/char5.jpg'
-import char6 from './assets/characters/char6.jpg'
+import nimitz from './assets/characters/nimitz.jpg'
+import yamato from './assets/characters/yamato.jpg'
+import olafsson from './assets/characters/olafsson.jpg'
+import violeta from './assets/characters/violeta.jpg'
+import rackham from './assets/characters/rackham.jpg'
+import noronha from './assets/characters/noronha.jpg'
 
 class Char {
   constructor(name, src, color, colorAlpha) {
@@ -15,10 +15,10 @@ class Char {
 }
 
 export const charObjects = {
-  char1: new Char('yamato', char1, 'rgb(255, 53, 54)', 'rgba(255, 53, 54, 0.5)'),
-  char2: new Char('olafsson', char2, 'rgb(58, 113, 203)', 'rgba(58, 113, 203, 0.5)'),
-  char3: new Char('violeta', char3, 'rgb(143, 202, 94)', 'rgba(143, 202, 94, 0.5)'),
-  char4: new Char('rackham', char4, 'rgb(244, 195, 67)', 'rgba(244, 195, 67, 0.5)'),
-  char5: new Char('nimitz', char5, 'rgb(255, 53, 54)', 'rgba(255, 53, 54, 0.5)'),
-  char6: new Char('noronha', char6, 'rgb(143, 202, 94)', 'rgba(143, 202, 94, 0.5)'),
+  nimitz: new Char('nimitz', nimitz, 'rgb(255, 53, 54)', 'rgba(255, 53, 54, 0.5)'),
+  yamato: new Char('yamato', yamato, 'rgb(58, 113, 203)', 'rgba(58, 113, 203, 0.5)'),
+  olafsson: new Char('olafsson', olafsson, 'rgb(143, 202, 94)', 'rgba(143, 202, 94, 0.5)'),
+  violeta: new Char('violeta', violeta, 'rgb(244, 195, 67)', 'rgba(244, 195, 67, 0.5)'),
+  rackham: new Char('rackham', rackham, 'rgb(255, 53, 54)', 'rgba(255, 53, 54, 0.5)'),
+  noronha: new Char('noronha', noronha, 'rgb(143, 202, 94)', 'rgba(143, 202, 94, 0.5)'),
 }

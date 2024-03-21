@@ -13,7 +13,7 @@ class MainMenu {
   static nameInput = document.querySelector('#name-input');
   static langOptions = document.querySelectorAll('.language-radio');
   static audioOptions = document.querySelectorAll('.audio-radio');
-  static charOptions = document.querySelectorAll('.character-radio');
+  static charOptions = document.querySelectorAll('.character-option');
   static placeShipsBtn = document.querySelector('#place-ships');
   static charSelectionWrapper = document.querySelector('.character-selection-wrapper');
   static playerPreview = document.querySelector('#player-preview');
@@ -75,16 +75,16 @@ class MainMenu {
     MainMenu.audio = input.value;
   }
 
-  static handleCharSelection(input) {
+  static handleCharSelection(selectedChar) {
     MainMenu.resetCharSelection();
-    input.classList.add('char-selected');
-    input.classList.add(`char-selected--${MainMenu.isSelecting}`);
+    selectedChar.classList.add('char-selected');
+    selectedChar.classList.add(`char-selected--${MainMenu.isSelecting}`);
     MainMenu.opponents.forEach(opponent => {
       opponent.classList.remove('opponents__player--selected');
     });
 
     if (MainMenu.isSelecting === 'player') {
-      MainMenu.associateCharToPlayer(input);
+      MainMenu.associateCharToPlayer(selectedChar);
       if (MainMenu.isEditing) {
         MainMenu.deactivatePlayerSelection();
       } else {
@@ -95,13 +95,13 @@ class MainMenu {
     }
     
     if (MainMenu.isSelecting === 'cpu') {
-      MainMenu.associateCharToCpu(input);
+      MainMenu.associateCharToCpu(selectedChar);
       MainMenu.deactivatePlayerSelection();
     }
   }
 
   static playerSelection = function(e) {
-    MainMenu.handleCharSelection(e.target);
+    MainMenu.handleCharSelection(e.currentTarget);
   }
 
   static playerEditing(e) {
@@ -118,11 +118,13 @@ class MainMenu {
     e.currentTarget.classList.add('opponents__player--selected');
 
     if (MainMenu.isEditing) {
-      MainMenu.restoreCharSelection(opponent);
+      MainMenu.restoreCharSelection();
     } else {
       MainMenu.isEditing = true;
       MainMenu.enableCharacterEditing();
     }
+
+    MainMenu.hideChosenCharacter();
   }
 
   static enableCharacterEditing() {
@@ -135,6 +137,7 @@ class MainMenu {
   static deactivatePlayerSelection() {
     MainMenu.charOptions.forEach(option => {
       option.removeEventListener('click', MainMenu.playerSelection);
+      option.classList.remove('chosen');
     });
 
     MainMenu.opponents.forEach(opponent => {
@@ -156,26 +159,36 @@ class MainMenu {
     });
   }
 
-  static associateCharToPlayer(input) {
-    MainMenu.playerChar = input.value;
-    MainMenu.playerPhoto.src = charObjects[input.value].src;
-    MainMenu.playerPhoto.alt = charObjects[input.value].name;
+  static associateCharToPlayer(selectedChar) {
+    MainMenu.playerChar = selectedChar.id;
+    MainMenu.playerPhoto.src = charObjects[selectedChar.id].src;
+    MainMenu.playerPhoto.alt = charObjects[selectedChar.id].name;
+    MainMenu.playerPhoto.classList.remove('animate');
+    setTimeout(() => MainMenu.playerPhoto.classList.add('animate'));
     sessionStorage.setItem('player-char', MainMenu.playerChar);
   }
 
-  static associateCharToCpu(input) {
-    MainMenu.cpuChar = input.value;
-    MainMenu.cpuName.textContent = charObjects[input.value].name;
-    MainMenu.cpuPhoto.src = charObjects[input.value].src;
-    MainMenu.cpuPhoto.alt = charObjects[input.value].name;
+  static associateCharToCpu(selectedChar) {
+    MainMenu.cpuChar = selectedChar.id;
+    MainMenu.cpuName.textContent = charObjects[selectedChar.id].name;
+    MainMenu.cpuPhoto.src = charObjects[selectedChar.id].src;
+    MainMenu.cpuPhoto.alt = charObjects[selectedChar.id].name;
+    MainMenu.cpuPhoto.classList.remove('animate');
+    setTimeout(() => MainMenu.cpuPhoto.classList.add('animate'));
     sessionStorage.setItem('cpu-char', MainMenu.cpuChar);
   }
 
-  static restoreCharSelection(opponent) {
+  static restoreCharSelection() {
     const wasSelecting = MainMenu.isSelecting === 'player' ? 'cpu' : 'player';
     const selectedChar = document.getElementById(sessionStorage.getItem(`${wasSelecting}-char`));
     selectedChar.classList.add('char-selected');
     selectedChar.classList.add(`char-selected--${wasSelecting}`);
+    MainMenu.charOptions.forEach(option => option.classList.remove('chosen'));
+  }
+
+  static hideChosenCharacter() {
+    const chosenCharacter = document.querySelector('.char-selected');
+    chosenCharacter.classList.add('chosen');
   }
 
   static init() {
