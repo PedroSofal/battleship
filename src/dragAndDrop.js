@@ -12,18 +12,21 @@ export default class DragAndDrop {
   static shipsPlaced = 0;
 
   static setEventListeners() {
-    window.addEventListener('keypress', function handleWheelScroll(e) {
-      if (e.key === 'x') {
-        DragAndDrop.axis = 'row';
-      }
-
-      if (e.key === 'z') {
-        DragAndDrop.axis = 'col';
-      }
-    });
-
+    window.addEventListener('keypress', (e) => DragAndDrop.changeAxis(e));
     DragAndDrop.addFleetEventListeners();
     DragAndDrop.addBoardEventListeners();
+  }
+
+  static changeAxis(e) {
+    if (e.key === 'x') {
+      DragAndDrop.axis = 'row';
+      DragAndDrop.board.setAttribute('data-activeAxis', 'x');
+    }
+
+    if (e.key === 'z') {
+      DragAndDrop.axis = 'col';
+      DragAndDrop.board.setAttribute('data-activeAxis', 'y');
+    }
   }
 
   static gridFromHtmlSquares(squares) {

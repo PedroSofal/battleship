@@ -146,6 +146,40 @@ button:disabled {
   overflow: visible;
 }
 
+#strategy-board .square:not(.occupied) {
+  position: relative;
+}
+
+#strategy-board .square:not(.occupied)::after {
+  content: '~~';
+  color: var(--color-player-alpha);
+  font-family: var(--sec-ff);
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 25%;
+  left: -25%;
+  position: absolute;
+}
+
+#strategy-board[data-activeAxis=x] .square:not(.occupied)::after {
+  animation: x-axis 700ms infinite steps(3);
+}
+
+@keyframes x-axis {
+  from { transform: translateX(0%); }
+  to { transform: translateX(100%); }
+}
+
+#strategy-board[data-activeAxis=y] .square:not(.occupied)::after {
+  animation: y-axis 600ms infinite steps(3);
+}
+
+@keyframes y-axis {
+  from { transform: rotateZ(90deg) translateX(0%); }
+  to { transform: rotateZ(90deg) translateX(100%); }
+}
+
 .occupied {
   background-color: blue;
 }
@@ -201,6 +235,10 @@ button:disabled {
   animation: sweep 5s infinite linear;
 }
 
+@keyframes sweep {
+  to { transform: rotateZ(360deg); }
+}
+
 .cpu-board .ship__icon {
   visibility: hidden;
 }
@@ -233,10 +271,6 @@ button:disabled {
 
 .ship__icon#destroyer {
   width: 100px;
-}
-
-@keyframes sweep {
-  to { transform: rotateZ(360deg); }
 }
 
 .gameboard-display {
