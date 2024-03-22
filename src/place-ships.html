@@ -45,19 +45,23 @@
       </div>
     </div>
 
-    <div class="wrapper wrapper--character">
-      <img class="character" id="character" width="300px" src="./assets/characters/unknown.jpg" alt="question mark inside square">
+    <div class="wrapper wrapper--character-name">
+      <p class="character-name" id="character-name">???</p>
     </div>
 
-    <div class="wrapper wrapper--sayings">
-      <p class="sayings" id="quotes">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente exercitationem nihil aperiam.</p>
+    <div class="wrapper wrapper--character-photo">
+      <img class="character-photo" id="character-photo" width="300px" src="./assets/characters/unknown.jpg" alt="question mark inside square">
+    </div>
+
+    <div class="wrapper wrapper--character-quotes">
+      <p class="character-quotes" id="character-quotes">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente exercitationem nihil aperiam.</p>
     </div>
 
     <div class="wrapper wrapper--footer">
-      <p class="instructions">Change the axis with <span>Z</span> and <span>X</span></p>
+      <p class="instructions">Change the axis with <button id="y-axis-button">Z</button> and <button id="x-axis-button">X</button></p>
       <div>
         <button class="secondary-button" id="resetFormation">Reset</button>
-        <button class="main-button" id="confirmFormation"><span>Confirm</span></button>
+        <button class="main-button" id="confirmFormation" disabled><span>Confirm</span></button>
       </div>
     </div>
   </div>

@@ -12,18 +12,18 @@ export default class DragAndDrop {
   static shipsPlaced = 0;
 
   static setEventListeners() {
-    window.addEventListener('keypress', (e) => DragAndDrop.changeAxis(e));
+    window.addEventListener('keypress', (e) => DragAndDrop.changeAxis(e.key));
     DragAndDrop.addFleetEventListeners();
     DragAndDrop.addBoardEventListeners();
   }
 
-  static changeAxis(e) {
-    if (e.key === 'x') {
+  static changeAxis(key) {
+    if (key === 'x') {
       DragAndDrop.axis = 'row';
       DragAndDrop.board.setAttribute('data-activeAxis', 'x');
     }
 
-    if (e.key === 'z') {
+    if (key === 'z') {
       DragAndDrop.axis = 'col';
       DragAndDrop.board.setAttribute('data-activeAxis', 'y');
     }
@@ -106,7 +106,7 @@ export default class DragAndDrop {
     if (e.currentTarget.classList.contains('placed')) {
       e.currentTarget.removeAttribute('draggable');
       e.currentTarget.addEventListener('mousedown', (e) => e.preventDefault());
-      PlaceShips.updatePlaceQuote(e.target.firstChild.id);
+      PlaceShips.updatePlacingQuote(e.target.firstChild.id);
     }
   }
 
@@ -132,6 +132,9 @@ export default class DragAndDrop {
       e.target.appendChild(draggingShip);
       
       DragAndDrop.shipsPlaced++;
+      if (DragAndDrop.shipsPlaced === DragAndDrop.fleet.children.length) {
+        PlaceShips.confirmBtn.disabled = false;
+      }
     }
 
     DOM.updateBoard(Game.players[0]);
