@@ -27,13 +27,31 @@
 }
 
 .messages-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 500px;
   gap: 1rem;
   justify-content: center;
   padding-top: 1rem;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition: all 200ms ease-in-out;
 }
 
-.wrapper--sayings {
+.messages-wrapper.entra {
+  visibility: visible;
+  transform: translate(0);
+}
+
+.wrapper--character {
+  transform: scaleX(0);
+  transition: all 200ms ease-in-out;
+}
+
+.wrapper--character {
+  transform: scale(1);
+}
+
+.wrapper--quotes {
   padding: 0.4rem;
   background-color: var(--color-900);
   border: 5px solid var(--color-800);
@@ -55,7 +73,7 @@
   opacity: 1;
 }
 
-.sayings {
+.quotes {
   font-family: var(--sec-ff);
   font-style: italic;
   font-size: var(--fs-400);

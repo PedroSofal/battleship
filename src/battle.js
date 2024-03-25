@@ -5,14 +5,13 @@ import Game from './gameControl.js';
 import { charObjects } from './characters.js';
 import Result from './result.js';
 import BattleLines from './quotes/battle-quotes.js';
+import Animation from './animations.js';
 
 export default class Battle {
   static root = document.querySelector(':root');
   static playerBoard = document.querySelector('#player-board');
   static cpuBoard = document.querySelector('#cpu-board');
   static radarLockFoes = document.querySelectorAll('.radar-lock-foe > path');
-  static quotes = document.querySelector('#quotes');
-  static character = document.querySelector('#character');
 
   static retrievePlayerShipsPositions() {
     const playerBackendBoard = Game.players[0].gameboard;
@@ -81,7 +80,7 @@ export default class Battle {
       DOM.showSunkenShips(Game.players[1]);
       DOM.updateBoard(Game.players[0]);
       DOM.updateBoard(Game.players[1]);
-      Battle.updateBattleQuote(attack, Game.players[1]);
+      Battle.updateBattleQuote(attack, Game.players[0], Game.players[1]);
       Game.nextPlayer();
       Battle.botPlays();
     }
@@ -100,9 +99,9 @@ export default class Battle {
         Battle.radarLockFoes.forEach(foe => foe.classList.remove('lightUp'));
         DOM.updateBoard(Game.players[0]);
         DOM.updateBoard(Game.players[1]);
-        Battle.updateBattleQuote(attack, Game.players[0]);
+        Battle.updateBattleQuote(attack, Game.players[1], Game.players[0]);
         Game.nextPlayer();
-      }, 1000);
+      }, 3500);
     }
   };
 
@@ -151,54 +150,47 @@ export default class Battle {
     });
   }
 
-  static updateBattleQuote(attack, enemy) {
-    if (Math.random() < 0.25) return;
-
+  static updateBattleQuote(attack, attacker, defender) {
     let quote;
-    let characterSrc;
     const result = attack.className;
     const ship = attack.content !== 'water' ? attack.content.name : null;
-
-    if (enemy.type === 'cpu') {
-      characterSrc = Game.players[0].char.src;
-      const char = Game.players[0].char.name;
-      const enemy = Game.players[1].char.name;
-
-      switch(result) {
-        case 'miss':
-        case 'close':
-          quote = BattleLines.getOurMissQuote(char, enemy);
-          break;
-        case 'hit':
-          quote = BattleLines.getOurHitQuote(char, ship, enemy);
-          break;
-        case 'sunk':
-          quote = BattleLines.getOurSinkQuote(char, ship, enemy);
-          break;
-      }
-    }
     
-    if (enemy.type === 'human') {
-      characterSrc = Game.players[1].char.src;
-      const char = Game.players[1].char.name;
-      const enemy = Game.players[0].char.name;
+    if (Math.random() < 0.5 && result !== 'sunk') return;
+    const sayer = Math.random() < 0.5 ? 'attacker' : 'defender';
 
+    if (sayer === 'attacker') {
       switch(result) {
         case 'miss':
         case 'close':
-          quote = BattleLines.getTheirMissQuote(char, enemy);
+          quote = BattleLines.getOurMissQuote(attacker.char.name, ship, defender.char.name);
           break;
         case 'hit':
-          quote = BattleLines.getTheirHitQuote(char, ship, enemy);
+          quote = BattleLines.getOurHitQuote(attacker.char.name, ship, defender.char.name);
           break;
         case 'sunk':
-          quote = BattleLines.getTheirSinkQuote(char, ship, enemy);
+          quote = BattleLines.getOurSinkQuote(attacker.char.name, ship, defender.char.name);
           break;
       }
+
+      Animation.displayReaction(quote, attacker.char.src);
     }
 
-    Battle.quotes.textContent = quote;
-    Battle.character.src = characterSrc;
+    if (sayer === 'defender') {
+      switch(result) {
+        case 'miss':
+        case 'close':
+          quote = BattleLines.getTheirMissQuote(defender.char.name, ship, attacker.char.name);
+          break;
+        case 'hit':
+          quote = BattleLines.getTheirHitQuote(defender.char.name, ship, attacker.char.name);
+          break;
+        case 'sunk':
+          quote = BattleLines.getTheirSinkQuote(defender.char.name, ship, attacker.char.name);
+          break;
+      }
+
+      Animation.displayReaction(quote, defender.char.src);
+    }
   }
 
   static init() {
