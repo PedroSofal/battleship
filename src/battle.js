@@ -66,10 +66,9 @@ export default class Battle {
     const col = Array.from(e.target.parentNode.children).indexOf(e.target);
     const row = Array.from(e.target.parentNode.parentNode.children).indexOf(e.target.parentNode);
     Battle.playerPlays(row, col, e);
-    e.target.removeEventListener('click', Battle.handleClick);
   }
 
-  static playerPlays(row, col) {
+  static playerPlays(row, col, e) {
     if (Game.gameOver()) {
       Battle.handleGameOver(Game.players[1]);
       return;
@@ -85,6 +84,7 @@ export default class Battle {
       Battle.callAnimation(attack.className, attackedSquare);
       Game.nextPlayer();
       Battle.botPlays();
+      e.target.removeEventListener('click', Battle.handleClick);
     }
   }
   
