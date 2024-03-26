@@ -65,7 +65,7 @@ export default class Battle {
   static handleClick = function(e) {
     const col = Array.from(e.target.parentNode.children).indexOf(e.target);
     const row = Array.from(e.target.parentNode.parentNode.children).indexOf(e.target.parentNode);
-    Battle.playerPlays(row, col);
+    Battle.playerPlays(row, col, e);
     e.target.removeEventListener('click', Battle.handleClick);
   }
 
@@ -77,10 +77,12 @@ export default class Battle {
     
     if (Game.turn === 0) {
       const attack = Game.players[0].attack(row, col, Game.players[1]);
+      const attackedSquare = Battle.querySquareByCoords(Battle.cpuBoard, attack.coords);
       DOM.showSunkenShips(Game.players[1]);
       DOM.updateBoard(Game.players[0]);
       DOM.updateBoard(Game.players[1]);
       Battle.updateBattleQuote(attack, Game.players[0], Game.players[1]);
+      Battle.callAnimation(attack.className, attackedSquare);
       Game.nextPlayer();
       Battle.botPlays();
     }
@@ -94,16 +96,33 @@ export default class Battle {
 
     if (Game.turn === 1) {
       const attack = Game.players[1].attack(Game.players[0]);
+      const attackedSquare = Battle.querySquareByCoords(Battle.playerBoard, attack.coords);
       Battle.radarLockWarning(attack.className);
       setTimeout(() => {
         Battle.radarLockFoes.forEach(foe => foe.classList.remove('lightUp'));
         DOM.updateBoard(Game.players[0]);
         DOM.updateBoard(Game.players[1]);
         Battle.updateBattleQuote(attack, Game.players[1], Game.players[0]);
+        Battle.callAnimation(attack.className, attackedSquare);
         Game.nextPlayer();
       }, 3500);
     }
-  };
+  }
+
+  static callAnimation(attack, attackedSquare) {
+    if (attack === 'miss' || attack === 'close') {
+      Animation.displaySplash(attackedSquare);
+    } else {
+      Animation.displayExplosion(attackedSquare);
+    }
+  }
+
+  static querySquareByCoords(board, coords) {
+    const grid = Battle.gridFromHtmlSquares([board]);
+    const row = coords[0];
+    const col = coords[1];
+    return grid[0][row].htmlElement.children[col];
+  }
 
   static radarLockWarning(attack) {
     const randomFoe = Math.floor(Math.random() * Battle.radarLockFoes.length);
