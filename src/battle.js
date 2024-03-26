@@ -12,6 +12,7 @@ export default class Battle {
   static playerBoard = document.querySelector('#player-board');
   static cpuBoard = document.querySelector('#cpu-board');
   static radarLockFoes = document.querySelectorAll('.radar-lock-foe > path');
+  static countermeasureIndicator = document.querySelector('#countermeasure');
 
   static retrievePlayerShipsPositions() {
     const playerBackendBoard = Game.players[0].gameboard;
@@ -80,11 +81,13 @@ export default class Battle {
       DOM.showSunkenShips(Game.players[1]);
       DOM.updateBoard(Game.players[0]);
       DOM.updateBoard(Game.players[1]);
-      Battle.updateBattleQuote(attack, Game.players[0], Game.players[1]);
       Battle.callAnimation(attack.className, attackedSquare);
       Game.nextPlayer();
       Battle.botPlays();
       e.target.removeEventListener('click', Battle.handleClick);
+      setTimeout(() => {
+        Battle.updateBattleQuote(attack, Game.players[0], Game.players[1]);
+      }, 300);
     }
   }
   
@@ -95,17 +98,22 @@ export default class Battle {
     }
 
     if (Game.turn === 1) {
-      const attack = Game.players[1].attack(Game.players[0]);
-      const attackedSquare = Battle.querySquareByCoords(Battle.playerBoard, attack.coords);
-      Battle.radarLockWarning(attack.className);
       setTimeout(() => {
-        Battle.radarLockFoes.forEach(foe => foe.classList.remove('lightUp'));
-        DOM.updateBoard(Game.players[0]);
-        DOM.updateBoard(Game.players[1]);
-        Battle.updateBattleQuote(attack, Game.players[1], Game.players[0]);
-        Battle.callAnimation(attack.className, attackedSquare);
-        Game.nextPlayer();
-      }, 3500);
+        const attack = Game.players[1].attack(Game.players[0]);
+        const attackedSquare = Battle.querySquareByCoords(Battle.playerBoard, attack.coords);
+        Battle.radarLockWarning(attack.className);
+        setTimeout(() => {
+          Battle.radarLockFoes.forEach(foe => foe.classList.remove('lightUp'));
+          Battle.countermeasureIndicator.classList.remove('lightUp');
+          DOM.updateBoard(Game.players[0]);
+          DOM.updateBoard(Game.players[1]);
+          Battle.callAnimation(attack.className, attackedSquare);
+          Game.nextPlayer();
+          setTimeout(() => {
+            Battle.updateBattleQuote(attack, Game.players[1], Game.players[0]);
+          }, 300);
+        }, 3500);
+      }, 400);
     }
   }
 
@@ -142,7 +150,9 @@ export default class Battle {
   }
 
   static launchCountermeasures() {
-    console.log('Launching countermeasures!')
+    setTimeout(() => {
+      Battle.countermeasureIndicator.classList.add('lightUp');
+    }, 300);
   }
 
   static gridFromHtmlSquares(squares) {
