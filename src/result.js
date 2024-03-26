@@ -22,22 +22,30 @@ export default class Result {
   static setEventListeners() {
     Result.seeBoards.addEventListener('click', () => {
       Result.modal.close();
+      Result.modal.classList.remove('dialog--open');
       Result.seeResult.classList.add('visible');
     });
     
     Result.playAgain.addEventListener('click', () => {
+      Result.modal.classList.remove('dialog--open');
       window.location.href = 'index.html';
     });
 
     Result.seeResult.addEventListener('click', () => {
       Result.modal.showModal();
+      Result.modal.classList.add('dialog--open');
       Result.seeResult.classList.remove('visible');
-    })
+    });
   }
 
   static init(winner) {
     Result.displayResult(winner);
     Result.setEventListeners();
     Result.modal.showModal();
+    Result.modal.classList.add('dialog--open');
   }
 }
+
+setTimeout(() => {
+  Result.init({type: 'human', char: {src: ''}})
+}, 500);

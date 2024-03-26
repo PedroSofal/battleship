@@ -116,27 +116,39 @@
   border: none;
   background: transparent;
   color: inherit;
+  opacity: 0;
+  transform: translateY(50%);
+  transition: all 500ms ease-in-out;
+}
+
+.dialog--open {
+  opacity: 1;
+  transform: translate(0);
 }
 
 .dialog::backdrop {
   background-color: var(--color-900);
-  background-image: url(./assets/backgrounds/menu-background.jpg);
-  opacity: 0.6;
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+}
+
+.dialog--open::backdrop {
+  opacity: 0.8;
 }
 
 .result-wrapper {
   display: grid;
   grid-template-rows: 130px 240px 130px;
-  grid-template-columns: 240px 600px;
+  grid-template-columns: 240px 1fr;
   gap: 1rem;
 }
 
 .result-wrapper[data-result="win"] {
-  grid-template-columns: 240px 600px;
+  grid-template-columns: 240px 1fr;
 }
 
 .result-wrapper[data-result="lose"] {
-  grid-template-columns: 840px;
+  grid-template-columns: 1fr;
   column-gap: 0;
 }
 
@@ -163,9 +175,12 @@
   flex-direction: column;
   height: 100%;
   padding: 1.4rem;
+  background-color: var(--color-900);
+  border: 5px solid var(--color-800);
 }
 
 .dialog .sayings {
+  font-family: var(--sec-ff);
   font-size: var(--fs-600);
   max-width: 50ch;
 }

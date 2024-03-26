@@ -99,6 +99,10 @@ button:disabled {
   color: var(--color-100);
 }
 
+.secondary-button:focus-visible {
+  outline-style: none;
+}
+
 .wrapper {
   background-color: var(--color-800);
 }
