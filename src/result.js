@@ -45,7 +45,3 @@ export default class Result {
     Result.modal.classList.add('dialog--open');
   }
 }
-
-setTimeout(() => {
-  Result.init({type: 'human', char: {src: ''}})
-}, 500);

@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/getUrl.js */ \"./node_modules/css-loader/dist/runtime/getUrl.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);\n// Imports\n\n\n\nvar ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/backgrounds/menu-background.jpg */ \"./src/assets/backgrounds/menu-background.jpg\"), __webpack_require__.b);\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\nvar ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, `:root {\r\n  --main-ff: \"Press Start 2P\", system-ui;\r\n  --sec-ff: \"Roboto Mono\", monospace;\r\n\r\n  --color-900: #0C0C1C;\r\n  --color-850: #181836;\r\n  --color-800: #202040;\r\n  --color-750: #2A2A51;\r\n  --color-500: #0038FF;\r\n  --color-600: #AF40FF;\r\n  --color-100: #cdcdcd;\r\n\r\n  --color-player: #0038FF;\r\n  --color-player-alpha: rgba(255, 0, 32, 0.5);\r\n  --color-cpu: #ff0020;\r\n\r\n  --fs-300: 0.7rem;\r\n  --fs-400: 0.8rem;\r\n  --fs-500: 0.95rem;\r\n  --fs-600: 1.1rem;\r\n  --fs-700: 1.4rem;\r\n  --fs-900: 4.2rem;\r\n\r\n  --icon-size: 2.2rem;\r\n}\r\n\r\nhtml {\r\n  font-family: var(--main-ff);\r\n  font-size: 20px;\r\n}\r\n\r\n*,\r\n*::before,\r\n*::after {\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  background-color: var(--color-900);\r\n  background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});\r\n\r\n  margin: 0;\r\n  color: var(--color-100);\r\n}\r\n\r\n/* BUTTONS ***********/\r\n\r\nbutton {\r\n  cursor: pointer;\r\n}\r\n\r\n.main-button {\r\n  border: 0;\r\n  border-radius: 8px;\r\n  padding: 1.1rem 0.8rem;\r\n  font-family: var(--main-ff);\r\n  font-size: var(--fs-600);\r\n  color: var(--color-100);\r\n  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%,#00DDEB);\r\n  box-shadow: rgba(64, 40, 196, 0.2) 0 15px 30px -5px;\r\n  /* user-select: none;\r\n  -webkit-user-select: none;\r\n  touch-action: manipulation; */\r\n}\r\n\r\n.main-button:active,\r\n.main-button:hover {\r\n  box-shadow: rgba(151, 65, 252, 0.5) 0 15px 30px -5px;\r\n}\r\n\r\n.main-button span {\r\n  background-color: rgb(5, 6, 45);\r\n  padding: 1rem 1.6rem;\r\n  border-radius: 6px;\r\n  transition: all 100ms ease-in-out;\r\n}\r\n\r\n.main-button:hover span {\r\n  background: none;\r\n}\r\n\r\n/* @media (min-width: 768px) {\r\n  .main-button {\r\n    font-size: 24px;\r\n    min-width: 196px;\r\n  }\r\n} */\r\n\r\nbutton:disabled {\r\n  opacity: 0.3;\r\n}\r\n\r\n.secondary-button {\r\n  font-family: var(--main-ff);\r\n  font-size: var(--fs-600);\r\n  border-style: none;\r\n  background-color: transparent;\r\n  color: var(--color-100);\r\n}\r\n\r\n.wrapper {\r\n  background-color: var(--color-800);\r\n}\r\n\r\n/* GAMEBOARDS ***********/\r\n\r\n.wrapper--board {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  gap: 0.6rem;\r\n  padding: 2rem 3rem;\r\n  border-top: 1.5rem solid var(--color-750);\r\n  border-right: 2rem solid var(--color-850);\r\n  border-left: 1rem solid var(--color-750);\r\n  border-bottom: 1.5rem solid var(--color-850);\r\n}\r\n\r\n.board {\r\n  display: grid;\r\n  grid-template-rows: repeat(10, 50px);\r\n}\r\n\r\n.row {\r\n  display: grid;\r\n  grid-template-columns: repeat(10, 50px);\r\n}\r\n\r\n.human-board {\r\n  background: radial-gradient(\r\n    var(--color-player-alpha),\r\n    transparent\r\n  );\r\n}\r\n\r\n.human-board .square {\r\n  outline: 1px solid var(--color-player);\r\n}\r\n\r\n.cpu-board .square {\r\n  outline: 1px solid var(--color-cpu);\r\n  cursor: crosshair;\r\n}\r\n\r\n.square {\r\n  overflow: visible;\r\n}\r\n\r\n#strategy-board .square:not(.occupied) {\r\n  position: relative;\r\n}\r\n\r\n#strategy-board .square:not(.occupied)::after {\r\n  content: '~~';\r\n  color: var(--color-player-alpha);\r\n  font-family: var(--sec-ff);\r\n  display: block;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 25%;\r\n  left: -25%;\r\n  position: absolute;\r\n}\r\n\r\n#strategy-board[data-activeAxis=x] .square:not(.occupied)::after {\r\n  animation: x-axis 700ms infinite steps(3);\r\n}\r\n\r\n@keyframes x-axis {\r\n  from { transform: translateX(0%); }\r\n  to { transform: translateX(100%); }\r\n}\r\n\r\n#strategy-board[data-activeAxis=y] .square:not(.occupied)::after {\r\n  animation: y-axis 600ms infinite steps(3);\r\n}\r\n\r\n@keyframes y-axis {\r\n  from { transform: rotateZ(90deg) translateX(0%); }\r\n  to { transform: rotateZ(90deg) translateX(100%); }\r\n}\r\n\r\n.occupied {\r\n  background-color: blue;\r\n}\r\n\r\n.close,\r\n.miss {\r\n  background-color: lightskyblue;\r\n}\r\n\r\n.sunk,\r\n.hit {\r\n  background-color: red;\r\n}\r\n\r\n.gameboard-name {\r\n  align-self: flex-start;\r\n  font-size: var(--fs-300);\r\n}\r\n\r\n.gameboard-display {\r\n  position: relative;\r\n  width: 100%;\r\n  height: 100%;\r\n  overflow: hidden;\r\n}\r\n\r\n.dashed-border {\r\n  stroke-width: 10;\r\n  stroke-dasharray: 250 250;\r\n  stroke-dashoffset: 130;\r\n}\r\n\r\n.wrapper--player-board .dashed-border {\r\n  stroke: var(--color-player);\r\n}\r\n\r\n.wrapper--cpu-board .dashed-border {\r\n  stroke: var(--color-cpu);\r\n}\r\n\r\n.gameboard-display__radar-signal {\r\n  position: absolute;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform-origin: 0 0;\r\n  background-image: linear-gradient(\r\n    to top right,\r\n    var(--color-player) 0%,\r\n    transparent 50%\r\n  );\r\n  animation: sweep 5s infinite linear;\r\n}\r\n\r\n@keyframes sweep {\r\n  to { transform: rotateZ(360deg); }\r\n}\r\n\r\n.cpu-board .ship__icon {\r\n  visibility: hidden;\r\n}\r\n\r\n.cpu-board .ship__icon.sunken {\r\n  visibility: visible;\r\n}\r\n\r\n.ship__icon {\r\n  height: 50px;\r\n  background-color: var(--color-player);\r\n  transform-origin: 25px 25px;\r\n}\r\n\r\n.ship__icon#carrier {\r\n  width: 250px;\r\n}\r\n\r\n.ship__icon#battleship {\r\n  width: 200px;\r\n}\r\n\r\n.ship__icon#cruiser {\r\n  width: 150px;\r\n}\r\n\r\n.ship__icon#submarine {\r\n  width: 150px;\r\n}\r\n\r\n.ship__icon#destroyer {\r\n  width: 100px;\r\n}\r\n\r\n.gameboard-display {\r\n  min-width: 500px;\r\n  min-height: 500px;\r\n  background-color: var(--color-900);\r\n}\r\n\r\n.gameboard-display > * {\r\n  position: absolute;\r\n}\r\n\r\n/* DRAG AND DROP ***********/\r\n\r\n.dragging {\r\n  opacity: 1;\r\n  cursor: grabbing;\r\n}\r\n\r\n.ship__drag--clone {\r\n  position: absolute;\r\n  left: -100%;\r\n}\r\n\r\n.rotated {\r\n  transform: rotate(90deg);\r\n}\r\n\r\n.dragover--allowed-placement {\r\n  background-color: #4CAF50;\r\n}\r\n\r\n.dragover--not-allowed-placement {\r\n  background-color: red;\r\n}\r\n\r\n/* HEADER ***********/\r\n\r\n.header {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  position: fixed;\r\n  width: 100%;\r\n  padding: 1rem;\r\n}\r\n\r\n.header__title {\r\n  font-size: var(--fs-500);\r\n}\r\n\r\n.header__options {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 1rem;\r\n}\r\n\r\n.header__button {\r\n  border-style: none;\r\n  background: transparent;\r\n}\r\n\r\n.header__icon {\r\n  height: 1.8rem;\r\n}`, \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://24-battleship/./src/style.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/getUrl.js */ \"./node_modules/css-loader/dist/runtime/getUrl.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);\n// Imports\n\n\n\nvar ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/backgrounds/menu-background.jpg */ \"./src/assets/backgrounds/menu-background.jpg\"), __webpack_require__.b);\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\nvar ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, `:root {\r\n  --main-ff: \"Press Start 2P\", system-ui;\r\n  --sec-ff: \"Roboto Mono\", monospace;\r\n\r\n  --color-900: #0C0C1C;\r\n  --color-850: #181836;\r\n  --color-800: #202040;\r\n  --color-750: #2A2A51;\r\n  --color-500: #0038FF;\r\n  --color-600: #AF40FF;\r\n  --color-100: #cdcdcd;\r\n\r\n  --color-player: #0038FF;\r\n  --color-player-alpha: rgba(255, 0, 32, 0.5);\r\n  --color-cpu: #ff0020;\r\n\r\n  --fs-300: 0.7rem;\r\n  --fs-400: 0.8rem;\r\n  --fs-500: 0.95rem;\r\n  --fs-600: 1.1rem;\r\n  --fs-700: 1.4rem;\r\n  --fs-900: 4.2rem;\r\n\r\n  --icon-size: 2.2rem;\r\n}\r\n\r\nhtml {\r\n  font-family: var(--main-ff);\r\n  font-size: 20px;\r\n}\r\n\r\n*,\r\n*::before,\r\n*::after {\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  background-color: var(--color-900);\r\n  background-image: url(${___CSS_LOADER_URL_REPLACEMENT_0___});\r\n\r\n  margin: 0;\r\n  color: var(--color-100);\r\n}\r\n\r\n/* BUTTONS ***********/\r\n\r\nbutton {\r\n  cursor: pointer;\r\n}\r\n\r\n.main-button {\r\n  border: 0;\r\n  border-radius: 8px;\r\n  padding: 1.1rem 0.8rem;\r\n  font-family: var(--main-ff);\r\n  font-size: var(--fs-600);\r\n  color: var(--color-100);\r\n  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%,#00DDEB);\r\n  box-shadow: rgba(64, 40, 196, 0.2) 0 15px 30px -5px;\r\n  /* user-select: none;\r\n  -webkit-user-select: none;\r\n  touch-action: manipulation; */\r\n}\r\n\r\n.main-button:active,\r\n.main-button:hover {\r\n  box-shadow: rgba(151, 65, 252, 0.5) 0 15px 30px -5px;\r\n}\r\n\r\n.main-button span {\r\n  background-color: rgb(5, 6, 45);\r\n  padding: 1rem 1.6rem;\r\n  border-radius: 6px;\r\n  transition: all 100ms ease-in-out;\r\n}\r\n\r\n.main-button:hover span {\r\n  background: none;\r\n}\r\n\r\n/* @media (min-width: 768px) {\r\n  .main-button {\r\n    font-size: 24px;\r\n    min-width: 196px;\r\n  }\r\n} */\r\n\r\nbutton:disabled {\r\n  opacity: 0.3;\r\n}\r\n\r\n.secondary-button {\r\n  font-family: var(--main-ff);\r\n  font-size: var(--fs-600);\r\n  border-style: none;\r\n  background-color: transparent;\r\n  color: var(--color-100);\r\n}\r\n\r\n.secondary-button:focus-visible {\r\n  outline-style: none;\r\n}\r\n\r\n.wrapper {\r\n  background-color: var(--color-800);\r\n}\r\n\r\n/* GAMEBOARDS ***********/\r\n\r\n.wrapper--board {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  gap: 0.6rem;\r\n  padding: 2rem 3rem;\r\n  border-top: 1.5rem solid var(--color-750);\r\n  border-right: 2rem solid var(--color-850);\r\n  border-left: 1rem solid var(--color-750);\r\n  border-bottom: 1.5rem solid var(--color-850);\r\n}\r\n\r\n.board {\r\n  display: grid;\r\n  grid-template-rows: repeat(10, 50px);\r\n}\r\n\r\n.row {\r\n  display: grid;\r\n  grid-template-columns: repeat(10, 50px);\r\n}\r\n\r\n.human-board {\r\n  background: radial-gradient(\r\n    var(--color-player-alpha),\r\n    transparent\r\n  );\r\n}\r\n\r\n.human-board .square {\r\n  outline: 1px solid var(--color-player);\r\n}\r\n\r\n.cpu-board .square {\r\n  outline: 1px solid var(--color-cpu);\r\n  cursor: crosshair;\r\n}\r\n\r\n.square {\r\n  overflow: visible;\r\n  background-repeat: no-repeat;\r\n  background-position: center;\r\n  background-size: 100% 100%;\r\n}\r\n\r\n#strategy-board .square:not(.occupied) {\r\n  position: relative;\r\n}\r\n\r\n#strategy-board .square:not(.occupied)::after {\r\n  content: '~~';\r\n  color: var(--color-player-alpha);\r\n  font-family: var(--sec-ff);\r\n  display: block;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 25%;\r\n  left: -25%;\r\n  position: absolute;\r\n}\r\n\r\n#strategy-board[data-activeAxis=x] .square:not(.occupied)::after {\r\n  animation: x-axis 700ms infinite steps(3);\r\n}\r\n\r\n@keyframes x-axis {\r\n  from { transform: translateX(0%); }\r\n  to { transform: translateX(100%); }\r\n}\r\n\r\n#strategy-board[data-activeAxis=y] .square:not(.occupied)::after {\r\n  animation: y-axis 600ms infinite steps(3);\r\n}\r\n\r\n@keyframes y-axis {\r\n  from { transform: rotateZ(90deg) translateX(0%); }\r\n  to { transform: rotateZ(90deg) translateX(100%); }\r\n}\r\n\r\n.occupied {\r\n  background-color: blue;\r\n}\r\n\r\n.close,\r\n.miss {\r\n  background-color: lightskyblue;\r\n}\r\n\r\n.sunk,\r\n.hit {\r\n  background-color: red;\r\n}\r\n\r\n.explosion {\r\n  position: absolute;\r\n  width: 50px;\r\n  height: 50px;\r\n  z-index: 1;\r\n}\r\n\r\n.gameboard-name {\r\n  align-self: flex-start;\r\n  font-size: var(--fs-300);\r\n}\r\n\r\n.gameboard-display {\r\n  position: relative;\r\n  width: 100%;\r\n  height: 100%;\r\n  overflow: hidden;\r\n}\r\n\r\n.dashed-border {\r\n  stroke-width: 10;\r\n  stroke-dasharray: 250 250;\r\n  stroke-dashoffset: 130;\r\n}\r\n\r\n.wrapper--player-board .dashed-border {\r\n  stroke: var(--color-player);\r\n}\r\n\r\n.wrapper--cpu-board .dashed-border {\r\n  stroke: var(--color-cpu);\r\n}\r\n\r\n.gameboard-display__radar-signal {\r\n  position: absolute;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform-origin: 0 0;\r\n  background-image: linear-gradient(\r\n    to top right,\r\n    var(--color-player) 0%,\r\n    transparent 50%\r\n  );\r\n  animation: sweep 5s infinite linear;\r\n}\r\n\r\n@keyframes sweep {\r\n  to { transform: rotateZ(360deg); }\r\n}\r\n\r\n#player-board .ship__icon,\r\n#cpu-board .ship__icon {\r\n  position: absolute;\r\n}\r\n\r\n.cpu-board .ship__icon {\r\n  visibility: hidden;\r\n}\r\n\r\n.cpu-board .ship__icon.sunken {\r\n  visibility: visible;\r\n}\r\n\r\n.ship__icon {\r\n  height: 50px;\r\n  background-color: var(--color-player);\r\n  transform-origin: 25px 25px;\r\n}\r\n\r\n.ship__icon#carrier {\r\n  width: 250px;\r\n}\r\n\r\n.ship__icon#battleship {\r\n  width: 200px;\r\n}\r\n\r\n.ship__icon#cruiser {\r\n  width: 150px;\r\n}\r\n\r\n.ship__icon#submarine {\r\n  width: 150px;\r\n}\r\n\r\n.ship__icon#destroyer {\r\n  width: 100px;\r\n}\r\n\r\n.gameboard-display {\r\n  min-width: 500px;\r\n  min-height: 500px;\r\n  background-color: var(--color-900);\r\n}\r\n\r\n.gameboard-display > * {\r\n  position: absolute;\r\n}\r\n\r\n/* DRAG AND DROP ***********/\r\n\r\n.dragging {\r\n  opacity: 1;\r\n  cursor: grabbing;\r\n}\r\n\r\n.ship__drag--clone {\r\n  position: absolute;\r\n  left: -100%;\r\n}\r\n\r\n.rotated {\r\n  transform: rotate(90deg);\r\n}\r\n\r\n.dragover--allowed-placement {\r\n  background-color: #4CAF50;\r\n}\r\n\r\n.dragover--not-allowed-placement {\r\n  background-color: red;\r\n}\r\n\r\n/* HEADER ***********/\r\n\r\n.header {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  position: fixed;\r\n  width: 100%;\r\n  padding: 1rem;\r\n}\r\n\r\n.header__title {\r\n  font-size: var(--fs-500);\r\n}\r\n\r\n.header__options {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 1rem;\r\n}\r\n\r\n.header__button {\r\n  border-style: none;\r\n  background: transparent;\r\n}\r\n\r\n.header__icon {\r\n  height: 1.8rem;\r\n}`, \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://24-battleship/./src/style.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -210,83 +210,323 @@ eval("module.exports = __webpack_require__.p + \"images/yamato.02bb21162b3fd092a
 
 /***/ }),
 
-/***/ "./src/assets/explosions/hit1.png":
-/*!****************************************!*\
-  !*** ./src/assets/explosions/hit1.png ***!
-  \****************************************/
+/***/ "./src/assets/explosions/splash1.png":
+/*!*******************************************!*\
+  !*** ./src/assets/explosions/splash1.png ***!
+  \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/hit1.d37f035ed28b675eea1c.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/hit1.png?");
+eval("module.exports = __webpack_require__.p + \"images/splash1.bad47b7fff4a612907a5.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash1.png?");
 
 /***/ }),
 
-/***/ "./src/assets/explosions/hit2.png":
-/*!****************************************!*\
-  !*** ./src/assets/explosions/hit2.png ***!
-  \****************************************/
+/***/ "./src/assets/explosions/splash10.png":
+/*!********************************************!*\
+  !*** ./src/assets/explosions/splash10.png ***!
+  \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/hit2.442539ed2c5d25a01582.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/hit2.png?");
+eval("module.exports = __webpack_require__.p + \"images/splash10.7970b0358a045044daae.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash10.png?");
 
 /***/ }),
 
-/***/ "./src/assets/explosions/hit3.png":
-/*!****************************************!*\
-  !*** ./src/assets/explosions/hit3.png ***!
-  \****************************************/
+/***/ "./src/assets/explosions/splash11.png":
+/*!********************************************!*\
+  !*** ./src/assets/explosions/splash11.png ***!
+  \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/hit3.a5e58d435cdc6f96f4d1.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/hit3.png?");
+eval("module.exports = __webpack_require__.p + \"images/splash11.3f5fb9dc168856837230.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash11.png?");
 
 /***/ }),
 
-/***/ "./src/assets/explosions/hit4.png":
-/*!****************************************!*\
-  !*** ./src/assets/explosions/hit4.png ***!
-  \****************************************/
+/***/ "./src/assets/explosions/splash12.png":
+/*!********************************************!*\
+  !*** ./src/assets/explosions/splash12.png ***!
+  \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/hit4.3787b2ec363ef0b0d03a.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/hit4.png?");
+eval("module.exports = __webpack_require__.p + \"images/splash12.e627ddc99ac7657cb3c6.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash12.png?");
 
 /***/ }),
 
-/***/ "./src/assets/explosions/hit5.png":
-/*!****************************************!*\
-  !*** ./src/assets/explosions/hit5.png ***!
-  \****************************************/
+/***/ "./src/assets/explosions/splash13.png":
+/*!********************************************!*\
+  !*** ./src/assets/explosions/splash13.png ***!
+  \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/hit5.b5a160f5afabd889db13.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/hit5.png?");
+eval("module.exports = __webpack_require__.p + \"images/splash13.67fd35cdc077bca23718.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash13.png?");
 
 /***/ }),
 
-/***/ "./src/assets/explosions/hit6.png":
-/*!****************************************!*\
-  !*** ./src/assets/explosions/hit6.png ***!
-  \****************************************/
+/***/ "./src/assets/explosions/splash14.png":
+/*!********************************************!*\
+  !*** ./src/assets/explosions/splash14.png ***!
+  \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/hit6.054d3d986e87fb4a0b12.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/hit6.png?");
+eval("module.exports = __webpack_require__.p + \"images/splash14.67e9adaa3cfd2b0685d6.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash14.png?");
 
 /***/ }),
 
-/***/ "./src/assets/explosions/hit7.png":
-/*!****************************************!*\
-  !*** ./src/assets/explosions/hit7.png ***!
-  \****************************************/
+/***/ "./src/assets/explosions/splash15.png":
+/*!********************************************!*\
+  !*** ./src/assets/explosions/splash15.png ***!
+  \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/hit7.5880ce5b1aeb2a32b778.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/hit7.png?");
+eval("module.exports = __webpack_require__.p + \"images/splash15.5cac329ef7c80e650a00.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash15.png?");
 
 /***/ }),
 
-/***/ "./src/assets/explosions/hit8.png":
-/*!****************************************!*\
-  !*** ./src/assets/explosions/hit8.png ***!
-  \****************************************/
+/***/ "./src/assets/explosions/splash16.png":
+/*!********************************************!*\
+  !*** ./src/assets/explosions/splash16.png ***!
+  \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/hit8.a482b333281c28c00427.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/hit8.png?");
+eval("module.exports = __webpack_require__.p + \"images/splash16.c4b63a61283d3601a602.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash16.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/splash2.png":
+/*!*******************************************!*\
+  !*** ./src/assets/explosions/splash2.png ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/splash2.fdb42138b21face1eaac.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash2.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/splash3.png":
+/*!*******************************************!*\
+  !*** ./src/assets/explosions/splash3.png ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/splash3.dfd254d7e93883492d3d.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash3.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/splash4.png":
+/*!*******************************************!*\
+  !*** ./src/assets/explosions/splash4.png ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/splash4.d14762227aa5b4962b0b.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash4.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/splash5.png":
+/*!*******************************************!*\
+  !*** ./src/assets/explosions/splash5.png ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/splash5.f30b0fc50b5f09ac6044.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash5.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/splash6.png":
+/*!*******************************************!*\
+  !*** ./src/assets/explosions/splash6.png ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/splash6.b44076dcf61e73c16aec.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash6.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/splash7.png":
+/*!*******************************************!*\
+  !*** ./src/assets/explosions/splash7.png ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/splash7.3d020a64bfe04ddc89aa.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash7.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/splash8.png":
+/*!*******************************************!*\
+  !*** ./src/assets/explosions/splash8.png ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/splash8.2616fb88f706d08821e7.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash8.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/splash9.png":
+/*!*******************************************!*\
+  !*** ./src/assets/explosions/splash9.png ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/splash9.57ab595b3f205f8f0d91.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash9.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion1.png":
+/*!*****************************************************!*\
+  !*** ./src/assets/explosions/square_explosion1.png ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion1.6add52f7275a152f78d7.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion1.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion10.png":
+/*!******************************************************!*\
+  !*** ./src/assets/explosions/square_explosion10.png ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion10.78ac793df964e5807e25.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion10.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion11.png":
+/*!******************************************************!*\
+  !*** ./src/assets/explosions/square_explosion11.png ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion11.16bc801737c0a21042ea.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion11.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion12.png":
+/*!******************************************************!*\
+  !*** ./src/assets/explosions/square_explosion12.png ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion12.65d31d49adede8709ea3.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion12.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion13.png":
+/*!******************************************************!*\
+  !*** ./src/assets/explosions/square_explosion13.png ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion13.a61b4bd1c85851189476.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion13.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion14.png":
+/*!******************************************************!*\
+  !*** ./src/assets/explosions/square_explosion14.png ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion14.c6700b437421795607fc.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion14.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion15.png":
+/*!******************************************************!*\
+  !*** ./src/assets/explosions/square_explosion15.png ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion15.33db3e8b13cd9f214ded.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion15.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion16.png":
+/*!******************************************************!*\
+  !*** ./src/assets/explosions/square_explosion16.png ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion16.59d4a123062a5d010bfb.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion16.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion2.png":
+/*!*****************************************************!*\
+  !*** ./src/assets/explosions/square_explosion2.png ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion2.b4f87d9adfe4e7728c7a.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion2.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion3.png":
+/*!*****************************************************!*\
+  !*** ./src/assets/explosions/square_explosion3.png ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion3.823100f2d198e4c28654.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion3.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion4.png":
+/*!*****************************************************!*\
+  !*** ./src/assets/explosions/square_explosion4.png ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion4.437c952fa2ad0619a68a.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion4.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion5.png":
+/*!*****************************************************!*\
+  !*** ./src/assets/explosions/square_explosion5.png ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion5.4b434521fbce857a5471.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion5.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion6.png":
+/*!*****************************************************!*\
+  !*** ./src/assets/explosions/square_explosion6.png ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion6.61861ec0537713f08d18.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion6.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion7.png":
+/*!*****************************************************!*\
+  !*** ./src/assets/explosions/square_explosion7.png ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion7.93c52a71c1a63acee698.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion7.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion8.png":
+/*!*****************************************************!*\
+  !*** ./src/assets/explosions/square_explosion8.png ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion8.e0f651cb0b5c9300a6df.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion8.png?");
+
+/***/ }),
+
+/***/ "./src/assets/explosions/square_explosion9.png":
+/*!*****************************************************!*\
+  !*** ./src/assets/explosions/square_explosion9.png ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"images/square_explosion9.8e56c4381877cd5a73e9.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion9.png?");
 
 /***/ }),
 
@@ -356,7 +596,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Animation)\n/* harmony export */ });\n/* harmony import */ var _assets_explosions_hit1_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/explosions/hit1.png */ \"./src/assets/explosions/hit1.png\");\n/* harmony import */ var _assets_explosions_hit2_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/explosions/hit2.png */ \"./src/assets/explosions/hit2.png\");\n/* harmony import */ var _assets_explosions_hit3_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/explosions/hit3.png */ \"./src/assets/explosions/hit3.png\");\n/* harmony import */ var _assets_explosions_hit4_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/explosions/hit4.png */ \"./src/assets/explosions/hit4.png\");\n/* harmony import */ var _assets_explosions_hit5_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/explosions/hit5.png */ \"./src/assets/explosions/hit5.png\");\n/* harmony import */ var _assets_explosions_hit6_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/explosions/hit6.png */ \"./src/assets/explosions/hit6.png\");\n/* harmony import */ var _assets_explosions_hit7_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/explosions/hit7.png */ \"./src/assets/explosions/hit7.png\");\n/* harmony import */ var _assets_explosions_hit8_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/explosions/hit8.png */ \"./src/assets/explosions/hit8.png\");\nfunction _typeof(o) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && \"function\" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? \"symbol\" : typeof o; }, _typeof(o); }\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, \"prototype\", { writable: false }); return Constructor; }\nfunction _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\nfunction _toPropertyKey(t) { var i = _toPrimitive(t, \"string\"); return \"symbol\" == _typeof(i) ? i : String(i); }\nfunction _toPrimitive(t, r) { if (\"object\" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || \"default\"); if (\"object\" != _typeof(i)) return i; throw new TypeError(\"@@toPrimitive must return a primitive value.\"); } return (\"string\" === r ? String : Number)(t); }\n\n\n\n\n\n\n\n\nvar Animation = /*#__PURE__*/function () {\n  function Animation() {\n    _classCallCheck(this, Animation);\n  }\n  _createClass(Animation, null, [{\n    key: \"displayQuote\",\n    value: function displayQuote(html, quote) {\n      var _this = this;\n      if (this.timer) {\n        clearTimeout(this.timer);\n      }\n      html.textContent = '';\n      var i = 0;\n      var displayNextChar = function displayNextChar() {\n        if (i < quote.length) {\n          html.textContent += quote[i];\n          i++;\n          _this.timer = setTimeout(displayNextChar, 15);\n        }\n      };\n      displayNextChar();\n    }\n  }, {\n    key: \"displayReaction\",\n    value: function displayReaction(quote, photo) {\n      var wrapper = document.querySelector('#reaction-wrapper');\n      var characterPhoto = document.querySelector('#character-photo');\n      var characterQuotes = document.querySelector('#character-quotes');\n      characterPhoto.src = photo;\n      wrapper.classList.add('entra');\n      characterPhoto.classList.add('entra');\n      Animation.displayQuote(characterQuotes, quote);\n      setTimeout(function () {\n        wrapper.classList.remove('entra');\n        characterPhoto.classList.remove('entra');\n      }, 3000);\n    }\n  }, {\n    key: \"displayExplosion\",\n    value: function displayExplosion(square) {\n      console.log(square);\n      var _loop = function _loop(i) {\n        setTimeout(function () {\n          square.backgroundImage = Animation.explosion[i];\n        }, 100 * i);\n      };\n      for (var i = 0; i < Animation.explosion.length; i++) {\n        _loop(i);\n      }\n    }\n  }]);\n  return Animation;\n}();\n_defineProperty(Animation, \"explosion\", [_assets_explosions_hit1_png__WEBPACK_IMPORTED_MODULE_0__, _assets_explosions_hit2_png__WEBPACK_IMPORTED_MODULE_1__, _assets_explosions_hit3_png__WEBPACK_IMPORTED_MODULE_2__, _assets_explosions_hit4_png__WEBPACK_IMPORTED_MODULE_3__, _assets_explosions_hit5_png__WEBPACK_IMPORTED_MODULE_4__, _assets_explosions_hit6_png__WEBPACK_IMPORTED_MODULE_5__, _assets_explosions_hit7_png__WEBPACK_IMPORTED_MODULE_6__, _assets_explosions_hit8_png__WEBPACK_IMPORTED_MODULE_7__]);\n\n\n//# sourceURL=webpack://24-battleship/./src/animations.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Animation)\n/* harmony export */ });\n/* harmony import */ var _assets_explosions_square_explosion1_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/explosions/square_explosion1.png */ \"./src/assets/explosions/square_explosion1.png\");\n/* harmony import */ var _assets_explosions_square_explosion2_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/explosions/square_explosion2.png */ \"./src/assets/explosions/square_explosion2.png\");\n/* harmony import */ var _assets_explosions_square_explosion3_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/explosions/square_explosion3.png */ \"./src/assets/explosions/square_explosion3.png\");\n/* harmony import */ var _assets_explosions_square_explosion4_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/explosions/square_explosion4.png */ \"./src/assets/explosions/square_explosion4.png\");\n/* harmony import */ var _assets_explosions_square_explosion5_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/explosions/square_explosion5.png */ \"./src/assets/explosions/square_explosion5.png\");\n/* harmony import */ var _assets_explosions_square_explosion6_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/explosions/square_explosion6.png */ \"./src/assets/explosions/square_explosion6.png\");\n/* harmony import */ var _assets_explosions_square_explosion7_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/explosions/square_explosion7.png */ \"./src/assets/explosions/square_explosion7.png\");\n/* harmony import */ var _assets_explosions_square_explosion8_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/explosions/square_explosion8.png */ \"./src/assets/explosions/square_explosion8.png\");\n/* harmony import */ var _assets_explosions_square_explosion9_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./assets/explosions/square_explosion9.png */ \"./src/assets/explosions/square_explosion9.png\");\n/* harmony import */ var _assets_explosions_square_explosion10_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./assets/explosions/square_explosion10.png */ \"./src/assets/explosions/square_explosion10.png\");\n/* harmony import */ var _assets_explosions_square_explosion11_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./assets/explosions/square_explosion11.png */ \"./src/assets/explosions/square_explosion11.png\");\n/* harmony import */ var _assets_explosions_square_explosion12_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./assets/explosions/square_explosion12.png */ \"./src/assets/explosions/square_explosion12.png\");\n/* harmony import */ var _assets_explosions_square_explosion13_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./assets/explosions/square_explosion13.png */ \"./src/assets/explosions/square_explosion13.png\");\n/* harmony import */ var _assets_explosions_square_explosion14_png__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./assets/explosions/square_explosion14.png */ \"./src/assets/explosions/square_explosion14.png\");\n/* harmony import */ var _assets_explosions_square_explosion15_png__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./assets/explosions/square_explosion15.png */ \"./src/assets/explosions/square_explosion15.png\");\n/* harmony import */ var _assets_explosions_square_explosion16_png__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./assets/explosions/square_explosion16.png */ \"./src/assets/explosions/square_explosion16.png\");\n/* harmony import */ var _assets_explosions_splash1_png__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./assets/explosions/splash1.png */ \"./src/assets/explosions/splash1.png\");\n/* harmony import */ var _assets_explosions_splash2_png__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./assets/explosions/splash2.png */ \"./src/assets/explosions/splash2.png\");\n/* harmony import */ var _assets_explosions_splash3_png__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./assets/explosions/splash3.png */ \"./src/assets/explosions/splash3.png\");\n/* harmony import */ var _assets_explosions_splash4_png__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./assets/explosions/splash4.png */ \"./src/assets/explosions/splash4.png\");\n/* harmony import */ var _assets_explosions_splash5_png__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./assets/explosions/splash5.png */ \"./src/assets/explosions/splash5.png\");\n/* harmony import */ var _assets_explosions_splash6_png__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./assets/explosions/splash6.png */ \"./src/assets/explosions/splash6.png\");\n/* harmony import */ var _assets_explosions_splash7_png__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./assets/explosions/splash7.png */ \"./src/assets/explosions/splash7.png\");\n/* harmony import */ var _assets_explosions_splash8_png__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./assets/explosions/splash8.png */ \"./src/assets/explosions/splash8.png\");\n/* harmony import */ var _assets_explosions_splash9_png__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./assets/explosions/splash9.png */ \"./src/assets/explosions/splash9.png\");\n/* harmony import */ var _assets_explosions_splash10_png__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./assets/explosions/splash10.png */ \"./src/assets/explosions/splash10.png\");\n/* harmony import */ var _assets_explosions_splash11_png__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./assets/explosions/splash11.png */ \"./src/assets/explosions/splash11.png\");\n/* harmony import */ var _assets_explosions_splash12_png__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./assets/explosions/splash12.png */ \"./src/assets/explosions/splash12.png\");\n/* harmony import */ var _assets_explosions_splash13_png__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./assets/explosions/splash13.png */ \"./src/assets/explosions/splash13.png\");\n/* harmony import */ var _assets_explosions_splash14_png__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./assets/explosions/splash14.png */ \"./src/assets/explosions/splash14.png\");\n/* harmony import */ var _assets_explosions_splash15_png__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./assets/explosions/splash15.png */ \"./src/assets/explosions/splash15.png\");\n/* harmony import */ var _assets_explosions_splash16_png__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./assets/explosions/splash16.png */ \"./src/assets/explosions/splash16.png\");\nfunction _typeof(o) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && \"function\" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? \"symbol\" : typeof o; }, _typeof(o); }\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, \"prototype\", { writable: false }); return Constructor; }\nfunction _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\nfunction _toPropertyKey(t) { var i = _toPrimitive(t, \"string\"); return \"symbol\" == _typeof(i) ? i : String(i); }\nfunction _toPrimitive(t, r) { if (\"object\" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || \"default\"); if (\"object\" != _typeof(i)) return i; throw new TypeError(\"@@toPrimitive must return a primitive value.\"); } return (\"string\" === r ? String : Number)(t); }\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar Animation = /*#__PURE__*/function () {\n  function Animation() {\n    _classCallCheck(this, Animation);\n  }\n  _createClass(Animation, null, [{\n    key: \"displayQuote\",\n    value: function displayQuote(html, quote) {\n      var _this = this;\n      if (this.timer) {\n        clearTimeout(this.timer);\n      }\n      html.textContent = '';\n      var i = 0;\n      var displayNextChar = function displayNextChar() {\n        if (i < quote.length) {\n          html.textContent += quote[i];\n          i++;\n          _this.timer = setTimeout(displayNextChar, 15);\n        }\n      };\n      displayNextChar();\n    }\n  }, {\n    key: \"displayReaction\",\n    value: function displayReaction(quote, photo) {\n      var wrapper = document.querySelector('#reaction-wrapper');\n      var characterPhoto = document.querySelector('#character-photo');\n      var characterQuotes = document.querySelector('#character-quotes');\n      characterPhoto.src = photo;\n      wrapper.classList.add('entra');\n      characterPhoto.classList.add('entra');\n      Animation.displayQuote(characterQuotes, quote);\n      setTimeout(function () {\n        wrapper.classList.remove('entra');\n        characterPhoto.classList.remove('entra');\n      }, 3000);\n    }\n  }, {\n    key: \"displayExplosion\",\n    value: function displayExplosion(square) {\n      var explosion = document.createElement('img');\n      explosion.classList = 'explosion';\n      square.appendChild(explosion);\n      var _loop = function _loop(i) {\n        setTimeout(function () {\n          explosion.src = \"\".concat(Animation.explosion[i]);\n        }, 50 * i);\n      };\n      for (var i = 0; i < Animation.explosion.length; i++) {\n        _loop(i);\n      }\n      setTimeout(function () {\n        square.removeChild(explosion);\n      }, 50 * Animation.explosion.length);\n    }\n  }, {\n    key: \"displaySplash\",\n    value: function displaySplash(square) {\n      var explosion = document.createElement('img');\n      explosion.classList = 'explosion';\n      square.appendChild(explosion);\n      var _loop2 = function _loop2(i) {\n        setTimeout(function () {\n          explosion.src = \"\".concat(Animation.splash[i]);\n        }, 50 * i);\n      };\n      for (var i = 0; i < Animation.splash.length; i++) {\n        _loop2(i);\n      }\n      setTimeout(function () {\n        square.removeChild(explosion);\n      }, 50 * Animation.splash.length);\n    }\n  }]);\n  return Animation;\n}();\n_defineProperty(Animation, \"explosion\", [_assets_explosions_square_explosion1_png__WEBPACK_IMPORTED_MODULE_0__, _assets_explosions_square_explosion2_png__WEBPACK_IMPORTED_MODULE_1__, _assets_explosions_square_explosion3_png__WEBPACK_IMPORTED_MODULE_2__, _assets_explosions_square_explosion4_png__WEBPACK_IMPORTED_MODULE_3__, _assets_explosions_square_explosion5_png__WEBPACK_IMPORTED_MODULE_4__, _assets_explosions_square_explosion6_png__WEBPACK_IMPORTED_MODULE_5__, _assets_explosions_square_explosion7_png__WEBPACK_IMPORTED_MODULE_6__, _assets_explosions_square_explosion8_png__WEBPACK_IMPORTED_MODULE_7__, _assets_explosions_square_explosion9_png__WEBPACK_IMPORTED_MODULE_8__, _assets_explosions_square_explosion10_png__WEBPACK_IMPORTED_MODULE_9__, _assets_explosions_square_explosion11_png__WEBPACK_IMPORTED_MODULE_10__, _assets_explosions_square_explosion12_png__WEBPACK_IMPORTED_MODULE_11__, _assets_explosions_square_explosion13_png__WEBPACK_IMPORTED_MODULE_12__, _assets_explosions_square_explosion14_png__WEBPACK_IMPORTED_MODULE_13__, _assets_explosions_square_explosion15_png__WEBPACK_IMPORTED_MODULE_14__, _assets_explosions_square_explosion16_png__WEBPACK_IMPORTED_MODULE_15__]);\n_defineProperty(Animation, \"splash\", [_assets_explosions_splash1_png__WEBPACK_IMPORTED_MODULE_16__, _assets_explosions_splash2_png__WEBPACK_IMPORTED_MODULE_17__, _assets_explosions_splash3_png__WEBPACK_IMPORTED_MODULE_18__, _assets_explosions_splash4_png__WEBPACK_IMPORTED_MODULE_19__, _assets_explosions_splash5_png__WEBPACK_IMPORTED_MODULE_20__, _assets_explosions_splash6_png__WEBPACK_IMPORTED_MODULE_21__, _assets_explosions_splash7_png__WEBPACK_IMPORTED_MODULE_22__, _assets_explosions_splash8_png__WEBPACK_IMPORTED_MODULE_23__, _assets_explosions_splash9_png__WEBPACK_IMPORTED_MODULE_24__, _assets_explosions_splash10_png__WEBPACK_IMPORTED_MODULE_25__, _assets_explosions_splash11_png__WEBPACK_IMPORTED_MODULE_26__, _assets_explosions_splash12_png__WEBPACK_IMPORTED_MODULE_27__, _assets_explosions_splash13_png__WEBPACK_IMPORTED_MODULE_28__, _assets_explosions_splash14_png__WEBPACK_IMPORTED_MODULE_29__, _assets_explosions_splash15_png__WEBPACK_IMPORTED_MODULE_30__, _assets_explosions_splash16_png__WEBPACK_IMPORTED_MODULE_31__]);\n\n\n//# sourceURL=webpack://24-battleship/./src/animations.js?");
 
 /***/ }),
 
