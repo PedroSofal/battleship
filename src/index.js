@@ -1,6 +1,7 @@
 import './style.css';
 import './main-menu.css';
 import { charObjects } from './characters.js';
+import GameAudio from './audio.js';
 
 class MainMenu {
   static lang = 'pt';
@@ -191,9 +192,15 @@ class MainMenu {
     chosenCharacter.classList.add('chosen');
   }
 
+  static playMainMenuMusic() {
+    GameAudio.play(GameAudio.mainMenu);
+    document.body.removeEventListener('click', MainMenu.playMainMenuMusic);
+  }
+
   static init() {
     sessionStorage.clear();
     MainMenu.setEventListeners();
+    document.body.addEventListener('click', MainMenu.playMainMenuMusic);
   }
 }
 

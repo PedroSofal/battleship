@@ -225,12 +225,18 @@ export default class Battle {
     }
   }
 
+  static playBattleMusic() {
+    GameAudio.queuePlaylist(GameAudio.battle);
+    document.body.removeEventListener('mousemove', Battle.playBattleMusic);
+  }
+
   static init() {
     Battle.retrievePlayerShipsPositions();
     Battle.setCpuShipsPositions();
     Battle.root.style.setProperty('--color-player', charObjects[sessionStorage.getItem('player-char')].color);
     Battle.root.style.setProperty('--color-player-alpha', charObjects[sessionStorage.getItem('player-char')].colorAlpha);
     Battle.root.style.setProperty('--color-cpu', charObjects[sessionStorage.getItem('cpu-char')].color);
+    document.body.addEventListener('mousemove', Battle.playBattleMusic);
   }
 }
 

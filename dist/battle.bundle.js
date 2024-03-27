@@ -140,43 +140,73 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
-/***/ "./src/assets/audio/hit1.ogg":
-/*!***********************************!*\
-  !*** ./src/assets/audio/hit1.ogg ***!
-  \***********************************/
+/***/ "./src/assets/audio/music/corsairs-studio-kolomna.mp3":
+/*!************************************************************!*\
+  !*** ./src/assets/audio/music/corsairs-studio-kolomna.mp3 ***!
+  \************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"assets/audio/hit1.ogg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/audio/hit1.ogg?");
+eval("module.exports = __webpack_require__.p + \"assets/audio/corsairs-studio-kolomna.mp3\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/audio/music/corsairs-studio-kolomna.mp3?");
 
 /***/ }),
 
-/***/ "./src/assets/audio/hit2.ogg":
-/*!***********************************!*\
-  !*** ./src/assets/audio/hit2.ogg ***!
-  \***********************************/
+/***/ "./src/assets/audio/music/dance-of-devils-giulio-fazio.mp3":
+/*!*****************************************************************!*\
+  !*** ./src/assets/audio/music/dance-of-devils-giulio-fazio.mp3 ***!
+  \*****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"assets/audio/hit2.ogg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/audio/hit2.ogg?");
+eval("module.exports = __webpack_require__.p + \"assets/audio/dance-of-devils-giulio-fazio.mp3\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/audio/music/dance-of-devils-giulio-fazio.mp3?");
 
 /***/ }),
 
-/***/ "./src/assets/audio/miss1.ogg":
-/*!************************************!*\
-  !*** ./src/assets/audio/miss1.ogg ***!
-  \************************************/
+/***/ "./src/assets/audio/music/no-time-to-die-hartzmann.mp3":
+/*!*************************************************************!*\
+  !*** ./src/assets/audio/music/no-time-to-die-hartzmann.mp3 ***!
+  \*************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"assets/audio/miss1.ogg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/audio/miss1.ogg?");
+eval("module.exports = __webpack_require__.p + \"assets/audio/no-time-to-die-hartzmann.mp3\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/audio/music/no-time-to-die-hartzmann.mp3?");
 
 /***/ }),
 
-/***/ "./src/assets/audio/miss2.ogg":
-/*!************************************!*\
-  !*** ./src/assets/audio/miss2.ogg ***!
-  \************************************/
+/***/ "./src/assets/audio/sfx/hit1.ogg":
+/*!***************************************!*\
+  !*** ./src/assets/audio/sfx/hit1.ogg ***!
+  \***************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"assets/audio/miss2.ogg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/audio/miss2.ogg?");
+eval("module.exports = __webpack_require__.p + \"assets/audio/hit1.ogg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/audio/sfx/hit1.ogg?");
+
+/***/ }),
+
+/***/ "./src/assets/audio/sfx/hit2.ogg":
+/*!***************************************!*\
+  !*** ./src/assets/audio/sfx/hit2.ogg ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"assets/audio/hit2.ogg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/audio/sfx/hit2.ogg?");
+
+/***/ }),
+
+/***/ "./src/assets/audio/sfx/miss1.ogg":
+/*!****************************************!*\
+  !*** ./src/assets/audio/sfx/miss1.ogg ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"assets/audio/miss1.ogg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/audio/sfx/miss1.ogg?");
+
+/***/ }),
+
+/***/ "./src/assets/audio/sfx/miss2.ogg":
+/*!****************************************!*\
+  !*** ./src/assets/audio/sfx/miss2.ogg ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"assets/audio/miss2.ogg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/audio/sfx/miss2.ogg?");
 
 /***/ }),
 
@@ -646,7 +676,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Audio)\n/* harmony export */ });\n/* harmony import */ var _assets_audio_miss1_ogg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/audio/miss1.ogg */ \"./src/assets/audio/miss1.ogg\");\n/* harmony import */ var _assets_audio_miss2_ogg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/audio/miss2.ogg */ \"./src/assets/audio/miss2.ogg\");\n/* harmony import */ var _assets_audio_hit1_ogg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/audio/hit1.ogg */ \"./src/assets/audio/hit1.ogg\");\n/* harmony import */ var _assets_audio_hit2_ogg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/audio/hit2.ogg */ \"./src/assets/audio/hit2.ogg\");\nfunction _typeof(o) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && \"function\" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? \"symbol\" : typeof o; }, _typeof(o); }\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, \"prototype\", { writable: false }); return Constructor; }\nfunction _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\nfunction _toPropertyKey(t) { var i = _toPrimitive(t, \"string\"); return \"symbol\" == _typeof(i) ? i : String(i); }\nfunction _toPrimitive(t, r) { if (\"object\" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || \"default\"); if (\"object\" != _typeof(i)) return i; throw new TypeError(\"@@toPrimitive must return a primitive value.\"); } return (\"string\" === r ? String : Number)(t); }\n\n\n\n\nvar Audio = /*#__PURE__*/function () {\n  function Audio() {\n    _classCallCheck(this, Audio);\n  }\n  _createClass(Audio, null, [{\n    key: \"play\",\n    value: function play(category) {\n      var random = Math.floor(Math.random() * category.length);\n      var audio = new Audio(category[random]);\n      audio.play();\n    }\n  }]);\n  return Audio;\n}();\n_defineProperty(Audio, \"miss\", [_assets_audio_miss1_ogg__WEBPACK_IMPORTED_MODULE_0__, _assets_audio_miss2_ogg__WEBPACK_IMPORTED_MODULE_1__]);\n_defineProperty(Audio, \"hit\", [_assets_audio_hit1_ogg__WEBPACK_IMPORTED_MODULE_2__, _assets_audio_hit2_ogg__WEBPACK_IMPORTED_MODULE_3__]);\n\n\n//# sourceURL=webpack://24-battleship/./src/audio.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ GameAudio)\n/* harmony export */ });\n/* harmony import */ var _assets_audio_sfx_miss1_ogg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/audio/sfx/miss1.ogg */ \"./src/assets/audio/sfx/miss1.ogg\");\n/* harmony import */ var _assets_audio_sfx_miss2_ogg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/audio/sfx/miss2.ogg */ \"./src/assets/audio/sfx/miss2.ogg\");\n/* harmony import */ var _assets_audio_sfx_hit1_ogg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/audio/sfx/hit1.ogg */ \"./src/assets/audio/sfx/hit1.ogg\");\n/* harmony import */ var _assets_audio_sfx_hit2_ogg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./assets/audio/sfx/hit2.ogg */ \"./src/assets/audio/sfx/hit2.ogg\");\n/* harmony import */ var _assets_audio_music_no_time_to_die_hartzmann_mp3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/audio/music/no-time-to-die-hartzmann.mp3 */ \"./src/assets/audio/music/no-time-to-die-hartzmann.mp3\");\n/* harmony import */ var _assets_audio_music_corsairs_studio_kolomna_mp3__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/audio/music/corsairs-studio-kolomna.mp3 */ \"./src/assets/audio/music/corsairs-studio-kolomna.mp3\");\n/* harmony import */ var _assets_audio_music_dance_of_devils_giulio_fazio_mp3__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/audio/music/dance-of-devils-giulio-fazio.mp3 */ \"./src/assets/audio/music/dance-of-devils-giulio-fazio.mp3\");\nfunction _typeof(o) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && \"function\" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? \"symbol\" : typeof o; }, _typeof(o); }\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, \"prototype\", { writable: false }); return Constructor; }\nfunction _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\nfunction _toPropertyKey(t) { var i = _toPrimitive(t, \"string\"); return \"symbol\" == _typeof(i) ? i : String(i); }\nfunction _toPrimitive(t, r) { if (\"object\" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || \"default\"); if (\"object\" != _typeof(i)) return i; throw new TypeError(\"@@toPrimitive must return a primitive value.\"); } return (\"string\" === r ? String : Number)(t); }\n\n\n\n\n\n\n\nvar GameAudio = /*#__PURE__*/function () {\n  function GameAudio() {\n    _classCallCheck(this, GameAudio);\n  }\n  _createClass(GameAudio, null, [{\n    key: \"play\",\n    value: function play(category) {\n      var random = Math.floor(Math.random() * category.length);\n      var audio = new Audio(category[random]);\n      audio.play();\n    }\n  }]);\n  return GameAudio;\n}();\n_defineProperty(GameAudio, \"miss\", [_assets_audio_sfx_miss1_ogg__WEBPACK_IMPORTED_MODULE_0__, _assets_audio_sfx_miss2_ogg__WEBPACK_IMPORTED_MODULE_1__]);\n_defineProperty(GameAudio, \"hit\", [_assets_audio_sfx_hit1_ogg__WEBPACK_IMPORTED_MODULE_2__, _assets_audio_sfx_hit2_ogg__WEBPACK_IMPORTED_MODULE_3__]);\n_defineProperty(GameAudio, \"mainMenu\", [_assets_audio_music_no_time_to_die_hartzmann_mp3__WEBPACK_IMPORTED_MODULE_4__]);\n_defineProperty(GameAudio, \"placeShips\", [_assets_audio_music_corsairs_studio_kolomna_mp3__WEBPACK_IMPORTED_MODULE_5__]);\n_defineProperty(GameAudio, \"battle\", [_assets_audio_music_dance_of_devils_giulio_fazio_mp3__WEBPACK_IMPORTED_MODULE_6__]);\n\n\n//# sourceURL=webpack://24-battleship/./src/audio.js?");
 
 /***/ }),
 

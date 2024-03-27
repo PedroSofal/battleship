@@ -6,6 +6,7 @@ import DragAndDrop from "./dragAndDrop.js";
 import { charObjects } from './characters.js';
 import PlaceShipQuotes from './quotes/place-ships-quotes.js';
 import Animation from './animations.js';
+import GameAudio from './audio.js';
 
 export default class PlaceShips {
   static root = document.querySelector(':root');
@@ -97,12 +98,18 @@ export default class PlaceShips {
     Animation.displayQuote(PlaceShips.characterQuotes, placingQuote);
   }
 
+  static playPlaceShipMusic() {
+    GameAudio.play(GameAudio.placeShips);
+    document.body.removeEventListener('mousemove', PlaceShips.playPlaceShipMusic);
+  }
+
   static init() {
     PlaceShips.loadFleet();
     PlaceShips.loadBoard();
     PlaceShips.loadCharacter();
     PlaceShips.setEventListeners();
     DragAndDrop.init();
+    document.body.addEventListener('mousemove', PlaceShips.playPlaceShipMusic);
   }
 }
 
