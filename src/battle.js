@@ -6,6 +6,7 @@ import { charObjects } from './characters.js';
 import Result from './result.js';
 import BattleLines from './quotes/battle-quotes.js';
 import Animation from './animations.js';
+import GameAudio from './audio.js';
 
 export default class Battle {
   static root = document.querySelector(':root');
@@ -120,8 +121,10 @@ export default class Battle {
   static callAnimation(attack, attackedSquare) {
     if (attack === 'miss' || attack === 'close') {
       Animation.displaySplash(attackedSquare);
+      GameAudio.play(GameAudio.miss);
     } else {
       Animation.displayExplosion(attackedSquare);
+      GameAudio.play(GameAudio.hit);
     }
   }
 

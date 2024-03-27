@@ -30,6 +30,13 @@ export default {
         type: 'asset/resource',
       },
       {
+        test: /\.(mp3|wav|ogg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/audio/[name][ext]',
+        },
+      },
+      {
         test: /\.js/,
         exclude: /node_modules/,
         use: {
