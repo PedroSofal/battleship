@@ -2,10 +2,9 @@ import './style.css';
 import './main-menu.css';
 import { charObjects } from './characters.js';
 import GameAudio from './audio.js';
+import Settings from './settings.js';
 
 class MainMenu {
-  static lang = 'pt';
-  static audio = 'on';
   static playerChar = null;
   static cpuChar = null;
   static isSelecting = 'player';
@@ -42,11 +41,13 @@ class MainMenu {
     })
 
     MainMenu.langOptions.forEach(option => option.addEventListener('change', (e) => {
-      MainMenu.changeLang(e.target);
+      MainMenu.langOptions.forEach(option => option.classList.remove('lang-selected'));
+      Settings.changeLang(e.target);
     }));
 
     MainMenu.audioOptions.forEach(option => option.addEventListener('change', (e) => {
-      MainMenu.changeAudio(e.target);
+      MainMenu.audioOptions.forEach(option => option.classList.remove('audio-selected'));
+      Settings.changeAudio(e.target);
     }));
 
     MainMenu.placeShipsBtn.addEventListener('click', () => {
@@ -54,26 +55,12 @@ class MainMenu {
         return;
       }
       sessionStorage.setItem('player-name', MainMenu.nameInput.value);
-      sessionStorage.setItem('lang', MainMenu.lang);
-      sessionStorage.setItem('audio', MainMenu.audio);
       window.location.href = 'place-ships.html';
     });
 
     MainMenu.opponents.forEach(opponent => {
       opponent.addEventListener('click', (e) => MainMenu.playerEditing(e));
     });
-  }
-
-  static changeLang(input) {
-    MainMenu.langOptions.forEach(option => option.classList.remove('lang-selected'));
-    input.classList.add('lang-selected');
-    MainMenu.lang = input.value;
-  }
-
-  static changeAudio(input) {
-    MainMenu.audioOptions.forEach(option => option.classList.remove('audio-selected'));
-    input.classList.add('audio-selected');
-    MainMenu.audio = input.value;
   }
 
   static handleCharSelection(selectedChar) {
@@ -193,8 +180,10 @@ class MainMenu {
   }
 
   static playMainMenuMusic() {
-    GameAudio.play(GameAudio.mainMenu);
-    document.body.removeEventListener('click', MainMenu.playMainMenuMusic);
+    if (localStorage.audio = 'on') {
+      GameAudio.play(GameAudio.mainMenu);
+      document.body.removeEventListener('click', MainMenu.playMainMenuMusic);
+    }
   }
 
   static init() {

@@ -7,6 +7,7 @@ import { charObjects } from './characters.js';
 import PlaceShipQuotes from './quotes/place-ships-quotes.js';
 import Animation from './animations.js';
 import GameAudio from './audio.js';
+import Header from './header.js';
 
 export default class PlaceShips {
   static root = document.querySelector(':root');
@@ -109,6 +110,7 @@ export default class PlaceShips {
     PlaceShips.loadCharacter();
     PlaceShips.setEventListeners();
     DragAndDrop.init();
+    Header.init();
     document.body.addEventListener('mousemove', PlaceShips.playPlaceShipMusic);
   }
 }

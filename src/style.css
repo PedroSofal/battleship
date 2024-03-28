@@ -355,3 +355,11 @@ button:disabled {
 .header__icon {
   height: 1.8rem;
 }
+
+.audio-checkbox {
+  display: none;
+}
+
+.header__label {
+  cursor: pointer;
+}

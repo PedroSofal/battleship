@@ -7,6 +7,7 @@ import Result from './result.js';
 import BattleLines from './quotes/battle-quotes.js';
 import Animation from './animations.js';
 import GameAudio from './audio.js';
+import Header from './header.js';
 
 export default class Battle {
   static root = document.querySelector(':root');
@@ -237,6 +238,7 @@ export default class Battle {
     Battle.root.style.setProperty('--color-player-alpha', charObjects[sessionStorage.getItem('player-char')].colorAlpha);
     Battle.root.style.setProperty('--color-cpu', charObjects[sessionStorage.getItem('cpu-char')].color);
     document.body.addEventListener('mousemove', Battle.playBattleMusic);
+    Header.init();
   }
 }
 
