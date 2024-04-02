@@ -9,15 +9,7 @@
   <header class="header">
     <h2 class="header__title">Battle</h2>
     <button class="secondary-button" id="see-result">See results</button>
-    <div class="header__options">
-      <button class="header__button">
-        <img class="header__icon" id="flag" src="./assets/icons/flag-united-kingdom.jpg" alt="united kingdom's flag">
-      </button>
-      <input class="audio-checkbox" type="checkbox" name="audio" id="audio">
-      <label class="header__label" for="audio">
-        <img class="header__icon" id="speaker" src="./assets/icons/audio-enabled.png" alt="speaker">
-      </label>
-    </div>
+    <button class="header__options secondary-button" id="options-btn">Options</button>
   </header>
 
   <div class="messages-wrapper" id="reaction-wrapper">
@@ -91,7 +83,7 @@
   <dialog class="dialog" id="result-modal">
     <div class="result-wrapper" id="result-wrapper" data-result="lose">
       <div class="wrapper wrapper--result-display">
-        <h1 class="result-display" id="result-title">You Win!</h1>
+        <h1 id="result-title">You Win!</h1>
       </div>
       <div class="wrapper wrapper--character">
         <img class="character" id="result-character" width="240" src="./assets/characters/unknown.jpg" alt="question mark inside square">
@@ -102,6 +94,54 @@
       <div class="wrapper wrapper--footer">
         <button class="secondary-button" id="see-boards">See boards</button>
         <button class="main-button" id="play-again"><span>Play again</span></button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="dialog dialog--options" id="options-modal">
+    <div class="options-wrapper">
+      <div class="wrapper wrapper--title">
+        <h1 id="result-title">Options</h1>
+      </div>
+
+      <div class="wrapper wrapper--options">
+        <div class="options__language">
+          <label class="label">Language</label>
+          <input class="language-radio lang-selected" type="radio" name="language" id="lang-en" value="en">
+          <label class="label" for="lang-en">
+            <img class="icon icon--flag" id="ukFlag" src="./assets/icons/flag-united-kingdom.jpg" alt="united kingdom's flag">
+          </label>
+          <input class="language-radio" type="radio" name="language" id="lang-pt" value="pt">
+          <label class="label" for="lang-pt">
+            <img class="icon icon--flag" id="brazilFlag" src="./assets/icons/flag-brazil.jpg" alt="brazil's flag">
+          </label>
+        </div>
+        <div class="options__music">
+          <label class="label">Music</label>
+          <input class="music-radio" type="radio" name="music" id="music-on" value="on">
+          <label class="label" for="music-on">
+            <img class="icon icon--speaker" id="musicOn" src="./assets/icons/audio-enabled.png" alt="speaker on">
+          </label>
+          <input class="music-radio" type="radio" name="music" id="music-off" value="off">
+          <label class="label" for="music-off">
+            <img class="icon icon--speaker" id="musicOff" src="./assets/icons/audio-disabled.png" alt="speaker off">
+          </label>
+        </div>
+        <div class="options__sfx">
+          <label class="label">Effects</label>
+          <input class="sfx-radio" type="radio" name="sfx" id="sfx-on" value="on">
+          <label class="label" for="sfx-on">
+            <img class="icon icon--speaker" id="sfxOn" src="./assets/icons/audio-enabled.png" alt="speaker on">
+          </label>
+          <input class="sfx-radio" type="radio" name="sfx" id="sfx-off" value="off">
+          <label class="label" for="sfx-off">
+            <img class="icon icon--speaker" id="sfxOff" src="./assets/icons/audio-disabled.png" alt="speaker off">
+          </label>
+        </div>
+      </div>
+      
+      <div class="wrapper wrapper--footer">
+        <button class="main-button" id="close-options"><span>Close</span></button>
       </div>
     </div>
   </dialog>

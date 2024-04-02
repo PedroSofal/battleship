@@ -16,13 +16,15 @@ export default class GameAudio {
   static currentSongIndex = 0;
   static currentSong = new Audio();
 
-  static play(category) {
-    const random = Math.floor(Math.random() * category.length);
-    const audio = new Audio(category[random]);
-    audio.play();
+  static playSfx(category) {
+    if (localStorage.getItem('sfx') === 'on') {
+      const random = Math.floor(Math.random() * category.length);
+      const audio = new Audio(category[random]);
+      audio.play();
+    }
   }
 
-  static queuePlaylist(category) {
+  static playMusic(category) {
     GameAudio.currentSong.addEventListener('ended', function() {
       GameAudio.currentSongIndex++;
       
@@ -35,14 +37,19 @@ export default class GameAudio {
     });
 
     GameAudio.currentSong.src = category[0];
+    
+    if (localStorage.getItem('music') === 'off') {
+      GameAudio.currentSong.muted = true;
+    }
+
     GameAudio.currentSong.play();
   }
 
-  static mute() {
+  static muteMusic() {
     GameAudio.currentSong.muted = true;
   }
 
-  static unmute() {
+  static unmuteMusic() {
     GameAudio.currentSong.muted = false;
   }
 }

@@ -12,7 +12,8 @@ class MainMenu {
 
   static nameInput = document.querySelector('#name-input');
   static langOptions = document.querySelectorAll('.language-radio');
-  static audioOptions = document.querySelectorAll('.audio-radio');
+  static musicOptions = document.querySelectorAll('.music-radio');
+  static sfxOptions = document.querySelectorAll('.sfx-radio');
   static charOptions = document.querySelectorAll('.character-option');
   static placeShipsBtn = document.querySelector('#place-ships');
   static charSelectionWrapper = document.querySelector('.character-selection-wrapper');
@@ -45,9 +46,14 @@ class MainMenu {
       Settings.changeLang(e.target);
     }));
 
-    MainMenu.audioOptions.forEach(option => option.addEventListener('change', (e) => {
-      MainMenu.audioOptions.forEach(option => option.classList.remove('audio-selected'));
-      Settings.changeAudio(e.target);
+    MainMenu.musicOptions.forEach(option => option.addEventListener('change', (e) => {
+      MainMenu.musicOptions.forEach(option => option.classList.remove('audio-selected'));
+      Settings.muteUnmuteMusic(e.target);
+    }));
+
+    MainMenu.sfxOptions.forEach(option => option.addEventListener('change', (e) => {
+      MainMenu.sfxOptions.forEach(option => option.classList.remove('audio-selected'));
+      Settings.muteUnmuteSfx(e.target);
     }));
 
     MainMenu.placeShipsBtn.addEventListener('click', () => {
@@ -180,14 +186,13 @@ class MainMenu {
   }
 
   static playMainMenuMusic() {
-    if (localStorage.audio = 'on') {
-      GameAudio.play(GameAudio.mainMenu);
-      document.body.removeEventListener('click', MainMenu.playMainMenuMusic);
-    }
+    GameAudio.playMusic(GameAudio.mainMenu);
+    document.body.removeEventListener('click', MainMenu.playMainMenuMusic);
   }
 
   static init() {
     sessionStorage.clear();
+    Settings.loadSettings();
     MainMenu.setEventListeners();
     document.body.addEventListener('click', MainMenu.playMainMenuMusic);
   }

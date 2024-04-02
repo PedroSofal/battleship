@@ -29,10 +29,6 @@
   gap: 0.8rem;
 }
 
-.label {
-  font-size: var(--fs-600);
-}
-
 .name-input {
   width: 26ch;
   padding: 0.6rem 0.8rem;
@@ -47,38 +43,7 @@
 .options {
   display: flex;
   flex-direction: column;
-  gap: 1.4rem
-}
-
-.options__language,
-.options__audio {
-  display: flex;
-  align-items: center;
   gap: 1.4rem;
-}
-
-.language-radio,
-.audio-radio {
-  display: none;
-}
-
-.icon {
-  height: var(--icon-size);
-  padding: 5px;
-  opacity: 0.3;
-  cursor: pointer;
-  transition: all 150ms ease-in-out;
-  outline-offset: 1rem;
-}
-
-.lang-selected + .label .icon--flag {
-  outline: 1px solid #ccc;
-  outline-offset: 0px;
-  opacity: 1;
-}
-
-.audio-selected + .label .icon--speaker {
-  opacity: 1;
 }
 
 /* CHARACTER SELETION ***********/

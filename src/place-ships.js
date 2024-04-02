@@ -100,7 +100,7 @@ export default class PlaceShips {
   }
 
   static playPlaceShipMusic() {
-    GameAudio.play(GameAudio.placeShips);
+    GameAudio.playMusic(GameAudio.placeShips);
     document.body.removeEventListener('mousemove', PlaceShips.playPlaceShipMusic);
   }
 

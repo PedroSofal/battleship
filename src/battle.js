@@ -122,10 +122,10 @@ export default class Battle {
   static callAnimation(attack, attackedSquare) {
     if (attack === 'miss' || attack === 'close') {
       Animation.displaySplash(attackedSquare);
-      GameAudio.play(GameAudio.miss);
+      GameAudio.playSfx(GameAudio.miss);
     } else {
       Animation.displayExplosion(attackedSquare);
-      GameAudio.play(GameAudio.hit);
+      GameAudio.playSfx(GameAudio.hit);
     }
   }
 
@@ -227,7 +227,7 @@ export default class Battle {
   }
 
   static playBattleMusic() {
-    GameAudio.queuePlaylist(GameAudio.battle);
+    GameAudio.playMusic(GameAudio.battle);
     document.body.removeEventListener('mousemove', Battle.playBattleMusic);
   }
 

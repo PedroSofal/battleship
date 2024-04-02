@@ -1,30 +1,45 @@
-import speakerOn from './assets/icons/audio-enabled.png'
-import speakerOff from './assets/icons/audio-disabled.png'
 import Settings from "./settings.js";
 
 export default class Header {
-  // static flag = document.querySelector('#flag');
-  static audio = document.querySelector('#audio');
-  static speaker = document.querySelector('#speaker');
+  static optionsBtn = document.querySelector('#options-btn');
+  static closeOptions = document.querySelector('#close-options');
+  static optionsModal = document.querySelector('#options-modal');
+  static langOptions = document.querySelectorAll('.language-radio');
+  static musicOptions = document.querySelectorAll('.music-radio');
+  static sfxOptions = document.querySelectorAll('.sfx-radio');
 
   static setEventListeners() {
-    // Header.flag.addEventListener('click', (e) => Settings.changeLang(e.target));
-    Header.audio.addEventListener('click', (e) => {
-      Settings.changeAudio(e.target);
-      Header.updateSpeakerIcon();
-    });
+    Header.optionsBtn.addEventListener('click', Header.openOptionsModal);
+    Header.closeOptions.addEventListener('click', Header.closeOptionsModal);
+
+    Header.langOptions.forEach(option => option.addEventListener('change', (e) => {
+      Header.langOptions.forEach(option => option.classList.remove('lang-selected'));
+      Settings.changeLang(e.target);
+    }));
+
+    Header.musicOptions.forEach(option => option.addEventListener('change', (e) => {
+      Header.musicOptions.forEach(option => option.classList.remove('audio-selected'));
+      Settings.muteUnmuteMusic(e.target);
+    }));
+
+    Header.sfxOptions.forEach(option => option.addEventListener('change', (e) => {
+      Header.sfxOptions.forEach(option => option.classList.remove('audio-selected'));
+      Settings.muteUnmuteSfx(e.target);
+    }));
   }
 
-  static updateSpeakerIcon() {
-    if (localStorage.getItem('audio') === 'on') {
-      Header.speaker.src = speakerOn;
-    } else {
-      Header.speaker.src = speakerOff;
-    }
+  static openOptionsModal() {
+    Header.optionsModal.classList.add('dialog--open');
+    Settings.loadSettings();
+    Header.optionsModal.showModal();
+  }
+
+  static closeOptionsModal() {
+    Header.optionsModal.classList.remove('dialog--open');
+    Header.optionsModal.close();
   }
 
   static init() {
-    Header.updateSpeakerIcon();
     Header.setEventListeners();
   }
 }
