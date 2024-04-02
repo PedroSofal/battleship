@@ -120,13 +120,30 @@ export default class Battle {
     }
   }
 
-  static callAnimation(attack, attackedHtmlSquare) {
-    if (attack === 'miss' || attack === 'close') {
-      Animation.displaySplash(attackedHtmlSquare);
-      GameAudio.playSfx(GameAudio.miss);
-    } else {
-      Animation.displayExplosion(attackedHtmlSquare);
-      GameAudio.playSfx(GameAudio.hit);
+  static callAnimation(result, attackedHtmlSquare) {
+    switch(result) {
+      case 'miss':
+      case 'close':
+        Animation.displaySplash(attackedHtmlSquare);
+        GameAudio.playSfx(GameAudio.miss);
+        break;
+      case 'hit':
+        Animation.displayExplosion(attackedHtmlSquare);
+        GameAudio.playSfx(GameAudio.hit);
+        break;
+      case 'sunk':
+        if (Game.gameOver()) {
+          GameAudio.playSfx(GameAudio.hit);
+          setTimeout(() => {
+            GameAudio.playSfx(GameAudio.lastSink);
+          }, 300);
+        } else {
+          GameAudio.playSfx(GameAudio.hit);
+          setTimeout(() => {
+            GameAudio.playSfx(GameAudio.sink);
+          }, 300);
+        }
+        break;
     }
   }
 

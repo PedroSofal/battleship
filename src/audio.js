@@ -1,16 +1,26 @@
+// SFX
 import miss1 from './assets/audio/sfx/miss1.ogg';
 import miss2 from './assets/audio/sfx/miss2.ogg';
+import miss3 from './assets/audio/sfx/miss3.ogg';
 import hit1 from './assets/audio/sfx/hit1.ogg';
 import hit2 from './assets/audio/sfx/hit2.ogg';
+import hit3 from './assets/audio/sfx/hit3.ogg';
+import sink1 from './assets/audio/sfx/sink1.ogg';
+import sink2 from './assets/audio/sfx/sink2.ogg';
+import lastSink from './assets/audio/sfx/last-sink.ogg';
 import radarLock from './assets/audio/sfx/radar-lock.ogg';
 import missileAlert from './assets/audio/sfx/missile-alert.ogg';
+
+// MUSIC
 import mainMenuSong1 from './assets/audio/music/no-time-to-die-hartzmann.mp3';
 import placeShipsSong1 from './assets/audio/music/corsairs-studio-kolomna.mp3';
 import battleSong1 from './assets/audio/music/dance-of-devils-giulio-fazio.mp3';
 
 export default class GameAudio {
-  static miss = [miss1, miss2];
-  static hit = [hit1, hit2];
+  static miss = [miss1, miss2, miss3];
+  static hit = [hit1, hit2, hit3];
+  static sink = [sink1, sink2];
+  static lastSink = [lastSink];
   static radarLock = [radarLock];
   static missileAlert = [missileAlert];
   static mainMenu = [mainMenuSong1];
