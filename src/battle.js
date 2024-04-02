@@ -79,11 +79,11 @@ export default class Battle {
     
     if (Game.turn === 0) {
       const attack = Game.players[0].attack(row, col, Game.players[1]);
-      const attackedSquare = Battle.querySquareByCoords(Battle.cpuBoard, attack.coords);
+      const attackedHtmlSquare = Battle.querySquareByCoords(Battle.cpuBoard, attack.coords);
       DOM.showSunkenShips(Game.players[1]);
       DOM.updateBoard(Game.players[0]);
       DOM.updateBoard(Game.players[1]);
-      Battle.callAnimation(attack.className, attackedSquare);
+      Battle.callAnimation(attack.className, attackedHtmlSquare);
       Game.nextPlayer();
       Battle.botPlays();
       e.target.removeEventListener('click', Battle.handleClick);
@@ -102,14 +102,15 @@ export default class Battle {
     if (Game.turn === 1) {
       setTimeout(() => {
         const attack = Game.players[1].attack(Game.players[0]);
-        const attackedSquare = Battle.querySquareByCoords(Battle.playerBoard, attack.coords);
-        Battle.radarLockWarning(attack.className);
+        const attackedHtmlSquare = Battle.querySquareByCoords(Battle.playerBoard, attack.coords);
+        Battle.radarLockAlert(attack);
+        Battle.missileLaunchAlert(attack.className);
         setTimeout(() => {
           Battle.radarLockFoes.forEach(foe => foe.classList.remove('lightUp'));
           Battle.countermeasureIndicator.classList.remove('lightUp');
           DOM.updateBoard(Game.players[0]);
           DOM.updateBoard(Game.players[1]);
-          Battle.callAnimation(attack.className, attackedSquare);
+          Battle.callAnimation(attack.className, attackedHtmlSquare);
           Game.nextPlayer();
           setTimeout(() => {
             Battle.updateBattleQuote(attack, Game.players[1], Game.players[0]);
@@ -119,12 +120,12 @@ export default class Battle {
     }
   }
 
-  static callAnimation(attack, attackedSquare) {
+  static callAnimation(attack, attackedHtmlSquare) {
     if (attack === 'miss' || attack === 'close') {
-      Animation.displaySplash(attackedSquare);
+      Animation.displaySplash(attackedHtmlSquare);
       GameAudio.playSfx(GameAudio.miss);
     } else {
-      Animation.displayExplosion(attackedSquare);
+      Animation.displayExplosion(attackedHtmlSquare);
       GameAudio.playSfx(GameAudio.hit);
     }
   }
@@ -136,18 +137,36 @@ export default class Battle {
     return grid[0][row].htmlElement.children[col];
   }
 
-  static radarLockWarning(attack) {
+  static radarLockAlert(square) {
+    if (square.content !== 'water') {
+      if (square.content.hits === 1) {
+        setTimeout(() => {
+          GameAudio.playRadarLockInfiniteLoop('start');
+        }, 2000);
+      }
+  
+      if (square.content.isSunk()) {
+        setTimeout(() => {
+          GameAudio.playRadarLockInfiniteLoop('stop');
+      }, 4000);
+      }
+    }
+  }
+
+  static missileLaunchAlert(result) {
     const randomFoe = Math.floor(Math.random() * Battle.radarLockFoes.length);
 
-    if (attack === 'hit') {
+    if (result === 'hit') {
       Battle.radarLockFoes[randomFoe].classList.add('lightUp');
+      GameAudio.playSfx(GameAudio.missileAlert);
       Battle.launchCountermeasures();
     }
 
-    if (attack === 'close') {
+    if (result === 'close') {
       const warning = Math.random() < 0.5 ? true : false;
       if (warning) {
         Battle.radarLockFoes[randomFoe].classList.add('lightUp');
+        GameAudio.playSfx(GameAudio.missileAlert);
         Battle.launchCountermeasures();
       }
     }
