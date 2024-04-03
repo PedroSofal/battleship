@@ -30,7 +30,7 @@
 }
 
 .name-input {
-  width: 26ch;
+  width: 22rem;
   padding: 0.6rem 0.8rem;
   border: 2px solid var(--color-100);
   border-radius: 0;
@@ -40,10 +40,11 @@
   background-color: var(--color-800);
 }
 
-.options {
+.options--main-menu {
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
+  width: 22rem;
 }
 
 /* CHARACTER SELETION ***********/

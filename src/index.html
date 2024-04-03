@@ -16,39 +16,45 @@
         <label class="label" for="player-name">Enter your name:</label>
         <input class="name-input" id="name-input" type="text" name="name" maxlength="24" required>
       </div>
-      <div class="options">
+      <div class="options options--main-menu">
         <div class="options__language">
           <label class="label">Language</label>
-          <input class="language-radio lang-selected" type="radio" name="language" id="lang-en" value="en">
-          <label class="label" for="lang-en">
-            <img class="icon icon--flag" id="ukFlag" src="./assets/icons/flag-united-kingdom.jpg" alt="united kingdom's flag">
-          </label>
-          <input class="language-radio" type="radio" name="language" id="lang-pt" value="pt">
-          <label class="label" for="lang-pt">
-            <img class="icon icon--flag" id="brazilFlag" src="./assets/icons/flag-brazil.jpg" alt="brazil's flag">
-          </label>
+          <div class="options-list">
+            <input class="language-radio lang-selected" type="radio" name="language" id="lang-en" value="en">
+            <label class="label" for="lang-en">
+              <img class="icon icon--flag" id="ukFlag" src="./assets/icons/flag-united-kingdom.jpg" alt="united kingdom's flag">
+            </label>
+            <input class="language-radio" type="radio" name="language" id="lang-pt" value="pt">
+            <label class="label" for="lang-pt">
+              <img class="icon icon--flag" id="brazilFlag" src="./assets/icons/flag-brazil.jpg" alt="brazil's flag">
+            </label>
+          </div>
         </div>
         <div class="options__music">
           <label class="label">Music</label>
-          <input class="music-radio" type="radio" name="music" id="music-on" value="on">
-          <label class="label" for="music-on">
-            <img class="icon icon--speaker" id="musicOn" src="./assets/icons/audio-enabled.png" alt="speaker on">
-          </label>
-          <input class="music-radio" type="radio" name="music" id="music-off" value="off">
-          <label class="label" for="music-off">
-            <img class="icon icon--speaker" id="musicOff" src="./assets/icons/audio-disabled.png" alt="speaker off">
-          </label>
+          <div class="options-list">
+            <input class="music-radio" type="radio" name="music" id="music-on" value="on">
+            <label class="label" for="music-on">
+              <img class="icon icon--speaker" id="musicOn" src="./assets/icons/audio-enabled.png" alt="speaker on">
+            </label>
+            <input class="music-radio" type="radio" name="music" id="music-off" value="off">
+            <label class="label" for="music-off">
+              <img class="icon icon--speaker" id="musicOff" src="./assets/icons/audio-disabled.png" alt="speaker off">
+            </label>
+          </div>
         </div>
         <div class="options__sfx">
           <label class="label">Effects</label>
-          <input class="sfx-radio" type="radio" name="sfx" id="sfx-on" value="on">
-          <label class="label" for="sfx-on">
-            <img class="icon icon--speaker" id="sfxOn" src="./assets/icons/audio-enabled.png" alt="speaker on">
-          </label>
-          <input class="sfx-radio" type="radio" name="sfx" id="sfx-off" value="off">
-          <label class="label" for="sfx-off">
-            <img class="icon icon--speaker" id="sfxOff" src="./assets/icons/audio-disabled.png" alt="speaker off">
-          </label>
+          <div class="options-list">
+            <input class="sfx-radio" type="radio" name="sfx" id="sfx-on" value="on">
+            <label class="label" for="sfx-on">
+              <img class="icon icon--speaker" id="sfxOn" src="./assets/icons/audio-enabled.png" alt="speaker on">
+            </label>
+            <input class="sfx-radio" type="radio" name="sfx" id="sfx-off" value="off">
+            <label class="label" for="sfx-off">
+              <img class="icon icon--speaker" id="sfxOff" src="./assets/icons/audio-disabled.png" alt="speaker off">
+            </label>
+          </div>
         </div>
       </div>
     </div>
