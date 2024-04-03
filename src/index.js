@@ -43,17 +43,22 @@ class MainMenu {
 
     MainMenu.langOptions.forEach(option => option.addEventListener('change', (e) => {
       MainMenu.langOptions.forEach(option => option.classList.remove('lang-selected'));
+      e.target.classList.add('lang-selected');
       Settings.changeLang(e.target);
     }));
 
     MainMenu.musicOptions.forEach(option => option.addEventListener('change', (e) => {
       MainMenu.musicOptions.forEach(option => option.classList.remove('audio-selected'));
-      Settings.muteUnmuteMusic(e.target);
+      e.target.classList.add('audio-selected');
+      const volume = e.target.value === 'on' ? 1 : 0;
+      Settings.setMusicVolume(volume);
     }));
 
     MainMenu.sfxOptions.forEach(option => option.addEventListener('change', (e) => {
       MainMenu.sfxOptions.forEach(option => option.classList.remove('audio-selected'));
-      Settings.muteUnmuteSfx(e.target);
+      e.target.classList.add('audio-selected');
+      const volume = e.target.value = 'on' ? 1 : 0;
+      Settings.setSfxVolume(volume);
     }));
 
     MainMenu.placeShipsBtn.addEventListener('click', () => {
@@ -192,7 +197,7 @@ class MainMenu {
 
   static init() {
     sessionStorage.clear();
-    Settings.loadSettings();
+    Settings.loadMainMenuSettings();
     MainMenu.setEventListeners();
     document.body.addEventListener('click', MainMenu.playMainMenuMusic);
   }

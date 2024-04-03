@@ -26,15 +26,17 @@ export default class GameAudio {
   static mainMenu = [mainMenuSong1];
   static placeShips = [placeShipsSong1];
   static battle = [battleSong1, mainMenuSong1, placeShipsSong1];
+  
   static radarLockInterval;
-
   static currentSongIndex = 0;
   static currentSong = new Audio();
+  static musicVolume = 1;
 
   static playSfx(category) {
     if (localStorage.getItem('sfx') === 'on') {
       const random = Math.floor(Math.random() * category.length);
       const audio = new Audio(category[random]);
+      audio.volume = parseFloat(localStorage.getItem('sfx-vol'));
       audio.play();
     }
   }
@@ -65,19 +67,14 @@ export default class GameAudio {
     });
 
     GameAudio.currentSong.src = category[0];
-    
-    if (localStorage.getItem('music') === 'off') {
-      GameAudio.currentSong.muted = true;
-    }
-
+    GameAudio.currentSong.volume = parseFloat(localStorage.getItem('music-vol'));
     GameAudio.currentSong.play();
   }
 
-  static muteMusic() {
-    GameAudio.currentSong.muted = true;
-  }
-
-  static unmuteMusic() {
-    GameAudio.currentSong.muted = false;
+  static setMusicVolume(volume) {
+    GameAudio.musicVolume = volume;
+    if (GameAudio.currentSong) {
+      GameAudio.currentSong.volume = volume;
+    }
   }
 }

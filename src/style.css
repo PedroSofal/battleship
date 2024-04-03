@@ -414,7 +414,12 @@ button:disabled {
 .options__sfx {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1.4rem;
+}
+
+input[type="range"] {
+  width: 7.8rem;
 }
 
 .language-radio,

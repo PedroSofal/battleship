@@ -5,8 +5,8 @@ export default class Header {
   static closeOptions = document.querySelector('#close-options');
   static optionsModal = document.querySelector('#options-modal');
   static langOptions = document.querySelectorAll('.language-radio');
-  static musicOptions = document.querySelectorAll('.music-radio');
-  static sfxOptions = document.querySelectorAll('.sfx-radio');
+  static musicVolumeSlider = document.querySelector('#music-volume-slider');
+  static sfxVolumeSlider = document.querySelector('#sfx-volume-slider');
 
   static setEventListeners() {
     Header.optionsBtn.addEventListener('click', Header.openOptionsModal);
@@ -17,20 +17,18 @@ export default class Header {
       Settings.changeLang(e.target);
     }));
 
-    Header.musicOptions.forEach(option => option.addEventListener('change', (e) => {
-      Header.musicOptions.forEach(option => option.classList.remove('audio-selected'));
-      Settings.muteUnmuteMusic(e.target);
-    }));
+    Header.musicVolumeSlider.addEventListener('change', (e) => {
+      Settings.setMusicVolume(parseFloat(e.target.value));
+    });
 
-    Header.sfxOptions.forEach(option => option.addEventListener('change', (e) => {
-      Header.sfxOptions.forEach(option => option.classList.remove('audio-selected'));
-      Settings.muteUnmuteSfx(e.target);
-    }));
+    Header.sfxVolumeSlider.addEventListener('change', (e) => {
+      Settings.setSfxVolume(parseFloat(e.target.value));
+    });
   }
 
   static openOptionsModal() {
     Header.optionsModal.classList.add('dialog--open');
-    Settings.loadSettings();
+    Settings.loadHeaderSettings();
     Header.optionsModal.showModal();
   }
 

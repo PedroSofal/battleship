@@ -117,26 +117,12 @@
           </label>
         </div>
         <div class="options__music">
-          <label class="label">Music</label>
-          <input class="music-radio" type="radio" name="music" id="music-on" value="on">
-          <label class="label" for="music-on">
-            <img class="icon icon--speaker" id="musicOn" src="./assets/icons/audio-enabled.png" alt="speaker on">
-          </label>
-          <input class="music-radio" type="radio" name="music" id="music-off" value="off">
-          <label class="label" for="music-off">
-            <img class="icon icon--speaker" id="musicOff" src="./assets/icons/audio-disabled.png" alt="speaker off">
-          </label>
+          <label class="label" for="music-volume-slider">Music</label>
+          <input id="music-volume-slider" type="range" min="0" max="1" step="0.1" value="1">
         </div>
         <div class="options__sfx">
-          <label class="label">Effects</label>
-          <input class="sfx-radio" type="radio" name="sfx" id="sfx-on" value="on">
-          <label class="label" for="sfx-on">
-            <img class="icon icon--speaker" id="sfxOn" src="./assets/icons/audio-enabled.png" alt="speaker on">
-          </label>
-          <input class="sfx-radio" type="radio" name="sfx" id="sfx-off" value="off">
-          <label class="label" for="sfx-off">
-            <img class="icon icon--speaker" id="sfxOff" src="./assets/icons/audio-disabled.png" alt="speaker off">
-          </label>
+          <label class="label" for="sfx-volume-slider">Effects</label>
+          <input id="sfx-volume-slider" type="range" min="0" max="1" step="0.1" value="1">
         </div>
       </div>
       
