@@ -21,9 +21,9 @@ export default class Battle {
     const playerFrontendBoard = DOM.getPlayerBoard();
 
     for (const ship of Object.values(playerBackendBoard.ships)) {
-      const row = parseInt(sessionStorage.getItem(ship.name + '-row'));
-      const col = parseInt(sessionStorage.getItem(ship.name + '-col'));
-      const axis = sessionStorage.getItem(ship.name + '-axis');
+      const row = parseInt(sessionStorage.getItem(ship.name_en + '-row'));
+      const col = parseInt(sessionStorage.getItem(ship.name_en + '-col'));
+      const axis = sessionStorage.getItem(ship.name_en + '-axis');
 
       playerBackendBoard.placeShip(row, col, axis, ship);
       Battle.renderShipIcons(playerFrontendBoard, row, col, axis, ship);
@@ -58,7 +58,7 @@ export default class Battle {
     const shipIcon = document.createElement('div');
 
     shipIcon.classList = 'ship__icon';
-    shipIcon.id = ship.name;
+    shipIcon.id = ship.name_en;
     shipIcon.style.mask = `url(${ship.src}) no-repeat center`;
     if (axis === 'col') shipIcon.classList.add('rotated');
 
@@ -222,7 +222,15 @@ export default class Battle {
   static updateBattleQuote(attack, attacker, defender) {
     let quote;
     const result = attack.className;
-    const ship = attack.content !== 'water' ? attack.content.name : null;
+    const ship = attack.content !== 'water' ? getShipName() : null;
+
+    function getShipName() {
+      if (localStorage.getItem('lang') === 'en') {
+        return attack.content.name_en;
+      } else if (localStorage.getItem('lang') === 'pt') {
+        return attack.content.name_pt;
+      }
+    }
     
     if (Math.random() < 0.5 && result !== 'sunk') return;
     const sayer = Math.random() < 0.5 ? 'attacker' : 'defender';

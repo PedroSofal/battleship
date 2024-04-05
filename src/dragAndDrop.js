@@ -86,7 +86,7 @@ export default class DragAndDrop {
     e.dataTransfer.setData('text/plain', e.currentTarget);
     
     DragAndDrop.selectedShip = Object.values(Game.players[0].gameboard.ships).find(ship => {
-      return ship.name === e.currentTarget.querySelector('.ship__icon').id;
+      return ship.name_en === e.currentTarget.querySelector('.ship__icon').id;
     });
 
     const shipDragClone = e.currentTarget.cloneNode(true);
@@ -124,9 +124,9 @@ export default class DragAndDrop {
       const draggingShip = document.querySelector('.dragging');
       if (DragAndDrop.axis === 'col') draggingShip.classList.add('rotated');
 
-      sessionStorage.setItem(DragAndDrop.selectedShip.name + '-row', DragAndDrop.hoveredSquare[0]);
-      sessionStorage.setItem(DragAndDrop.selectedShip.name + '-col', DragAndDrop.hoveredSquare[1]);
-      sessionStorage.setItem(DragAndDrop.selectedShip.name + '-axis', DragAndDrop.axis);
+      sessionStorage.setItem(DragAndDrop.selectedShip.name_en + '-row', DragAndDrop.hoveredSquare[0]);
+      sessionStorage.setItem(DragAndDrop.selectedShip.name_en + '-col', DragAndDrop.hoveredSquare[1]);
+      sessionStorage.setItem(DragAndDrop.selectedShip.name_en + '-axis', DragAndDrop.axis);
 
       draggingShip.classList.add('placed');
       e.target.appendChild(draggingShip);

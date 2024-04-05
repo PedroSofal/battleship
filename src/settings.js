@@ -2,9 +2,8 @@ import GameAudio from "./audio.js";
 
 export default class Settings {
   static changeLang(input) {
-    const textElements = document.querySelectorAll('[data-en]');
-    textElements.forEach(element => element.textContent = element.getAttribute(`data-${input.value}`));
     localStorage.setItem('lang', input.value);
+    Settings.loadLanguage();
   }
 
   static setMusicVolume(volume) {
@@ -14,6 +13,12 @@ export default class Settings {
 
   static setSfxVolume(volume) {
     localStorage.setItem('sfx-vol', volume);
+  }
+
+  static loadLanguage() {
+    const textElements = document.querySelectorAll('[data-en]');
+    const currentLanguageData = `data-${localStorage.getItem('lang')}`;
+    textElements.forEach(element => element.textContent = element.getAttribute(currentLanguageData));
   }
 
   static loadMainMenuSettings() {

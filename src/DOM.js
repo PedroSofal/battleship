@@ -64,7 +64,7 @@ export default class DOM {
 
     for (const ship of Object.values(cpuShips)) {
       if (ship.isSunk()) {
-        const sunkShipIcon = Array.from(shipIcons).find(element => element.id === ship.name);
+        const sunkShipIcon = Array.from(shipIcons).find(element => element.id === ship.name_en);
         sunkShipIcon.classList.add('sunken');
       }
     }

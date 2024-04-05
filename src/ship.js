@@ -5,8 +5,9 @@ import destroyer from './assets/ships/destroyer.svg';
 import submarine from './assets/ships/submarine.svg';
 
 class Ship {
-  constructor(name, size, src) {
-    this.name = name;
+  constructor(name_en, name_pt, size, src) {
+    this.name_en = name_en;
+    this.name_pt = name_pt;
     this.size = size;
     this.src = src;
     this.coords = null;
@@ -24,10 +25,10 @@ class Ship {
 
 export default class standardSet {
   constructor() {
-    this.carrier = new Ship('carrier', 5, carrier);
-    this.battleship = new Ship('battleship', 4, battleship);
-    this.cruiser = new Ship('cruiser', 3, cruiser);
-    this.submarine = new Ship('submarine', 3, submarine);
-    this.destroyer = new Ship('destroyer', 2, destroyer);
+    this.carrier = new Ship('carrier', 'porta-aviões', 5, carrier);
+    this.battleship = new Ship('battleship', 'couraçado', 4, battleship);
+    this.cruiser = new Ship('cruiser', 'cruzador', 3, cruiser);
+    this.submarine = new Ship('submarine', 'submarino', 3, submarine);
+    this.destroyer = new Ship('destroyer', 'contratorpedeiro', 2, destroyer);
   }
 }

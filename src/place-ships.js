@@ -8,6 +8,7 @@ import PlaceShipQuotes from './quotes/place-ships-quotes.js';
 import Animation from './animations.js';
 import GameAudio from './audio.js';
 import Header from './header.js';
+import Settings from './settings.js';
 
 export default class PlaceShips {
   static root = document.querySelector(':root');
@@ -44,9 +45,11 @@ export default class PlaceShips {
       shipDrag.classList = 'ship__drag';
       shipIcon.classList = 'ship__icon';
       
-      shipName.textContent = shipObject.name;
+      shipName.setAttribute('data-en', shipObject.name_en);
+      shipName.setAttribute('data-pt', shipObject.name_pt);
+      // shipName.textContent = shipName.getAttribute(`data-${localStorage.getItem('lang')}`);
       shipDrag.setAttribute('draggable', 'true');
-      shipIcon.id = shipObject.name;
+      shipIcon.id = shipObject.name_en;
       shipIcon.style.mask = `url(${shipObject.src}) no-repeat center`;
       
       shipDrag.appendChild(shipIcon);
@@ -93,9 +96,22 @@ export default class PlaceShips {
     DragAndDrop.init();
   }
 
-  static updatePlacingQuote(shipName) {
+  static updatePlacingQuote(shipId) {
+    const ship = Object.values(Game.players[0].gameboard.ships).find(ship => {
+      return ship.name_en === shipId;
+    })
+    const shipName = getShipName();
     const charName = PlaceShips.character.name;
     const placingQuote = PlaceShipQuotes.getPlacingQuote(charName, shipName);
+
+    function getShipName() {
+      if (localStorage.getItem('lang') === 'en') {
+        return ship.name_en;
+      } else if (localStorage.getItem('lang') === 'pt') {
+        return ship.name_pt;
+      }
+    }
+
     Animation.displayQuote(PlaceShips.characterQuotes, placingQuote);
   }
 
@@ -109,6 +125,7 @@ export default class PlaceShips {
     PlaceShips.loadBoard();
     PlaceShips.loadCharacter();
     PlaceShips.setEventListeners();
+    Settings.loadLanguage();
     DragAndDrop.init();
     Header.init();
     document.body.addEventListener('mousemove', PlaceShips.playPlaceShipMusic);
