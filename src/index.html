@@ -13,12 +13,12 @@
     <div class="name-options-wrapper">
       <h1 class="game-title">BATTLE<br>SHIP</h1>
       <div class="player-name">
-        <label class="label" for="player-name">Enter your name:</label>
+        <label class="label" for="player-name" data-en="Enter your name:" data-pt="Insira seu nome:">Enter your name:</label>
         <input class="name-input" id="name-input" type="text" name="name" maxlength="24" required>
       </div>
       <div class="options options--main-menu">
         <div class="options__language">
-          <label class="label">Language</label>
+          <label class="label" data-en="Language" data-pt="Idioma">Language</label>
           <div class="options-list">
             <input class="language-radio lang-selected" type="radio" name="language" id="lang-en" value="en">
             <label class="label" for="lang-en">
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="options__music">
-          <label class="label">Music</label>
+          <label class="label" data-en="Music" data-pt="Música">Música</label>
           <div class="options-list">
             <input class="music-radio" type="radio" name="music" id="music-on" value="on">
             <label class="label" for="music-on">
@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="options__sfx">
-          <label class="label">Effects</label>
+          <label class="label" data-en="Effects" data-pt="Efeitos">Effects</label>
           <div class="options-list">
             <input class="sfx-radio" type="radio" name="sfx" id="sfx-on" value="on">
             <label class="label" for="sfx-on">
@@ -116,7 +116,7 @@
           <img class="opponents__img animate" id="player-photo" width="80" height="80" src="./assets/characters/unknown.jpg" alt="question mark inside square">
           <div class="opponents__info">
             <p class="opponents__name" id="player-name">???</p>
-            <p class="opponents__type">Player</p>
+            <p class="opponents__type" data-en="Player" data-pt="Jogador">Player</p>
           </div>
         </div>
         <div class="opponents__player" id="cpu-preview">
@@ -127,7 +127,7 @@
           </div>
         </div>
       </div>
-      <button class="main-button" id="place-ships" disabled><span>Place Ships</span></button>
+      <button class="main-button" id="place-ships" disabled><span data-en="Place ships" data-pt="Posicionar navios">Place ships</span></button>
     </div>
   </div>
 </body>

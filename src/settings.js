@@ -2,6 +2,8 @@ import GameAudio from "./audio.js";
 
 export default class Settings {
   static changeLang(input) {
+    const textElements = document.querySelectorAll('[data-en]');
+    textElements.forEach(element => element.textContent = element.getAttribute(`data-${input.value}`));
     localStorage.setItem('lang', input.value);
   }
 

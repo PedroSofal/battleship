@@ -14,6 +14,7 @@ export default class Header {
 
     Header.langOptions.forEach(option => option.addEventListener('change', (e) => {
       Header.langOptions.forEach(option => option.classList.remove('lang-selected'));
+      e.target.classList.add('lang-selected');
       Settings.changeLang(e.target);
     }));
 
