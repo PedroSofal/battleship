@@ -20,7 +20,7 @@ export default class PlaceShipQuotes {
     ]
   }
 
-  static placing = {
+  static placeShip = {
     yamato: [
       "O #SHIP reforçará nossa posição defensiva, mantendo o equilíbrio da batalha.",
       "Cortaremos as esperanças do inimigo como uma lâmina afiada.",
@@ -78,25 +78,5 @@ export default class PlaceShipQuotes {
     noronha: [
       "As novas condições climáticas demandam quer o plano B seja colocado em ação.",
     ]
-  }
-
-  static randomQuote(lineArray, ship) {
-    return lineArray[Math.floor(Math.random() * lineArray.length)]
-      .replace('#SHIP', ship);
-  }
-
-  static getPreparationQuote(char, ship) {
-    const lineArray = PlaceShipQuotes.preparation[char];
-    return PlaceShipQuotes.randomQuote(lineArray, ship);
-  }
-
-  static getPlacingQuote(char, ship) {
-    const lineArray = PlaceShipQuotes.placing[char];
-    return PlaceShipQuotes.randomQuote(lineArray, ship);
-  }
-
-  static getResetQuote(char, ship) {
-    const lineArray = PlaceShipQuotes.reset[char];
-    return PlaceShipQuotes.randomQuote(lineArray, ship);
   }
 }

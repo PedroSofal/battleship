@@ -4,10 +4,11 @@ import DOM from "./DOM.js";
 import Game from './gameControl.js';
 import { charObjects } from './characters.js';
 import Result from './result.js';
-import BattleLines from './quotes/battle-quotes.js';
 import Animation from './animations.js';
 import GameAudio from './audio.js';
 import Header from './header.js';
+import Quote from './quote.js';
+import Language from './language.js';
 
 export default class Battle {
   static root = document.querySelector(':root');
@@ -15,15 +16,16 @@ export default class Battle {
   static cpuBoard = document.querySelector('#cpu-board');
   static radarLockFoes = document.querySelectorAll('.radar-lock-foe > path');
   static countermeasureIndicator = document.querySelector('#countermeasure');
+  static characterQuotes = document.querySelector('#character-quotes');
 
   static retrievePlayerShipsPositions() {
     const playerBackendBoard = Game.players[0].gameboard;
     const playerFrontendBoard = DOM.getPlayerBoard();
 
     for (const ship of Object.values(playerBackendBoard.ships)) {
-      const row = parseInt(sessionStorage.getItem(ship.name_en + '-row'));
-      const col = parseInt(sessionStorage.getItem(ship.name_en + '-col'));
-      const axis = sessionStorage.getItem(ship.name_en + '-axis');
+      const row = parseInt(sessionStorage.getItem(ship.name.en + '-row'));
+      const col = parseInt(sessionStorage.getItem(ship.name.en + '-col'));
+      const axis = sessionStorage.getItem(ship.name.en + '-axis');
 
       playerBackendBoard.placeShip(row, col, axis, ship);
       Battle.renderShipIcons(playerFrontendBoard, row, col, axis, ship);
@@ -58,7 +60,7 @@ export default class Battle {
     const shipIcon = document.createElement('div');
 
     shipIcon.classList = 'ship__icon';
-    shipIcon.id = ship.name_en;
+    shipIcon.id = ship.name.en;
     shipIcon.style.mask = `url(${ship.src}) no-repeat center`;
     if (axis === 'col') shipIcon.classList.add('rotated');
 
@@ -220,54 +222,49 @@ export default class Battle {
   }
 
   static updateBattleQuote(attack, attacker, defender) {
-    let quote;
+    let quoteArray;
+    let photo;
     const result = attack.className;
-    const ship = attack.content !== 'water' ? getShipName() : null;
-
-    function getShipName() {
-      if (localStorage.getItem('lang') === 'en') {
-        return attack.content.name_en;
-      } else if (localStorage.getItem('lang') === 'pt') {
-        return attack.content.name_pt;
-      }
-    }
+    const ship = attack.content !== 'water' ? attack.content : null;
     
     if (Math.random() < 0.5 && result !== 'sunk') return;
     const sayer = Math.random() < 0.5 ? 'attacker' : 'defender';
 
     if (sayer === 'attacker') {
+      photo = attacker.char.src;
       switch(result) {
         case 'miss':
         case 'close':
-          quote = BattleLines.getOurMissQuote(attacker.char.name, ship, defender.char.name);
+          quoteArray = Quote.getOurMissQuote(attacker.char.name, ship, defender.char.name);
           break;
         case 'hit':
-          quote = BattleLines.getOurHitQuote(attacker.char.name, ship, defender.char.name);
+          quoteArray = Quote.getOurHitQuote(attacker.char.name, ship, defender.char.name);
           break;
         case 'sunk':
-          quote = BattleLines.getOurSinkQuote(attacker.char.name, ship, defender.char.name);
+          quoteArray = Quote.getOurSinkQuote(attacker.char.name, ship, defender.char.name);
           break;
       }
-
-      Animation.displayReaction(quote, attacker.char.src);
     }
 
     if (sayer === 'defender') {
+      photo = defender.char.src;
       switch(result) {
         case 'miss':
         case 'close':
-          quote = BattleLines.getTheirMissQuote(defender.char.name, ship, attacker.char.name);
+          quoteArray = Quote.getTheirMissQuote(defender.char.name, ship, attacker.char.name);
           break;
         case 'hit':
-          quote = BattleLines.getTheirHitQuote(defender.char.name, ship, attacker.char.name);
+          quoteArray = Quote.getTheirHitQuote(defender.char.name, ship, attacker.char.name);
           break;
         case 'sunk':
-          quote = BattleLines.getTheirSinkQuote(defender.char.name, ship, attacker.char.name);
+          quoteArray = Quote.getTheirSinkQuote(defender.char.name, ship, attacker.char.name);
           break;
       }
-
-      Animation.displayReaction(quote, defender.char.src);
     }
+
+    Language.loadDataAttributes(Battle.characterQuotes, quoteArray);
+    const quote = Battle.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`);
+    Animation.displayReaction(Battle.characterQuotes, quote, photo);
   }
 
   static playBattleMusic() {

@@ -6,8 +6,10 @@ import submarine from './assets/ships/submarine.svg';
 
 class Ship {
   constructor(name_en, name_pt, size, src) {
-    this.name_en = name_en;
-    this.name_pt = name_pt;
+    this.name = {
+      en: name_en,
+      pt: name_pt,
+    }
     this.size = size;
     this.src = src;
     this.coords = null;

@@ -1,4 +1,4 @@
-export default class BattleQuotes{
+export default class BattleQuotes {
   static ourMiss = {
     yamato: [
       "Falhamos em nossos cálculos. Recalculem, imediatamente!",
@@ -183,41 +183,5 @@ export default class BattleQuotes{
       "Nosso povo não conhece a palavra desistência. Esta batalha será nossa!",
       "Não baixem a guarda, pessoal! Matenham a calma e sigam com o plano.",
     ]
-  }
-
-  static randomQuote(lineArray, ship, enemy) {
-    return lineArray[Math.floor(Math.random() * lineArray.length)]
-      .replace('#SHIP', ship)
-      .replace('#ENEMY', enemy);
-  }
-
-  static getOurMissQuote(char, ship, enemy) {
-    const lineArray = BattleQuotes.ourMiss[char];
-    return BattleQuotes.randomQuote(lineArray, ship, enemy);
-  }
-
-  static getOurHitQuote(char, ship, enemy) {
-    const lineArray = BattleQuotes.ourHit[char];
-    return BattleQuotes.randomQuote(lineArray, ship, enemy);
-  }
-
-  static getOurSinkQuote(char, ship, enemy) {
-    const lineArray = BattleQuotes.ourSink[char];
-    return BattleQuotes.randomQuote(lineArray, ship, enemy);
-  }
-
-  static getTheirMissQuote(char, ship, enemy) {
-    const lineArray = BattleQuotes.theirMiss[char];
-    return BattleQuotes.randomQuote(lineArray, ship, enemy);
-  }
-
-  static getTheirHitQuote(char, ship, enemy) {
-    const lineArray = BattleQuotes.theirHit[char];
-    return BattleQuotes.randomQuote(lineArray, ship, enemy);
-  }
-
-  static getTheirSinkQuote(char, ship, enemy) {
-    const lineArray = BattleQuotes.theirSink[char];
-    return BattleQuotes.randomQuote(lineArray, ship, enemy);
   }
 }
