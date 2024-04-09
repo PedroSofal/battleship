@@ -1,22 +1,22 @@
 export default class PlaceShipQuotes {
   static preparation = {
     yamato: [
-      "Em uma guerra, cada movimento deve ser executado com precisão. Lutaremos com honra e lealdade à nossa terra, se necessário, até o último suspiro, mas faremos justiça!",
+      "In war, every move must be executed with precision. We will fight with honor and loyalty to our land until our last breath, if necessary, but we will bring justice!",
     ],
     olafsson: [
-      "Não há tempestade de ferro, nem ondas de fogo, que nos impeça de retornar às nossas famílias hoje! A história será escrita com sangue e coragem. Pela honra e pela glória!",
+      "There's no iron storm or waves of fire that can keep us from returning to our families today! History will be written with blood and courage. For honor and glory!",
     ],
     violeta: [
-      "Marinheiros, preparem-se para deslizar pelas sombras das ondas. A furtividade e a agilidade serão nossas maiores armas. Amanhã iremos atacar sem aviso!",
+      "Sailors, prepare to glide through the shadows of the waves. Stealth and agility will be our greatest weapons. Tomorrow, we will strike without warning!",
     ],
     rackham: [
-      "É hora de seguir o mapa rumo à liberdade. Contemplem a imensidão do horizonte, marujos, pois amanhã seremos os senhores dos mares!",
+      "It's time to follow the map towards freedom. Behold the vastness of the horizon, sailors, for tomorrow we shall be the masters of the seas!",
     ],
     nimitz: [
-      "Soldados, preparem-se para posicionar nossas embarcações no teatro de operações. A vitória somente será conquistada com estratégia, disciplina e fé. Às armas!",
+      "Sailors, prepare to position our vessels in the theater of operations. Victory will only be achieved through strategy, discipline, and faith. To arms!",
     ],
     noronha: [
-      "Senhores, o inimigo nos espera. Lembrem-se do nosso plano de ação estejam fortes mentalmente. As próximas horas serão de luta, mas os próximos dias serão de glória!",
+      "Gentlemen, the enemy awaits us. Remember our action plan and stay mentally strong. The next hours will be of struggle, but the next days will be of glory!",
     ]
   }
 
@@ -49,7 +49,7 @@ export default class PlaceShipQuotes {
       "Estou enviando o #SHIP para reforçar nossa frente de ataque.",
       "Com este #SHIP, anularemos as investidas inimigas e garantiremos a supremacia naval de nossa nação.",
       "Todos apostos no convés!",
-      "#SHIP, prossiga 3 milhas náuticas a leste para sua posição de combate.",
+      "Tripulação do #SHIP, prossiga 3 milhas náuticas a leste para sua posição de combate.",
     ],
     noronha: [
       "Este #SHIP será a chave para nossa tática de combate.",
@@ -61,7 +61,7 @@ export default class PlaceShipQuotes {
 
   static reset = {
     yamato: [
-      "A busca pela mais precisa solução tática nosa leva aprimorar nossos planos.",
+      "A busca pela mais precisa solução tática nos leva aprimorar nossos planos.",
     ],
     olafsson: [
       "As mudanças das marés demandam adaptações em nossas táticas.",
@@ -70,7 +70,7 @@ export default class PlaceShipQuotes {
       "Nada como a arte da ludibriação. O inimigo pensa que não tínhamos ciência de suas espionagens. Traçaremos o real plano de ação agora.",
     ],
     rackham: [
-      "Ótimo, alguém derramou bebida no mapa e agora precisaremos elaborar o plano novamente. Favor enviarem a equipe de limpeza para cá.",
+      "Ótimo, alguém derramou bebida no mapa e agora precisaremos elaborar o plano novamente. Favor enviar a equipe de limpeza para o meu escritório.",
     ],
     nimitz: [
       "Marinheiros, nosso planejamento sofrerá modificações.",

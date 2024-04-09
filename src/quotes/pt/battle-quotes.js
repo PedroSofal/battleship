@@ -8,7 +8,7 @@ export default class BattleQuotes {
     olafsson: [
       "Não ouvi nenhuma explosão...",
       "Não adianta fugir, #ENEMY.",
-      "Estamos indo atrás de vocês!", // "We're coming for you!",
+      "Estamos indo atrás de vocês!",
     ],
     violeta: [
       "Sem sorte desta vez. Recalibrando a mira.",
@@ -67,11 +67,11 @@ export default class BattleQuotes {
 
   static ourSink = {
     yamato: [
-      "#SHIP inimigo destruído!", // "Enemy #SHIP destroyed!",
-      "Não tem como nos deter!", // "There's no stopping us!",
+      "#SHIP inimigo destruído!",
+      "Não tem como nos deter!",
     ],
     olafsson: [
-      "Lá vão eles para as profundezas!", // "They're going down!",
+      "Lá vão eles para as profundezas!",
       "Que a alma dos que caíram em batalha descanse em paz.",
     ],
     violeta: [
@@ -83,7 +83,7 @@ export default class BattleQuotes {
       "O #SHIP inimigo está flutuando igual a um tijolo!",
     ],
     nimitz: [
-      "O naufrágio do #SHIP do inimigo foi um duro golpe em sua linha defensiva. Continuem avançando!", // "The sinking of the enemy's #SHIP was I major blow in their defense line. Keep pushing!"
+      "O naufrágio do #SHIP do inimigo foi um duro golpe em sua linha defensiva. Continuem avançando!",
       "Estamos ganhando espaço no campo do inimigo!",
     ],
     noronha: [
@@ -114,7 +114,7 @@ export default class BattleQuotes {
       "Os peixes estão sofrendo nas mãos do inimigo.",
     ],
     nimitz: [
-      "Nossas coordenadas ainda não foram rastreadas pelo inimigo. Mas mantenham os olhos abertos, isso pode mudar em breve.",
+      "Nossas coordenadas ainda não foram rastreadas pelo inimigo. Mantenham os olhos abertos.",
       "Nossas táticas estão confundindo-os. Bom trabalho!",
       "Um tiro no escuro. Enquanto as forças de #ENEMY continuarem assim, estaremos seguros.",
     ],

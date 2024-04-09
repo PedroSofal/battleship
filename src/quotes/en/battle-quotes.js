@@ -1,187 +1,187 @@
 export default class BattleQuotes {
   static ourMiss = {
     yamato: [
-      "Falhamos em nossos cálculos. Recalculem, imediatamente!",
-      "Você não pode se esconder para sempre, #ENEMY.",
-      "A paciência é uma virtude inestimável.",
+      "We failed in our calculations. Recalculate immediately!",
+      "You can't hide forever, #ENEMY.",
+      "Patience is an invaluable virtue.",
     ],
     olafsson: [
-      "Não ouvi nenhuma explosão...",
-      "Não adianta fugir, #ENEMY.",
-      "Estamos indo atrás de vocês!", // "We're coming for you!",
+      "I didn't hear any explosion...",
+      "There's no point in running away, #ENEMY.",
+      "We're coming after you!",
     ],
     violeta: [
-      "Sem sorte desta vez. Recalibrando a mira.",
-      "Como podem ter escapado?",
-      "Não estamos fazendo muito progresso por aqui.",
+      "No luck this time. Recalibrating the aim.",
+      "How could they have escaped?",
+      "We're not making much progress here.",
     ],
     rackham: [
-      "Isso foi só um tiro de advertência.",
-      "Deve ter sido o vento...",
-      "Não se esconda, #ENEMY!",
+      "That was just a warning shot.",
+      "It must have been the wind...",
+      "Don't hide, #ENEMY!",
     ],
     nimitz: [
-      "Os dados do radar não captaram nada desta vez.",
-      "Nossa mira precisa de alguns ajustes.",
-      "Nenhum retorno...",
+      "The radar data was unable to pick up anything this time.",
+      "Our aim needs some adjustments.",
+      "No returns...",
     ],
     noronha: [
-      "O alvo permanece acima da linha do horizonte.",
-      "Nada...",
-      "Não estamos conseguindo localizar o inimigo, precisamos de um novo plano de ataque.",
+      "The target remains above the horizon line.",
+      "Nothing...",
+      "We're unable to locate the enemy. We need a new attack plan.",
     ]
   }
 
   static ourHit = {
     yamato: [
-      "Direto no alvo! Fiquem atentos a um possível contra-ataque!",
-      "Navio inimigo na mira. Jamais duvide de nossa capacidade, #ENEMY.",
-      "Não os deixem escapar!",
+      "Bullseye! Stay alert for a possible counterattack!",
+      "Enemy ship in sight. Never doubt our capability, #ENEMY.",
+      "Don't let them escape!",
     ],
     olafsson: [
-      "#ENEMY, sua única saída é a rendição. Não daremos trégua!",
+      "#ENEMY, your only way out is surrender. We won't give you any quarter!",
       "BOOM! Hahaha!",
-      "Sinta a fúria de nossos canhões!",
+      "Feel the fury of our cannons!",
     ],
     violeta: [
-      "Navio inimigo atingido! Estamos no caminho certo.",
-      "Isso! As forças de #ENEMY está procurando o que os atingiu até agora.",
-      "Eles estão recuando!",
+      "Enemy ship hit! We're on the right track.",
+      "That's it! #ENEMY forces are still searching for what hit them.",
+      "They're retreating!",
     ],
     rackham: [
-      "Na mosca! Pensei que este fosse dar mais trabalho.",
-      "Bom trabalho, rapazes. Hoje a cerveja será por minha conta!",
-      "Haha! Nós governamos estes mares, #ENEMY!",
+      "Right on target! I thought this one would be trickier.",
+      "Good job, lads. Tonight, the booze is on me!",
+      "Haha! We rule these seas, #ENEMY!",
     ],
     nimitz: [
-      "Alvo atingido! Excelente trabalho, artilharia!",
-      "Acerto confirmado. Reportando posição do inimigo.",
-      "Pegamos eles!",
+      "Target hit! Excellent job, artillery!",
+      "Hit confirmed. Reporting enemy position.",
+      "We got'em!",
     ],
     noronha: [
-      "Eles estão nas cordas!",
-      "Pegamos uma embarcação deles! Essa não vai muito longe.",
-      "Não há como escapar, #ENEMY!",
+      "They're on the ropes!",
+      "We caught one of their vessels! It won't get very far.",
+      "There's no escape, #ENEMY!",
     ]
   }
 
   static ourSink = {
     yamato: [
-      "#SHIP inimigo destruído!", // "Enemy #SHIP destroyed!",
-      "Não tem como nos deter!", // "There's no stopping us!",
+      "Enemy #SHIP destroyed!",
+      "There's no stopping us!",
     ],
     olafsson: [
-      "Lá vão eles para as profundezas!", // "They're going down!",
-      "Que a alma dos que caíram em batalha descanse em paz.",
+      "They're going down!",
+      "May the souls of those who fell in battle rest in peace.",
     ],
     violeta: [
-      "A nossa chance é agora, vamos, vamos!",
-      "Destruição do #SHIP inimigo confirmada!",
+      "Our chance is now, go, go!",
+      "Destruction of enemy #SHIP confirmed!",
     ],
     rackham: [
-      "Este é apenas o começo, #ENEMY!",
-      "O #SHIP inimigo está flutuando igual a um tijolo!",
+      "This is just the beginning, #ENEMY!",
+      "The enemy #SHIP is floating like a brick!",
     ],
     nimitz: [
-      "O naufrágio do #SHIP do inimigo foi um duro golpe em sua linha defensiva. Continuem avançando!", // "The sinking of the enemy's #SHIP was I major blow in their defense line. Keep pushing!"
-      "Estamos ganhando espaço no campo do inimigo!",
+      "The sinking of the enemy's #SHIP was a major blow in their defensive line. Keep pushing!",
+      "We're gaining ground in the enemy's field!",
     ],
     noronha: [
-      "Afundamos o #SHIP deles, nossa vitória está cada vez mais próxima!",
-      "Nós vamos até o fim!",
+      "We've sunk their #SHIP, our victory is getting closer!",
+      "We will go all the way!",
     ]
   }
 
   static theirMiss = {
     yamato: [
-      "Estamos ganhando tempo.",
-      "Nossa linha de defesa é um escudo impenetrável!",
-      "Mais um projétil inimigo que rasga os céus sem direção.",
+      "We're buying time.",
+      "Our defense line is an impenetrable shield!",
+      "Yet another enemy projectile tearing through the skies aimlessly.",
     ],
     olafsson: [
-      "Muito bom! Continuem desperdiçando munição.",
-      "Hoje não!",
-      "Eles atiram como cegos! Continuem desafiando-os!",
+      "Very good! Keep wasting ammunition.",
+      "Not today!",
+      "They're shooting like blind men! Keep challenging them!",
     ],
     violeta: [
-      "Continuem nas sombras, o inimigo não consegue nos ver!",
-      "Esta era a brecha que precisamos. Avançem com força total!",
-      "Desista, #ENEMY!",
+      "Stay in the shadows, the enemy can't see us!",
+      "This was the opening we needed. Advance at full force!",
+      "Give up, #ENEMY!",
     ],
     rackham: [
-      "Hahaha! Continue tentando, #ENEMY!",
+      "Hahaha! Keep trying, #ENEMY!",
       "Splash!",
-      "Os peixes estão sofrendo nas mãos do inimigo.",
+      "The fish are suffering at the hands of the enemy.",
     ],
     nimitz: [
-      "Nossas coordenadas ainda não foram rastreadas pelo inimigo. Mas mantenham os olhos abertos, isso pode mudar em breve.",
-      "Nossas táticas estão confundindo-os. Bom trabalho!",
-      "Um tiro no escuro. Enquanto as forças de #ENEMY continuarem assim, estaremos seguros.",
+      "Our coordinates haven't been tracked by the enemy yet. Keep your eyes peeled.",
+      "Our tactics are confusing them. Good job!",
+      "A shot in the dark. As long as #ENEMY forces continue like this, we'll be safe.",
     ],
     noronha: [
-      "Cuidado com os flancos!",
-      "Eles nos perderam de vista.",
-      "Evasiva bem-sucedida! Não baixem a guarda, eles voltarão!",
+      "Watch out for the flanks!",
+      "They've lost sight of us.",
+      "Successful evasion! Don't let your guard down, they'll be back!",
     ]
   }
 
   static theirHit = {
     yamato: [
-      "Código vermelho! Hora de contra-atacar com toda a nossa honra!",
-      "Continuem lutando, homens, nossos navios aguentam muito mais que isso!",
-      "Nosso casco sofreu danos! Reparem imediatamente!",
+      "Code red! Time to counterattack with all our honor!",
+      "Keep fighting, men, our ships can take much more than this!",
+      "Our hull has suffered damage! Repair it immediately!",
     ],
     olafsson: [
-      "#ENEMY, prepare-se para testemunhar a fúria dos mares!",
-      "A união é nossa armadura. Mantenham a posição, guerreiros!",
-      "O céu escurece sobre nós. Mas os deuses estão conosco.",
+      "#ENEMY, prepare to witness the fury of the seas!",
+      "Unity is our armor. Hold the line, warriors!",
+      "The sky darkens upon our heads. But the gods are with us.",
     ],
     violeta: [
-      "Acabamos de sofrer danos consideráveis em um de nossos navios. Preparar equipe de resgate!",
-      "Vocês não estão sozinhos, marinheiros! Direcionando reforços agora!",
-      "Esses danos não são nada para uma tripulação como a nossa! Continuem firmes!",
+      "We've just suffered considerable damage on one of our ships. Prepare the rescue team!",
+      "You are not alone, marines! Directing reinforcements now!",
+      "These damages are nothing for a crew like ours! Stay strong!",
     ],
     rackham: [
-      "Homem ao mar! Homem ao mar!",
-      "Você nunca nos pegará vivos, #ENEMY!",
-      "Manobra evasiva! Preparem-se para o próximo impacto!",
+      "Man overboard! Man overboard!",
+      "You'll never catch us alive, #ENEMY!",
+      "Evasive maneuver! Brace for the next impact!",
     ],
     nimitz: [
-      "Atenção todas as unidades, estamos sob fogo inimigo. Solicitando apoio imediato!",
-      "Fomos acoplados!",
-      "Danos reportados no convés! Médicos, estejam prontos para tratar os feridos!",
+      "Attention all units, we're under enemy fire. Requesting immediate support!",
+      "We've been hit!",
+      "Damage reported on the deck! Medics, be ready to treat the wounded!",
     ],
     noronha: [
-      "Estamos sofrendo grandes avarias em uma de nossas embarcações, precisamos de reforços!",
-      "Aguentem firme, marinheiros, estamos deslocando reforços para a sua posição!",
-      "Você cometeu um grande erro, #ENEMY.",
+      "We're suffering major damage on one of our vessels, we need reinforcements!",
+      "Hold steady, marines, we're dispatching reinforcements to your position!",
+      "You've made a big mistake, #ENEMY.",
     ]
   }
 
   static theirSink = {
     yamato: [
-      "Ainda há esperanças!",
-      "Um sacrifício doloroso, mas nossa determinação não se abala!",
+      "There is still hope!",
+      "A painful sacrifice, but our determination remains unshaken!",
     ],
     olafsson: [
-      "Nunca nos curvaremos!", // "We will never kneel!",
-      "Preparem-se para vingar nossos homens caídos!",
+      "We will never kneel!",
+      "Prepare to avenge our fallen men!",
     ],
     violeta: [
-      "Não! Não o nosso #SHIP!",
-      "Somos mais fortes do que pensa, #ENEMY.",
+      "No! Not our #SHIP!",
+      "We are stronger than you think, #ENEMY.",
     ],
     rackham: [
-      "Se este é o nosso destino, cairemos de pé.",
-      "Não se preocupem, marujos, o resgate chegará a tempo!",
+      "If this is our destiny, we will fall with dignity.",
+      "Don't worry, marines, the rescue will come in time!",
     ],
     nimitz: [
-      "Abandonar navio! Abandonar navio!",
-      "O #SHIP está afundando, enviem a equipe de resgate!"
+      "Abandon ship! Abandon ship!",
+      "#SHIP is sinking, send the rescue team!"
     ],
     noronha: [
-      "Nosso povo não conhece a palavra desistência. Esta batalha será nossa!",
-      "Não baixem a guarda, pessoal! Matenham a calma e sigam com o plano.",
+      "Our people don't know the word surrender. This battle will be ours!",
+      "Don't let your guard down, everyone! Stay calm and stick to the plan.",
     ]
   }
 }
