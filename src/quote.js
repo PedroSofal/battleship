@@ -43,7 +43,7 @@ export default class Quote {
   static getPreparationQuote(char) {
     const quoteArrays = [];
     Object.values(Quote.placeShip).forEach(lang => quoteArrays.push(lang.preparation[char]));
-    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship);
+    return Quote.replacePlaceholders(Quote.randomize(quoteArrays));
   }
 
   static getPlaceShipQuote(char, ship) {

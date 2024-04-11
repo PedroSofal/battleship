@@ -17,9 +17,9 @@ class Char {
 
 export const charObjects = {
   nimitz: new Char('nimitz', 'Douglas Nimitz', nimitz, 'rgb(255, 53, 54)', 'rgba(255, 53, 54, 0.5)'),
-  yamato: new Char('yamato', 'Satoru Yamato', yamato, 'rgb(58, 113, 203)', 'rgba(58, 113, 203, 0.5)'),
-  olafsson: new Char('olafsson', 'Leif Oláfsson', olafsson, 'rgb(143, 202, 94)', 'rgba(143, 202, 94, 0.5)'),
+  yamato: new Char('yamato', 'Satoru Yamato', yamato, 'rgb(7, 89, 201)', 'rgba(7, 89, 201, 0.5)'),
+  olafsson: new Char('olafsson', 'Leif Oláfsson', olafsson, 'rgb(241, 94, 24)', 'rgba(241, 94, 24, 0.5)'),
   violeta: new Char('violeta', 'Violeta Pavlichenko', violeta, 'rgb(244, 195, 67)', 'rgba(244, 195, 67, 0.5)'),
-  rackham: new Char('rackham', 'Jack Rackham', rackham, 'rgb(255, 53, 54)', 'rgba(255, 53, 54, 0.5)'),
-  noronha: new Char('noronha', 'Alberto Noronha', noronha, 'rgb(143, 202, 94)', 'rgba(143, 202, 94, 0.5)'),
+  rackham: new Char('rackham', 'Jack Rackham', rackham, 'rgb(220, 220, 220)', 'rgba(220, 220, 220, 0.5)'),
+  noronha: new Char('noronha', 'Alberto Noronha', noronha, 'rgb(62, 244, 84)', 'rgba(62, 244, 84, 0.5)'),
 }
