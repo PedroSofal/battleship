@@ -17,8 +17,15 @@ export default class Settings {
 
   static loadLanguage() {
     const textElements = document.querySelectorAll('[data-en]');
+    const langOptions = document.querySelectorAll('.language-radio');
     const currentLanguageData = `data-${localStorage.getItem('lang')}`;
     textElements.forEach(element => element.textContent = element.getAttribute(currentLanguageData));
+    langOptions.forEach(element => {
+      element.classList.remove('lang-selected');
+      if (element.id === `lang-${localStorage.getItem('lang')}`) {
+        element.classList.add('lang-selected');
+      }
+    })
   }
 
   static loadMainMenuSettings() {
@@ -47,6 +54,7 @@ export default class Settings {
   static loadHeaderSettings() {
     const musicVolume = parseFloat(localStorage.getItem('music-vol'));
     const sfxVolume = parseFloat(localStorage.getItem('sfx-vol'));
+    Settings.loadLanguage();
 
     document.querySelector('#music-volume-slider').value = parseFloat(musicVolume);
     document.querySelector('#sfx-volume-slider').value = parseFloat(sfxVolume);

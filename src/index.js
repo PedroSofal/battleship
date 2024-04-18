@@ -197,6 +197,7 @@ class MainMenu {
 
   static init() {
     sessionStorage.clear();
+    Settings.loadLanguage();
     Settings.loadMainMenuSettings();
     MainMenu.setEventListeners();
     document.body.addEventListener('click', MainMenu.playMainMenuMusic);
