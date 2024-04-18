@@ -112,8 +112,7 @@ export default class Battle {
         Battle.radarLockAlert(attack);
         Battle.missileLaunchAlert(attack.className);
         setTimeout(() => {
-          Battle.radarLockFoes.forEach(foe => foe.classList.remove('lightUp'));
-          Battle.countermeasureIndicator.classList.remove('lightUp');
+          Battle.resolveRadarAlert(attack.className);
           DOM.updateBoard(Game.players[0]);
           DOM.updateBoard(Game.players[1]);
           Battle.callAnimation(attack.className, attackedHtmlSquare);
@@ -184,13 +183,7 @@ export default class Battle {
   static missileLaunchAlert(result) {
     const randomFoe = Math.floor(Math.random() * Battle.radarLockFoes.length);
 
-    if (result === 'hit') {
-      Battle.radarLockFoes[randomFoe].classList.add('lightUp');
-      GameAudio.playSfx(GameAudio.missileAlert);
-      Battle.launchCountermeasures();
-    }
-
-    if (result === 'close') {
+    if (result !== 'water') {
       const warning = Math.random() < 0.5 ? true : false;
       if (warning) {
         Battle.radarLockFoes[randomFoe].classList.add('lightUp');
@@ -204,6 +197,17 @@ export default class Battle {
     setTimeout(() => {
       Battle.countermeasureIndicator.classList.add('lightUp');
     }, 300);
+  }
+
+  static resolveRadarAlert(result) {
+    Battle.radarLockFoes.forEach(foe => foe.classList.remove('lightUp'));
+    Battle.countermeasureIndicator.classList.remove('lightUp');
+
+    if (result === 'sunk') {
+      const friendIndicators = document.querySelector('.radar-lock-friendly');
+      const firstFriend = friendIndicators.querySelectorAll('circle:not(.sunken)')[0];
+      firstFriend.classList.add('sunken');
+    }
   }
 
   static gridFromHtmlSquares(squares) {

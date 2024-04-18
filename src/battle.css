@@ -73,6 +73,14 @@
   transform: translate(-50%, -50%);
 }
 
+.radar-lock-friendly > circle {
+  fill: #63FF73;
+}
+
+.radar-lock-friendly > circle.sunken {
+  fill: transparent;
+}
+
 .radar-lock-foe > path {
   opacity: 0;
 }
