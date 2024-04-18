@@ -119,7 +119,7 @@ export default class Battle {
             Battle.updateBattleQuote(attack, Game.players[1], Game.players[0]);
           }, 300);
         }, 3500);
-      }, 400);
+      }, 500);
     }
   }
 
