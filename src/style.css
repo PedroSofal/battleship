@@ -177,6 +177,10 @@ button:disabled {
   cursor: crosshair;
 }
 
+.cpu-board .square:hover {
+  background-color: var(--color-cpu-alpha);
+}
+
 .square {
   overflow: visible;
   background-repeat: no-repeat;
@@ -295,6 +299,10 @@ button:disabled {
 
 .cpu-board .ship__icon.sunken {
   visibility: visible;
+}
+
+.ship__yard:hover {
+  background: var(--color-850);
 }
 
 .ship__icon {

@@ -294,6 +294,7 @@ export default class Battle {
     Battle.root.style.setProperty('--color-player', charObjects[sessionStorage.getItem('player-char')].color);
     Battle.root.style.setProperty('--color-player-alpha', charObjects[sessionStorage.getItem('player-char')].colorAlpha);
     Battle.root.style.setProperty('--color-cpu', charObjects[sessionStorage.getItem('cpu-char')].color);
+    Battle.root.style.setProperty('--color-cpu-alpha', charObjects[sessionStorage.getItem('cpu-char')].colorAlpha);
     document.body.addEventListener('mousemove', Battle.playBattleMusic);
     Header.init();
   }
