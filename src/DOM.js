@@ -46,7 +46,8 @@ export default class DOM {
     player.gameboard.squares.forEach(square => {
       const row = square.coords[0];
       const col = square.coords[1];
-      const classListValue = `col square ${square.className}`;
+      let classListValue = `col square`;
+      if (square.className) classListValue += ` ${square.className}`;
       
       if (square.className === 'occupied'
       && player.type === 'cpu') {
