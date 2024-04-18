@@ -76,7 +76,6 @@ export default class Battle {
 
   static playerPlays(row, col, e) {
     if (Game.gameOver()) {
-      Battle.handleGameOver(Game.players[1]);
       return;
     }
     
@@ -114,10 +113,15 @@ export default class Battle {
           DOM.updateBoard(Game.players[0]);
           DOM.updateBoard(Game.players[1]);
           Battle.callAnimation(attack.className, attackedHtmlSquare);
-          Game.nextPlayer();
-          setTimeout(() => {
-            Battle.updateBattleQuote(attack, Game.players[1], Game.players[0]);
-          }, 300);
+
+          if (Game.gameOver()) {
+            Battle.handleGameOver(Game.players[1]);
+          } else {
+            Game.nextPlayer();
+            setTimeout(() => {
+              Battle.updateBattleQuote(attack, Game.players[1], Game.players[0]);
+            }, 300);
+          }
         }, 3500);
       }, 500);
     }
