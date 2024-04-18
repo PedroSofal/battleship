@@ -14,6 +14,7 @@ export default class Battle {
   static root = document.querySelector(':root');
   static playerBoard = document.querySelector('#player-board');
   static cpuBoard = document.querySelector('#cpu-board');
+  static radarLockScreen = document.querySelector('.wrapper--radar-lock-warning')
   static radarLockFoes = document.querySelectorAll('.radar-lock-foe > path');
   static countermeasureIndicator = document.querySelector('#countermeasure');
   static characterQuotes = document.querySelector('#character-quotes');
@@ -170,11 +171,15 @@ export default class Battle {
         setTimeout(() => {
           GameAudio.playRadarLockInfiniteLoop('start');
         }, 2000);
+        setTimeout(() => {
+          Battle.radarLockScreen.classList.add('lightUp');
+        }, 3500);
       }
   
       if (square.content.isSunk()) {
         setTimeout(() => {
           GameAudio.playRadarLockInfiniteLoop('stop');
+          Battle.radarLockScreen.classList.remove('lightUp');
       }, 4000);
       }
     }
@@ -183,7 +188,7 @@ export default class Battle {
   static missileLaunchAlert(result) {
     const randomFoe = Math.floor(Math.random() * Battle.radarLockFoes.length);
 
-    if (result !== 'water') {
+    if (result !== 'miss') {
       const warning = Math.random() < 0.5 ? true : false;
       if (warning) {
         Battle.radarLockFoes[randomFoe].classList.add('lightUp');
@@ -194,9 +199,7 @@ export default class Battle {
   }
 
   static launchCountermeasures() {
-    setTimeout(() => {
       Battle.countermeasureIndicator.classList.add('lightUp');
-    }, 300);
   }
 
   static resolveRadarAlert(result) {
