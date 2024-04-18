@@ -75,6 +75,7 @@ class MainMenu {
   }
 
   static handleCharSelection(selectedChar) {
+    if (selectedChar.classList.contains('char-selected')) return;
     MainMenu.resetCharSelection();
     selectedChar.classList.add('char-selected');
     selectedChar.classList.add(`char-selected--${MainMenu.isSelecting}`);
