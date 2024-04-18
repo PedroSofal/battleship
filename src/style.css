@@ -299,7 +299,7 @@ button:disabled {
 
 .ship__icon {
   height: 50px;
-  background-color: var(--color-player);
+  /* background-color: var(--color-player); */
   transform-origin: 25px 25px;
 }
 

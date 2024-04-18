@@ -50,6 +50,7 @@ export default class PlaceShips {
       shipName.setAttribute('data-pt', shipObject.name.pt);
       shipDrag.setAttribute('draggable', 'true');
       shipIcon.id = shipObject.name.en;
+      shipIcon.style.background = `url(${shipObject.src}) no-repeat center`;
       shipIcon.style.mask = `url(${shipObject.src}) no-repeat center`;
       
       shipDrag.appendChild(shipIcon);

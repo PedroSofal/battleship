@@ -61,6 +61,7 @@ export default class Battle {
 
     shipIcon.classList = 'ship__icon';
     shipIcon.id = ship.name.en;
+    shipIcon.style.background = `url(${ship.src}) no-repeat center`;
     shipIcon.style.mask = `url(${ship.src}) no-repeat center`;
     if (axis === 'col') shipIcon.classList.add('rotated');
 
