@@ -82,13 +82,17 @@ export default class Battle {
     if (Game.turn === 0) {
       const attack = Game.players[0].attack(row, col, Game.players[1]);
       const attackedHtmlSquare = Battle.querySquareByCoords(Battle.cpuBoard, attack.coords);
+      const delay = attack.className === 'sunk' ? 1000 : 0;
+
       DOM.showSunkenShips(Game.players[1]);
       DOM.updateBoard(Game.players[0]);
       DOM.updateBoard(Game.players[1]);
       Battle.callAnimation(attack.className, attackedHtmlSquare);
       Game.nextPlayer();
-      Battle.botPlays();
       e.target.removeEventListener('click', Battle.handleClick);
+      setTimeout(() => {
+        Battle.botPlays();
+      }, delay);
       setTimeout(() => {
         Battle.updateBattleQuote(attack, Game.players[0], Game.players[1]);
       }, 300);
