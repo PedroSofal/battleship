@@ -34,7 +34,7 @@ export default class Quote {
 
         replacedQuotes.push(quotes[i]
           .replace('#SHIP', shipReplacement)
-          .replace('#ENEMY', enemy));
+          .replace('#ENEMY', enemy.slice(0,1).toUpperCase().concat(enemy.slice(1))));
       }
     
     return replacedQuotes;
