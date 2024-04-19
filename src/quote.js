@@ -26,6 +26,7 @@ export default class Quote {
   }
 
   static replacePlaceholders(quotes, ship, enemy) {
+    enemy = enemy ?? 'enemy';
     const replacedQuotes = [];
 
       for (let i = 0; i < quotes.length; i++) {

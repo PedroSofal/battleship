@@ -87,6 +87,7 @@ export default class Battle {
 
       DOM.updateBoard(Game.players[0]);
       DOM.updateBoard(Game.players[1]);
+      DOM.showSunkenShips(Game.players[1]);
       Battle.callAnimation(attack.className, attackedHtmlSquare);
       Game.nextPlayer();
       e.target.removeEventListener('click', Battle.handleClick);
@@ -115,6 +116,7 @@ export default class Battle {
           Battle.resolveRadarAlert(attack.className);
           DOM.updateBoard(Game.players[0]);
           DOM.updateBoard(Game.players[1]);
+          DOM.showSunkenShips(Game.players[0]);
           Battle.callAnimation(attack.className, attackedHtmlSquare);
 
           if (Game.gameOver()) {
@@ -233,6 +235,9 @@ export default class Battle {
     Result.init(winner);
     Battle.cpuBoard.querySelectorAll('.square').forEach(square => {
       square.removeEventListener('click', Battle.handleClick);
+    });
+    Battle.cpuBoard.querySelectorAll('.ship__icon').forEach(ship => {
+      ship.classList.add('revealed');
     });
   }
 

@@ -40,8 +40,6 @@ export default class DOM {
   }
 
   static updateBoard(player) {
-    DOM.showSunkenShips(player);
-
     const gameboard = document.querySelector(`.${player.type}-board`);
     const grid = DOM.gridFromHtmlSquares(gameboard.children);
 

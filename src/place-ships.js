@@ -73,7 +73,7 @@ export default class PlaceShips {
   }
 
   static loadBoard() {
-    PlaceShips.strategyBoard.appendChild(DOM.getPlayerBoard());
+    PlaceShips.strategyBoard.appendChild(DOM.getHumanBoard());
   }
 
   static confirmFormation() {

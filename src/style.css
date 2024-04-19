@@ -298,6 +298,12 @@ button:disabled {
   opacity: 0;
 }
 
+.cpu-board .ship__icon:not(sunken).revealed {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
 .ship__icon.sunken {
   visibility: visible;
   animation: sink-ship 1s ease-in-out forwards;
