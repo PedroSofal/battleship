@@ -1,9 +1,9 @@
 export default class DOM {
-  static loadedPlayerBoard = null;
+  static loadedHumanBoard = null;
   static loadedCpuBoard = null;
 
-  static getPlayerBoard() {
-    return DOM.loadedPlayerBoard;
+  static getHumanBoard() {
+    return DOM.loadedHumanBoard;
   }
 
   static getCpuBoard() {
@@ -28,7 +28,7 @@ export default class DOM {
     }
   
     boardContainer.className = `board ${player.type}-board`;
-    if (player.type === 'human') DOM.loadedPlayerBoard = boardContainer;
+    if (player.type === 'human') DOM.loadedHumanBoard = boardContainer;
     if (player.type === 'cpu') DOM.loadedCpuBoard = boardContainer;
   }
 
@@ -40,6 +40,8 @@ export default class DOM {
   }
 
   static updateBoard(player) {
+    DOM.showSunkenShips(player);
+
     const gameboard = document.querySelector(`.${player.type}-board`);
     const grid = DOM.gridFromHtmlSquares(gameboard.children);
 
@@ -59,11 +61,11 @@ export default class DOM {
   }
 
   static showSunkenShips(player) {
-    const cpuBoard = document.querySelector('#cpu-board');
-    const shipIcons = cpuBoard.querySelectorAll('.ship__icon');
-    const cpuShips = player.gameboard.ships;
+    const board = document.querySelector(`#${player.type}-board`);
+    const shipIcons = board.querySelectorAll('.ship__icon');
+    const shipObjects = player.gameboard.ships;
 
-    for (const ship of Object.values(cpuShips)) {
+    for (const ship of Object.values(shipObjects)) {
       if (ship.isSunk()) {
         const sunkShipIcon = Array.from(shipIcons).find(element => element.id === ship.name.en);
         sunkShipIcon.classList.add('sunken');

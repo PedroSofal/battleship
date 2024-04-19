@@ -7,7 +7,7 @@
   margin-top: 1rem;
 }
 
-.wrapper--player-board {
+.wrapper--human-board {
   grid-column: 2 / 3;
   grid-row: 1 / 3
 }

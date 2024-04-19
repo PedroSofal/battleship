@@ -261,7 +261,7 @@ button:disabled {
   stroke-dashoffset: 130;
 }
 
-.wrapper--player-board .dashed-border {
+.wrapper--human-board .dashed-border {
   stroke: var(--color-player);
 }
 
@@ -288,17 +288,24 @@ button:disabled {
   to { transform: rotateZ(360deg); }
 }
 
-#player-board .ship__icon,
+#human-board .ship__icon,
 #cpu-board .ship__icon {
   position: absolute;
 }
 
 .cpu-board .ship__icon {
   visibility: hidden;
+  opacity: 0;
 }
 
-.cpu-board .ship__icon.sunken {
+.ship__icon.sunken {
   visibility: visible;
+  animation: sink-ship 1s ease-in-out forwards;
+}
+
+@keyframes sink-ship {
+  70% { opacity: 1; }
+  100% { filter: brightness(30%); opacity: 1; }
 }
 
 .ship__yard:hover {

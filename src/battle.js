@@ -12,7 +12,7 @@ import Language from './language.js';
 
 export default class Battle {
   static root = document.querySelector(':root');
-  static playerBoard = document.querySelector('#player-board');
+  static humanBoard = document.querySelector('#human-board');
   static cpuBoard = document.querySelector('#cpu-board');
   static radarLockScreen = document.querySelector('.wrapper--radar-lock-warning')
   static radarLockFoes = document.querySelectorAll('.radar-lock-foe > path');
@@ -21,7 +21,7 @@ export default class Battle {
 
   static retrievePlayerShipsPositions() {
     const playerBackendBoard = Game.players[0].gameboard;
-    const playerFrontendBoard = DOM.getPlayerBoard();
+    const playerFrontendBoard = DOM.getHumanBoard();
 
     for (const ship of Object.values(playerBackendBoard.ships)) {
       const row = parseInt(sessionStorage.getItem(ship.name.en + '-row'));
@@ -32,7 +32,7 @@ export default class Battle {
       Battle.renderShipIcons(playerFrontendBoard, row, col, axis, ship);
     }
 
-    Battle.playerBoard.appendChild(playerFrontendBoard);
+    Battle.humanBoard.appendChild(playerFrontendBoard);
     DOM.updateBoard(Game.players[0]);
   }
 
@@ -85,7 +85,6 @@ export default class Battle {
       const attackedHtmlSquare = Battle.querySquareByCoords(Battle.cpuBoard, attack.coords);
       const delay = attack.className === 'sunk' ? 1000 : 0;
 
-      DOM.showSunkenShips(Game.players[1]);
       DOM.updateBoard(Game.players[0]);
       DOM.updateBoard(Game.players[1]);
       Battle.callAnimation(attack.className, attackedHtmlSquare);
@@ -109,7 +108,7 @@ export default class Battle {
     if (Game.turn === 1) {
       setTimeout(() => {
         const attack = Game.players[1].attack(Game.players[0]);
-        const attackedHtmlSquare = Battle.querySquareByCoords(Battle.playerBoard, attack.coords);
+        const attackedHtmlSquare = Battle.querySquareByCoords(Battle.humanBoard, attack.coords);
         Battle.radarLockAlert(attack);
         Battle.missileLaunchAlert(attack.className);
         setTimeout(() => {
