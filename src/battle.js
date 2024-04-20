@@ -12,6 +12,7 @@ import Language from './language.js';
 
 export default class Battle {
   static root = document.querySelector(':root');
+  static wrapper = document.querySelector('.battle-wrapper');
   static humanBoard = document.querySelector('#human-board');
   static cpuBoard = document.querySelector('#cpu-board');
   static radarLockScreen = document.querySelector('.wrapper--radar-lock-warning')
@@ -118,6 +119,7 @@ export default class Battle {
           DOM.updateBoard(Game.players[1]);
           DOM.showSunkenShips(Game.players[0]);
           Battle.callAnimation(attack.className, attackedHtmlSquare);
+          if (attack.className === 'hit' || attack.className === 'sunk') Animation.shake(Battle.wrapper);
 
           if (Game.gameOver()) {
             Battle.handleGameOver(Game.players[1]);
@@ -144,17 +146,14 @@ export default class Battle {
         GameAudio.playSfx(GameAudio.hit);
         break;
       case 'sunk':
-        if (Game.gameOver()) {
-          GameAudio.playSfx(GameAudio.hit);
-          setTimeout(() => {
+        GameAudio.playSfx(GameAudio.hit);
+        setTimeout(() => {
+          if (Game.gameOver()) {
             GameAudio.playSfx(GameAudio.lastSink);
-          }, 300);
-        } else {
-          GameAudio.playSfx(GameAudio.hit);
-          setTimeout(() => {
+          } else {
             GameAudio.playSfx(GameAudio.sink);
-          }, 300);
-        }
+          }
+        }, 300);
         break;
     }
   }

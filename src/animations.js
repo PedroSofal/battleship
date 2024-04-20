@@ -136,4 +136,11 @@ export default class Animation {
       square.removeChild(explosion);
     }, 50 * Animation.splash.length);
   }
+
+  static shake(html) {
+    html.classList.remove('shake');
+    setTimeout(() => {
+      html.classList.add('shake');
+    }, 10);
+  }
 }

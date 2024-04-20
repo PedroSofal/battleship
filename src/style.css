@@ -42,6 +42,7 @@ body {
 
   margin: 0;
   color: var(--color-100);
+  overflow-x: hidden;
 }
 
 /* BUTTONS ***********/
@@ -228,12 +229,12 @@ button:disabled {
 
 .close,
 .miss {
-  background: radial-gradient(#2d78be, #00488b);
+  background: radial-gradient(#2d78be, #00488b, transparent);
 }
 
 .sunk,
 .hit {
-  background: radial-gradient(#ff6e35, #ff0015);
+  background: radial-gradient(#ff6e35, #ff0015, transparent);
 }
 
 .explosion {
