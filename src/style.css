@@ -177,7 +177,7 @@ button:disabled {
   cursor: crosshair;
 }
 
-.cpu-board .square:hover {
+.cpu-board .square:not(.occupied):not(.miss):not(.hit):not(.close):not(.sunk):hover {
   background-color: var(--color-cpu-alpha);
 }
 
@@ -222,18 +222,18 @@ button:disabled {
   to { transform: rotateZ(90deg) translateX(100%); }
 }
 
-.occupied {
-  background-color: blue;
+.square {
+  outline-offset: -3px;
 }
 
 .close,
 .miss {
-  background-color: lightskyblue;
+  background: radial-gradient(#2d78be, #00488b);
 }
 
 .sunk,
 .hit {
-  background-color: red;
+  background: radial-gradient(#ff6e35, #ff0015);
 }
 
 .explosion {
@@ -311,7 +311,7 @@ button:disabled {
 
 @keyframes sink-ship {
   70% { opacity: 1; }
-  100% { filter: brightness(30%); opacity: 1; }
+  100% { filter: brightness(40%); opacity: 1; }
 }
 
 .ship__yard:hover {
@@ -320,7 +320,6 @@ button:disabled {
 
 .ship__icon {
   height: 50px;
-  /* background-color: var(--color-player); */
   transform-origin: 25px 25px;
 }
 
