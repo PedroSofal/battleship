@@ -193,7 +193,7 @@ class MainMenu {
 
   static playMainMenuMusic() {
     GameAudio.playMusic(GameAudio.mainMenu);
-    document.body.removeEventListener('click', MainMenu.playMainMenuMusic);
+    document.body.removeEventListener('mousedown', MainMenu.playMainMenuMusic);
   }
 
   static init() {
@@ -201,7 +201,7 @@ class MainMenu {
     Settings.loadLanguage();
     Settings.loadMainMenuSettings();
     MainMenu.setEventListeners();
-    document.body.addEventListener('click', MainMenu.playMainMenuMusic);
+    document.body.addEventListener('mousedown', MainMenu.playMainMenuMusic);
   }
 }
 

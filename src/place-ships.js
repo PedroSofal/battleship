@@ -108,7 +108,7 @@ export default class PlaceShips {
 
   static playPlaceShipMusic() {
     GameAudio.playMusic(GameAudio.placeShips);
-    document.body.removeEventListener('mousemove', PlaceShips.playPlaceShipMusic);
+    document.body.removeEventListener('mousedown', PlaceShips.playPlaceShipMusic);
   }
 
   static init() {
@@ -119,7 +119,7 @@ export default class PlaceShips {
     PlaceShips.setEventListeners();
     DragAndDrop.init();
     Header.init();
-    document.body.addEventListener('mousemove', PlaceShips.playPlaceShipMusic);
+    document.body.addEventListener('mousedown', PlaceShips.playPlaceShipMusic);
   }
 }
 

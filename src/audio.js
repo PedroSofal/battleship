@@ -63,6 +63,7 @@ export default class GameAudio {
       }
       
       GameAudio.currentSong.src = category[GameAudio.currentSongIndex];
+      GameAudio.currentSong.muted = true;
       GameAudio.currentSong.play();
     });
 
