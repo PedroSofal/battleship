@@ -152,6 +152,10 @@ button:disabled {
   border-bottom: 1.5rem solid var(--color-850);
 }
 
+.not-clickable {
+  pointer-events: none;
+}
+
 .board {
   display: grid;
   grid-template-rows: repeat(10, 50px);

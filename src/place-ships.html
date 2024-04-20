@@ -24,8 +24,9 @@
     <div class="wrapper wrapper--board wrapper--player-board">
       <p class="gameboard-name" data-en="Area of operations" data-pt="Área de operações">Area of operations</p>
       <div class="gameboard-display">
-        <div class="gameboard-display__radar-signal"></div>
-        <svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
+        <div id="strategy-board" data-activeAxis="x"></div>
+        <div class="gameboard-display__radar-signal not-clickable"></div>
+        <svg class="not-clickable" width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
           <rect
             class="dashed-border"
             width='100%'
@@ -34,7 +35,6 @@
             stroke-linecap='square'
           />
         </svg>
-        <div id="strategy-board" data-activeAxis="x"></div>
       </div>
     </div>
 
