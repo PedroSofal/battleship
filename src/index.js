@@ -12,8 +12,8 @@ class MainMenu {
 
   static nameInput = document.querySelector('#name-input');
   static langOptions = document.querySelectorAll('.language-radio');
-  static musicOptions = document.querySelectorAll('.music-radio');
-  static sfxOptions = document.querySelectorAll('.sfx-radio');
+  static musicVolumeSlider = document.querySelector('#music-volume-slider');
+  static sfxVolumeSlider = document.querySelector('#sfx-volume-slider');
   static charOptions = document.querySelectorAll('.character-option');
   static placeShipsBtn = document.querySelector('#place-ships');
   static charSelectionWrapper = document.querySelector('.character-selection-wrapper');
@@ -47,19 +47,13 @@ class MainMenu {
       Settings.changeLang(e.target);
     }));
 
-    MainMenu.musicOptions.forEach(option => option.addEventListener('change', (e) => {
-      MainMenu.musicOptions.forEach(option => option.classList.remove('audio-selected'));
-      e.target.classList.add('audio-selected');
-      const volume = e.target.value === 'on' ? 1 : 0;
-      Settings.setMusicVolume(volume);
-    }));
+    MainMenu.musicVolumeSlider.addEventListener('change', (e) => {
+      Settings.setMusicVolume(parseFloat(e.target.value));
+    });
 
-    MainMenu.sfxOptions.forEach(option => option.addEventListener('change', (e) => {
-      MainMenu.sfxOptions.forEach(option => option.classList.remove('audio-selected'));
-      e.target.classList.add('audio-selected');
-      const volume = e.target.value = 'on' ? 1 : 0;
-      Settings.setSfxVolume(volume);
-    }));
+    MainMenu.sfxVolumeSlider.addEventListener('change', (e) => {
+      Settings.setSfxVolume(parseFloat(e.target.value));
+    });
 
     MainMenu.placeShipsBtn.addEventListener('click', () => {
       if (!MainMenu.nameInput.value || !MainMenu.playerChar || !MainMenu.cpuChar) {
@@ -199,7 +193,7 @@ class MainMenu {
   static init() {
     sessionStorage.clear();
     Settings.loadLanguage();
-    Settings.loadMainMenuSettings();
+    Settings.loadSettings();
     MainMenu.setEventListeners();
     document.body.addEventListener('mousedown', MainMenu.playMainMenuMusic);
   }

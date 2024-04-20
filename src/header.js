@@ -29,7 +29,7 @@ export default class Header {
 
   static openOptionsModal() {
     Header.optionsModal.classList.add('dialog--open');
-    Settings.loadHeaderSettings();
+    Settings.loadSettings();
     Header.optionsModal.showModal();
   }
 

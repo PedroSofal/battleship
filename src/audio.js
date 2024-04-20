@@ -28,29 +28,33 @@ export default class GameAudio {
   static battle = [battleSong1, mainMenuSong1, placeShipsSong1];
   
   static radarLockInterval;
+  static radarLockAudio;
   static currentSongIndex = 0;
   static currentSong = new Audio();
   static musicVolume = 1;
 
   static playSfx(category) {
-    if (localStorage.getItem('sfx') === 'on') {
-      const random = Math.floor(Math.random() * category.length);
-      const audio = new Audio(category[random]);
-      audio.volume = parseFloat(localStorage.getItem('sfx-vol'));
-      audio.play();
-    }
+    const random = Math.floor(Math.random() * category.length);
+    const audio = new Audio(category[random]);
+    audio.volume = parseFloat(localStorage.getItem('sfx-vol'));
+    audio.play();
   }
 
   static playRadarLockInfiniteLoop(action) {
-    if (localStorage.getItem('sfx') === 'on') {
-      if (action === 'start') {
-          GameAudio.radarLockInterval = setInterval(() => {
-            const audio = new Audio(GameAudio.radarLock[0]);
-            audio.play();
-          }, 1500);
-      } else if (action === 'stop') {
-          clearInterval(GameAudio.radarLockInterval);
-      }
+    if (action === 'start') {
+        GameAudio.radarLockInterval = setInterval(() => {
+          if (!GameAudio.radarLockAudio) {
+            GameAudio.radarLockAudio = new Audio(GameAudio.radarLock[0]);
+          }
+          GameAudio.radarLockAudio.volume = parseFloat(localStorage.getItem('sfx-vol'));
+          GameAudio.radarLockAudio.play();
+        }, 1500);
+    } else if (action === 'stop') {
+        clearInterval(GameAudio.radarLockInterval);
+        if (GameAudio.radarLockAudio) {
+          GameAudio.radarLockAudio.pause();
+          GameAudio.radarLockAudio.currentTime = 0;
+        }
     }
   }
 

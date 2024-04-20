@@ -13,13 +13,18 @@ export default class Settings {
 
   static setSfxVolume(volume) {
     localStorage.setItem('sfx-vol', volume);
+    if (GameAudio.radarLockAudio) {
+      GameAudio.radarLockAudio.volume = parseFloat(volume);
+    }
   }
 
   static loadLanguage() {
+    if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en');
+
     const textElements = document.querySelectorAll('[data-en]');
     const langOptions = document.querySelectorAll('.language-radio');
-    const currentLanguageData = `data-${localStorage.getItem('lang')}`;
-    textElements.forEach(element => element.textContent = element.getAttribute(currentLanguageData));
+    const chosenLang = localStorage.getItem('lang');
+    textElements.forEach(element => element.textContent = element.getAttribute(`data-${chosenLang}`));
     langOptions.forEach(element => {
       element.classList.remove('lang-selected');
       if (element.id === `lang-${localStorage.getItem('lang')}`) {
@@ -28,35 +33,18 @@ export default class Settings {
     })
   }
 
-  static loadMainMenuSettings() {
-    const musicVolume = parseFloat(localStorage.getItem('music-vol'));
-    const sfxVolume = parseFloat(localStorage.getItem('sfx-vol'));
-
-    if (musicVolume > 0) {
-      document.querySelector('#music-on').classList.add('audio-selected');
-    } else if (musicVolume === 0) {
-      document.querySelector('#music-off').classList.add('audio-selected');
-    } else {
-      document.querySelector('#music-on').classList.add('audio-selected');
+  static loadSettings() {
+    if (!localStorage.getItem('music-vol') || !localStorage.getItem('sfx-vol')) {
       localStorage.setItem('music-vol', 1);
+      localStorage.setItem('sfx-vol', 1)
     }
 
-    if (sfxVolume > 0) {
-      document.querySelector('#sfx-on').classList.add('audio-selected');
-    } else if (sfxVolume === 0) {
-      document.querySelector('#sfx-off').classList.add('audio-selected');
-    } else {
-      document.querySelector('#sfx-on').classList.add('audio-selected');
-      localStorage.setItem('sfx-vol', 1);
-    }
-  }
-
-  static loadHeaderSettings() {
     const musicVolume = parseFloat(localStorage.getItem('music-vol'));
     const sfxVolume = parseFloat(localStorage.getItem('sfx-vol'));
-    Settings.loadLanguage();
 
     document.querySelector('#music-volume-slider').value = parseFloat(musicVolume);
     document.querySelector('#sfx-volume-slider').value = parseFloat(sfxVolume);
+    
+    Settings.loadLanguage();
   }
 }

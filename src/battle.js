@@ -231,6 +231,8 @@ export default class Battle {
   }
 
   static handleGameOver(winner) {
+    GameAudio.playRadarLockInfiniteLoop('stop');
+    Battle.radarLockScreen.classList.remove('lightUp');
     Result.init(winner);
     Battle.cpuBoard.querySelectorAll('.square').forEach(square => {
       square.removeEventListener('click', Battle.handleClick);
