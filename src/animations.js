@@ -144,9 +144,9 @@ export default class Animation {
   }
 
   static shake(html) {
-    html.classList.remove('shake');
+    html.classList.add('shake');
     setTimeout(() => {
-      html.classList.add('shake');
-    }, 10);
+      html.classList.remove('shake');
+    }, 500);
   }
 }

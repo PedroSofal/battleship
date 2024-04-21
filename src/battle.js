@@ -121,7 +121,9 @@ export default class Battle {
           DOM.updateBoard(Game.players[1]);
           DOM.showSunkenShips(Game.players[0]);
           Battle.callAnimation(attack.className, attackedHtmlSquare);
-          if (attack.className === 'hit' || attack.className === 'sunk') Animation.shake(Battle.wrapper);
+          if (attack.className === 'hit' || attack.className === 'sunk') {
+            Animation.shake(Battle.wrapper);
+          }
 
           if (Game.gameOver()) {
             Battle.handleGameOver(Game.players[1]);
