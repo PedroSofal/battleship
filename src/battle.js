@@ -95,9 +95,11 @@ export default class Battle {
       setTimeout(() => {
         Battle.botPlays();
       }, delay);
-      setTimeout(() => {
-        Battle.updateBattleQuote(attack, Game.players[0], Game.players[1]);
-      }, 300);
+      if (!Game.gameOver()) {
+        setTimeout(() => {
+          Battle.updateBattleQuote(attack, Game.players[0], Game.players[1]);
+        }, 300);
+      }
     }
   }
   

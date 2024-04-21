@@ -71,9 +71,14 @@ export default class Animation {
     splash16,
   ];
 
+  static wrapper = document.querySelector('#reaction-wrapper');
+  static characterPhoto = document.querySelector('#character-photo');
+  static quoteTimer = null;
+  static activeReactions = 0;
+
   static displayQuote(html, quote) {
-    if (this.timer) {
-      clearTimeout(this.timer);
+    if (Animation.quoteTimer) {
+      clearTimeout(Animation.quoteTimer);
     }
 
     html.textContent = '';
@@ -83,7 +88,7 @@ export default class Animation {
       if (i < quote.length) {
         html.textContent += quote[i];
         i++;
-        this.timer = setTimeout(displayNextChar, 15);
+        Animation.quoteTimer = setTimeout(displayNextChar, 15);
       }
     };
     
@@ -91,17 +96,18 @@ export default class Animation {
   }
 
   static displayReaction(html, quote, photo) {
-    const wrapper = document.querySelector('#reaction-wrapper');
-    const characterPhoto = document.querySelector('#character-photo');
-
-    characterPhoto.src = photo;
-    wrapper.classList.add('entra');
-    characterPhoto.classList.add('entra');
+    Animation.activeReactions++;
+    Animation.characterPhoto.src = photo;
+    Animation.wrapper.classList.add('entra');
+    Animation.characterPhoto.classList.add('entra');
     Animation.displayQuote(html, quote);
 
     setTimeout(() => {
-      wrapper.classList.remove('entra');
-      characterPhoto.classList.remove('entra');
+      if (Animation.activeReactions <= 1) {
+        Animation.wrapper.classList.remove('entra');
+        Animation.characterPhoto.classList.remove('entra');
+      }
+      Animation.activeReactions--;
     }, 3000);
   }
 
