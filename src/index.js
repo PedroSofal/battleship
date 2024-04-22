@@ -3,6 +3,7 @@ import './main-menu.css';
 import { charObjects } from './characters.js';
 import GameAudio from './audio.js';
 import Settings from './settings.js';
+import LoadingScreen from './loading-screen.js';
 
 class MainMenu {
   static playerChar = null;
@@ -56,11 +57,7 @@ class MainMenu {
     });
 
     MainMenu.placeShipsBtn.addEventListener('click', () => {
-      if (!MainMenu.nameInput.value || !MainMenu.playerChar || !MainMenu.cpuChar) {
-        return;
-      }
-      sessionStorage.setItem('player-name', MainMenu.nameInput.value);
-      window.location.href = 'place-ships.html';
+      MainMenu.nextScreen();
     });
 
     MainMenu.opponents.forEach(opponent => {
@@ -190,6 +187,13 @@ class MainMenu {
     document.body.removeEventListener('mousedown', MainMenu.playMainMenuMusic);
   }
 
+  static nextScreen() {
+    if (MainMenu.nameInput.value && MainMenu.playerChar && MainMenu.cpuChar) {
+      sessionStorage.setItem('player-name', MainMenu.nameInput.value);
+      window.location.href = 'place-ships.html';
+    }
+  }
+
   static init() {
     sessionStorage.clear();
     Settings.loadLanguage();
@@ -199,4 +203,5 @@ class MainMenu {
   }
 }
 
+LoadingScreen.init();
 MainMenu.init();

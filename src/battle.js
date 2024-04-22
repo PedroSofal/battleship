@@ -9,6 +9,7 @@ import GameAudio from './audio.js';
 import Header from './header.js';
 import Quote from './quote.js';
 import Language from './language.js';
+import LoadingScreen from './loading-screen.js';
 
 export default class Battle {
   static root = document.querySelector(':root');
@@ -309,4 +310,5 @@ export default class Battle {
   }
 }
 
+LoadingScreen.init();
 Battle.init();

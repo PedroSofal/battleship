@@ -10,6 +10,7 @@ import Header from './header.js';
 import Settings from './settings.js';
 import Language from './language.js';
 import Quote from './quote.js';
+import LoadingScreen from './loading-screen.js';
 
 export default class PlaceShips {
   static root = document.querySelector(':root');
@@ -26,7 +27,7 @@ export default class PlaceShips {
   static character = null;
 
   static setEventListeners() {
-    PlaceShips.confirmBtn.addEventListener('click', PlaceShips.confirmFormation);
+    PlaceShips.confirmBtn.addEventListener('click', PlaceShips.nextScreen);
     PlaceShips.resetBtn.addEventListener('click', PlaceShips.resetFormation);
     PlaceShips.xAxisBtn.addEventListener('click', () => DragAndDrop.changeAxis('x'));
     PlaceShips.yAxisBtn.addEventListener('click', () => DragAndDrop.changeAxis('z'));
@@ -76,12 +77,6 @@ export default class PlaceShips {
     PlaceShips.strategyBoard.appendChild(DOM.getHumanBoard());
   }
 
-  static confirmFormation() {
-    if (DragAndDrop.shipsPlaced === DragAndDrop.fleet.children.length) {
-      window.location.href = 'battle.html';
-    }
-  }
-
   static resetFormation() {
     PlaceShips.strategyBoard.innerHTML = '';
     PlaceShips.fleet.innerHTML = '';
@@ -111,6 +106,12 @@ export default class PlaceShips {
     document.body.removeEventListener('mousedown', PlaceShips.playPlaceShipMusic);
   }
 
+  static nextScreen() {
+    if (DragAndDrop.shipsPlaced === DragAndDrop.fleet.children.length) {
+      window.location.href = 'battle.html';
+    }
+  }
+
   static init() {
     PlaceShips.loadFleet();
     PlaceShips.loadBoard();
@@ -123,4 +124,5 @@ export default class PlaceShips {
   }
 }
 
+LoadingScreen.init();
 PlaceShips.init();

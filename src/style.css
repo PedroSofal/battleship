@@ -38,11 +38,20 @@ html {
 
 body {
   background-color: var(--color-900);
-  background-image: url('./assets/backgrounds/menu-background.jpg');
-
-  margin: 0;
   color: var(--color-100);
   overflow-x: hidden;
+
+  /* Also inline for better performance */
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  background-image: url('./assets/backgrounds/menu-background.jpg');
+  min-height: 100vh;
+
+  /* Also inline for better performance */
+  display: none;
 }
 
 /* BUTTONS ***********/
@@ -136,6 +145,19 @@ button:disabled {
 
 .dialog--open::backdrop {
   opacity: 0.8;
+}
+
+/* LOADING SCREEN ***********/
+
+.loader {
+  /* Also inline for better performance */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  height: 100vh;
+  background-color: #0C0C1C;
 }
 
 /* GAMEBOARDS ***********/

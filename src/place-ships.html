@@ -5,61 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Place Ships</title>
 </head>
-<body>
-  <header class="header">
-    <h2 class="header__title" data-en="Place Ships" data-pt="Posicionar Navios">Place Ships</h2>
-    <button class="header__options secondary-button" id="options-btn" data-en="Options" data-pt="Opções">Options</button>
-  </header>
-
-  <div class="place-ships-wrapper">
-    <div class="wrapper wrapper--fleet" id="fleet">
-      <!-- <div class="ship">
-        <p class="ship__name">Carrier</p>
-        <div class="ship__yard">
-          <div class="ship__icon"></div>
-        </div>
-      </div> -->
-    </div>
-
-    <div class="wrapper wrapper--board wrapper--player-board">
-      <p class="gameboard-name" data-en="Area of operations" data-pt="Área de operações">Area of operations</p>
-      <div class="gameboard-display">
-        <div id="strategy-board" data-activeAxis="x"></div>
-        <div class="gameboard-display__radar-signal not-clickable"></div>
-        <svg class="not-clickable" width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
-          <rect
-            class="dashed-border"
-            width='100%'
-            height='100%'
-            fill='none'
-            stroke-linecap='square'
-          />
-        </svg>
+<body style="margin: 0; padding: 0;">
+  <div id="content" class="content" style="display: none;">
+    <header class="header">
+      <h2 class="header__title" data-en="Place Ships" data-pt="Posicionar Navios">Place Ships</h2>
+      <button class="header__options secondary-button" id="options-btn" data-en="Options" data-pt="Opções">Options</button>
+    </header>
+  
+    <div class="place-ships-wrapper">
+      <div class="wrapper wrapper--fleet" id="fleet">
+        <!-- <div class="ship">
+          <p class="ship__name">Carrier</p>
+          <div class="ship__yard">
+            <div class="ship__icon"></div>
+          </div>
+        </div> -->
       </div>
-    </div>
-
-    <div class="wrapper wrapper--character-name">
-      <p class="character-name" id="character-name">???</p>
-    </div>
-
-    <div class="wrapper wrapper--character-photo">
-      <img class="character-photo" id="character-photo" width="300px" src="./assets/characters/unknown.jpg" alt="question mark inside square">
-    </div>
-
-    <div class="wrapper wrapper--character-quotes">
-      <p class="character-quotes" id="character-quotes"></p>
-    </div>
-
-    <div class="wrapper wrapper--footer">
-      <p class="instructions">
-        <span data-en="Change the axis with " data-pt="Alterne os eixos com ">Change the axis with </span>
-        <button id="y-axis-button">Z</button>
-        <span data-en=" and " data-pt=" e "> and </span>
-        <button id="x-axis-button">X</button>
-      </p>
-      <div>
-        <button class="secondary-button" id="resetFormation" data-en="Reset" data-pt="Limpar">Reset</button>
-        <button class="main-button" id="confirmFormation" disabled><span data-en="Confirm" data-pt="Confirmar">Confirm</span></button>
+  
+      <div class="wrapper wrapper--board wrapper--player-board">
+        <p class="gameboard-name" data-en="Area of operations" data-pt="Área de operações">Area of operations</p>
+        <div class="gameboard-display">
+          <div id="strategy-board" data-activeAxis="x"></div>
+          <div class="gameboard-display__radar-signal not-clickable"></div>
+          <svg class="not-clickable" width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
+            <rect
+              class="dashed-border"
+              width='100%'
+              height='100%'
+              fill='none'
+              stroke-linecap='square'
+            />
+          </svg>
+        </div>
+      </div>
+  
+      <div class="wrapper wrapper--character-name">
+        <p class="character-name" id="character-name">???</p>
+      </div>
+  
+      <div class="wrapper wrapper--character-photo">
+        <img class="character-photo" id="character-photo" width="300px" src="./assets/characters/unknown.jpg" alt="question mark inside square">
+      </div>
+  
+      <div class="wrapper wrapper--character-quotes">
+        <p class="character-quotes" id="character-quotes"></p>
+      </div>
+  
+      <div class="wrapper wrapper--footer">
+        <p class="instructions">
+          <span data-en="Change the axis with " data-pt="Alterne os eixos com ">Change the axis with </span>
+          <button id="y-axis-button">Z</button>
+          <span data-en=" and " data-pt=" e "> and </span>
+          <button id="x-axis-button">X</button>
+        </p>
+        <div>
+          <button class="secondary-button" id="resetFormation" data-en="Reset" data-pt="Limpar">Reset</button>
+          <button class="main-button" id="confirmFormation" disabled><span data-en="Confirm" data-pt="Confirmar">Confirm</span></button>
+        </div>
       </div>
     </div>
   </div>
@@ -99,5 +101,10 @@
       </div>
     </div>
   </dialog>
+
+  <div id="loader" class="loader" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4rem; background-color: #0C0C1C; height: 100vh;">
+    <img class="loader__img" src="./assets/backgrounds/bg2.jpg" width="896" height="512" alt="">
+    <p class="loader__para" data-en="Loading..." data-pt="Carregando...">Loading...</p>
+  </div>
 </body>
 </html>
