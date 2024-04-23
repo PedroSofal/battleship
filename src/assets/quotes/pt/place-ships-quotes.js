@@ -1,82 +1,82 @@
 export default class PlaceShipQuotes {
   static preparation = {
     yamato: [
-      "In war, every move must be executed with precision. We will fight with honor and loyalty to our land, if necessary, until our last breath, but we will bring justice!",
+      "Em uma guerra, cada movimento deve ser executado com precisão. Lutaremos com honra e lealdade à nossa terra, se necessário, até o último suspiro, mas faremos justiça!",
     ],
     olafsson: [
-      "There's no iron storm or waves of fire that can keep us from returning to our families today! History will be written with blood and courage. For honor and glory!",
+      "Não há tempestade de ferro, nem ondas de fogo, que nos impeça de retornar às nossas famílias hoje! A história será escrita com sangue e coragem. Pela honra e pela glória!",
     ],
     violeta: [
-      "Marines, prepare to glide through the shadows of the waves. Stealth and agility will be our greatest weapons. Tomorrow, we will strike without warning!",
+      "Marinheiros, preparem-se para deslizar pelas sombras das ondas. A furtividade e a agilidade serão nossas maiores armas. Amanhã iremos atacar sem aviso!",
     ],
     rackham: [
-      "It's time to follow the map towards freedom. Behold the vastness of the horizon, marines, for tomorrow we shall be the lords of the seas!",
+      "É hora de seguir o mapa rumo à liberdade. Contemplem a imensidão do horizonte, marujos, pois amanhã seremos os senhores dos mares!",
     ],
     nimitz: [
-      "Marines, prepare to position our vessels in the theater of operations. Victory will only be achieved through strategy, discipline, and faith. To arms!",
+      "Marinheiros, preparem-se para posicionar nossas embarcações no teatro de operações. A vitória somente será conquistada com estratégia, disciplina e fé. Às armas!",
     ],
     noronha: [
-      "Gentlemen, the enemy awaits us. Remember our action plan and stay mentally strong. The next hours will be of struggle, but the next days will be of glory!",
+      "Senhores, o inimigo nos espera. Lembrem-se do nosso plano de ação estejam fortes mentalmente. As próximas horas serão de luta, mas os próximos dias serão de glória!",
     ]
   }
 
   static placeShip = {
     yamato: [
-      "The #SHIP will reinforce our defensive position, maintaining the balance of the battle.",
-      "We will cut through the enemy's hopes like a sharp blade.",
-      "#SHIP crew, remember our code of conduct and honor our homeland.",
-      "In the silence before the storm, I find inner calm and see the enemy's weaknesses clearly.",
+      "O #SHIP reforçará nossa posição defensiva, mantendo o equilíbrio da batalha.",
+      "Cortaremos as esperanças do inimigo como uma lâmina afiada.",
+      "Tripulação do #SHIP, lembrem-se do nosso código de conduta e honrem a nossa pátria.",
+      "No silêncio antes da tempestade, encontro a calma interior e vejo com clareza as fraquezas do inimigo.",
     ],
     olafsson: [
-      "With this #SHIP, we will make the waters tremble and command respect.",
-      "Our vessels will crush the enemy and restore our glory.",
-      "The roar of the sea echoes like thunder. Each wave is an invitation to glory, and each ship is an extension of our people's bravery.",
-      "The #SHIP will be like an impenetrable storm at sea.",
+      "Com este #SHIP, faremos tremer as águas e imporemos respeito.",
+      "Nossas embarcações esmagarão o inimigo e nos devolverá a glória",
+      "O rugido do mar ecoa como um trovão. Cada onda é um convite para a glória, e cada navio é uma extensão da bravura do nosso povo.",
+      "O #SHIP será como uma tempestade intransponível em alto mar.",
     ],
     violeta: [
-      "This #SHIP will be our secret weapon.",
-      "With the proper offensive strategy, this #SHIP will allow us to surprise and dismantle enemy forces quickly.",
-      "Stealthy as a serpent, lethal as a shark.",
-      "We will emerge from the shadows of the waves to send them to the depths of the ocean.",
+      "O #SHIP será nossa arma secreta.",
+      "Com a estratégia ofensiva adequada, este #SHIP nos permitirá surpreender e desmantelar as forças inimigas rapidamente.",
+      "Sorrateiro como uma serpente, letal como um tubarão.",
+      "Emergiremos das sombras das ondas para mandá-los às profundezas do oceano.",
     ],
     rackham: [
-      "This #SHIP will be the key to conquering these waters.",
-      "Fair winds and calm seas, sailors.",
-      "#SHIP men, it will be an honor to fight by your side.",
-      "Hoist the colours, #SHIP crew!",
+      "O #SHIP será a chave para a conquista destas águas.",
+      "Bons ventos e mares tranquilos, marujos.",
+      "Homens do #SHIP, será uma honra lutar ao seu lado.",
+      "Levantem as bandeiras, #SHIP!",
     ],
     nimitz: [
-      "I'm sending the #SHIP to reinforce our frontline.",
-      "With this #SHIP, we will nullify enemy assaults and ensure our nation's naval supremacy.",
-      "All hands on deck!",
-      "#SHIP crew, proceed 3 nautical miles east to your combat position.",
+      "Estou enviando o #SHIP para reforçar nossa frente de ataque.",
+      "Com este #SHIP, anularemos as investidas inimigas e garantiremos a supremacia naval de nossa nação.",
+      "Todos apostos no convés!",
+      "Tripulação do #SHIP, prossiga 3 milhas náuticas a leste para sua posição de combate.",
     ],
     noronha: [
-      "This #SHIP will be the key to our combat tactic.",
-      "Creativity has always been our strength. Our #SHIP coming from this position will be a significant surprise element.",
-      "We are as resilient as a #SHIP, capable of overcoming any obstacle.",
-      "Our #SHIP will defend the perimeter.",
+      "Este #SHIP será a chave para nossa tática de combate.",
+      "A criatividade sempre foi o nosso forte. Nosso #SHIP vindo desta posição será um grande elemento surpresa.",
+      "Somos resistentes como um #SHIP, capazes de superar qualquer obstáculo.",
+      "#O SHIP defenderá o perímetro.",
     ]
   }
 
   static reset = {
     yamato: [
-      "The pursuit of the most accurate tactical solution leads us to refine our plans.",
+      "A busca pela mais precisa solução tática nos leva aprimorar nossos planos.",
     ],
     olafsson: [
-      "The changing tides demand adaptations in our tactics.",
+      "As mudanças das marés demandam adaptações em nossas táticas.",
     ],
     violeta: [
-      "There's nothing like the art of deception. The enemy thinks we were unaware of their espionage. We will now outline the real plan of action.",
+      "Nada como a arte da ludibriação. O inimigo pensa que não tínhamos ciência de suas espionagens. Traçaremos o real plano de ação agora.",
     ],
     rackham: [
-      "Great, someone spilled a drink on the map, and now we need to devise the plan again. Please send the cleaning staff to my office.",
+      "Ótimo, alguém derramou bebida no mapa e agora precisaremos elaborar o plano novamente. Favor enviar a equipe de limpeza para o meu escritório.",
     ],
     nimitz: [
-      "Marines, our planning will undergo modifications.",
+      "Marinheiros, nosso planejamento sofrerá modificações.",
     ],
     noronha: [
-      "The new weather conditions demand that plan B be put into action.",
+      "As novas condições climáticas demandam quer o plano B seja colocado em ação.",
     ]
   }
 }
