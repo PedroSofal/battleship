@@ -10,6 +10,7 @@ import Header from './header.js';
 import Quote from './quote.js';
 import Language from './language.js';
 import LoadingScreen from './loading-screen.js';
+import Settings from './settings.js';
 
 export default class Battle {
   static root = document.querySelector(':root');
@@ -308,6 +309,7 @@ export default class Battle {
     Battle.root.style.setProperty('--color-cpu-alpha', charObjects[sessionStorage.getItem('cpu-char')].colorAlpha);
     document.body.addEventListener('mousedown', Battle.playBattleMusic);
     Header.init();
+    Settings.loadLanguage();
   }
 }
 
