@@ -1,8 +1,8 @@
 import '../../styles/style.css';
 import '../../styles/place-ships.css';
-import Game from "../helpers/gameControl.js";
-import DOM from "../helpers/DOM.js";
-import DragAndDrop from "../helpers/dragAndDrop.js";
+import Game from "../helpers/game-control.js";
+import BoardRender from "../helpers/board-render.js";
+import DragAndDrop from "../helpers/drag-and-drop.js";
 import { charObjects } from '../factories/characters.js';
 import Animation from '../helpers/animations.js';
 import GameAudio from '../helpers/audio.js';
@@ -74,14 +74,14 @@ export default class PlaceShips {
   }
 
   static loadBoard() {
-    PlaceShips.strategyBoard.appendChild(DOM.getHumanBoard());
+    PlaceShips.strategyBoard.appendChild(BoardRender.getHumanBoard());
   }
 
   static resetFormation() {
     PlaceShips.strategyBoard.innerHTML = '';
     PlaceShips.fleet.innerHTML = '';
     Game.players[0].gameboard.resetGameboard();
-    DOM.loadBoard(Game.players[0]);
+    BoardRender.loadBoard(Game.players[0]);
 
     PlaceShips.loadFleet();
     PlaceShips.loadBoard();

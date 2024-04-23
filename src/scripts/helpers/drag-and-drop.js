@@ -1,5 +1,5 @@
-import DOM from './DOM.js';
-import Game from './gameControl.js';
+import BoardRender from './board-render.js';
+import Game from './game-control.js';
 import PlaceShips from '../screens/place-ships.js';
 
 export default class DragAndDrop {
@@ -137,7 +137,7 @@ export default class DragAndDrop {
       }
     }
 
-    DOM.updateBoard(Game.players[0]);
+    BoardRender.updateBoard(Game.players[0]);
   }
 
   static dragOver(e) {

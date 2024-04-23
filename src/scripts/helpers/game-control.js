@@ -1,6 +1,6 @@
 import Player from '../factories/player.js';
 import Bot from '../factories/bot.js';
-import DOM from './DOM.js';
+import BoardRender from './board-render.js';
 import { charObjects } from '../factories/characters.js';
 
 export default class Game {
@@ -21,8 +21,8 @@ export default class Game {
   }
 
   static newGame() {
-    DOM.loadBoard(Game.players[0]);
-    DOM.loadBoard(Game.players[1]);
+    BoardRender.loadBoard(Game.players[0]);
+    BoardRender.loadBoard(Game.players[1]);
   }
 
   static nextPlayer() {

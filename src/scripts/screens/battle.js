@@ -1,7 +1,7 @@
 import '../../styles/style.css'
 import '../../styles/battle.css'
-import DOM from "../helpers/DOM.js";
-import Game from '../helpers/gameControl.js';
+import BoardRender from "../helpers/board-render.js";
+import Game from '../helpers/game-control.js';
 import { charObjects } from '../factories/characters.js';
 import Result from './result.js';
 import Animation from '../helpers/animations.js';
@@ -26,7 +26,7 @@ export default class Battle {
 
   static retrievePlayerShipsPositions() {
     const playerBackendBoard = Game.players[0].gameboard;
-    const playerFrontendBoard = DOM.getHumanBoard();
+    const playerFrontendBoard = BoardRender.getHumanBoard();
 
     for (const ship of Object.values(playerBackendBoard.ships)) {
       const row = parseInt(sessionStorage.getItem(ship.name.en + '-row'));
@@ -38,12 +38,12 @@ export default class Battle {
     }
 
     Battle.humanBoard.appendChild(playerFrontendBoard);
-    DOM.updateBoard(Game.players[0]);
+    BoardRender.updateBoard(Game.players[0]);
   }
 
   static setCpuShipsPositions() {
     const cpuBackendBoard = Game.players[1].gameboard;
-    const cpuFrontendBoard = DOM.getCpuBoard()
+    const cpuFrontendBoard = BoardRender.getCpuBoard()
     cpuBackendBoard.setFormationRandomly();
 
     for (const ship of Object.values(cpuBackendBoard.ships)) {
@@ -58,7 +58,7 @@ export default class Battle {
     document.querySelectorAll('.cpu-board .square').forEach(square => {
       square.addEventListener('click', Battle.handleClick);
     });
-    DOM.updateBoard(Game.players[1]);
+    BoardRender.updateBoard(Game.players[1]);
   }
 
   static renderShipIcons(board, row, col, axis, ship) {
@@ -90,9 +90,9 @@ export default class Battle {
       const attackedHtmlSquare = Battle.querySquareByCoords(Battle.cpuBoard, attack.coords);
       const delay = attack.className === 'sunk' ? 1000 : 0;
 
-      DOM.updateBoard(Game.players[0]);
-      DOM.updateBoard(Game.players[1]);
-      DOM.showSunkenShips(Game.players[1]);
+      BoardRender.updateBoard(Game.players[0]);
+      BoardRender.updateBoard(Game.players[1]);
+      BoardRender.showSunkenShips(Game.players[1]);
       Battle.callAnimation(attack.className, attackedHtmlSquare);
       Game.nextPlayer();
       e.target.removeEventListener('click', Battle.handleClick);
@@ -122,9 +122,9 @@ export default class Battle {
         Battle.missileLaunchAlert(attack.className);
         setTimeout(() => {
           Battle.resolveRadarAlert(attack.className);
-          DOM.updateBoard(Game.players[0]);
-          DOM.updateBoard(Game.players[1]);
-          DOM.showSunkenShips(Game.players[0]);
+          BoardRender.updateBoard(Game.players[0]);
+          BoardRender.updateBoard(Game.players[1]);
+          BoardRender.showSunkenShips(Game.players[0]);
           Battle.callAnimation(attack.className, attackedHtmlSquare);
           if (attack.className === 'hit' || attack.className === 'sunk') {
             Animation.shake(Battle.wrapper);
