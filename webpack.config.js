@@ -6,14 +6,15 @@ const __dirname = path.dirname(__filename);
 
 export default {
   entry: {
-    main: './src/index.js',
-    placeShips: './src/place-ships.js',
-    battle: './src/battle.js',
+    main: './src/scripts/screens/index.js',
+    placeShips: './src/scripts/screens/place-ships.js',
+    battle: './src/scripts/screens/battle.js',
   },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'images/[name].[hash][ext]',
+    clean: true,
   },
   mode: 'development',
   module: {
@@ -66,19 +67,19 @@ export default {
     new HtmlWebpackPlugin({
       title: 'Battleship | Main Menu',
       filename: 'index.html',
-      template: './src/index.html',
+      template: './src/html/index.html',
       chunks: ['main']
     }),
     new HtmlWebpackPlugin({
       title: 'Battleship | Place Ships',
       filename: 'place-ships.html',
-      template: './src/place-ships.html',
+      template: './src/html/place-ships.html',
       chunks: ['placeShips']
     }),
     new HtmlWebpackPlugin({
       title: 'Battleship | Battle',
       filename: 'battle.html',
-      template: './src/battle.html',
+      template: './src/html/battle.html',
       chunks: ['battle']
     }),
   ]
