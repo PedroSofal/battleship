@@ -22,6 +22,8 @@ export default class Battle {
   static countermeasureIndicator = document.querySelector('#countermeasure');
   static characterQuotes = document.querySelector('#character-quotes');
 
+  static countermeasure = false;
+
   static retrievePlayerShipsPositions() {
     const playerBackendBoard = Game.players[0].gameboard;
     const playerFrontendBoard = DOM.getHumanBoard();
@@ -115,6 +117,7 @@ export default class Battle {
       setTimeout(() => {
         const attack = Game.players[1].attack(Game.players[0]);
         const attackedHtmlSquare = Battle.querySquareByCoords(Battle.humanBoard, attack.coords);
+        Battle.countermeasure = false;
         Battle.radarLockAlert(attack);
         Battle.missileLaunchAlert(attack.className);
         setTimeout(() => {
@@ -195,8 +198,8 @@ export default class Battle {
     const randomFoe = Math.floor(Math.random() * Battle.radarLockFoes.length);
 
     if (result !== 'miss') {
-      const warning = Math.random() < 0.5 ? true : false;
-      if (warning) {
+      Battle.countermeasure = Math.random() < 0.5 ? true : false;
+      if (Battle.countermeasure) {
         Battle.radarLockFoes[randomFoe].classList.add('lightUp');
         GameAudio.playSfx(GameAudio.missileAlert);
         Battle.launchCountermeasures();
@@ -205,7 +208,7 @@ export default class Battle {
   }
 
   static launchCountermeasures() {
-      Battle.countermeasureIndicator.classList.add('lightUp');
+    Battle.countermeasureIndicator.classList.add('lightUp');
   }
 
   static resolveRadarAlert(result) {
@@ -277,8 +280,14 @@ export default class Battle {
       photo = defender.char.src;
       switch(result) {
         case 'miss':
-        case 'close':
           quoteArray = Quote.getTheirMissQuote(defender.char.name, ship, attacker.char.name);
+          break;
+        case 'close':
+          if (Battle.countermeasure) {
+            quoteArray = Quote.getOurEscapeQuote(defender.char.name, ship, attacker.char.name);
+          } else {
+            quoteArray = Quote.getTheirMissQuote(defender.char.name, ship, attacker.char.name);
+          }
           break;
         case 'hit':
           quoteArray = Quote.getTheirHitQuote(defender.char.name, ship, attacker.char.name);

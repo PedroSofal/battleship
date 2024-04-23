@@ -92,6 +92,27 @@ export default class BattleQuotes {
     ]
   }
 
+  static ourEscape = {
+    yamato: [
+      "Our countermeasures system is confusing the enemy.",
+    ],
+    olafsson: [
+      "Don't let the flares or chaffs run out, they seem to be making a difference here!",
+    ],
+    violeta: [
+      "Our radar signature may have been compromised, but our defense system is active!",
+    ],
+    rackham: [
+      "Chaffs! Flares! Throw everything we have and keep defending our ship!",
+    ],
+    nimitz: [
+      "Our countermeasures have taken effect. Get ready for the next volley!",
+    ],
+    noronha: [
+      "That was too close! We were saved by the countermeasures.",
+    ]    
+  }
+
   static theirMiss = {
     yamato: [
       "We're buying time.",

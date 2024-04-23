@@ -77,6 +77,12 @@ export default class Quote {
     return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
   }
 
+  static getOurEscapeQuote(char, ship, enemy) {
+    const quoteArrays = [];
+    Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.ourEscape[char]));
+    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
+  }
+
   static getTheirMissQuote(char, ship, enemy) {
     const quoteArrays = [];
     Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.theirMiss[char]));

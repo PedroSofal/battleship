@@ -92,6 +92,27 @@ export default class BattleQuotes {
     ]
   }
 
+  static ourEscape = {
+    yamato: [
+      "Nosso sistema de contramedidas está confundindo o inimigo.",
+    ],
+    olafsson: [
+      "Não deixem faltar flares ou chaffs, eles parecem estar fazendo a diferença aqui!",
+    ],
+    violeta: [
+      "Nossa assinatura radar pode ter sido comprometida, mas nosso sistema de defesa está funcionando!",
+    ],
+    rackham: [
+      "Chaffs! Flares! Joguem tudo o que temos e continuem defendendo nosso navio!",
+    ],
+    nimitz: [
+      "Nossas contramedidas surtiram efeito. Preparem-se para a próxima salva!",
+    ],
+    noronha: [
+      "Esse passou muito perto! Fomos salvos pelas contramedidas.",
+    ]
+  }
+
   static theirMiss = {
     yamato: [
       "Estamos ganhando tempo.",
@@ -164,7 +185,7 @@ export default class BattleQuotes {
       "Um sacrifício doloroso, mas nossa determinação não se abala!",
     ],
     olafsson: [
-      "Nunca nos curvaremos!", // "We will never kneel!",
+      "Nunca nos curvaremos!",
       "Preparem-se para vingar nossos homens caídos!",
     ],
     violeta: [
