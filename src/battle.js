@@ -299,6 +299,7 @@ export default class Battle {
   }
 
   static init() {
+    Game.init();
     Battle.retrievePlayerShipsPositions();
     Battle.setCpuShipsPositions();
     Battle.root.style.setProperty('--color-player', charObjects[sessionStorage.getItem('player-char')].color);

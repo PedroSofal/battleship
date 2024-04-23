@@ -108,11 +108,13 @@ export default class PlaceShips {
 
   static nextScreen() {
     if (DragAndDrop.shipsPlaced === DragAndDrop.fleet.children.length) {
+      sessionStorage.setItem('route-safe', 2);
       window.location.href = 'battle.html';
     }
   }
 
   static init() {
+    Game.init();
     PlaceShips.loadFleet();
     PlaceShips.loadBoard();
     Settings.loadLanguage();

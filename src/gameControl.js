@@ -44,5 +44,3 @@ export default class Game {
     Game.newGame();
   }
 }
-
-Game.init();

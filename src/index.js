@@ -190,6 +190,7 @@ class MainMenu {
   static nextScreen() {
     if (MainMenu.nameInput.value && MainMenu.playerChar && MainMenu.cpuChar) {
       sessionStorage.setItem('player-name', MainMenu.nameInput.value);
+      sessionStorage.setItem('route-safe', 1);
       window.location.href = 'place-ships.html';
     }
   }
