@@ -6,9 +6,15 @@
   <title>Battle</title>
 </head>
 <body style="margin: 0; padding: 0;">
-  <div id="content" class="content" style="display: none;">
+  <div id="content" class="content" data-content="battle" style="display: none;">
     <header class="header">
-      <h2 class="header__title" data-en="Battle" data-pt="Batalha">Battle</h2>
+      <h2 class="header__title" id="nav-btn" data-en="Battle" data-pt="Batalha">Battle</h2>
+      <nav class="nav" id="nav-menu">
+        <ul>
+          <li class="nav__item" id="nav-place-ships" data-en="Go back to the strategy room" data-pt="Voltar para a sala de estratégia">Go back to the strategy room</li>
+          <li class="nav__item" id="nav-main-menu" data-en="Exit to the main menu" data-pt="Sair para o menu principal">Exit to the main menu</li>
+        </ul>
+      </nav>
       <button class="secondary-button" id="see-result" data-en="See Results" data-pt="Ver Resultados">See Results</button>
       <button class="header__options secondary-button" id="options-btn" data-en="Options" data-pt="Opções">Options</button>
     </header>
