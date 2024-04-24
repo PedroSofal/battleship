@@ -520,6 +520,7 @@ input[type="range"] {
   background-color: var(--color-500);
 }
 
-[data-content="place-ships"] .nav__item#nav-place-ships {
+[data-content="place-ships"] .nav__item#nav-place-ships,
+[data-content="place-ships"] .nav__item#nav-battle {
   display: none;
 }
