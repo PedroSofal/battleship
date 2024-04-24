@@ -66,10 +66,12 @@ export default class PlaceShips {
     PlaceShips.character = charObjects[sessionStorage.getItem('player-char')];
     PlaceShips.characterName.textContent = PlaceShips.character.fullName;
     PlaceShips.characterPhoto.src = PlaceShips.character.src;
+
     Language.loadDataAttributes(PlaceShips.characterQuotes, Quote.getPreparationQuote(PlaceShips.character.name));
     Animation.displayQuote(PlaceShips.characterQuotes, PlaceShips.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
-    PlaceShips.root.style.setProperty('--color-player', charObjects[sessionStorage.getItem('player-char')].color);
-    PlaceShips.root.style.setProperty('--color-player-alpha', charObjects[sessionStorage.getItem('player-char')].colorAlpha);
+    
+    PlaceShips.root.style.setProperty('--color-player', PlaceShips.character.color);
+    PlaceShips.root.style.setProperty('--color-player-alpha', PlaceShips.character.colorAlpha);
     PlaceShips.root.style.setProperty('--color-cpu', charObjects[sessionStorage.getItem('cpu-char')].color);
   }
 

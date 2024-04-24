@@ -1,6 +1,7 @@
 import BoardRender from './board-render.js';
 import Game from './game-control.js';
 import PlaceShips from '../screens/place-ships.js';
+import BoardHelper from './board-helpers.js';
 
 export default class DragAndDrop {
   static board = document.querySelector('#strategy-board');
@@ -17,55 +18,8 @@ export default class DragAndDrop {
     DragAndDrop.addBoardEventListeners();
   }
 
-  static changeAxis(key) {
-    if (key === 'x') {
-      DragAndDrop.axis = 'row';
-      DragAndDrop.board.setAttribute('data-activeAxis', 'x');
-    }
-
-    if (key === 'z') {
-      DragAndDrop.axis = 'col';
-      DragAndDrop.board.setAttribute('data-activeAxis', 'y');
-    }
-  }
-
-  static gridFromHtmlSquares(squares) {
-    const matrix = Array.from(squares).map(row => Array.from(row.children)).flat();
-
-    for (let i = 0; i < matrix.length; i++) {
-      const row = Array.from(matrix[i].children);
-      DragAndDrop.grid.push([]);
-      for (let j = 0; j < row.length; j++) {
-        DragAndDrop.grid[i].push({
-          coords: [i, j],
-          htmlElement: row[j],
-        });
-      }
-    }
-  }
-
-  static extractIndicesFromGrid(grid, target) {
-    for (let i = 0; i < grid.length; i++) {
-      for (let j = 0; j < grid[i].length; j++) {
-        if (grid[i][j].htmlElement === target) {
-          return [i, j];
-        }
-      }
-    }
-  }
-
-  static getSquaresFromBoard() {
-    const squares = DragAndDrop.board.firstChild.querySelectorAll('.square');
-    return Array.from(squares);
-  }
-
-  static getShipsFromFleet() {
-    const ships = DragAndDrop.fleet.querySelectorAll('.ship__icon');
-    return Array.from(ships);
-  }
-
   static addFleetEventListeners() {
-    const ships = DragAndDrop.getShipsFromFleet();
+    const ships = Array.from(DragAndDrop.fleet.querySelectorAll('.ship__icon'));
     ships.forEach(ship => {
       ship.parentNode.addEventListener('dragstart', (e) => DragAndDrop.dragStart(e));
       ship.parentNode.addEventListener('dragend', (e) => DragAndDrop.dragEnd(e));
@@ -73,7 +27,7 @@ export default class DragAndDrop {
   }
 
   static addBoardEventListeners() {
-    const squares = DragAndDrop.getSquaresFromBoard();
+    const squares = Array.from(DragAndDrop.board.querySelectorAll('.square'));
     squares.forEach(square => {
       square.addEventListener('dragover', (e) => DragAndDrop.dragOver(e));
       square.addEventListener('dragleave', () => DragAndDrop.dragLeave());
@@ -122,11 +76,12 @@ export default class DragAndDrop {
 
     if (placedShip) {
       const draggingShip = document.querySelector('.dragging');
+      const shipName = DragAndDrop.selectedShip.name.en;
       if (DragAndDrop.axis === 'col') draggingShip.classList.add('rotated');
 
-      sessionStorage.setItem(DragAndDrop.selectedShip.name.en + '-row', DragAndDrop.hoveredSquare[0]);
-      sessionStorage.setItem(DragAndDrop.selectedShip.name.en + '-col', DragAndDrop.hoveredSquare[1]);
-      sessionStorage.setItem(DragAndDrop.selectedShip.name.en + '-axis', DragAndDrop.axis);
+      sessionStorage.setItem(shipName + '-row', DragAndDrop.hoveredSquare[0]);
+      sessionStorage.setItem(shipName + '-col', DragAndDrop.hoveredSquare[1]);
+      sessionStorage.setItem(shipName + '-axis', DragAndDrop.axis);
 
       draggingShip.classList.add('placed');
       e.target.appendChild(draggingShip);
@@ -142,7 +97,7 @@ export default class DragAndDrop {
 
   static dragOver(e) {
     e.preventDefault();
-    DragAndDrop.hoveredSquare = DragAndDrop.extractIndicesFromGrid(DragAndDrop.grid, e.target);
+    DragAndDrop.hoveredSquare = BoardHelper.extractIndicesFromGrid(DragAndDrop.grid, e.target);
     if (DragAndDrop.hoveredSquare) {
       const allowedPlacement = Game.players[0].gameboard.verifySquareAvailability(
         DragAndDrop.hoveredSquare[0], DragAndDrop.hoveredSquare[1], DragAndDrop.axis, DragAndDrop.selectedShip
@@ -175,10 +130,21 @@ export default class DragAndDrop {
     }
   }
 
+  static changeAxis(key) {
+    if (key === 'x') {
+      DragAndDrop.axis = 'row';
+      DragAndDrop.board.setAttribute('data-activeAxis', 'x');
+    }
+
+    if (key === 'z') {
+      DragAndDrop.axis = 'col';
+      DragAndDrop.board.setAttribute('data-activeAxis', 'y');
+    }
+  }
+
   static init() {
-    DragAndDrop.grid = [];
+    DragAndDrop.grid = BoardHelper.objectsGridFromHtmlSquares(DragAndDrop.board.children);
     DragAndDrop.shipsPlaced = 0;
-    DragAndDrop.gridFromHtmlSquares(DragAndDrop.board.children);
     DragAndDrop.setEventListeners();
   }
 }
