@@ -8,7 +8,6 @@ import Animation from '../helpers/animations.js';
 import GameAudio from '../helpers/audio.js';
 import Header from '../helpers/header.js';
 import Quote from '../helpers/quote.js';
-import Language from '../helpers/language.js';
 import LoadingScreen from './loading-screen.js';
 import Settings from '../helpers/settings.js';
 
@@ -298,7 +297,7 @@ export default class Battle {
       }
     }
 
-    Language.loadDataAttributes(Battle.characterQuotes, quoteArray);
+    Settings.setLanguageDataAttributes(Battle.characterQuotes, quoteArray);
     const quote = Battle.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`);
     Animation.displayReaction(Battle.characterQuotes, quote, photo);
   }

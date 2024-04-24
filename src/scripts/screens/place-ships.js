@@ -8,7 +8,6 @@ import Animation from '../helpers/animations.js';
 import GameAudio from '../helpers/audio.js';
 import Header from '../helpers/header.js';
 import Settings from '../helpers/settings.js';
-import Language from '../helpers/language.js';
 import Quote from '../helpers/quote.js';
 import LoadingScreen from './loading-screen.js';
 
@@ -67,7 +66,7 @@ export default class PlaceShips {
     PlaceShips.characterName.textContent = PlaceShips.character.fullName;
     PlaceShips.characterPhoto.src = PlaceShips.character.src;
 
-    Language.loadDataAttributes(PlaceShips.characterQuotes, Quote.getPreparationQuote(PlaceShips.character.name));
+    Settings.setLanguageDataAttributes(PlaceShips.characterQuotes, Quote.getPreparationQuote(PlaceShips.character.name));
     Animation.displayQuote(PlaceShips.characterQuotes, PlaceShips.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
     
     PlaceShips.root.style.setProperty('--color-player', PlaceShips.character.color);
@@ -88,7 +87,7 @@ export default class PlaceShips {
     PlaceShips.loadFleet();
     PlaceShips.loadBoard();
     Settings.loadLanguage();
-    Language.loadDataAttributes(PlaceShips.characterQuotes, Quote.getResetQuote(PlaceShips.character.name));
+    Settings.setLanguageDataAttributes(PlaceShips.characterQuotes, Quote.getResetQuote(PlaceShips.character.name));
     Animation.displayQuote(PlaceShips.characterQuotes, PlaceShips.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
     PlaceShips.confirmBtn.disabled = true;
     DragAndDrop.init();
@@ -99,7 +98,7 @@ export default class PlaceShips {
       return ship.name.en === shipId;
     })
     const charName = PlaceShips.character.name;
-    Language.loadDataAttributes(PlaceShips.characterQuotes, Quote.getPlaceShipQuote(charName, ship));
+    Settings.setLanguageDataAttributes(PlaceShips.characterQuotes, Quote.getPlaceShipQuote(charName, ship));
     Animation.displayQuote(PlaceShips.characterQuotes, PlaceShips.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
   }
 

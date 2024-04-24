@@ -18,12 +18,18 @@ export default class Settings {
     }
   }
 
+  static setLanguageDataAttributes(htmlElement, array) {
+    htmlElement.setAttribute('data-en', array[0]);
+    htmlElement.setAttribute('data-pt', array[1]);
+  }
+
   static loadLanguage() {
     if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en');
 
     const textElements = document.querySelectorAll('[data-en]');
     const langOptions = document.querySelectorAll('.language-radio');
     const chosenLang = localStorage.getItem('lang');
+
     textElements.forEach(element => element.textContent = element.getAttribute(`data-${chosenLang}`));
     langOptions.forEach(element => {
       element.classList.remove('lang-selected');
