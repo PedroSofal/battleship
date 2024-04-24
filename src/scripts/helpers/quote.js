@@ -15,7 +15,7 @@ export default class Quote {
   }
 
   static randomize(quoteArrays) {
-    const randomIndex = Math.floor(Math.random()) * quoteArrays[0].length;
+    const randomIndex = Math.floor(Math.random() * quoteArrays[0].length);
     const quotes = [];
 
     for (let i = 0; i < quoteArrays.length; i++) {
