@@ -39,7 +39,7 @@ export default class DragAndDrop {
     e.currentTarget.classList.add('dragging');
     e.dataTransfer.setData('text/plain', e.currentTarget);
     
-    DragAndDrop.selectedShip = Object.values(Game.players[0].gameboard.ships).find(ship => {
+    DragAndDrop.selectedShip = Object.values(Game.player1.gameboard.ships).find(ship => {
       return ship.name.en === e.currentTarget.querySelector('.ship__icon').id;
     });
 
@@ -69,7 +69,7 @@ export default class DragAndDrop {
     let placedShip = false;
 
     if (DragAndDrop.hoveredSquare) {
-      placedShip = Game.players[0].gameboard.placeShip(
+      placedShip = Game.player1.gameboard.placeShip(
         DragAndDrop.hoveredSquare[0], DragAndDrop.hoveredSquare[1], DragAndDrop.axis, DragAndDrop.selectedShip
       );
     }
@@ -92,14 +92,14 @@ export default class DragAndDrop {
       }
     }
 
-    BoardRender.updateBoard(Game.players[0]);
+    BoardRender.updateBoard(Game.player1);
   }
 
   static dragOver(e) {
     e.preventDefault();
     DragAndDrop.hoveredSquare = BoardHelper.extractIndicesFromGrid(DragAndDrop.grid, e.target);
     if (DragAndDrop.hoveredSquare) {
-      const allowedPlacement = Game.players[0].gameboard.verifySquareAvailability(
+      const allowedPlacement = Game.player1.gameboard.verifySquareAvailability(
         DragAndDrop.hoveredSquare[0], DragAndDrop.hoveredSquare[1], DragAndDrop.axis, DragAndDrop.selectedShip
       );
 

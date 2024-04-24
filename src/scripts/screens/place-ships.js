@@ -33,7 +33,7 @@ export default class PlaceShips {
   }
 
   static loadFleet() {
-    for (const shipObject of Object.values(Game.players[0].gameboard.ships)) {
+    for (const shipObject of Object.values(Game.player1.gameboard.ships)) {
       const ship = document.createElement('div');
       const shipName = document.createElement('p');
       const shipYard = document.createElement('div');
@@ -81,8 +81,8 @@ export default class PlaceShips {
   static resetFormation() {
     PlaceShips.strategyBoard.innerHTML = '';
     PlaceShips.fleet.innerHTML = '';
-    Game.players[0].gameboard.resetGameboard();
-    BoardRender.loadBoard(Game.players[0]);
+    Game.player1.gameboard.resetGameboard();
+    BoardRender.loadBoard(Game.player1);
 
     PlaceShips.loadFleet();
     PlaceShips.loadBoard();
@@ -94,7 +94,7 @@ export default class PlaceShips {
   }
 
   static updatePlaceShipQuote(shipId) {
-    const ship = Object.values(Game.players[0].gameboard.ships).find(ship => {
+    const ship = Object.values(Game.player1.gameboard.ships).find(ship => {
       return ship.name.en === shipId;
     })
     const charName = PlaceShips.character.name;

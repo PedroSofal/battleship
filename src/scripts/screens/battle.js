@@ -24,7 +24,7 @@ export default class Battle {
   static countermeasure = false;
 
   static retrievePlayerShipsPositions() {
-    const playerBackendBoard = Game.players[0].gameboard;
+    const playerBackendBoard = Game.player1.gameboard;
     const playerFrontendBoard = BoardRender.getHumanBoard();
 
     for (const ship of Object.values(playerBackendBoard.ships)) {
@@ -37,11 +37,11 @@ export default class Battle {
     }
 
     Battle.humanBoard.appendChild(playerFrontendBoard);
-    BoardRender.updateBoard(Game.players[0]);
+    BoardRender.updateBoard(Game.player1);
   }
 
   static setCpuShipsPositions() {
-    const cpuBackendBoard = Game.players[1].gameboard;
+    const cpuBackendBoard = Game.player2.gameboard;
     const cpuFrontendBoard = BoardRender.getCpuBoard()
     cpuBackendBoard.setFormationRandomly();
 
@@ -57,7 +57,7 @@ export default class Battle {
     document.querySelectorAll('.cpu-board .square').forEach(square => {
       square.addEventListener('click', Battle.handleClick);
     });
-    BoardRender.updateBoard(Game.players[1]);
+    BoardRender.updateBoard(Game.player2);
   }
 
   static renderShipIcons(board, row, col, axis, ship) {
@@ -84,14 +84,14 @@ export default class Battle {
       return;
     }
     
-    if (Game.turn === 0) {
-      const attack = Game.players[0].attack(row, col, Game.players[1]);
+    if (Game.turn === 1) {
+      const attack = Game.player1.attack(row, col, Game.player2);
       const attackedHtmlSquare = Battle.querySquareByCoords(Battle.cpuBoard, attack.coords);
       const delay = attack.className === 'sunk' ? 1000 : 0;
 
-      BoardRender.updateBoard(Game.players[0]);
-      BoardRender.updateBoard(Game.players[1]);
-      BoardRender.showSunkenShips(Game.players[1]);
+      BoardRender.updateBoard(Game.player1);
+      BoardRender.updateBoard(Game.player2);
+      BoardRender.showSunkenShips(Game.player2);
       Battle.callAnimation(attack.className, attackedHtmlSquare);
       Game.nextPlayer();
       e.target.removeEventListener('click', Battle.handleClick);
@@ -100,7 +100,7 @@ export default class Battle {
       }, delay);
       if (!Game.gameOver()) {
         setTimeout(() => {
-          Battle.updateBattleQuote(attack, Game.players[0], Game.players[1]);
+          Battle.updateBattleQuote(attack, Game.player1, Game.player2);
         }, 300);
       }
     }
@@ -108,33 +108,33 @@ export default class Battle {
   
   static botPlays() {
     if (Game.gameOver()) {
-      Battle.handleGameOver(Game.players[0]);
+      Battle.handleGameOver(Game.player1);
       return;
     }
 
-    if (Game.turn === 1) {
+    if (Game.turn === 2) {
       setTimeout(() => {
-        const attack = Game.players[1].attack(Game.players[0]);
+        const attack = Game.player2.attack(Game.player1);
         const attackedHtmlSquare = Battle.querySquareByCoords(Battle.humanBoard, attack.coords);
         Battle.countermeasure = false;
         Battle.radarLockAlert(attack);
         Battle.missileLaunchAlert(attack.className);
         setTimeout(() => {
           Battle.resolveRadarAlert(attack.className);
-          BoardRender.updateBoard(Game.players[0]);
-          BoardRender.updateBoard(Game.players[1]);
-          BoardRender.showSunkenShips(Game.players[0]);
+          BoardRender.updateBoard(Game.player1);
+          BoardRender.updateBoard(Game.player2);
+          BoardRender.showSunkenShips(Game.player1);
           Battle.callAnimation(attack.className, attackedHtmlSquare);
           if (attack.className === 'hit' || attack.className === 'sunk') {
             Animation.shake(Battle.wrapper);
           }
 
           if (Game.gameOver()) {
-            Battle.handleGameOver(Game.players[1]);
+            Battle.handleGameOver(Game.player2);
           } else {
             Game.nextPlayer();
             setTimeout(() => {
-              Battle.updateBattleQuote(attack, Game.players[1], Game.players[0]);
+              Battle.updateBattleQuote(attack, Game.player2, Game.player1);
             }, 300);
           }
         }, 3500);

@@ -4,8 +4,9 @@ import BoardRender from './board-render.js';
 import { charObjects } from '../factories/characters.js';
 
 export default class Game {
-  static players = [];
-  static turn = 0;
+  static player1 = null;
+  static player2 = null;
+  static turn = 1;
 
   static setPlayers() {
     const playerName = sessionStorage.getItem('player-name');
@@ -13,30 +14,28 @@ export default class Game {
     const cpuName = charObjects[sessionStorage.getItem('cpu-char')].name;
     const cpuChar = charObjects[sessionStorage.getItem('cpu-char')];
 
-    const player = new Player(playerName, playerChar);
+    const human = new Player(playerName, playerChar);
     const cpu = new Bot(cpuName, cpuChar);
 
-    Game.players.push(player);
-    Game.players.push(cpu);
+    Game.player1 = human;
+    Game.player2 = cpu;
   }
 
   static newGame() {
-    BoardRender.loadBoard(Game.players[0]);
-    BoardRender.loadBoard(Game.players[1]);
+    BoardRender.loadBoard(Game.player1);
+    BoardRender.loadBoard(Game.player2);
   }
 
   static nextPlayer() {
-    Game.turn = Game.turn === 0 ? 1 : 0;
+    Game.turn = Game.turn === 1 ? 2 : 1;
   }
 
   static gameOver() {
-    let isGameOver = false;
-    Game.players.forEach(player => {
-      if (player.gameboard.areAllShipsSunk()) {
-        isGameOver = true;
-      }
-    });
-    return isGameOver;
+    if (Game.player1.gameboard.areAllShipsSunk() || Game.player2.gameboard.areAllShipsSunk()) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   static init() {
