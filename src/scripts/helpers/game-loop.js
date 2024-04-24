@@ -1,6 +1,7 @@
 import Game from './game-control.js';
 import GameLoopHelper from './game-loop-helpers.js';
 import Radar from './radar.js';
+import Settings from './settings.js';
 
 export default class GameLoop {
   static playerPlays(row, col, e) {
@@ -24,17 +25,16 @@ export default class GameLoop {
 
     setTimeout(() => {
       GameLoopHelper.updateBattleQuote(attack, Game.player1, Game.player2);
-    }, 300);
+    }, Settings.getGameSpeed().showQuote);
   }
   
   static botPlays() {
     if (Game.turn !== 2) return;
-
     const attack = Game.player2.attack(Game.player1);
 
     setTimeout(() => {
       Radar.triggerRadar(attack);
-    }, 500);
+    }, Settings.getGameSpeed().triggerRadar);
 
     setTimeout(() => {
       Radar.resolveRadarAlert(attack.className);
@@ -50,11 +50,11 @@ export default class GameLoop {
       }
 
       Game.nextPlayer();
-    }, 500 + 3500);
+    }, Settings.getGameSpeed().triggerRadar + Settings.getGameSpeed().shotDrop);
 
     setTimeout(() => {
       GameLoopHelper.updateBattleQuote(attack, Game.player2, Game.player1);
-    }, 500 + 3500 + 300);
+    }, Settings.getGameSpeed().triggerRadar + Settings.getGameSpeed().shotDrop + Settings.getGameSpeed().showQuote);
 
   }
 }

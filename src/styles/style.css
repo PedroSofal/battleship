@@ -55,6 +55,10 @@ body {
   display: none;
 }
 
+.wrapper {
+  background-color: var(--color-800);
+}
+
 /* BUTTONS ***********/
 
 button {
@@ -91,13 +95,6 @@ button {
   background: none;
 }
 
-/* @media (min-width: 768px) {
-  .main-button {
-    font-size: 24px;
-    min-width: 196px;
-  }
-} */
-
 button:disabled {
   opacity: 0.3;
 }
@@ -114,8 +111,16 @@ button:disabled {
   outline-style: none;
 }
 
-.wrapper {
-  background-color: var(--color-800);
+.selection-button {
+  padding: 0.6rem;
+  border-style: none;
+  font-family: var(--main-ff);
+  background-color: transparent;
+  color: var(--color-100);
+}
+
+.selection-button.selected {
+  opacity: 1;
 }
 
 /* DIALOGS ***********/
@@ -453,15 +458,13 @@ button:disabled {
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
-  width: 26rem;
+  width: 45rem;
   padding: 2rem;
   background-color: var(--color-900);
   border: 5px solid var(--color-800);
 }
 
-.options__language,
-.options__music,
-.options__sfx {
+.options__item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -480,11 +483,18 @@ input[type="range"] {
 
 .icon {
   height: var(--icon-size);
-  padding: 5px;
   opacity: 0.3;
   cursor: pointer;
   transition: all 150ms ease-in-out;
   outline-offset: 1rem;
+}
+
+.icon:hover {
+  opacity: 1;
+}
+
+.icon--flag {
+  padding: 5px;
 }
 
 .lang-selected + .label .icon--flag {

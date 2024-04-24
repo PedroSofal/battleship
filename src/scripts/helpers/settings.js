@@ -1,4 +1,5 @@
 import GameAudio from './audio.js';
+import GameSpeed from './speed.js';
 
 export default class Settings {
   static changeLang(input) {
@@ -23,6 +24,15 @@ export default class Settings {
     htmlElement.setAttribute('data-pt', array[1]);
   }
 
+  static setGameSpeed(speed) {
+    localStorage.setItem('game-speed', speed);
+    GameSpeed.activeGameSpeed = GameSpeed.speedOptionsArray[speed];
+  }
+
+  static getGameSpeed() {
+    return GameSpeed.activeGameSpeed;
+  }
+
   static loadLanguage() {
     if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en');
 
@@ -33,23 +43,33 @@ export default class Settings {
     textElements.forEach(element => element.textContent = element.getAttribute(`data-${chosenLang}`));
     langOptions.forEach(element => {
       element.classList.remove('lang-selected');
-      if (element.id === `lang-${localStorage.getItem('lang')}`) {
+      if (element.value === localStorage.getItem('lang')) {
         element.classList.add('lang-selected');
       }
-    })
+    });
   }
 
   static loadSettings() {
-    if (!localStorage.getItem('music-vol') || !localStorage.getItem('sfx-vol')) {
+    if (!localStorage.getItem('music-vol') || !localStorage.getItem('sfx-vol') || !localStorage.getItem('game-speed')) {
       localStorage.setItem('music-vol', 1);
-      localStorage.setItem('sfx-vol', 1)
+      localStorage.setItem('sfx-vol', 1);
+      localStorage.setItem('game-speed', 0);
     }
 
+    const speedOptions = document.querySelectorAll('[id$="game-speed"]');
     const musicVolume = parseFloat(localStorage.getItem('music-vol'));
     const sfxVolume = parseFloat(localStorage.getItem('sfx-vol'));
+    const gameSpeed = parseFloat(localStorage.getItem('game-speed'));
 
     document.querySelector('#music-volume-slider').value = parseFloat(musicVolume);
     document.querySelector('#sfx-volume-slider').value = parseFloat(sfxVolume);
+
+    speedOptions.forEach(element => {
+      element.classList.remove('selected');
+      if (parseFloat(element.value) === gameSpeed) {
+        element.classList.add('selected');
+      }
+    });
     
     Settings.loadLanguage();
   }

@@ -10,6 +10,7 @@ export default class Header {
   static closeOptions = document.querySelector('#close-options');
   static optionsModal = document.querySelector('#options-modal');
   static langOptions = document.querySelectorAll('.language-radio');
+  static speedOptions = document.querySelectorAll('[id$="game-speed"]');
   static musicVolumeSlider = document.querySelector('#music-volume-slider');
   static sfxVolumeSlider = document.querySelector('#sfx-volume-slider');
 
@@ -26,6 +27,12 @@ export default class Header {
       Header.langOptions.forEach(option => option.classList.remove('lang-selected'));
       e.target.classList.add('lang-selected');
       Settings.changeLang(e.target);
+    }));
+
+    Header.speedOptions.forEach(option => option.addEventListener('click', (e) => {
+      Header.speedOptions.forEach(option => option.classList.remove('selected'));
+      e.target.classList.add('selected');
+      Settings.setGameSpeed(e.target.value);
     }));
 
     Header.musicVolumeSlider.addEventListener('change', (e) => {

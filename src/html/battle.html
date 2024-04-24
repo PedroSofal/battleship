@@ -114,7 +114,7 @@
       </div>
 
       <div class="wrapper wrapper--options">
-        <div class="options__language">
+        <div class="options__item">
           <label class="label" data-en="Language" data-pt="Idioma">Language</label>
           <div class="options-list">
             <input class="language-radio lang-selected" type="radio" name="language" id="lang-en" value="en">
@@ -127,13 +127,20 @@
             </label>
           </div>
         </div>
-        <div class="options__music">
-          <label class="label" for="music-volume-slider" data-en="Music" data-pt="Música">Music</label>
+        <div class="options__item">
+          <label class="label" for="music-volume-slider" data-en="Volume - music" data-pt="Volume - música">Volume - music</label>
           <input id="music-volume-slider" type="range" min="0" max="1" step="0.1" value="1">
         </div>
-        <div class="options__sfx">
-          <label class="label" for="sfx-volume-slider" data-en="Effects" data-pt="Efeitos">Effects</label>
+        <div class="options__item">
+          <label class="label" for="sfx-volume-slider" data-en="Volume - sound effects" data-pt="Volume - efeitos sonoros">Volume - sound effects</label>
           <input id="sfx-volume-slider" type="range" min="0" max="1" step="0.1" value="1">
+        </div>
+        <div class="options__item">
+          <label class="label" data-en="Game speed" data-pt="Velocidade do jogo">Game speed</label>
+          <div class="options-list">
+            <button class="selection-button icon" id="normal-game-speed" value="0" data-en="NORMAL" data-pt="NORMAL">NORMAL</button>
+            <button class="selection-button icon" id="fast-game-speed" value="1" data-en="FAST" data-pt="RÁPIDO">FAST</button>
+          </div>
         </div>
       </div>
       
