@@ -1,13 +1,15 @@
-export default class DOM {
+import BoardHelper from './board-helpers.js';
+
+export default class BoardRender {
   static loadedHumanBoard = null;
   static loadedCpuBoard = null;
 
   static getHumanBoard() {
-    return DOM.loadedHumanBoard;
+    return BoardRender.loadedHumanBoard;
   }
 
   static getCpuBoard() {
-    return DOM.loadedCpuBoard;
+    return BoardRender.loadedCpuBoard;
   }
   
   static loadBoard(player) {
@@ -28,20 +30,13 @@ export default class DOM {
     }
   
     boardContainer.className = `board ${player.type}-board`;
-    if (player.type === 'human') DOM.loadedHumanBoard = boardContainer;
-    if (player.type === 'cpu') DOM.loadedCpuBoard = boardContainer;
-  }
-
-  static gridFromHtmlSquares(squares) {
-    const rows = Array.from(squares);
-    const grid = [];
-    rows.forEach(row => grid.push(Array.from(row.children)));
-    return grid;
+    if (player.type === 'human') BoardRender.loadedHumanBoard = boardContainer;
+    if (player.type === 'cpu') BoardRender.loadedCpuBoard = boardContainer;
   }
 
   static updateBoard(player) {
     const gameboard = document.querySelector(`.${player.type}-board`);
-    const grid = DOM.gridFromHtmlSquares(gameboard.children);
+    const grid = BoardHelper.gridFromHtmlSquares(gameboard.children);
 
     player.gameboard.squares.forEach(square => {
       const row = square.coords[0];

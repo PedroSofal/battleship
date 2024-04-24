@@ -17,6 +17,13 @@ export default class BoardHelper {
     return grid;
   }
 
+  static gridFromHtmlSquares(squares) {
+    const rows = Array.from(squares);
+    const grid = [];
+    rows.forEach(row => grid.push(Array.from(row.children)));
+    return grid;
+  }
+
   static extractIndicesFromGrid(grid, target) {
     for (let i = 0; i < grid.length; i++) {
       for (let j = 0; j < grid[i].length; j++) {
