@@ -21,10 +21,6 @@ export default class Player {
       && square.attacked === true;
     });
 
-    if (isAlreadyAttacked) {
-      return false;
-    } else {
-      return true;
-    }
+    return isAlreadyAttacked ? false : true;
   }
 }

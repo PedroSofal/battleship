@@ -74,11 +74,7 @@ export default class Bot {
       && square.attacked;
     });
 
-    if (isAlreadyAttacked) {
-      return false;
-    } else {
-      return true;
-    }
+    return isAlreadyAttacked ? false : true;
   }
 
   spreadAim(row, col, enemy) {

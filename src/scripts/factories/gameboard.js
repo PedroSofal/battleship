@@ -83,37 +83,45 @@ export default class Gameboard {
     square.attacked = true;
 
     if (square.content !== 'water') {
-      square.content.hit();
-
-      if (square.content.hits === 1) {
-        this.sequence.start = square;
-      }
-
-      if (!square.content.isSunk()) {
-        this.sequence.next = square;
-        square.className = 'hit';
-      }
-
-      if (square.content.isSunk()) {
-        this.sequence.start = null;
-        this.sequence.next = null;
-        square.className = 'sunk';
-      }
-
-      return square;
+      return this.handleHit(square);
     }
     
     if (square.content === 'water') {
-      const adjacencies = this.getAdjacencies(row, col);
-
-      if (adjacencies.some(square => square.content !== 'water' && !square.attacked)) {
-        square.className = 'close';
-      } else {
-        square.className = 'miss';
-      }
-
-      return square;
+      return this.handleMiss(square, row, col);
     }
+  }
+
+  handleHit(square) {
+    square.content.hit();
+
+    if (square.content.hits === 1) {
+      this.sequence.start = square;
+    }
+
+    if (!square.content.isSunk()) {
+      this.sequence.next = square;
+      square.className = 'hit';
+    }
+
+    if (square.content.isSunk()) {
+      this.sequence.start = null;
+      this.sequence.next = null;
+      square.className = 'sunk';
+    }
+
+    return square;
+  }
+
+  handleMiss(square, row, col) {
+    const adjacencies = this.getAdjacencies(row, col);
+
+    if (adjacencies.some(square => square.content !== 'water' && !square.attacked)) {
+      square.className = 'close';
+    } else {
+      square.className = 'miss';
+    }
+
+    return square;
   }
 
   getAdjacencies(row, col) {
