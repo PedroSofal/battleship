@@ -60,7 +60,7 @@ export default class DragAndDrop {
     if (e.currentTarget.classList.contains('placed')) {
       e.currentTarget.removeAttribute('draggable');
       e.currentTarget.addEventListener('mousedown', (e) => e.preventDefault());
-      PlaceShips.updatePlaceShipQuote(e.target.firstChild.id);
+      PlaceShips.updatePlaceShipQuote(e.currentTarget.firstChild.id);
     }
   }
 
