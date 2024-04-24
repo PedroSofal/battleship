@@ -13,7 +13,6 @@ export default class BoardHelper {
         });
       }
     }
-
     return grid;
   }
 
@@ -32,5 +31,12 @@ export default class BoardHelper {
         }
       }
     }
+  }
+
+  static querySquareByCoords(board, coords) {
+    const grid = BoardHelper.objectsGridFromHtmlSquares([board]);
+    const row = coords[0];
+    const col = coords[1];
+    return grid[0][row].htmlElement.children[col];
   }
 }
