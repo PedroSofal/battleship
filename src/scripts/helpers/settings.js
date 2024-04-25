@@ -2,14 +2,15 @@ import GameAudio from './audio.js';
 import GameSpeed from './speed.js';
 
 export default class Settings {
-  static changeLang(input) {
+  static setLanguage(input) {
     localStorage.setItem('lang', input.value);
-    Settings.loadLanguage();
+    Settings.loadLanguageSettings();
   }
 
   static setMusicVolume(volume) {
-    GameAudio.setMusicVolume(volume);
     localStorage.setItem('music-vol', volume);
+    GameAudio.setMusicVolume(volume);
+    Settings.loadAudioSettings();
   }
 
   static setSfxVolume(volume) {
@@ -17,6 +18,7 @@ export default class Settings {
     if (GameAudio.radarLockAudio) {
       GameAudio.radarLockAudio.volume = parseFloat(volume);
     }
+    Settings.loadAudioSettings();
   }
 
   static setLanguageDataAttributes(htmlElement, array) {
@@ -27,13 +29,14 @@ export default class Settings {
   static setGameSpeed(speed) {
     localStorage.setItem('game-speed', speed);
     GameSpeed.activeGameSpeed = GameSpeed.speedOptionsArray[speed];
+    Settings.loadGameSpeedSettings();
   }
 
   static getGameSpeed() {
     return GameSpeed.getActiveGameSpeed();
   }
 
-  static loadLanguage() {
+  static loadLanguageSettings() {
     if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en');
 
     const textElements = document.querySelectorAll('[data-en]');
@@ -49,20 +52,25 @@ export default class Settings {
     });
   }
 
-  static loadSettings() {
-    if (!localStorage.getItem('music-vol') || !localStorage.getItem('sfx-vol') || !localStorage.getItem('game-speed')) {
+  static loadAudioSettings() {
+    if (!localStorage.getItem('music-vol') || !localStorage.getItem('sfx-vol')) {
       localStorage.setItem('music-vol', 1);
       localStorage.setItem('sfx-vol', 1);
+    }
+
+    const musicVolume = parseFloat(localStorage.getItem('music-vol'));
+    const sfxVolume = parseFloat(localStorage.getItem('sfx-vol'));
+    document.querySelector('#music-volume-slider').value = parseFloat(musicVolume);
+    document.querySelector('#sfx-volume-slider').value = parseFloat(sfxVolume);
+  }
+
+  static loadGameSpeedSettings() {
+    if (!localStorage.getItem('game-speed')) {
       localStorage.setItem('game-speed', 0);
     }
 
     const speedOptions = document.querySelectorAll('[id$="game-speed"]');
-    const musicVolume = parseFloat(localStorage.getItem('music-vol'));
-    const sfxVolume = parseFloat(localStorage.getItem('sfx-vol'));
     const gameSpeed = parseFloat(localStorage.getItem('game-speed'));
-
-    document.querySelector('#music-volume-slider').value = parseFloat(musicVolume);
-    document.querySelector('#sfx-volume-slider').value = parseFloat(sfxVolume);
 
     speedOptions.forEach(element => {
       element.classList.remove('selected');
@@ -70,7 +78,11 @@ export default class Settings {
         element.classList.add('selected');
       }
     });
-    
-    Settings.loadLanguage();
+  }
+
+  static loadAllSettings() {
+    Settings.loadAudioSettings();
+    Settings.loadGameSpeedSettings();
+    Settings.loadLanguageSettings();
   }
 }

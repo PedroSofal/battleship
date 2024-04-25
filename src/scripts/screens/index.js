@@ -22,9 +22,7 @@ class MainMenu {
     });
 
     MainMenu.langOptions.forEach(option => option.addEventListener('change', (e) => {
-      MainMenu.langOptions.forEach(option => option.classList.remove('lang-selected'));
-      e.target.classList.add('lang-selected');
-      Settings.changeLang(e.target);
+      Settings.setLanguage(e.target);
     }));
 
     MainMenu.musicVolumeSlider.addEventListener('change', (e) => {
@@ -63,8 +61,7 @@ class MainMenu {
 
   static init() {
     sessionStorage.clear();
-    Settings.loadLanguage();
-    Settings.loadSettings();
+    Settings.loadAllSettings();
     MainMenu.setEventListeners();
     document.body.addEventListener('mousedown', MainMenu.playMainMenuMusic);
   }

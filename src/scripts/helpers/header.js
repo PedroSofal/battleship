@@ -24,14 +24,10 @@ export default class Header {
     Header.closeOptions.addEventListener('click', Header.closeOptionsModal);
 
     Header.langOptions.forEach(option => option.addEventListener('change', (e) => {
-      Header.langOptions.forEach(option => option.classList.remove('lang-selected'));
-      e.target.classList.add('lang-selected');
-      Settings.changeLang(e.target);
+      Settings.setLanguage(e.target);
     }));
 
     Header.speedOptions.forEach(option => option.addEventListener('click', (e) => {
-      Header.speedOptions.forEach(option => option.classList.remove('selected'));
-      e.target.classList.add('selected');
       Settings.setGameSpeed(e.target.value);
     }));
 
@@ -56,7 +52,6 @@ export default class Header {
 
   static openOptionsModal() {
     Header.optionsModal.classList.add('dialog--open');
-    Settings.loadSettings();
     Header.optionsModal.showModal();
   }
 

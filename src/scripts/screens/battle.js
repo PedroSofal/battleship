@@ -87,8 +87,8 @@ export default class Battle {
     Battle.root.style.setProperty('--color-cpu', charObjects[sessionStorage.getItem('cpu-char')].color);
     Battle.root.style.setProperty('--color-cpu-alpha', charObjects[sessionStorage.getItem('cpu-char')].colorAlpha);
     document.body.addEventListener('mousedown', Battle.playBattleMusic);
+    Settings.loadAllSettings();
     Header.init();
-    Settings.loadLanguage();
   }
 }
 

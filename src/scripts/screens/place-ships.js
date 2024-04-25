@@ -118,7 +118,7 @@ export default class PlaceShips {
     Game.init();
     PlaceShips.loadFleet();
     PlaceShips.loadBoard();
-    Settings.loadLanguage();
+    Settings.loadAllSettings();
     PlaceShips.loadCharacter();
     PlaceShips.setEventListeners();
     DragAndDrop.init();
