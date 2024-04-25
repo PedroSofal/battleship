@@ -5,6 +5,14 @@
   gap: 1rem;
 }
 
+.wrapper--main-menu {
+  grid-template-columns: 5fr 520px 4fr;
+  justify-content: center;
+  place-items: center;
+  height: 100vh;
+  gap: 0;
+}
+
 .wrapper--strategy-room {
   grid-template-columns: 434px 640px 300px;
   grid-template-rows: 60px 300px 260px 120px;
@@ -81,6 +89,14 @@
 .container--secondary {
   border: 5px solid var(--color-800);
   background-color: var(--color-900);
+}
+
+/* Main Menu */
+
+.wrapper--main-menu .container--options {
+  flex-direction: column;
+  gap: 1.4rem;
+  width: 22rem;
 }
 
 /* Strategy Room */

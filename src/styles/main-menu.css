@@ -1,12 +1,4 @@
-.main-menu-wrapper {
-  display: grid;
-  grid-template-columns: 5fr 520px 4fr;
-  justify-content: center;
-  place-items: center;
-  height: 100vh;
-}
-
-/* NAME & OPTIONS ***********/
+/* NAME ***********/
 
 .name-options-wrapper {
   display: flex;
@@ -40,14 +32,7 @@
   background-color: var(--color-800);
 }
 
-.options--main-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 1.4rem;
-  width: 22rem;
-}
-
-/* CHARACTER SELETION ***********/
+/* CHARACTER SELECTION ***********/
 
 .character-selection-wrapper {
   position: relative;
