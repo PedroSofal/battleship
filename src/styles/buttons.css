@@ -1,0 +1,61 @@
+button {
+  cursor: pointer;
+}
+
+.main-button {
+  border: 0;
+  border-radius: 8px;
+  padding: 1.1rem 0.8rem;
+  font-family: var(--main-ff);
+  font-size: var(--fs-600);
+  color: var(--color-100);
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%,#00DDEB);
+  box-shadow: rgba(64, 40, 196, 0.2) 0 15px 30px -5px;
+  /* user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation; */
+}
+
+.main-button:active,
+.main-button:hover {
+  box-shadow: rgba(151, 65, 252, 0.5) 0 15px 30px -5px;
+}
+
+.main-button span {
+  background-color: rgb(5, 6, 45);
+  padding: 1rem 1.6rem;
+  border-radius: 6px;
+  transition: all 100ms ease-in-out;
+}
+
+.main-button:hover span {
+  background: none;
+}
+
+button:disabled {
+  opacity: 0.3;
+}
+
+.secondary-button {
+  font-family: var(--main-ff);
+  font-size: var(--fs-600);
+  border-style: none;
+  background-color: transparent;
+  color: var(--color-100);
+}
+
+.secondary-button:focus-visible {
+  outline-style: none;
+}
+
+.selection-button {
+  padding: 0.6rem;
+  border-style: none;
+  font-family: var(--main-ff);
+  background-color: transparent;
+  color: var(--color-100);
+}
+
+.selection-button.selected {
+  opacity: 1;
+}

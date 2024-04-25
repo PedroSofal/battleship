@@ -1,5 +1,7 @@
 import '../../styles/style.css';
 import '../../styles/main-menu.css';
+import '../../styles/buttons.css';
+import '../../styles/options.css';
 import GameAudio from '../helpers/audio.js';
 import Settings from '../helpers/settings.js';
 import LoadingScreen from './loading-screen.js';

@@ -1,0 +1,45 @@
+/* Global */
+
+.options__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4rem;
+}
+
+.label {
+  color: var(--color-100);
+  font-size: var(--fs-600);
+}
+
+input[type="range"] {
+  width: 7.5rem;
+}
+
+.icon {
+  height: var(--icon-size);
+  opacity: 0.3;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+  outline-offset: 1rem;
+}
+
+.icon:hover {
+  opacity: 1;
+}
+
+/* Language */
+
+.language-radio {
+  display: none;
+}
+
+.language-radio.selected + .label .icon--flag {
+  outline: 1px solid #ccc;
+  outline-offset: 0px;
+  opacity: 1;
+}
+
+.icon--flag {
+  padding: 5px;
+}

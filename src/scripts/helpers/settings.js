@@ -45,9 +45,9 @@ export default class Settings {
 
     textElements.forEach(element => element.textContent = element.getAttribute(`data-${chosenLang}`));
     langOptions.forEach(element => {
-      element.classList.remove('lang-selected');
+      element.classList.remove('selected');
       if (element.value === localStorage.getItem('lang')) {
-        element.classList.add('lang-selected');
+        element.classList.add('selected');
       }
     });
   }

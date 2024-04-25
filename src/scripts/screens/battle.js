@@ -1,6 +1,8 @@
 import '../../styles/style.css';
 import '../../styles/battle.css';
 import '../../styles/containers.css';
+import '../../styles/buttons.css';
+import '../../styles/options.css';
 import BoardRender from "../helpers/board-render.js";
 import Game from '../helpers/game-control.js';
 import { charObjects } from '../factories/characters.js';
