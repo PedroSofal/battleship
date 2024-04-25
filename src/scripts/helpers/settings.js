@@ -30,7 +30,7 @@ export default class Settings {
   }
 
   static getGameSpeed() {
-    return GameSpeed.activeGameSpeed;
+    return GameSpeed.getActiveGameSpeed();
   }
 
   static loadLanguage() {

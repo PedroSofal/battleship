@@ -1,3 +1,5 @@
+import Settings from './settings.js';
+
 // SFX
 import miss1 from '../../assets/audio/sfx/miss1.ogg';
 import miss2 from '../../assets/audio/sfx/miss2.ogg';
@@ -56,6 +58,15 @@ export default class GameAudio {
           GameAudio.radarLockAudio.currentTime = 0;
         }
     }
+  }
+
+  static playMissileAlert(category) {
+    const audio = new Audio(category[0]);
+    audio.volume = parseFloat(localStorage.getItem('sfx-vol'));
+    audio.play();
+    setTimeout(() => {
+      audio.muted = true;
+    }, Settings.getGameSpeed().missileAlertCut);
   }
 
   static playMusic(category) {

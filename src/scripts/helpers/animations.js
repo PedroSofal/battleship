@@ -1,3 +1,5 @@
+import Settings from './settings.js';
+
 import square_explosion1 from '../../assets/explosions/square_explosion1.png';
 import square_explosion2 from '../../assets/explosions/square_explosion2.png';
 import square_explosion3 from '../../assets/explosions/square_explosion3.png';
@@ -88,7 +90,7 @@ export default class Animation {
       if (i < quote.length) {
         html.textContent += quote[i];
         i++;
-        Animation.quoteTimer = setTimeout(displayNextChar, 15);
+        Animation.quoteTimer = setTimeout(displayNextChar, Settings.getGameSpeed().typing);
       }
     };
     
@@ -98,6 +100,7 @@ export default class Animation {
   static displayReaction(html, quote, photo) {
     Animation.activeReactions++;
     Animation.characterPhoto.src = photo;
+    Animation.wrapper.style.transitionDuration = `${Settings.getGameSpeed().reactionWrapperSlide}ms`;
     Animation.wrapper.classList.add('entra');
     Animation.characterPhoto.classList.add('entra');
     Animation.displayQuote(html, quote);
@@ -108,7 +111,7 @@ export default class Animation {
         Animation.characterPhoto.classList.remove('entra');
       }
       Animation.activeReactions--;
-    }, 3000);
+    }, Settings.getGameSpeed().reactionSpan);
   }
 
   static displayExplosion(square) {

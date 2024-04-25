@@ -34,7 +34,7 @@
   border: 5px solid var(--color-800);
 }
 
-.messages-wrapper {
+.reaction-wrapper {
   display: grid;
   grid-template-columns: auto 500px;
   gap: 1rem;
@@ -42,10 +42,10 @@
   padding-top: 1rem;
   visibility: hidden;
   transform: translateY(-100%);
-  transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out; /* manipulated in js */
 }
 
-.messages-wrapper.entra {
+.reaction-wrapper.entra {
   visibility: visible;
   transform: translate(0);
 }

@@ -25,7 +25,7 @@ export default class GameLoop {
 
     setTimeout(() => {
       GameLoopHelper.updateBattleQuote(attack, Game.player1, Game.player2);
-    }, Settings.getGameSpeed().showQuote);
+    }, Settings.getGameSpeed().reactionDelay);
   }
   
   static botPlays() {
@@ -34,7 +34,7 @@ export default class GameLoop {
 
     setTimeout(() => {
       Radar.triggerRadar(attack);
-    }, Settings.getGameSpeed().triggerRadar);
+    }, Settings.getGameSpeed().triggerRadarDelay);
 
     setTimeout(() => {
       Radar.resolveRadarAlert(attack.className);
@@ -50,11 +50,11 @@ export default class GameLoop {
       }
 
       Game.nextPlayer();
-    }, Settings.getGameSpeed().triggerRadar + Settings.getGameSpeed().shotDrop);
+    }, Settings.getGameSpeed().triggerRadarDelay + Settings.getGameSpeed().shotDropDelay);
 
     setTimeout(() => {
       GameLoopHelper.updateBattleQuote(attack, Game.player2, Game.player1);
-    }, Settings.getGameSpeed().triggerRadar + Settings.getGameSpeed().shotDrop + Settings.getGameSpeed().showQuote);
+    }, Settings.getGameSpeed().triggerRadarDelay + Settings.getGameSpeed().shotDropDelay + Settings.getGameSpeed().reactionDelay);
 
   }
 }

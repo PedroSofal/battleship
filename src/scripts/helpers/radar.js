@@ -1,4 +1,5 @@
 import GameAudio from './audio.js';
+import Settings from './settings.js';
 
 export default class Radar {
   static radarLockScreen = document.querySelector('.wrapper--radar-lock-warning')
@@ -18,17 +19,17 @@ export default class Radar {
       if (square.content.hits === 1) {
         setTimeout(() => {
           GameAudio.playRadarLockInfiniteLoop('start');
-        }, 2000);
+        }, Settings.getGameSpeed().radarLockAlarmDelay);
         setTimeout(() => {
           Radar.radarLockScreen.classList.add('lightUp');
-        }, 3500);
+        }, Settings.getGameSpeed().radarLockScreenDelay);
       }
   
       if (square.content.isSunk()) {
         setTimeout(() => {
           GameAudio.playRadarLockInfiniteLoop('stop');
           Radar.radarLockScreen.classList.remove('lightUp');
-      }, 4000);
+      }, Settings.getGameSpeed().sinkRoundDelay);
       }
     }
   }
@@ -40,7 +41,7 @@ export default class Radar {
       Radar.countermeasure = Math.random() < 0.5 ? true : false;
       if (Radar.countermeasure) {
         Radar.radarLockFoes[randomFoe].classList.add('lightUp');
-        GameAudio.playSfx(GameAudio.missileAlert);
+        GameAudio.playMissileAlert(GameAudio.missileAlert);
         Radar.launchCountermeasures();
       }
     }
