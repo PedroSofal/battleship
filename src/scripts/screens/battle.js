@@ -1,5 +1,6 @@
-import '../../styles/style.css'
-import '../../styles/battle.css'
+import '../../styles/style.css';
+import '../../styles/battle.css';
+import '../../styles/containers.css';
 import BoardRender from "../helpers/board-render.js";
 import Game from '../helpers/game-control.js';
 import { charObjects } from '../factories/characters.js';
@@ -14,7 +15,7 @@ export default class Battle {
   static root = document.querySelector(':root');
   static humanBoard = document.querySelector('#human-board');
   static cpuBoard = document.querySelector('#cpu-board');
-  static wrapper = document.querySelector('.battle-wrapper');
+  static wrapper = document.querySelector('.wrapper--battle');
   static characterQuotes = document.querySelector('#character-quotes');
 
   static retrievePlayerShipsPositions() {

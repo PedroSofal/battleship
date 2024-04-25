@@ -1,5 +1,6 @@
 import '../../styles/style.css';
 import '../../styles/place-ships.css';
+import '../../styles/containers.css';
 import Game from "../helpers/game-control.js";
 import BoardRender from "../helpers/board-render.js";
 import DragAndDrop from "../helpers/drag-and-drop.js";

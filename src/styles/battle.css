@@ -1,70 +1,4 @@
-.battle-wrapper {
-  display: grid;
-  grid-template-columns: 150px 650px 650px 150px;
-  grid-template-rows: 150px 500px;
-  gap: 1rem;
-  place-content: center;
-  margin-top: 1rem;
-}
 
-.wrapper--human-board {
-  grid-column: 2 / 3;
-  grid-row: 1 / 3
-}
-
-.wrapper--cpu-board {
-  grid-column: 3 / 4;
-  grid-row: 1 / 3
-}
-
-.wrapper--radar-lock-warning {
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
-  position: relative;
-  background-color: var(--color-900);
-  border: 5px solid var(--color-800);
-}
-
-.wrapper--countermeasure {
-  grid-column: 1 / 2;
-  display: grid;
-  place-content: center;
-  height: 50px;
-  background-color: var(--color-900);
-  border: 5px solid var(--color-800);
-}
-
-.reaction-wrapper {
-  display: grid;
-  grid-template-columns: auto 500px;
-  gap: 1rem;
-  justify-content: center;
-  padding-top: 1rem;
-  visibility: hidden;
-  transform: translateY(-100%);
-  transition: all 200ms ease-in-out; /* manipulated in js */
-}
-
-.reaction-wrapper.entra {
-  visibility: visible;
-  transform: translate(0);
-}
-
-.wrapper--character {
-  transform: scaleX(0);
-  transition: all 200ms ease-in-out;
-}
-
-.wrapper--character {
-  transform: scale(1);
-}
-
-.wrapper--quotes {
-  padding: 0.4rem;
-  background-color: var(--color-900);
-  border: 5px solid var(--color-800);
-  align-self: flex-start;
-}
 
 .radar-lock-screen {
   position: absolute;
@@ -107,7 +41,7 @@
   }
 }
 
-.wrapper--radar-lock-warning.lightUp {
+.container--radar-lock-warning.lightUp {
   animation: blink-radar-screen 1500ms ease-in-out infinite;
 }
 
@@ -155,49 +89,6 @@
 }
 
 /* RESULT DIALOG ***********/
-
-.result-wrapper {
-  display: grid;
-  grid-template-rows: 130px 240px 130px;
-  grid-template-columns: 240px 1fr;
-  gap: 1rem;
-}
-
-.result-wrapper[data-result="win"] {
-  grid-template-columns: 240px 1fr;
-}
-
-.result-wrapper[data-result="lose"] {
-  grid-template-columns: 1fr;
-  column-gap: 0;
-}
-
-.result-wrapper[data-result="lose"] .wrapper--character {
-  display: none;
-}
-
-.wrapper--result-display,
-.wrapper--footer {
-  grid-column: 1 / 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.4rem;
-  border-top: 0.5rem solid var(--color-750);
-  border-right: 1rem solid var(--color-850);
-  border-left: 1rem solid var(--color-750);
-  border-bottom: 1rem solid var(--color-850);
-}
-
-.dialog .wrapper--sayings {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 1.4rem;
-  background-color: var(--color-900);
-  border: 5px solid var(--color-800);
-}
 
 .dialog .sayings {
   font-family: var(--sec-ff);

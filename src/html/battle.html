@@ -20,17 +20,17 @@
       <button class="header__options secondary-button" id="options-btn" data-en="Options" data-pt="Opções">Options</button>
     </header>
 
-    <div class="reaction-wrapper" id="reaction-wrapper">
-      <div class="wrapper wrapper--character">
+    <div class="wrapper wrapper--reaction" id="reaction-wrapper">
+      <div class="container container--character-photo">
         <img class="character-photo" id="character-photo" width="150" height="150" src="../assets/characters/unknown.jpg" alt="question mark inside square">
       </div>
-      <div class="wrapper wrapper--quotes">
+      <div class="container container--secondary container--character-quotes">
         <p class="quotes" id="character-quotes"></p>
       </div>
     </div>
 
-    <div class="battle-wrapper">
-      <div class="wrapper wrapper--radar-lock-warning">
+    <div class="wrapper wrapper--battle">
+      <div class="container container--secondary container--radar-lock-warning">
         <svg class="radar-lock-screen" width="130" height="130" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M65 0V15M65 115V130M110.962 19.0381L100.355 29.6447M29.6446 100.355L19.038 110.962M130 65H115M15 65H0M110.962 110.962L100.355 100.355M29.6446 29.6447L19.038 19.0381M65 24V33.4615M65 96.5385V106M93.9914 36.0086L87.301 42.6989M42.6989 87.3011L36.0086 93.9914M106 65H96.5385M33.4615 65H24M93.9914 93.9914L87.301 87.3011M42.6989 42.6989L36.0086 36.0086M65 47.5V54.5M65 75.5V82.5M82.5 65H75.5M54.5 65H47.5M123 65C123 97.0325 97.0325 123 65 123C32.9675 123 7 97.0325 7 65C7 32.9675 32.9675 7 65 7C97.0325 7 123 32.9675 123 65ZM101 65C101 84.8823 84.8823 101 65 101C45.1177 101 29 84.8823 29 65C29 45.1177 45.1177 29 65 29C84.8823 29 101 45.1177 101 65ZM79 65C79 72.732 72.732 79 65 79C57.268 79 51 72.732 51 65C51 57.268 57.268 51 65 51C72.732 51 79 57.268 79 65Z" stroke="#202040" stroke-width="2"/>
           <g class="radar-lock-friendly">
@@ -50,11 +50,11 @@
         </svg>
       </div>
 
-      <div class="wrapper wrapper--countermeasure">
+      <div class="container container--secondary container--countermeasure">
         <p class="countermeasure-indicator" id="countermeasure">COUNTER</p>
       </div>
 
-      <div class="wrapper wrapper--board wrapper--human-board">
+      <div class="container container--main-big container--board container--human-board">
         <p class="gameboard-name" data-en="Defense display" data-pt="Tela de defesa">Defense display</p>
         <div class="gameboard-display">
           <div id="human-board"></div>
@@ -71,7 +71,7 @@
         </div>
       </div>
 
-      <div class="wrapper wrapper--board wrapper--cpu-board">
+      <div class="container container--main-big container--board container--cpu-board">
         <p class="gameboard-name" data-en="Attack display" data-pt="Tela de ataque">Attack display</p>
         <div class="gameboard-display">
           <div id="cpu-board"></div>
@@ -90,17 +90,17 @@
   </div>
 
   <dialog class="dialog" id="result-modal">
-    <div class="result-wrapper" id="result-wrapper" data-result="lose">
-      <div class="wrapper wrapper--result-display">
+    <div class="wrapper wrapper--result" id="result-wrapper" data-result="lose">
+      <div class="container container--main-small container--result-display">
         <h1 id="result-title"></h1>
       </div>
-      <div class="wrapper wrapper--character">
+      <div class="container container--character">
         <img class="character" id="result-character" width="240" src="../assets/characters/unknown.jpg" alt="question mark inside square">
       </div>
-      <div class="wrapper wrapper--sayings">
+      <div class="container container--secondary container--sayings">
         <p class="sayings" id="result-quote">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente exercitationem nihil aperiam.</p>
       </div>
-      <div class="wrapper wrapper--footer">
+      <div class="container container--main-small container--footer">
         <button class="secondary-button" id="see-boards" data-en="See boards" data-pt="Esconder">See boards</button>
         <button class="main-button" id="play-again"><span data-en="Play again" data-pt="Jogar novamente">Play again</span></button>
       </div>
@@ -108,12 +108,12 @@
   </dialog>
 
   <dialog class="dialog dialog--options" id="options-modal">
-    <div class="options-wrapper">
-      <div class="wrapper wrapper--title">
+    <div class="wrapper wrapper--options">
+      <div class="container container--main-small container--title">
         <h1 id="result-title" data-en="Options" data-pt="Opções">Options</h1>
       </div>
 
-      <div class="wrapper wrapper--options">
+      <div class="container container--secondary container--options">
         <div class="options__item">
           <label class="label" data-en="Language" data-pt="Idioma">Language</label>
           <div class="options-list">
@@ -144,7 +144,7 @@
         </div>
       </div>
       
-      <div class="wrapper wrapper--footer">
+      <div class="container container--main-small container--footer">
         <button class="main-button" id="close-options"><span data-en="Close" data-pt="Fechar">Close</span></button>
       </div>
     </div>

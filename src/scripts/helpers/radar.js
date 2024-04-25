@@ -2,7 +2,7 @@ import GameAudio from './audio.js';
 import Settings from './settings.js';
 
 export default class Radar {
-  static radarLockScreen = document.querySelector('.wrapper--radar-lock-warning')
+  static radarLockScreen = document.querySelector('.container--radar-lock-warning');
   static radarLockFoes = document.querySelectorAll('.radar-lock-foe > path');
   static countermeasureIndicator = document.querySelector('#countermeasure');
 

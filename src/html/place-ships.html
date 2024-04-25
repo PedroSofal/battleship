@@ -19,8 +19,8 @@
       <button class="header__options secondary-button" id="options-btn" data-en="Options" data-pt="Opções">Options</button>
     </header>
   
-    <div class="place-ships-wrapper">
-      <div class="wrapper wrapper--fleet" id="fleet">
+    <div class="wrapper wrapper--strategy-room">
+      <div class="container container--main-big container--fleet" id="fleet">
         <!-- <div class="ship">
           <p class="ship__name">Carrier</p>
           <div class="ship__yard">
@@ -29,7 +29,7 @@
         </div> -->
       </div>
   
-      <div class="wrapper wrapper--board wrapper--player-board">
+      <div class="container container--main-big container--board container--strategy-board">
         <p class="gameboard-name" data-en="Area of operations" data-pt="Área de operações">Area of operations</p>
         <div class="gameboard-display">
           <div id="strategy-board" data-activeAxis="x"></div>
@@ -46,19 +46,19 @@
         </div>
       </div>
   
-      <div class="wrapper wrapper--character-name">
+      <div class="container container--secondary container--character-name">
         <p class="character-name" id="character-name">???</p>
       </div>
   
-      <div class="wrapper wrapper--character-photo">
+      <div class="container container--character-photo">
         <img class="character-photo" id="character-photo" width="300px" src="../assets/characters/unknown.jpg" alt="question mark inside square">
       </div>
   
-      <div class="wrapper wrapper--character-quotes">
+      <div class="container container--secondary container--character-quotes">
         <p class="character-quotes" id="character-quotes"></p>
       </div>
   
-      <div class="wrapper wrapper--footer">
+      <div class="container container--main-small container--footer">
         <p class="instructions">
           <span data-en="Change the axis with " data-pt="Alterne os eixos com ">Change the axis with </span>
           <button id="y-axis-button">Z</button>
@@ -74,12 +74,12 @@
   </div>
 
   <dialog class="dialog dialog--options" id="options-modal">
-    <div class="options-wrapper">
-      <div class="wrapper wrapper--title">
+    <div class="wrapper wrapper--options">
+      <div class="container container--main-small container--title">
         <h1 id="result-title" data-en="Options" data-pt="Opções">Options</h1>
       </div>
 
-      <div class="wrapper wrapper--options">
+      <div class="container container--secondary container--options">
         <div class="options__item">
           <label class="label" data-en="Language" data-pt="Idioma">Language</label>
           <div class="options-list">
@@ -103,7 +103,7 @@
         </div>
       </div>
       
-      <div class="wrapper wrapper--footer">
+      <div class="container container--main-small container--footer">
         <button class="main-button" id="close-options"><span data-en="Close" data-pt="Fechar">Close</span></button>
       </div>
     </div>
