@@ -1,0 +1,107 @@
+.ship {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ship__name {
+  padding-left: 0.8rem;
+  font-size: var(--fs-300);
+  text-transform: capitalize;
+}
+
+.ship__yard {
+  padding: 0.8rem;
+  height: calc(50px + 1.6rem);
+  border-bottom: 2px solid var(--color-100);
+  background-color: var(--color-900);
+}
+
+.ship__yard:hover {
+  background: var(--color-850);
+}
+
+.ship__icon {
+  height: 50px;
+  transform-origin: 25px 25px;
+}
+
+.ship__icon#carrier {
+  width: 250px;
+}
+
+.ship__icon#battleship {
+  width: 200px;
+}
+
+.ship__icon#cruiser {
+  width: 150px;
+}
+
+.ship__icon#submarine {
+  width: 150px;
+}
+
+.ship__icon#destroyer {
+  width: 100px;
+}
+
+/* DRAG AND DROP ***********/
+
+.ship__drag:not([draggable]) {
+  cursor: not-allowed;
+}
+
+.ship__drag[draggable] {
+  cursor: grab;
+}
+
+.ship__drag--clone {
+  position: absolute;
+  left: -100%;
+}
+
+.dragging {
+  opacity: 1;
+  cursor: grabbing;
+}
+
+.rotated {
+  transform: rotate(90deg);
+}
+
+.dragover--allowed-placement {
+  background-color: #4CAF50;
+}
+
+.dragover--not-allowed-placement {
+  background-color: red;
+}
+
+/* SHIPS ON GAMEBOARD ***********/
+
+#human-board .ship__icon,
+#cpu-board .ship__icon {
+  position: absolute;
+}
+
+.cpu-board .ship__icon {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.cpu-board .ship__icon:not(sunken).revealed {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.ship__icon.sunken {
+  visibility: visible;
+  animation: sink-ship 1s ease-in-out forwards;
+}
+
+@keyframes sink-ship {
+  70% { opacity: 1; }
+  100% { filter: brightness(40%); opacity: 1; }
+}

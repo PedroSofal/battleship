@@ -1,33 +1,4 @@
-
-
 /* CONTENTS ***********/
-
-.ship {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.ship__name {
-  padding-left: 0.8rem;
-  font-size: var(--fs-300);
-  text-transform: capitalize;
-}
-
-.ship__yard {
-  padding: 0.8rem;
-  height: calc(50px + 1.6rem);
-  border-bottom: 2px solid var(--color-100);
-  background-color: var(--color-900);
-}
-
-.ship__drag:not([draggable]) {
-  cursor: not-allowed;
-}
-
-.ship__drag[draggable] {
-  cursor: grab;
-}
 
 .character-name {
   font-size: var(--fs-300);
