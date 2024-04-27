@@ -426,7 +426,7 @@ eval("module.exports = __webpack_require__.p + \"assets/audio/sink2.ogg\";\n\n//
   \****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/menu-background.8a15326c5ae3c99d9677.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/backgrounds/menu-background.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/menu-background.8a15326c5ae3c99d9677.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/backgrounds/menu-background.jpg?");
 
 /***/ }),
 
@@ -436,7 +436,7 @@ eval("module.exports = __webpack_require__.p + \"images/menu-background.8a15326c
   \******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/nimitz.0afd1c1e52f63c98c4c8.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/nimitz.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/nimitz.0afd1c1e52f63c98c4c8.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/nimitz.jpg?");
 
 /***/ }),
 
@@ -446,7 +446,7 @@ eval("module.exports = __webpack_require__.p + \"images/nimitz.0afd1c1e52f63c98c
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/noronha.8487c9a4a847564b7df2.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/noronha.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/noronha.8487c9a4a847564b7df2.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/noronha.jpg?");
 
 /***/ }),
 
@@ -456,7 +456,7 @@ eval("module.exports = __webpack_require__.p + \"images/noronha.8487c9a4a847564b
   \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/olafsson.3ac7d47fca07febb05ea.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/olafsson.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/olafsson.3ac7d47fca07febb05ea.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/olafsson.jpg?");
 
 /***/ }),
 
@@ -466,7 +466,7 @@ eval("module.exports = __webpack_require__.p + \"images/olafsson.3ac7d47fca07feb
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/rackham.a2d4f74ef684bdcb6c96.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/rackham.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/rackham.a2d4f74ef684bdcb6c96.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/rackham.jpg?");
 
 /***/ }),
 
@@ -476,7 +476,7 @@ eval("module.exports = __webpack_require__.p + \"images/rackham.a2d4f74ef684bdcb
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/violeta.cf16259d277ce9c23cc0.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/violeta.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/violeta.cf16259d277ce9c23cc0.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/violeta.jpg?");
 
 /***/ }),
 
@@ -486,7 +486,7 @@ eval("module.exports = __webpack_require__.p + \"images/violeta.cf16259d277ce9c2
   \******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/yamato.48f06a5e2e25ea3e460b.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/yamato.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/yamato.48f06a5e2e25ea3e460b.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/yamato.jpg?");
 
 /***/ }),
 
@@ -496,7 +496,7 @@ eval("module.exports = __webpack_require__.p + \"images/yamato.48f06a5e2e25ea3e4
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash1.bad47b7fff4a612907a5.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash1.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash1.bad47b7fff4a612907a5.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash1.png?");
 
 /***/ }),
 
@@ -506,7 +506,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash1.bad47b7fff4a6129
   \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash10.7970b0358a045044daae.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash10.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash10.7970b0358a045044daae.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash10.png?");
 
 /***/ }),
 
@@ -516,7 +516,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash10.7970b0358a04504
   \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash11.3f5fb9dc168856837230.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash11.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash11.3f5fb9dc168856837230.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash11.png?");
 
 /***/ }),
 
@@ -526,7 +526,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash11.3f5fb9dc1688568
   \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash12.e627ddc99ac7657cb3c6.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash12.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash12.e627ddc99ac7657cb3c6.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash12.png?");
 
 /***/ }),
 
@@ -536,7 +536,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash12.e627ddc99ac7657
   \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash13.67fd35cdc077bca23718.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash13.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash13.67fd35cdc077bca23718.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash13.png?");
 
 /***/ }),
 
@@ -546,7 +546,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash13.67fd35cdc077bca
   \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash14.67e9adaa3cfd2b0685d6.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash14.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash14.67e9adaa3cfd2b0685d6.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash14.png?");
 
 /***/ }),
 
@@ -556,7 +556,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash14.67e9adaa3cfd2b0
   \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash15.5cac329ef7c80e650a00.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash15.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash15.5cac329ef7c80e650a00.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash15.png?");
 
 /***/ }),
 
@@ -566,7 +566,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash15.5cac329ef7c80e6
   \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash16.c4b63a61283d3601a602.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash16.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash16.c4b63a61283d3601a602.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash16.png?");
 
 /***/ }),
 
@@ -576,7 +576,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash16.c4b63a61283d360
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash2.fdb42138b21face1eaac.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash2.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash2.fdb42138b21face1eaac.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash2.png?");
 
 /***/ }),
 
@@ -586,7 +586,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash2.fdb42138b21face1
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash3.dfd254d7e93883492d3d.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash3.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash3.dfd254d7e93883492d3d.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash3.png?");
 
 /***/ }),
 
@@ -596,7 +596,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash3.dfd254d7e9388349
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash4.d14762227aa5b4962b0b.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash4.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash4.d14762227aa5b4962b0b.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash4.png?");
 
 /***/ }),
 
@@ -606,7 +606,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash4.d14762227aa5b496
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash5.f30b0fc50b5f09ac6044.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash5.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash5.f30b0fc50b5f09ac6044.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash5.png?");
 
 /***/ }),
 
@@ -616,7 +616,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash5.f30b0fc50b5f09ac
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash6.b44076dcf61e73c16aec.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash6.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash6.b44076dcf61e73c16aec.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash6.png?");
 
 /***/ }),
 
@@ -626,7 +626,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash6.b44076dcf61e73c1
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash7.3d020a64bfe04ddc89aa.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash7.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash7.3d020a64bfe04ddc89aa.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash7.png?");
 
 /***/ }),
 
@@ -636,7 +636,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash7.3d020a64bfe04ddc
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash8.2616fb88f706d08821e7.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash8.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash8.2616fb88f706d08821e7.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash8.png?");
 
 /***/ }),
 
@@ -646,7 +646,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash8.2616fb88f706d088
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/splash9.57ab595b3f205f8f0d91.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash9.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/splash9.57ab595b3f205f8f0d91.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/splash9.png?");
 
 /***/ }),
 
@@ -656,7 +656,7 @@ eval("module.exports = __webpack_require__.p + \"images/splash9.57ab595b3f205f8f
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion1.6add52f7275a152f78d7.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion1.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion1.6add52f7275a152f78d7.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion1.png?");
 
 /***/ }),
 
@@ -666,7 +666,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion1.6add52
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion10.78ac793df964e5807e25.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion10.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion10.78ac793df964e5807e25.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion10.png?");
 
 /***/ }),
 
@@ -676,7 +676,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion10.78ac7
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion11.16bc801737c0a21042ea.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion11.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion11.16bc801737c0a21042ea.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion11.png?");
 
 /***/ }),
 
@@ -686,7 +686,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion11.16bc8
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion12.65d31d49adede8709ea3.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion12.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion12.65d31d49adede8709ea3.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion12.png?");
 
 /***/ }),
 
@@ -696,7 +696,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion12.65d31
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion13.a61b4bd1c85851189476.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion13.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion13.a61b4bd1c85851189476.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion13.png?");
 
 /***/ }),
 
@@ -706,7 +706,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion13.a61b4
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion14.c6700b437421795607fc.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion14.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion14.c6700b437421795607fc.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion14.png?");
 
 /***/ }),
 
@@ -716,7 +716,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion14.c6700
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion15.33db3e8b13cd9f214ded.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion15.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion15.33db3e8b13cd9f214ded.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion15.png?");
 
 /***/ }),
 
@@ -726,7 +726,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion15.33db3
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion16.59d4a123062a5d010bfb.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion16.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion16.59d4a123062a5d010bfb.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion16.png?");
 
 /***/ }),
 
@@ -736,7 +736,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion16.59d4a
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion2.b4f87d9adfe4e7728c7a.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion2.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion2.b4f87d9adfe4e7728c7a.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion2.png?");
 
 /***/ }),
 
@@ -746,7 +746,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion2.b4f87d
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion3.823100f2d198e4c28654.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion3.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion3.823100f2d198e4c28654.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion3.png?");
 
 /***/ }),
 
@@ -756,7 +756,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion3.823100
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion4.437c952fa2ad0619a68a.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion4.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion4.437c952fa2ad0619a68a.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion4.png?");
 
 /***/ }),
 
@@ -766,7 +766,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion4.437c95
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion5.4b434521fbce857a5471.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion5.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion5.4b434521fbce857a5471.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion5.png?");
 
 /***/ }),
 
@@ -776,7 +776,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion5.4b4345
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion6.61861ec0537713f08d18.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion6.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion6.61861ec0537713f08d18.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion6.png?");
 
 /***/ }),
 
@@ -786,7 +786,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion6.61861e
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion7.93c52a71c1a63acee698.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion7.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion7.93c52a71c1a63acee698.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion7.png?");
 
 /***/ }),
 
@@ -796,7 +796,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion7.93c52a
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion8.e0f651cb0b5c9300a6df.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion8.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion8.e0f651cb0b5c9300a6df.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion8.png?");
 
 /***/ }),
 
@@ -806,7 +806,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion8.e0f651
   \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/square_explosion9.8e56c4381877cd5a73e9.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion9.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/square_explosion9.8e56c4381877cd5a73e9.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/explosions/square_explosion9.png?");
 
 /***/ }),
 
@@ -816,7 +816,7 @@ eval("module.exports = __webpack_require__.p + \"images/square_explosion9.8e56c4
   \*****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/battleship.afb4edf4acf418e18647.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/ships/battleship.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/battleship.afb4edf4acf418e18647.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/ships/battleship.png?");
 
 /***/ }),
 
@@ -826,7 +826,7 @@ eval("module.exports = __webpack_require__.p + \"images/battleship.afb4edf4acf41
   \**************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/carrier.ec7ae721b78d4b6ef282.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/ships/carrier.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/carrier.ec7ae721b78d4b6ef282.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/ships/carrier.png?");
 
 /***/ }),
 
@@ -836,7 +836,7 @@ eval("module.exports = __webpack_require__.p + \"images/carrier.ec7ae721b78d4b6e
   \**************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/cruiser.393ba612cb51a117d235.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/ships/cruiser.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/cruiser.393ba612cb51a117d235.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/ships/cruiser.png?");
 
 /***/ }),
 
@@ -846,7 +846,7 @@ eval("module.exports = __webpack_require__.p + \"images/cruiser.393ba612cb51a117
   \****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/destroyer.54eab7a849a82c0c46a4.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/ships/destroyer.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/destroyer.54eab7a849a82c0c46a4.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/ships/destroyer.png?");
 
 /***/ }),
 
@@ -856,7 +856,7 @@ eval("module.exports = __webpack_require__.p + \"images/destroyer.54eab7a849a82c
   \****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/submarine.4a9dd40e6338e4a8f51e.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/ships/submarine.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/submarine.4a9dd40e6338e4a8f51e.png\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/ships/submarine.png?");
 
 /***/ }),
 

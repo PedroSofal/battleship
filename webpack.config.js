@@ -13,7 +13,7 @@ export default {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'images/[name].[hash][ext]',
+    assetModuleFilename: 'assets/images/[name].[hash][ext]',
     clean: true,
   },
   mode: 'development',

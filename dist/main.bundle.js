@@ -346,7 +346,7 @@ eval("module.exports = __webpack_require__.p + \"assets/audio/sink2.ogg\";\n\n//
   \****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/menu-background.8a15326c5ae3c99d9677.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/backgrounds/menu-background.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/menu-background.8a15326c5ae3c99d9677.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/backgrounds/menu-background.jpg?");
 
 /***/ }),
 
@@ -356,7 +356,7 @@ eval("module.exports = __webpack_require__.p + \"images/menu-background.8a15326c
   \******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/nimitz.0afd1c1e52f63c98c4c8.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/nimitz.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/nimitz.0afd1c1e52f63c98c4c8.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/nimitz.jpg?");
 
 /***/ }),
 
@@ -366,7 +366,7 @@ eval("module.exports = __webpack_require__.p + \"images/nimitz.0afd1c1e52f63c98c
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/noronha.8487c9a4a847564b7df2.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/noronha.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/noronha.8487c9a4a847564b7df2.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/noronha.jpg?");
 
 /***/ }),
 
@@ -376,7 +376,7 @@ eval("module.exports = __webpack_require__.p + \"images/noronha.8487c9a4a847564b
   \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/olafsson.3ac7d47fca07febb05ea.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/olafsson.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/olafsson.3ac7d47fca07febb05ea.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/olafsson.jpg?");
 
 /***/ }),
 
@@ -386,7 +386,7 @@ eval("module.exports = __webpack_require__.p + \"images/olafsson.3ac7d47fca07feb
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/rackham.a2d4f74ef684bdcb6c96.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/rackham.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/rackham.a2d4f74ef684bdcb6c96.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/rackham.jpg?");
 
 /***/ }),
 
@@ -396,7 +396,7 @@ eval("module.exports = __webpack_require__.p + \"images/rackham.a2d4f74ef684bdcb
   \*******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/violeta.cf16259d277ce9c23cc0.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/violeta.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/violeta.cf16259d277ce9c23cc0.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/violeta.jpg?");
 
 /***/ }),
 
@@ -406,7 +406,7 @@ eval("module.exports = __webpack_require__.p + \"images/violeta.cf16259d277ce9c2
   \******************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"images/yamato.48f06a5e2e25ea3e460b.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/yamato.jpg?");
+eval("module.exports = __webpack_require__.p + \"assets/images/yamato.48f06a5e2e25ea3e460b.jpg\";\n\n//# sourceURL=webpack://24-battleship/./src/assets/characters/yamato.jpg?");
 
 /***/ }),
 
