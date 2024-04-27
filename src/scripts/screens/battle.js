@@ -5,6 +5,9 @@ import '../../styles/buttons.css';
 import '../../styles/options.css';
 import '../../styles/gameboards.css';
 import '../../styles/ships.css';
+import '../../styles/dialogs.css';
+import '../../styles/navigation.css';
+
 import BoardRender from "../helpers/board-render.js";
 import Game from '../helpers/game-control.js';
 import { charObjects } from '../factories/characters.js';

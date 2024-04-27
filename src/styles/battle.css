@@ -54,13 +54,6 @@
   }
 }
 
-.quotes {
-  font-family: var(--sec-ff);
-  font-style: italic;
-  font-size: var(--fs-400);
-  max-width: 50ch;
-}
-
 .shake {
   animation: shake-screen 0.5s;
 }

@@ -1,6 +1,14 @@
+/* Global */
+
 button {
   cursor: pointer;
 }
+
+button:disabled {
+  opacity: 0.3;
+}
+
+/* Main */
 
 .main-button {
   border: 0;
@@ -32,9 +40,7 @@ button {
   background: none;
 }
 
-button:disabled {
-  opacity: 0.3;
-}
+/* Secondary */
 
 .secondary-button {
   font-family: var(--main-ff);
@@ -48,6 +54,8 @@ button:disabled {
   outline-style: none;
 }
 
+/* Selection */
+
 .selection-button {
   padding: 0.6rem;
   border-style: none;
@@ -58,4 +66,25 @@ button:disabled {
 
 .selection-button.selected {
   opacity: 1;
+}
+
+/* Key */
+
+.key-button {
+  padding: 0.4rem;
+  border-radius: 5px;
+  font-family: var(--main-ff);
+  font-size: var(--fs-400);
+  color: var(--color-100);
+  background-color: var(--color-800);
+  cursor: pointer;
+  transition: all 100ms ease-in-out;
+}
+
+.key-button:hover {
+  background-color:var(--color-750);
+}
+
+.key-button:active {
+  background-color:var(--color-850);
 }

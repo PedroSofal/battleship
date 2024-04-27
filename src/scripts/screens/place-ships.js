@@ -1,10 +1,12 @@
 import '../../styles/style.css';
-import '../../styles/place-ships.css';
 import '../../styles/containers.css';
 import '../../styles/buttons.css';
 import '../../styles/options.css';
 import '../../styles/gameboards.css';
 import '../../styles/ships.css';
+import '../../styles/dialogs.css';
+import '../../styles/navigation.css';
+
 import Game from "../helpers/game-control.js";
 import BoardRender from "../helpers/board-render.js";
 import DragAndDrop from "../helpers/drag-and-drop.js";
