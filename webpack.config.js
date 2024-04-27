@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 export default {
   entry: {
     main: './src/scripts/screens/index.js',
-    placeShips: './src/scripts/screens/place-ships.js',
+    strategyRoom: './src/scripts/screens/strategy-room.js',
     battle: './src/scripts/screens/battle.js',
   },
   output: {
@@ -71,10 +71,10 @@ export default {
       chunks: ['main']
     }),
     new HtmlWebpackPlugin({
-      title: 'Battleship | Place Ships',
-      filename: 'place-ships.html',
-      template: './src/html/place-ships.html',
-      chunks: ['placeShips']
+      title: 'Battleship | Strategy Room',
+      filename: 'strategy-room.html',
+      template: './src/html/strategy-room.html',
+      chunks: ['strategyRoom']
     }),
     new HtmlWebpackPlugin({
       title: 'Battleship | Battle',

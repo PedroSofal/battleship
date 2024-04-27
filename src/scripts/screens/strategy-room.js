@@ -18,7 +18,7 @@ import Settings from '../helpers/settings.js';
 import Quote from '../helpers/quote.js';
 import LoadingScreen from './loading-screen.js';
 
-export default class PlaceShips {
+export default class StrategyRoom {
   static root = document.querySelector(':root');
   static fleet = document.querySelector('#fleet');
   static strategyBoard = document.querySelector('#strategy-board');
@@ -33,10 +33,10 @@ export default class PlaceShips {
   static character = null;
 
   static setEventListeners() {
-    PlaceShips.confirmBtn.addEventListener('click', PlaceShips.nextScreen);
-    PlaceShips.resetBtn.addEventListener('click', PlaceShips.resetFormation);
-    PlaceShips.xAxisBtn.addEventListener('click', () => DragAndDrop.changeAxis('x'));
-    PlaceShips.yAxisBtn.addEventListener('click', () => DragAndDrop.changeAxis('z'));
+    StrategyRoom.confirmBtn.addEventListener('click', StrategyRoom.nextScreen);
+    StrategyRoom.resetBtn.addEventListener('click', StrategyRoom.resetFormation);
+    StrategyRoom.xAxisBtn.addEventListener('click', () => DragAndDrop.changeAxis('x'));
+    StrategyRoom.yAxisBtn.addEventListener('click', () => DragAndDrop.changeAxis('z'));
   }
 
   static loadFleet() {
@@ -64,39 +64,39 @@ export default class PlaceShips {
       shipYard.appendChild(shipDrag);
       ship.appendChild(shipName);
       ship.appendChild(shipYard);
-      PlaceShips.fleet.appendChild(ship);
+      StrategyRoom.fleet.appendChild(ship);
     }
   }
 
   static loadCharacter() {
-    PlaceShips.character = charObjects[sessionStorage.getItem('player-char')];
-    PlaceShips.characterName.textContent = PlaceShips.character.fullName;
-    PlaceShips.characterPhoto.src = PlaceShips.character.src;
+    StrategyRoom.character = charObjects[sessionStorage.getItem('player-char')];
+    StrategyRoom.characterName.textContent = StrategyRoom.character.fullName;
+    StrategyRoom.characterPhoto.src = StrategyRoom.character.src;
 
-    Settings.setLanguageDataAttributes(PlaceShips.characterQuotes, Quote.getPreparationQuote(PlaceShips.character.name));
-    Animation.displayQuote(PlaceShips.characterQuotes, PlaceShips.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
+    Settings.setLanguageDataAttributes(StrategyRoom.characterQuotes, Quote.getPreparationQuote(StrategyRoom.character.name));
+    Animation.displayQuote(StrategyRoom.characterQuotes, StrategyRoom.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
     
-    PlaceShips.root.style.setProperty('--color-player', PlaceShips.character.color);
-    PlaceShips.root.style.setProperty('--color-player-alpha', PlaceShips.character.colorAlpha);
-    PlaceShips.root.style.setProperty('--color-cpu', charObjects[sessionStorage.getItem('cpu-char')].color);
+    StrategyRoom.root.style.setProperty('--color-player', StrategyRoom.character.color);
+    StrategyRoom.root.style.setProperty('--color-player-alpha', StrategyRoom.character.colorAlpha);
+    StrategyRoom.root.style.setProperty('--color-cpu', charObjects[sessionStorage.getItem('cpu-char')].color);
   }
 
   static loadBoard() {
-    PlaceShips.strategyBoard.appendChild(BoardRender.getHumanBoard());
+    StrategyRoom.strategyBoard.appendChild(BoardRender.getHumanBoard());
   }
 
   static resetFormation() {
-    PlaceShips.strategyBoard.innerHTML = '';
-    PlaceShips.fleet.innerHTML = '';
+    StrategyRoom.strategyBoard.innerHTML = '';
+    StrategyRoom.fleet.innerHTML = '';
     Game.player1.gameboard.resetGameboard();
     BoardRender.loadBoard(Game.player1);
 
-    PlaceShips.loadFleet();
-    PlaceShips.loadBoard();
+    StrategyRoom.loadFleet();
+    StrategyRoom.loadBoard();
     Settings.loadLanguage();
-    Settings.setLanguageDataAttributes(PlaceShips.characterQuotes, Quote.getResetQuote(PlaceShips.character.name));
-    Animation.displayQuote(PlaceShips.characterQuotes, PlaceShips.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
-    PlaceShips.confirmBtn.disabled = true;
+    Settings.setLanguageDataAttributes(StrategyRoom.characterQuotes, Quote.getResetQuote(StrategyRoom.character.name));
+    Animation.displayQuote(StrategyRoom.characterQuotes, StrategyRoom.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
+    StrategyRoom.confirmBtn.disabled = true;
     DragAndDrop.init();
   }
 
@@ -104,14 +104,14 @@ export default class PlaceShips {
     const ship = Object.values(Game.player1.gameboard.ships).find(ship => {
       return ship.name.en === shipId;
     })
-    const charName = PlaceShips.character.name;
-    Settings.setLanguageDataAttributes(PlaceShips.characterQuotes, Quote.getPlaceShipQuote(charName, ship));
-    Animation.displayQuote(PlaceShips.characterQuotes, PlaceShips.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
+    const charName = StrategyRoom.character.name;
+    Settings.setLanguageDataAttributes(StrategyRoom.characterQuotes, Quote.getPlaceShipQuote(charName, ship));
+    Animation.displayQuote(StrategyRoom.characterQuotes, StrategyRoom.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
   }
 
-  static playPlaceShipMusic() {
-    GameAudio.playMusic(GameAudio.placeShips);
-    document.body.removeEventListener('mousedown', PlaceShips.playPlaceShipMusic);
+  static playStrategyRoomMusic() {
+    GameAudio.playMusic(GameAudio.strategyRoom);
+    document.body.removeEventListener('mousedown', StrategyRoom.playStrategyRoomMusic);
   }
 
   static nextScreen() {
@@ -123,16 +123,16 @@ export default class PlaceShips {
 
   static init() {
     Game.init();
-    PlaceShips.loadFleet();
-    PlaceShips.loadBoard();
+    StrategyRoom.loadFleet();
+    StrategyRoom.loadBoard();
     Settings.loadAllSettings();
-    PlaceShips.loadCharacter();
-    PlaceShips.setEventListeners();
+    StrategyRoom.loadCharacter();
+    StrategyRoom.setEventListeners();
     DragAndDrop.init();
     Header.init();
-    document.body.addEventListener('mousedown', PlaceShips.playPlaceShipMusic);
+    document.body.addEventListener('mousedown', StrategyRoom.playStrategyRoomMusic);
   }
 }
 
 LoadingScreen.init();
-PlaceShips.init();
+StrategyRoom.init();

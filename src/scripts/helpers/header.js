@@ -4,7 +4,7 @@ export default class Header {
   static navBtn = document.querySelector('#nav-btn');
   static navMenu = document.querySelector('#nav-menu');
   static navBattle = document.querySelector('#nav-battle');
-  static navPlaceShips = document.querySelector('#nav-place-ships');
+  static navStrategyRoom = document.querySelector('#nav-strategy-room');
   static navMainMenu = document.querySelector('#nav-main-menu');
   static optionsBtn = document.querySelector('#options-btn');
   static closeOptions = document.querySelector('#close-options');
@@ -18,7 +18,7 @@ export default class Header {
     Header.navBtn.addEventListener('click', Header.openNavigation);
     document.addEventListener('click', (e) => Header.closeNavigation(e));
     Header.navBattle.addEventListener('click', () => window.location.href = 'battle.html');
-    Header.navPlaceShips.addEventListener('click', () => window.location.href = 'place-ships.html');
+    Header.navStrategyRoom.addEventListener('click', () => window.location.href = 'strategy-room.html');
     Header.navMainMenu.addEventListener('click', () => window.location.href = 'index.html');
     Header.optionsBtn.addEventListener('click', Header.openOptionsModal);
     Header.closeOptions.addEventListener('click', Header.closeOptionsModal);

@@ -1,4 +1,4 @@
-export default class PlaceShipQuotes {
+export default class StrategyRoomQuotes {
   static preparation = {
     yamato: [
       "In war, every move must be executed with precision. We will fight with honor and loyalty to our land, if necessary, until our last breath, but we will bring justice!",

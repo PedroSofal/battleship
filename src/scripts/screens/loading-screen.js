@@ -3,7 +3,7 @@ export default class LoadingScreen {
     const page = window.location.pathname;
     const routeSafe = sessionStorage.getItem('route-safe') || 0;
 
-    if (page === '/place-ships.html' && routeSafe < 1) {
+    if (page === '/strategy-room.html' && routeSafe < 1) {
       LoadingScreen.displayRouteError();
     } else if (page === '/battle.html' && routeSafe < 2) {
       LoadingScreen.displayRouteError();

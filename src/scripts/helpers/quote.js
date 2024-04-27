@@ -1,12 +1,12 @@
-import PlaceShipQuotes_en from '../../assets/quotes/en/place-ships-quotes.js';
-import PlaceShipQuotes_pt from '../../assets/quotes/pt/place-ships-quotes.js';
+import StrategyRoomQuotes_en from '../../assets/quotes/en/strategy-room-quotes.js';
+import StrategyRoomQuotes_pt from '../../assets/quotes/pt/strategy-room-quotes.js';
 import BattleQuotes_en from '../../assets/quotes/en/battle-quotes.js';
 import BattleQuotes_pt from '../../assets/quotes/pt/battle-quotes.js';
 
 export default class Quote {
-  static placeShip = {
-    en: PlaceShipQuotes_en,
-    pt: PlaceShipQuotes_pt,
+  static strategyRoom = {
+    en: StrategyRoomQuotes_en,
+    pt: StrategyRoomQuotes_pt,
   }
 
   static battle = {
@@ -43,19 +43,19 @@ export default class Quote {
 
   static getPreparationQuote(char) {
     const quoteArrays = [];
-    Object.values(Quote.placeShip).forEach(lang => quoteArrays.push(lang.preparation[char]));
+    Object.values(Quote.strategyRoom).forEach(lang => quoteArrays.push(lang.preparation[char]));
     return Quote.replacePlaceholders(Quote.randomize(quoteArrays));
   }
 
   static getPlaceShipQuote(char, ship) {
     const quoteArrays = [];
-    Object.values(Quote.placeShip).forEach(lang => quoteArrays.push(lang.placeShip[char]));
+    Object.values(Quote.strategyRoom).forEach(lang => quoteArrays.push(lang.placeShip[char]));
     return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship);
   }
 
   static getResetQuote(char, ship) {
     const quoteArrays = [];
-    Object.values(Quote.placeShip).forEach(lang => quoteArrays.push(lang.reset[char]));
+    Object.values(Quote.strategyRoom).forEach(lang => quoteArrays.push(lang.reset[char]));
     return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship);
   }
 

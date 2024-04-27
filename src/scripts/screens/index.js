@@ -59,7 +59,7 @@ class MainMenu {
     if (MainMenu.nameInput.value && CharSelection.playerChar && CharSelection.cpuChar) {
       sessionStorage.setItem('player-name', MainMenu.nameInput.value);
       sessionStorage.setItem('route-safe', 1);
-      window.location.href = 'place-ships.html';
+      window.location.href = 'strategy-room.html';
     }
   }
 

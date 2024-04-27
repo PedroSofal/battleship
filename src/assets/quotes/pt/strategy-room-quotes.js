@@ -1,4 +1,4 @@
-export default class PlaceShipQuotes {
+export default class StrategyRoomQuotes {
   static preparation = {
     yamato: [
       "Em uma guerra, cada movimento deve ser executado com precisão. Lutaremos com honra e lealdade à nossa terra, se necessário, até o último suspiro, mas faremos justiça!",

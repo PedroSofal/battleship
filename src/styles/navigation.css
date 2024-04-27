@@ -21,7 +21,7 @@
   background-color: var(--color-500);
 }
 
-[data-content="place-ships"] .nav__item#nav-place-ships,
-[data-content="place-ships"] .nav__item#nav-battle {
+[data-content="strategy-room"] .nav__item#nav-strategy-room,
+[data-content="strategy-room"] .nav__item#nav-battle {
   display: none;
 }

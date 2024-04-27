@@ -15,7 +15,7 @@ import missileAlert from '../../assets/audio/sfx/missile-alert.ogg';
 
 // MUSIC
 import mainMenuSong1 from '../../assets/audio/music/no-time-to-die-hartzmann.mp3';
-import placeShipsSong1 from '../../assets/audio/music/corsairs-studio-kolomna.mp3';
+import strategyRoomSong1 from '../../assets/audio/music/corsairs-studio-kolomna.mp3';
 import battleSong1 from '../../assets/audio/music/dance-of-devils-giulio-fazio.mp3';
 
 export default class GameAudio {
@@ -26,8 +26,8 @@ export default class GameAudio {
   static radarLock = [radarLock];
   static missileAlert = [missileAlert];
   static mainMenu = [mainMenuSong1];
-  static placeShips = [placeShipsSong1];
-  static battle = [battleSong1, mainMenuSong1, placeShipsSong1];
+  static strategyRoom = [strategyRoomSong1];
+  static battle = [battleSong1, mainMenuSong1, strategyRoomSong1];
   
   static radarLockInterval;
   static radarLockAudio;

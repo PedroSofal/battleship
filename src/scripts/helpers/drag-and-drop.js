@@ -1,6 +1,6 @@
 import BoardRender from './board-render.js';
 import Game from './game-control.js';
-import PlaceShips from '../screens/place-ships.js';
+import StrategyRoom from '../screens/strategy-room.js';
 import BoardHelper from './board-helpers.js';
 
 export default class DragAndDrop {
@@ -60,7 +60,7 @@ export default class DragAndDrop {
     if (e.currentTarget.classList.contains('placed')) {
       e.currentTarget.removeAttribute('draggable');
       e.currentTarget.addEventListener('mousedown', (e) => e.preventDefault());
-      PlaceShips.updatePlaceShipQuote(e.currentTarget.firstChild.id);
+      StrategyRoom.updatePlaceShipQuote(e.currentTarget.firstChild.id);
     }
   }
 
@@ -88,7 +88,7 @@ export default class DragAndDrop {
       
       DragAndDrop.shipsPlaced++;
       if (DragAndDrop.shipsPlaced === DragAndDrop.fleet.children.length) {
-        PlaceShips.confirmBtn.disabled = false;
+        StrategyRoom.confirmBtn.disabled = false;
       }
     }
 
