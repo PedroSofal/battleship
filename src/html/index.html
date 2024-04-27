@@ -10,15 +10,15 @@
 </head>
 <body style="margin: 0; padding: 0;">
   <div id="content" class="content" style="display: none;">
-    <div class="wrapper wrapper--main-menu">
-      <div class="name-options-wrapper">
+    <main class="wrapper wrapper--main-menu">
+      <section class="name-options-wrapper">
         <h1 class="game-title">BATTLE<br>SHIP</h1>
         <div class="player-name">
           <label class="label" for="player-name" data-en="Enter your name:" data-pt="Insira seu nome:">Enter your name:</label>
           <input class="name-input" id="name-input" type="text" name="name" maxlength="24" required>
         </div>
-        <div class="container container--options">
-          <div class="options__item">
+        <ul class="container container--options">
+          <li class="options__item">
             <label class="label" data-en="Language" data-pt="Idioma">Language</label>
             <div class="options-list">
               <input class="language-radio" type="radio" name="language" id="lang-en" value="en">
@@ -30,70 +30,70 @@
                 <img class="icon icon--flag" id="brazilFlag" src="../assets/icons/flag-brazil.jpg" alt="brazil's flag">
               </label>
             </div>
-          </div>
-          <div class="options__item">
+          </li>
+          <li class="options__item">
             <label class="label" for="music-volume-slider" data-en="Music" data-pt="Música">Music</label>
             <input id="music-volume-slider" type="range" min="0" max="1" step="0.1" value="1">
-          </div>
-          <div class="options__item">
+          </li>
+          <li class="options__item">
             <label class="label" for="sfx-volume-slider" data-en="Effects" data-pt="Efeitos">Effects</label>
             <input id="sfx-volume-slider" type="range" min="0" max="1" step="0.1" value="1">
-          </div>
-        </div>
-      </div>
+          </li>
+        </ul>
+      </section>
 
-      <div class="character-selection-wrapper">
+      <section class="character-selection-wrapper">
         <div class="character-option" id="nimitz">
-          <label class="label label--character" for="nimitz">
+          <figure class="label label--character" for="nimitz">
             <div class="img-container">
               <img class="character-photo" width="250" height="250" src="../assets/characters/nimitz.jpg" alt="nimitz"/>
             </div>
-            <p class="character-name">Nimitz</p>
-          </label>
+            <figcaption class="character-name">Nimitz</figcaption>
+          </figure>
         </div>
         <div class="character-option" id="yamato">
-          <label class="label label--character" for="yamato">
+          <figure class="label label--character" for="yamato">
             <div class="img-container">
               <img class="character-photo" width="250" height="250" src="../assets/characters/yamato.jpg" alt="yamato"/>
             </div>
-            <p class="character-name">Yamato</p>
-          </label>
+            <figcaption class="character-name">Yamato</figcaption>
+          </figure>
         </div>
         <div class="character-option" id="olafsson">
-          <label class="label label--character" for="olafsson">
+          <figure class="label label--character" for="olafsson">
             <div class="img-container">
               <img class="character-photo" width="250" height="250" src="../assets/characters/olafsson.jpg" alt="olafsson"/>
             </div>
-            <p class="character-name">Olafsson</p>
-          </label>
+            <figcaption class="character-name">Olafsson</figcaption>
+          </figure>
         </div>
         <div class="character-option" id="violeta">
-          <label class="label label--character" for="violeta">
+          <figure class="label label--character" for="violeta">
             <div class="img-container">
               <img class="character-photo" width="250" height="250" src="../assets/characters/violeta.jpg" alt="violeta"/>
             </div>
-            <p class="character-name">Violeta</p>
-          </label>
+            <figcaption class="character-name">Violeta</figcaption>
+          </figure>
         </div>
         <div class="character-option" id="rackham">
-          <label class="label label--character" for="rackham">
+          <figure class="label label--character" for="rackham">
             <div class="img-container">
               <img class="character-photo" width="250" height="250" src="../assets/characters/rackham.jpg" alt="rackham"/>
             </div>
-            <p class="character-name">Rackham</p>
-          </label>
+            <figcaption class="character-name">Rackham</figcaption>
+          </figure>
         </div>
         <div class="character-option" id="noronha">
-          <label class="label label--character" for="noronha">
+          <figure class="label label--character" for="noronha">
             <div class="img-container">
               <img class="character-photo" width="250" height="250" src="../assets/characters/noronha.jpg" alt="noronha"/>
             </div>
-            <p class="character-name">Noronha</p>
-          </label>
+            <figcaption class="character-name">Noronha</figcaption>
+          </figure>
         </div>
-      </div>
+      </section>
 
-      <div class="ready-wrapper">
+      <section class="ready-wrapper">
         <div class="opponents">
           <div class="opponents__player opponents__player--selected" id="player-preview">
             <img class="opponents__img animate" id="player-photo" width="80" height="80" src="../assets/characters/unknown.jpg" alt="question mark inside square">
@@ -111,8 +111,8 @@
           </div>
         </div>
         <button class="main-button" id="place-ships" disabled><span data-en="Place ships" data-pt="Posicionar navios">Place ships</span></button>
-      </div>
-    </div>
+      </section>
+    </main>
   </div>
 
   <div id="loader" class="loader" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4rem; background-color: #0C0C1C; height: 100vh;">
