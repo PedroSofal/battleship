@@ -9,19 +9,34 @@ export default class Bot {
     this.gameboard = new Gameboard(10, 10, new standardSet());
     this.aim = 'random';
     this.sequence = [];
+    this.idealAttackCoords = [];
+    this.rounds = 0;
+    this.directions = 4;
   }
 
   randomAttack(enemy) {
     this.aim = 'random';
 
-    let row = this.gameboard.getRandomRow();
-    let col = this.gameboard.getRandomCol();
+    const row = this.gameboard.getRandomRow();
+    const col = this.gameboard.getRandomCol();
 
     if (this.isSquareAvailable(row, col, enemy)) {
       return enemy.gameboard.receiveAttack(row, col);
     } else {
       return this.randomAttack(enemy);
     }
+  }
+
+  randomAttackImproved(enemy) {
+    this.aim = 'random';
+    this.getIdealAttackCoords(enemy);
+
+    const random = Math.floor(Math.random() * this.idealAttackCoords.length);
+    
+    const row = this.idealAttackCoords[random][0];
+    const col = this.idealAttackCoords[random][1];
+
+    return enemy.gameboard.receiveAttack(row, col);
   }
 
   smartAttack(sequenceStart, lastAttack, enemy) {
@@ -50,6 +65,7 @@ export default class Bot {
   }
 
   attack(enemy) {
+    this.rounds++;
     const sequenceStart = enemy.gameboard.sequence.start;
     const lastAttack = enemy.gameboard.sequence.next;
 
@@ -57,7 +73,11 @@ export default class Bot {
       return this.smartAttack(sequenceStart, lastAttack, enemy);
     } else {
       this.sequence = [];
-      return this.randomAttack(enemy);
+      if (this.rounds < 5) {
+        return this.randomAttackImproved(enemy);
+      } else {
+        return this.randomAttackImproved(enemy);
+      }
     }
   }
 
@@ -65,16 +85,88 @@ export default class Bot {
     const isOutOfBounds = row > enemy.gameboard.maxRow || row < 0
     || col > enemy.gameboard.maxCol || col < 0;
 
-    if (isOutOfBounds) {
-      return false;
-    }
-
     const isAlreadyAttacked = enemy.gameboard.squares.find(square => {
       return JSON.stringify(square.coords) === JSON.stringify([row, col])
       && square.attacked;
     });
 
-    return isAlreadyAttacked ? false : true;
+    if (isOutOfBounds || isAlreadyAttacked) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  getIdealTargetSize(enemy) {
+    const biggestUnsunkenEnemyShips = Object.values(enemy.gameboard.ships)
+      .filter(ship => !ship.isSunk())
+      .sort((a, b) => b.size - a.size);
+
+    return biggestUnsunkenEnemyShips[0].size;
+  }
+
+  getNumberOfClearDirections(row, col, enemy, searchArea) {
+    let numberOfClearDirections = 0;
+
+    function searchSouth(scope) {
+      for (let i = 0; i < searchArea; i++) {
+        if (!scope.isSquareAvailable(row + i, col, enemy)) return false;
+      }
+      numberOfClearDirections++;
+    }
+    function searchNorth(scope) {
+      for (let i = 0; i < searchArea; i++) {
+        if (!scope.isSquareAvailable(row - i, col, enemy)) return false;
+      }
+      numberOfClearDirections++;
+    }
+    function searchEast(scope) {
+      for (let i = 0; i < searchArea; i++) {
+        if (!scope.isSquareAvailable(row, col + i, enemy)) return false;
+      }
+      numberOfClearDirections++;
+    }
+    function searchWest(scope) {
+      for (let i = 0; i < searchArea; i++) {
+        if (!scope.isSquareAvailable(row, col - i, enemy)) return false;
+      }
+      numberOfClearDirections++;
+    }
+
+    searchSouth(this);
+    searchNorth(this);
+    searchEast(this);
+    searchWest(this);
+
+    return numberOfClearDirections;
+  }
+
+  getIdealAttackCoords(enemy) {
+    const searchArea = this.getIdealTargetSize(enemy);
+    const idealAttackCoords = [];
+    let numberOfClearDirections = 0;
+    const untouchedSquares = enemy.gameboard.squares.filter(squares => {
+      return !squares.attacked;
+    })
+
+    for (const square of untouchedSquares) {
+      const row = square.coords[0];
+      const col = square.coords[1];
+      numberOfClearDirections = this.getNumberOfClearDirections(row, col, enemy, searchArea);
+
+      if (numberOfClearDirections >= this.directions) {
+        idealAttackCoords.push(square.coords);
+      }
+    }
+
+    if (idealAttackCoords.length > 0) {
+      this.idealAttackCoords = idealAttackCoords;
+    } else {
+      if (this.directions === 1) this.directions = 4;
+      this.directions--;
+      console.log(this.directions)
+      this.getIdealAttackCoords(enemy);
+    }
   }
 
   spreadAim(row, col, enemy) {
