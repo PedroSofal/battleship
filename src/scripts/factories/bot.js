@@ -15,6 +15,14 @@ export default class Bot {
   }
 
   randomAttack(enemy) {
+    if (this.rounds < 5) {
+      return this.randomAttack_ai2(enemy);
+    } else {
+      return this.randomAttack_ai2(enemy);
+    }
+  }
+
+  randomAttack_ai1(enemy) {
     this.aim = 'random';
 
     const row = this.gameboard.getRandomRow();
@@ -23,11 +31,43 @@ export default class Bot {
     if (this.isSquareAvailable(row, col, enemy)) {
       return enemy.gameboard.receiveAttack(row, col);
     } else {
-      return this.randomAttack(enemy);
+      return this.randomAttack_ai1(enemy);
     }
   }
 
-  randomAttackImproved(enemy) {
+  randomAttack_ai2(enemy) {
+    this.aim = 'random';
+
+    const row = this.gameboard.getRandomRow();
+    const col = this.gameboard.getRandomCol();
+
+    const searchArea = [
+      [row + 1, col],
+      [row - 1, col],
+      [row, col + 1],
+      [row, col - 1],
+    ]
+
+    if (!this.isSquareAvailable(row, col, enemy)) {
+      return this.randomAttack_ai2(enemy);
+    }
+
+    for (const coords of searchArea) {
+      const searchedSquare = enemy.gameboard.squares.find(square => {
+        return JSON.stringify(square.coords) === JSON.stringify([...coords]);
+      });
+      
+      if (searchedSquare) {
+        if (searchedSquare.content !== 'water' && searchedSquare.attacked) {
+          return this.randomAttack_ai2(enemy);
+        }
+      }
+    }
+
+    return enemy.gameboard.receiveAttack(row, col);
+  }
+
+  randomAttack_ai3(enemy) {
     this.aim = 'random';
     this.getIdealAttackCoords(enemy);
 
@@ -73,11 +113,7 @@ export default class Bot {
       return this.smartAttack(sequenceStart, lastAttack, enemy);
     } else {
       this.sequence = [];
-      if (this.rounds < 5) {
-        return this.randomAttackImproved(enemy);
-      } else {
-        return this.randomAttackImproved(enemy);
-      }
+      return this.randomAttack(enemy);
     }
   }
 
