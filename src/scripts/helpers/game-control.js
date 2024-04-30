@@ -1,5 +1,7 @@
 import Player from '../factories/player.js';
-import Bot from '../factories/bot.js';
+import AI_EASY from '../factories/ai-easy.js';
+import AI_MEDIUM from '../factories/ai-medium.js';
+import AI_HARD from '../factories/ai-hard.js';
 import BoardRender from './board-render.js';
 import { charObjects } from '../factories/characters.js';
 
@@ -15,9 +17,9 @@ export default class Game {
     const cpuChar = charObjects[sessionStorage.getItem('cpu-char')];
 
     const human = new Player(playerName, playerChar);
-    const cpu = new Bot(cpuName, cpuChar);
-
     Game.player1 = human;
+    
+    const cpu = new AI_HARD(cpuName, cpuChar, Game.player1);
     Game.player2 = cpu;
   }
 

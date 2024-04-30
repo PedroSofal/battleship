@@ -1,127 +1,69 @@
 import standardSet from './ship.js';
 import Gameboard from './gameboard.js';
 
-export default class Bot {
-  constructor(name, char) {
+export default class AI {
+  constructor(name, char, enemy) {
     this.name = name;
     this.char = char;
+    this.enemy = enemy;
     this.type = 'cpu';
     this.gameboard = new Gameboard(10, 10, new standardSet());
     this.aim = 'random';
     this.sequence = [];
-    this.idealAttackCoords = [];
     this.rounds = 0;
-    this.directions = 4;
   }
 
-  randomAttack(enemy) {
-    if (this.rounds < 5) {
-      return this.randomAttack_ai2(enemy);
+  // randomAttack(enemy) {
+  //   if (this.rounds < 5) {
+  //     return this.randomAttack(enemy);
+  //   } else {
+  //     return this.randomAttack(enemy);
+  //   }
+  // }
+
+  attack() {
+    this.rounds++;
+    const sequenceStart = this.enemy.gameboard.sequence.start;
+    const lastAttack = this.enemy.gameboard.sequence.next;
+
+    if (sequenceStart) {
+      return this.focusedAttack(sequenceStart, lastAttack);
     } else {
-      return this.randomAttack_ai2(enemy);
+      this.sequence = [];
+      return this.randomAttack();
     }
   }
 
-  randomAttack_ai1(enemy) {
-    this.aim = 'random';
-
-    const row = this.gameboard.getRandomRow();
-    const col = this.gameboard.getRandomCol();
-
-    if (this.isSquareAvailable(row, col, enemy)) {
-      return enemy.gameboard.receiveAttack(row, col);
-    } else {
-      return this.randomAttack_ai1(enemy);
-    }
-  }
-
-  randomAttack_ai2(enemy) {
-    this.aim = 'random';
-
-    const row = this.gameboard.getRandomRow();
-    const col = this.gameboard.getRandomCol();
-
-    const searchArea = [
-      [row + 1, col],
-      [row - 1, col],
-      [row, col + 1],
-      [row, col - 1],
-    ]
-
-    if (!this.isSquareAvailable(row, col, enemy)) {
-      return this.randomAttack_ai2(enemy);
-    }
-
-    for (const coords of searchArea) {
-      const searchedSquare = enemy.gameboard.squares.find(square => {
-        return JSON.stringify(square.coords) === JSON.stringify([...coords]);
-      });
-      
-      if (searchedSquare) {
-        if (searchedSquare.content !== 'water' && searchedSquare.attacked) {
-          return this.randomAttack_ai2(enemy);
-        }
-      }
-    }
-
-    return enemy.gameboard.receiveAttack(row, col);
-  }
-
-  randomAttack_ai3(enemy) {
-    this.aim = 'random';
-    this.getIdealAttackCoords(enemy);
-
-    const random = Math.floor(Math.random() * this.idealAttackCoords.length);
-    
-    const row = this.idealAttackCoords[random][0];
-    const col = this.idealAttackCoords[random][1];
-
-    return enemy.gameboard.receiveAttack(row, col);
-  }
-
-  smartAttack(sequenceStart, lastAttack, enemy) {
+  focusedAttack(sequenceStart, lastAttack) {
     if (JSON.stringify(lastAttack.coords) === JSON.stringify(sequenceStart.coords)
     || lastAttack.content === 'water') {
       const row = sequenceStart.coords[0];
       const col = sequenceStart.coords[1];
-      const nextAttack = this.spreadAim(row, col, enemy);
-      return enemy.gameboard.receiveAttack(...nextAttack);
+      const nextAttack = this.spreadAim(row, col);
+      return this.enemy.gameboard.receiveAttack(...nextAttack);
     }
 
     if (lastAttack.content !== 'water') {
       this.sequence.push(lastAttack);
 
       if (this.aim === 'lock-row' || this.aim === 'lock-col') {
-        const nextAttack = this.lockAim(sequenceStart, this.aim, enemy);
-        return enemy.gameboard.receiveAttack(...nextAttack);
+        const nextAttack = this.lockAim(sequenceStart, this.aim);
+        return this.enemy.gameboard.receiveAttack(...nextAttack);
       } else {
         if (sequenceStart.coords[0] === lastAttack.coords[0]) this.aim = 'lock-row';
         if (sequenceStart.coords[1] === lastAttack.coords[1]) this.aim = 'lock-col';
         
-        const nextAttack = this.lockAim(sequenceStart, this.aim, enemy);
-        return enemy.gameboard.receiveAttack(...nextAttack);
+        const nextAttack = this.lockAim(sequenceStart, this.aim);
+        return this.enemy.gameboard.receiveAttack(...nextAttack);
       }
     }
   }
 
-  attack(enemy) {
-    this.rounds++;
-    const sequenceStart = enemy.gameboard.sequence.start;
-    const lastAttack = enemy.gameboard.sequence.next;
+  isSquareAvailable(row, col) {
+    const isOutOfBounds = row > this.enemy.gameboard.maxRow || row < 0
+    || col > this.enemy.gameboard.maxCol || col < 0;
 
-    if (sequenceStart) {
-      return this.smartAttack(sequenceStart, lastAttack, enemy);
-    } else {
-      this.sequence = [];
-      return this.randomAttack(enemy);
-    }
-  }
-
-  isSquareAvailable(row, col, enemy) {
-    const isOutOfBounds = row > enemy.gameboard.maxRow || row < 0
-    || col > enemy.gameboard.maxCol || col < 0;
-
-    const isAlreadyAttacked = enemy.gameboard.squares.find(square => {
+    const isAlreadyAttacked = this.enemy.gameboard.squares.find(square => {
       return JSON.stringify(square.coords) === JSON.stringify([row, col])
       && square.attacked;
     });
@@ -133,79 +75,7 @@ export default class Bot {
     }
   }
 
-  getIdealTargetSize(enemy) {
-    const biggestUnsunkenEnemyShips = Object.values(enemy.gameboard.ships)
-      .filter(ship => !ship.isSunk())
-      .sort((a, b) => b.size - a.size);
-
-    return biggestUnsunkenEnemyShips[0].size;
-  }
-
-  getNumberOfClearDirections(row, col, enemy, searchArea) {
-    let numberOfClearDirections = 0;
-
-    function searchSouth(scope) {
-      for (let i = 0; i < searchArea; i++) {
-        if (!scope.isSquareAvailable(row + i, col, enemy)) return false;
-      }
-      numberOfClearDirections++;
-    }
-    function searchNorth(scope) {
-      for (let i = 0; i < searchArea; i++) {
-        if (!scope.isSquareAvailable(row - i, col, enemy)) return false;
-      }
-      numberOfClearDirections++;
-    }
-    function searchEast(scope) {
-      for (let i = 0; i < searchArea; i++) {
-        if (!scope.isSquareAvailable(row, col + i, enemy)) return false;
-      }
-      numberOfClearDirections++;
-    }
-    function searchWest(scope) {
-      for (let i = 0; i < searchArea; i++) {
-        if (!scope.isSquareAvailable(row, col - i, enemy)) return false;
-      }
-      numberOfClearDirections++;
-    }
-
-    searchSouth(this);
-    searchNorth(this);
-    searchEast(this);
-    searchWest(this);
-
-    return numberOfClearDirections;
-  }
-
-  getIdealAttackCoords(enemy) {
-    const searchArea = this.getIdealTargetSize(enemy);
-    const idealAttackCoords = [];
-    let numberOfClearDirections = 0;
-    const untouchedSquares = enemy.gameboard.squares.filter(squares => {
-      return !squares.attacked;
-    })
-
-    for (const square of untouchedSquares) {
-      const row = square.coords[0];
-      const col = square.coords[1];
-      numberOfClearDirections = this.getNumberOfClearDirections(row, col, enemy, searchArea);
-
-      if (numberOfClearDirections >= this.directions) {
-        idealAttackCoords.push(square.coords);
-      }
-    }
-
-    if (idealAttackCoords.length > 0) {
-      this.idealAttackCoords = idealAttackCoords;
-    } else {
-      if (this.directions === 1) this.directions = 4;
-      this.directions--;
-      console.log(this.directions)
-      this.getIdealAttackCoords(enemy);
-    }
-  }
-
-  spreadAim(row, col, enemy) {
+  spreadAim(row, col) {
     this.aim = 'spread';
 
     const possibleMoves = [
@@ -215,10 +85,10 @@ export default class Bot {
       [row, col - 1],
     ]
 
-    return this.getRandomAdjacency(possibleMoves, enemy);
+    return this.getRandomAdjacency(possibleMoves);
   }
 
-  lockAim(sequenceStart, aim, enemy) {
+  lockAim(sequenceStart, aim) {
      const possibleMoves = [];
 
     if (aim === 'lock-col') {
@@ -239,11 +109,11 @@ export default class Bot {
       }
     }
 
-    return this.getRandomAdjacency(possibleMoves, enemy);
+    return this.getRandomAdjacency(possibleMoves);
   }
 
-  getRandomAdjacency(moves, enemy) {
-    const adjacencies = moves.filter(move => this.isSquareAvailable(...move, enemy));
+  getRandomAdjacency(moves) {
+    const adjacencies = moves.filter(move => this.isSquareAvailable(...move));
     return adjacencies[Math.floor(Math.random() * adjacencies.length)];
   }
 }

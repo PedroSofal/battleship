@@ -30,7 +30,7 @@ export default class GameLoop {
   
   static botPlays() {
     if (Game.turn !== 2) return;
-    const attack = Game.player2.attack(Game.player1);
+    const attack = Game.player2.attack();
 
     setTimeout(() => {
       Radar.triggerRadar(attack);
