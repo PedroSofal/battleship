@@ -4,7 +4,8 @@ export default class AI_HARD extends AI {
   constructor(name, char, enemy) {
     super(name, char, enemy);
     this.idealAttackCoords = [];
-    this.directions = 4;
+    this.directions = 2;
+    this.idealTargetSize = 5;
     this.untouchedSquares = [...this.enemy.gameboard.squares];
   }
 
@@ -20,52 +21,63 @@ export default class AI_HARD extends AI {
     return this.enemy.gameboard.receiveAttack(row, col);
   }
 
-  getIdealTargetSize() {
+  updateIdealTargetSize() {
     const biggestUnsunkenEnemyShips = Object.values(this.enemy.gameboard.ships)
       .filter(ship => !ship.isSunk())
       .sort((a, b) => b.size - a.size);
 
-    return biggestUnsunkenEnemyShips[0].size;
+    const idealTargetSize = biggestUnsunkenEnemyShips[0].size;
+    if (idealTargetSize !== this.idealTargetSize) {
+      this.directions = 2;
+    }
+    this.idealTargetSize = idealTargetSize;
   }
 
   getNumberOfClearDirections(row, col, searchArea) {
     let numberOfClearDirections = 0;
+    let south = Infinity;
+    let north = -Infinity;
+    let east = Infinity;
+    let west = -Infinity;
 
     function searchSouth(scope) {
       for (let i = 0; i < searchArea; i++) {
-        if (!scope.isSquareAvailable(row + i, col)) return false;
+        if (!scope.isSquareAvailable(row + i, col)) return south = i - 1;
       }
-      numberOfClearDirections++;
     }
     function searchNorth(scope) {
       for (let i = 0; i < searchArea; i++) {
-        if (!scope.isSquareAvailable(row - i, col)) return false;
+        if (!scope.isSquareAvailable(row - i, col)) return north = (i - 1) * -1;
       }
-      numberOfClearDirections++;
     }
     function searchEast(scope) {
       for (let i = 0; i < searchArea; i++) {
-        if (!scope.isSquareAvailable(row, col + i)) return false;
+        if (!scope.isSquareAvailable(row, col + i)) return east = i - 1;
       }
-      numberOfClearDirections++;
     }
     function searchWest(scope) {
       for (let i = 0; i < searchArea; i++) {
-        if (!scope.isSquareAvailable(row, col - i)) return false;
+        if (!scope.isSquareAvailable(row, col - i)) return west = (i - 1) * -1;
       }
-      numberOfClearDirections++;
     }
 
     searchSouth(this);
     searchNorth(this);
     searchEast(this);
     searchWest(this);
+    
+    const xAxis = east - west;
+    const yAxis = south - north;
 
+    if (xAxis >= searchArea) numberOfClearDirections++;
+    if (yAxis >= searchArea) numberOfClearDirections++;
+    
     return numberOfClearDirections;
   }
 
   getIdealAttackCoords() {
-    const searchArea = this.getIdealTargetSize();
+    this.updateIdealTargetSize();
+    const searchArea = this.idealTargetSize;
     const idealAttackCoords = [];
     let numberOfClearDirections = 0;
 
@@ -82,9 +94,8 @@ export default class AI_HARD extends AI {
     if (idealAttackCoords.length > 0) {
       this.idealAttackCoords = idealAttackCoords;
     } else {
-      if (this.directions === 1) this.directions = 4;
+      if (this.directions === 1) this.directions = 2;
       this.directions--;
-      console.log(this.directions)
       this.getIdealAttackCoords();
     }
   }

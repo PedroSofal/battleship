@@ -10,16 +10,7 @@ export default class AI {
     this.gameboard = new Gameboard(10, 10, new standardSet());
     this.aim = 'random';
     this.sequence = [];
-    this.rounds = 0;
   }
-
-  // randomAttack(enemy) {
-  //   if (this.rounds < 5) {
-  //     return this.randomAttack(enemy);
-  //   } else {
-  //     return this.randomAttack(enemy);
-  //   }
-  // }
 
   attack() {
     this.rounds++;
@@ -37,26 +28,29 @@ export default class AI {
   focusedAttack(sequenceStart, lastAttack) {
     if (JSON.stringify(lastAttack.coords) === JSON.stringify(sequenceStart.coords)
     || lastAttack.content === 'water') {
-      const row = sequenceStart.coords[0];
-      const col = sequenceStart.coords[1];
-      const nextAttack = this.spreadAim(row, col);
-      return this.enemy.gameboard.receiveAttack(...nextAttack);
+      return this.findShipAxis(sequenceStart.coords);
     }
 
     if (lastAttack.content !== 'water') {
-      this.sequence.push(lastAttack);
-
-      if (this.aim === 'lock-row' || this.aim === 'lock-col') {
-        const nextAttack = this.lockAim(sequenceStart, this.aim);
-        return this.enemy.gameboard.receiveAttack(...nextAttack);
-      } else {
-        if (sequenceStart.coords[0] === lastAttack.coords[0]) this.aim = 'lock-row';
-        if (sequenceStart.coords[1] === lastAttack.coords[1]) this.aim = 'lock-col';
-        
-        const nextAttack = this.lockAim(sequenceStart, this.aim);
-        return this.enemy.gameboard.receiveAttack(...nextAttack);
-      }
+      return this.findRestOfShip(sequenceStart, lastAttack);
     }
+  }
+
+  findShipAxis(coords) {
+    const row = coords[0];
+    const col = coords[1];
+    const nextAttack = this.spreadAim(row, col);
+    return this.enemy.gameboard.receiveAttack(...nextAttack);
+  }
+
+  findRestOfShip(sequenceStart, lastAttack) {
+    this.sequence.push(lastAttack);
+
+    if (sequenceStart.coords[0] === lastAttack.coords[0]) this.aim = 'lock-row';
+    if (sequenceStart.coords[1] === lastAttack.coords[1]) this.aim = 'lock-col';
+    
+    const nextAttack = this.lockAim(sequenceStart, this.aim);
+    return this.enemy.gameboard.receiveAttack(...nextAttack);
   }
 
   isSquareAvailable(row, col) {
