@@ -24,12 +24,17 @@
 .name-input {
   width: 22rem;
   padding: 0.6rem 0.8rem;
-  border: 2px solid var(--color-100);
-  border-radius: 0;
+  outline: 2px solid var(--color-200);
+  border-style: none;
   font-family: var(--sec-ff);
   font-size: var(--fs-700);
   color: var(--color-100);
   background-color: var(--color-800);
+}
+
+.name-input:hover {
+  background-color: var(--color-750);
+  outline: 2px solid var(--color-100);
 }
 
 /* CHARACTER SELECTION ***********/

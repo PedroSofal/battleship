@@ -14,6 +14,7 @@ class MainMenu {
   static langOptions = document.querySelectorAll('.language-radio');
   static musicVolumeSlider = document.querySelector('#music-volume-slider');
   static sfxVolumeSlider = document.querySelector('#sfx-volume-slider');
+  static difficultySelector = document.querySelector('#difficulty-selector');
   static placeShipsBtn = document.querySelector('#place-ships');
 
   static setEventListeners() {
@@ -35,6 +36,10 @@ class MainMenu {
 
     MainMenu.sfxVolumeSlider.addEventListener('change', (e) => {
       Settings.setSfxVolume(parseFloat(e.target.value));
+    });
+
+    MainMenu.difficultySelector.addEventListener('change', (e) => {
+      Settings.setDifficulty(e.target.value);
     });
 
     MainMenu.placeShipsBtn.addEventListener('click', () => {

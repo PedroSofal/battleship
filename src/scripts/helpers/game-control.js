@@ -18,8 +18,19 @@ export default class Game {
 
     const human = new Player(playerName, playerChar);
     Game.player1 = human;
-    
-    const cpu = new AI_HARD(cpuName, cpuChar, Game.player1);
+
+    let cpu;
+    switch (localStorage.getItem('difficulty')) {
+      case '0':
+        cpu = new AI_EASY(cpuName, cpuChar, Game.player1);
+        break;
+      case '1':
+        cpu = new AI_MEDIUM(cpuName, cpuChar, Game.player1);
+        break;
+      case '2':
+        cpu = new AI_HARD(cpuName, cpuChar, Game.player1);
+        break;
+    }
     Game.player2 = cpu;
   }
 
