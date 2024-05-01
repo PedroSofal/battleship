@@ -11,6 +11,7 @@ export default class Header {
   static optionsModal = document.querySelector('#options-modal');
   static langOptions = document.querySelectorAll('.language-radio');
   static speedOptions = document.querySelectorAll('[id$="game-speed"]');
+  static difficultyOptions = document.querySelectorAll('.difficulty-option');
   static musicVolumeSlider = document.querySelector('#music-volume-slider');
   static sfxVolumeSlider = document.querySelector('#sfx-volume-slider');
 
@@ -29,6 +30,10 @@ export default class Header {
 
     Header.speedOptions.forEach(option => option.addEventListener('click', (e) => {
       Settings.setGameSpeed(e.target.value);
+    }));
+
+    Header.difficultyOptions.forEach(option => option.addEventListener('click', (e) => {
+      Settings.setDifficulty(e.target.value);
     }));
 
     Header.musicVolumeSlider.addEventListener('change', (e) => {

@@ -32,6 +32,11 @@ export default class Settings {
     Settings.loadGameSpeedSettings();
   }
 
+  static setDifficulty(difficulty) {
+    localStorage.setItem('difficulty', difficulty);
+    Settings.loadDifficultySettings();
+  }
+
   static getGameSpeed() {
     return GameSpeed.getActiveGameSpeed();
   }
@@ -80,9 +85,28 @@ export default class Settings {
     });
   }
 
+  static loadDifficultySettings() {
+    if (!localStorage.getItem('difficulty')) {
+      localStorage.setItem('difficulty', 0);
+    }
+
+    const difficultyOptions = document.querySelectorAll('.difficulty-option');
+    const difficulty = parseFloat(localStorage.getItem('difficulty'));
+
+    difficultyOptions.forEach(element => {
+      element.classList.remove('selected');
+      element.selected = false;
+      if (parseFloat(element.value) === difficulty) {
+        element.classList.add('selected');
+        element.selected = true;
+      }
+    });
+  }
+
   static loadAllSettings() {
     Settings.loadAudioSettings();
     Settings.loadGameSpeedSettings();
+    Settings.loadDifficultySettings();
     Settings.loadLanguageSettings();
   }
 }

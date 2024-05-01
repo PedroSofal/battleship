@@ -28,6 +28,22 @@ input[type="range"] {
   opacity: 1;
 }
 
+.select {
+  padding: 0.4rem 0.6rem;
+  outline: 1px solid var(--color-200);
+  font-family: var(--sec-ff);
+  font-size: var(--fs-500);
+  cursor: pointer;
+  color: var(--color-100);
+  background-color: var(--color-800);
+  transition: all 150ms ease-in-out;
+}
+
+.select:hover {
+  background-color: var(--color-750);
+  outline: 2px solid var(--color-100);
+}
+
 /* Language */
 
 .language-radio {
