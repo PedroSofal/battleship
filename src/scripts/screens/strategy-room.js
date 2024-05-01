@@ -93,7 +93,7 @@ export default class StrategyRoom {
 
     StrategyRoom.loadFleet();
     StrategyRoom.loadBoard();
-    Settings.loadLanguage();
+    Settings.loadLanguageSettings();
     Settings.setLanguageDataAttributes(StrategyRoom.characterQuotes, Quote.getResetQuote(StrategyRoom.character.name));
     Animation.displayQuote(StrategyRoom.characterQuotes, StrategyRoom.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
     StrategyRoom.confirmBtn.disabled = true;

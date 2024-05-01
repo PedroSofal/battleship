@@ -55,7 +55,7 @@ export default class StrategyRoomQuotes {
       "Este #SHIP será a chave para nossa tática de combate.",
       "A criatividade sempre foi o nosso forte. Nosso #SHIP vindo desta posição será um grande elemento surpresa.",
       "Somos resistentes como um #SHIP, capazes de superar qualquer obstáculo.",
-      "#O SHIP defenderá o perímetro.",
+      "O #SHIP defenderá o perímetro.",
     ]
   }
 
