@@ -168,10 +168,8 @@ export default class Game {
 
     const savedGame = Save.retrieveSavedGameData();
     if (savedGame) {
-      console.log('load game');
       Game.loadGame(savedGame);
     } else {
-      console.log('new game');
       Game.newGame();
     }
   }

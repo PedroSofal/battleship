@@ -1,14 +1,37 @@
-export default class LoadingScreen {
+import Save from './save.js';
+
+export default class Navigation {
+  static toMainMenu() {
+    window.location.href = 'index.html';
+  }
+
+  static toStrategyRoom() {
+    const confirmation = prompt('Are you sure you want to go back to the strategy room? All battle progress will be lost.');
+    
+    if (confirmation) {
+      window.location.href = 'strategy-room.html';
+    }
+  }
+
+  static reloadBattle() {
+    const confirmation = prompt('Are you sure you want to restart the battle?');
+    
+    if (confirmation) {
+      Save.deleteSavedGameData();
+      window.location.href = 'battle.html';
+    }
+  }
+
   static routeGuard() {
     const page = window.location.pathname;
     const routeSafe = sessionStorage.getItem('route-safe') || 0;
 
     if (page === '/strategy-room.html' && routeSafe < 1) {
-      LoadingScreen.displayRouteError();
+      Navigation.displayRouteError();
     } else if (page === '/battle.html' && routeSafe < 2) {
-      LoadingScreen.displayRouteError();
+      Navigation.displayRouteError();
     } else {
-      LoadingScreen.displayLoader();
+      Navigation.displayLoader();
     }
   }
 
@@ -34,7 +57,7 @@ export default class LoadingScreen {
     }
   }
 
-  static init() {
-    LoadingScreen.routeGuard();
+  static loadScreen() {
+    Navigation.routeGuard();
   }
 }

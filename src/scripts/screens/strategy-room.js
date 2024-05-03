@@ -16,7 +16,8 @@ import GameAudio from '../helpers/audio.js';
 import Header from '../helpers/header.js';
 import Settings from '../helpers/settings.js';
 import Quote from '../helpers/quote.js';
-import LoadingScreen from './loading-screen.js';
+import Navigation from '../helpers/navigation.js';
+import Save from '../helpers/save.js';
 
 export default class StrategyRoom {
   static root = document.querySelector(':root');
@@ -122,6 +123,7 @@ export default class StrategyRoom {
   }
 
   static init() {
+    Save.deleteSavedGameData();
     Game.init_INFOS();
     StrategyRoom.loadFleet();
     StrategyRoom.loadBoard();
@@ -134,5 +136,5 @@ export default class StrategyRoom {
   }
 }
 
-LoadingScreen.init();
+Navigation.loadScreen();
 StrategyRoom.init();

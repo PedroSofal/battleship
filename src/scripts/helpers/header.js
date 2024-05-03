@@ -1,3 +1,4 @@
+import Navigation from './navigation.js';
 import Settings from './settings.js';
 
 export default class Header {
@@ -18,9 +19,9 @@ export default class Header {
   static setEventListeners() {
     Header.navBtn.addEventListener('click', Header.openNavigation);
     document.addEventListener('click', (e) => Header.closeNavigation(e));
-    Header.navBattle.addEventListener('click', () => window.location.href = 'battle.html');
-    Header.navStrategyRoom.addEventListener('click', () => window.location.href = 'strategy-room.html');
-    Header.navMainMenu.addEventListener('click', () => window.location.href = 'index.html');
+    Header.navBattle.addEventListener('click', Navigation.reloadBattle);
+    Header.navStrategyRoom.addEventListener('click', Navigation.toStrategyRoom);
+    Header.navMainMenu.addEventListener('click', Navigation.toMainMenu);
     Header.optionsBtn.addEventListener('click', Header.openOptionsModal);
     Header.closeOptions.addEventListener('click', Header.closeOptionsModal);
 

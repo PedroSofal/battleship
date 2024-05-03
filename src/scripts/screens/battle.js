@@ -12,8 +12,8 @@ import Game from '../helpers/game-control.js';
 import { charObjects } from '../factories/characters.js';
 import GameAudio from '../helpers/audio.js';
 import Header from '../helpers/header.js';
-import LoadingScreen from './loading-screen.js';
 import Settings from '../helpers/settings.js';
+import Navigation from '../helpers/navigation.js';
 
 export default class Battle {
   static root = document.querySelector(':root');
@@ -35,5 +35,5 @@ export default class Battle {
   }
 }
 
-LoadingScreen.init();
+Navigation.loadScreen();
 Battle.init();

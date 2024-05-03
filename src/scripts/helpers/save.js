@@ -6,12 +6,12 @@ export default class Save {
     cpuShipsPositions: [],
   }
 
-  static setEventListeners() {
-    // window.addEventListener('beforeunload', function(e) {
-    //   e.preventDefault();
-    //   e.returnValue = '';
-    // });
-  }
+  // static setEventListeners() {
+  //   window.addEventListener('beforeunload', function(e) {
+  //     e.preventDefault();
+  //     e.returnValue = '';
+  //   });
+  // }
 
   static saveRound(player, attackedSquare) {
     const saveFile = Save.retrieveSavedGameData() ?? Save.saveFileTemplate;
@@ -38,11 +38,4 @@ export default class Save {
   static deleteSavedGameData() {
     localStorage.removeItem('saved-game');
   }
-
-  static init() {
-    Save.setEventListeners();
-  }
 }
-
-Save.init();
-// Save.deleteSavedGameData();

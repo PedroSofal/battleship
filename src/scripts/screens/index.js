@@ -6,8 +6,8 @@ import '../../styles/options.css';
 
 import GameAudio from '../helpers/audio.js';
 import Settings from '../helpers/settings.js';
-import LoadingScreen from './loading-screen.js';
 import CharSelection from '../helpers/char-selection.js';
+import Navigation from '../helpers/navigation.js';
 
 class MainMenu {
   static nameInput = document.querySelector('#name-input');
@@ -76,5 +76,5 @@ class MainMenu {
   }
 }
 
-LoadingScreen.init();
+Navigation.loadScreen();
 MainMenu.init();
