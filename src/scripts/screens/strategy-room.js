@@ -122,7 +122,7 @@ export default class StrategyRoom {
   }
 
   static init() {
-    Game.init();
+    Game.init_INFOS();
     StrategyRoom.loadFleet();
     StrategyRoom.loadBoard();
     Settings.loadAllSettings();

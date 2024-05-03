@@ -13,7 +13,6 @@ export default class AI {
   }
 
   attack() {
-    this.rounds++;
     const sequenceStart = this.enemy.gameboard.sequence.start;
     const lastAttack = this.enemy.gameboard.sequence.next;
 

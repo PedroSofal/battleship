@@ -1,4 +1,3 @@
-import Battle from '../screens/battle.js';
 import Result from '../screens/result.js';
 import GameAudio from './audio.js';
 import Animation from './animations.js';
@@ -8,6 +7,7 @@ import Quote from './quote.js';
 import BoardRender from './board-render.js';
 import BoardHelper from './board-helpers.js';
 import Settings from './settings.js';
+import Save from './save.js';
 
 export default class GameLoopHelper {
   static callClickAnimation(result, attackedHtmlSquare) {
@@ -35,17 +35,17 @@ export default class GameLoopHelper {
   }
 
   static callShakeAnimation() {
-    Animation.shake(Battle.wrapper);
+    Animation.shake(Game.wrapper);
   }
 
   static roundAftermath(player, attack) {
-    const board = player.type === 'cpu' ? Battle.cpuBoard : Battle.humanBoard;
+    const board = Game[`${player.type}Board`];
     const attackedHtmlSquare = BoardHelper.querySquareByCoords(board, attack.coords);
 
     BoardRender.updateBoard(Game.player1);
     BoardRender.updateBoard(Game.player2);
-    BoardRender.showSunkenShips(player);
     GameLoopHelper.callClickAnimation(attack.className, attackedHtmlSquare);
+    Save.saveRound(player, attack);
   }
 
   static updateBattleQuote(attack, attacker, defender) {
@@ -95,23 +95,23 @@ export default class GameLoopHelper {
       }
     }
 
-    Settings.setLanguageDataAttributes(Battle.characterQuotes, quoteArray);
-    const quote = Battle.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`);
-    Animation.displayReaction(Battle.characterQuotes, quote, photo);
+    Settings.setLanguageDataAttributes(Game.characterQuotes, quoteArray);
+    const quote = Game.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`);
+    Animation.displayReaction(Game.characterQuotes, quote, photo);
   }
 
   static preventSquareClick(square) {
-    square.removeEventListener('click', Battle.handleClick);
+    square.removeEventListener('click', Game.handleClick);
   }
 
   static handleGameOver(winner) {
     GameAudio.playRadarLockInfiniteLoop('stop');
     Radar.radarLockScreen.classList.remove('lightUp');
     Result.init(winner);
-    Battle.cpuBoard.querySelectorAll('.square').forEach(square => {
+    Game.cpuBoard.querySelectorAll('.square').forEach(square => {
       GameLoopHelper.preventSquareClick(square);
     });
-    Battle.cpuBoard.querySelectorAll('.ship__icon').forEach(ship => {
+    Game.cpuBoard.querySelectorAll('.ship__icon').forEach(ship => {
       ship.classList.add('revealed');
     });
   }

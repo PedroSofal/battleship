@@ -5,7 +5,7 @@ import Settings from './settings.js';
 
 export default class GameLoop {
   static playerPlays(row, col, e) {
-    if (Game.gameOver() || Game.turn !== 1) return;
+    if (Game.gameOver() || Game.turn !== 'human') return;
     
     const attack = Game.player1.attack(row, col, Game.player2);
     const delay = attack.className === 'sunk' ? 1000 : 0;
@@ -29,7 +29,7 @@ export default class GameLoop {
   }
   
   static botPlays() {
-    if (Game.turn !== 2) return;
+    if (Game.turn !== 'cpu') return;
     const attack = Game.player2.attack();
 
     setTimeout(() => {

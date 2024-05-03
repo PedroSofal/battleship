@@ -51,10 +51,13 @@ export default class BoardRender {
         grid[row][col].classList = classListValue;
       }
     });
+
+    BoardRender.showSunkenShips(player);
   }
 
   static showSunkenShips(player) {
-    const board = document.querySelector(`#${player.type}-board`);
+    const board = document.querySelector(`.${player.type}-board`);
+    if (board.parentElement.classList.contains('strategy-board')) return;
     const shipIcons = board.querySelectorAll('.ship__icon');
     const shipObjects = player.gameboard.ships;
 

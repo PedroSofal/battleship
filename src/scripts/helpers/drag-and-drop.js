@@ -11,6 +11,7 @@ export default class DragAndDrop {
   static hoveredSquare = null;
   static selectedShip = null;
   static shipsPlaced = 0;
+  static humanShipsPositions = {};
 
   static setEventListeners() {
     window.addEventListener('keypress', (e) => DragAndDrop.changeAxis(e.key));
@@ -79,15 +80,14 @@ export default class DragAndDrop {
       const shipName = DragAndDrop.selectedShip.name.en;
       if (DragAndDrop.axis === 'col') draggingShip.classList.add('rotated');
 
-      sessionStorage.setItem(shipName + '-row', DragAndDrop.hoveredSquare[0]);
-      sessionStorage.setItem(shipName + '-col', DragAndDrop.hoveredSquare[1]);
-      sessionStorage.setItem(shipName + '-axis', DragAndDrop.axis);
+      DragAndDrop.savePosition(shipName);
 
       draggingShip.classList.add('placed');
       e.target.appendChild(draggingShip);
       
       DragAndDrop.shipsPlaced++;
       if (DragAndDrop.shipsPlaced === DragAndDrop.fleet.children.length) {
+        localStorage.setItem('humanShipsPositions', JSON.stringify(DragAndDrop.humanShipsPositions));
         StrategyRoom.confirmBtn.disabled = false;
       }
     }
@@ -139,6 +139,15 @@ export default class DragAndDrop {
     if (key === 'z') {
       DragAndDrop.axis = 'col';
       DragAndDrop.board.setAttribute('data-activeAxis', 'y');
+    }
+  }
+
+  static savePosition(shipName) {
+    const row = DragAndDrop.hoveredSquare[0];
+    const col = DragAndDrop.hoveredSquare[1];
+    const axis = DragAndDrop.axis;
+    DragAndDrop.humanShipsPositions[shipName] = {
+      row, col, axis,
     }
   }
 
