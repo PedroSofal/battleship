@@ -56,7 +56,7 @@ export default class GameLoopHelper {
     
     if (Math.random() < 0.5 && result !== 'sunk') return;
     const sayer = Math.random() < 0.5 ? 'attacker' : 'defender';
-
+console.log(attacker)
     if (sayer === 'attacker') {
       photo = attacker.char.src;
       switch(result) {

@@ -9,6 +9,7 @@
 }
 
 .nav__item {
+  display: none;
   list-style: none;
   font-family: var(--sec-ff);
   background-color: var(--color-900);
@@ -21,7 +22,8 @@
   background-color: var(--color-500);
 }
 
-[data-content="strategy-room"] .nav__item#nav-strategy-room,
-[data-content="strategy-room"] .nav__item#nav-battle {
-  display: none;
+.nav__item#nav-main-menu,
+[data-content="battle"] .nav__item,
+[data-content="strategy-room"] .nav__item#nav-character-selection {
+  display: block;
 }

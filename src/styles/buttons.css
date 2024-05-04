@@ -1,6 +1,6 @@
 /* Global */
 
-button {
+button:not([disabled]) {
   cursor: pointer;
 }
 
@@ -9,6 +9,43 @@ button:disabled {
 }
 
 /* Main */
+
+.main-menu-button {
+  border: none;
+  font-family: var(--main-ff);
+  font-size: var(--fs-700);
+  color: var(--color-100);
+  background: none;
+}
+
+.main-menu-button::before {
+  content: '';
+  display: block;
+  width: 120%;
+  height: 4rem;
+  border: 4px solid white;
+  position: relative;
+  top: 2.7rem;
+  left: -1.3rem;
+  z-index: -1;
+  background-color: white;
+  transform: translateY(50%) scaleX(0%);
+}
+
+.main-menu-button:not([disabled]):hover.main-menu-button::before {
+  animation: show-button-container 200ms steps(2) forwards,
+    hue-rotate 2s ease-in-out infinite;
+}
+
+@keyframes show-button-container {
+  50% { transform: translateY(0) scaleX(30%); background-color: white; }
+  100% { transform: translateY(0) scaleX(100%); background-color: #161238; }
+}
+
+@keyframes hue-rotate {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(-10deg) saturate(400%); }
+}
 
 .main-button {
   border: 0;

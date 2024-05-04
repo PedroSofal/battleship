@@ -1,16 +1,62 @@
 import Save from './save.js';
 
 export default class Navigation {
+  static navBtn = document.querySelector('#navigate');
+  static navMenu = document.querySelector('#nav-menu');
+  static navBattle = document.querySelector('#nav-battle');
+  static navCharacterSelection = document.querySelector('#nav-character-selection');
+  static navStrategyRoom = document.querySelector('#nav-strategy-room');
+  static navMainMenu = document.querySelector('#nav-main-menu');
+
+  static setEventListeners() {
+    Navigation.navBtn.addEventListener('click', Navigation.openNavigation);
+    document.addEventListener('click', (e) => Navigation.closeNavigation(e));
+    Navigation.navBattle.addEventListener('click', Navigation.reloadBattle);
+    Navigation.navCharacterSelection.addEventListener('click', Navigation.backToCharacterSelection);
+    Navigation.navStrategyRoom.addEventListener('click', Navigation.backToStrategyRoom);
+    Navigation.navMainMenu.addEventListener('click', Navigation.toMainMenu);
+  }
+
+  static openNavigation() {
+    Navigation.navMenu.classList.toggle('opened');
+  }
+
+  static closeNavigation(e) {
+    if (e.target !== Navigation.navBtn) {
+      Navigation.navMenu.classList.remove('opened');
+    }
+  }
+
   static toMainMenu() {
     window.location.href = 'index.html';
   }
+  
+  static toCharacterSelection() {
+    window.location.href = 'character-selection.html';
+  }
+  
+  static backToCharacterSelection() {
+    const confirmation = prompt('Are you sure you want to go back to the character selection? All battle progress will be lost.');
+    
+    if (confirmation) {
+      window.location.href = 'character-selection.html';
+    }
+  }
 
   static toStrategyRoom() {
+    window.location.href = 'strategy-room.html';
+  }
+
+  static backToStrategyRoom() {
     const confirmation = prompt('Are you sure you want to go back to the strategy room? All battle progress will be lost.');
     
     if (confirmation) {
       window.location.href = 'strategy-room.html';
     }
+  }
+
+  static toBattle() {
+    window.location.href = 'battle.html';
   }
 
   static reloadBattle() {
@@ -25,10 +71,13 @@ export default class Navigation {
   static routeGuard() {
     const page = window.location.pathname;
     const routeSafe = sessionStorage.getItem('route-safe') || 0;
+    const savedGame = localStorage.getItem('saved-game');
 
-    if (page === '/strategy-room.html' && routeSafe < 1) {
+    if (page === '/character-selection.html' && routeSafe < 1) {
       Navigation.displayRouteError();
-    } else if (page === '/battle.html' && routeSafe < 2) {
+    } else if (page === '/strategy-room.html' && routeSafe < 2) {
+      Navigation.displayRouteError();
+    } else if (page === '/battle.html' && routeSafe < 3 && !savedGame) {
       Navigation.displayRouteError();
     } else {
       Navigation.displayLoader();
@@ -59,5 +108,9 @@ export default class Navigation {
 
   static loadScreen() {
     Navigation.routeGuard();
+  }
+
+  static init() {
+    Navigation.setEventListeners();
   }
 }

@@ -11,7 +11,6 @@ import '../../styles/navigation.css';
 import Game from '../helpers/game-control.js';
 import { charObjects } from '../factories/characters.js';
 import GameAudio from '../helpers/audio.js';
-import Header from '../helpers/header.js';
 import Settings from '../helpers/settings.js';
 import Navigation from '../helpers/navigation.js';
 
@@ -25,13 +24,13 @@ export default class Battle {
 
   static init() {
     Game.init_BATTLE();
-    Battle.root.style.setProperty('--color-player', charObjects[sessionStorage.getItem('player-char')].color);
-    Battle.root.style.setProperty('--color-player-alpha', charObjects[sessionStorage.getItem('player-char')].colorAlpha);
+    Battle.root.style.setProperty('--color-player', charObjects[sessionStorage.getItem('human-char')].color);
+    Battle.root.style.setProperty('--color-player-alpha', charObjects[sessionStorage.getItem('human-char')].colorAlpha);
     Battle.root.style.setProperty('--color-cpu', charObjects[sessionStorage.getItem('cpu-char')].color);
     Battle.root.style.setProperty('--color-cpu-alpha', charObjects[sessionStorage.getItem('cpu-char')].colorAlpha);
     document.body.addEventListener('mousedown', Battle.playBattleMusic);
-    Settings.loadAllSettings();
-    Header.init();
+    Navigation.init();
+    Settings.init();
   }
 }
 

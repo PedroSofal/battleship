@@ -7,6 +7,7 @@ const __dirname = path.dirname(__filename);
 export default {
   entry: {
     main: './src/scripts/screens/index.js',
+    characterSelection: './src/scripts/screens/character-selection.js',
     strategyRoom: './src/scripts/screens/strategy-room.js',
     battle: './src/scripts/screens/battle.js',
   },
@@ -69,6 +70,12 @@ export default {
       filename: 'index.html',
       template: './src/html/index.html',
       chunks: ['main']
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Battleship | Character Selection',
+      filename: 'character-selection.html',
+      template: './src/html/character-selection.html',
+      chunks: ['characterSelection']
     }),
     new HtmlWebpackPlugin({
       title: 'Battleship | Strategy Room',

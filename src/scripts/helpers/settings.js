@@ -2,6 +2,49 @@ import GameAudio from './audio.js';
 import GameSpeed from './speed.js';
 
 export default class Settings {
+  static settingsButton = document.querySelector('#settings');
+  static closeSettings = document.querySelector('#close-settings');
+  static settingsModal = document.querySelector('#settings-modal');
+  static langOptions = document.querySelectorAll('.language-radio');
+  static speedOptions = document.querySelectorAll('[id$="game-speed"]');
+  static difficultyOptions = document.querySelectorAll('.difficulty-option');
+  static musicVolumeSlider = document.querySelector('#music-volume-slider');
+  static sfxVolumeSlider = document.querySelector('#sfx-volume-slider');
+
+  static setEventListeners() {
+    Settings.settingsButton.addEventListener('click', Settings.openSettingsModal);
+    Settings.closeSettings.addEventListener('click', Settings.closeSettingsModal);
+
+    Settings.langOptions.forEach(option => option.addEventListener('change', (e) => {
+      Settings.setLanguage(e.target);
+    }));
+
+    Settings.speedOptions.forEach(option => option.addEventListener('click', (e) => {
+      Settings.setGameSpeed(e.target.value);
+    }));
+
+    Settings.difficultyOptions.forEach(option => option.addEventListener('click', (e) => {
+      Settings.setDifficulty(e.target.value);
+    }));
+
+    Settings.musicVolumeSlider.addEventListener('change', (e) => {
+      Settings.setMusicVolume(parseFloat(e.target.value));
+    });
+
+    Settings.sfxVolumeSlider.addEventListener('change', (e) => {
+      Settings.setSfxVolume(parseFloat(e.target.value));
+    });
+  }
+  static openSettingsModal() {
+    Settings.settingsModal.classList.add('dialog--open');
+    Settings.settingsModal.showModal();
+  }
+
+  static closeSettingsModal() {
+    Settings.settingsModal.classList.remove('dialog--open');
+    Settings.settingsModal.close();
+  }
+
   static setLanguage(input) {
     localStorage.setItem('lang', input.value);
     Settings.loadLanguageSettings();
@@ -108,5 +151,10 @@ export default class Settings {
     Settings.loadGameSpeedSettings();
     Settings.loadDifficultySettings();
     Settings.loadLanguageSettings();
+  }
+
+  static init() {
+    Settings.loadAllSettings();
+    Settings.setEventListeners();
   }
 }

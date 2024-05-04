@@ -6,8 +6,17 @@
 }
 
 .wrapper--main-menu {
-  grid-template-columns: 5fr 520px 4fr;
+  grid-auto-flow: row;
   justify-content: center;
+  justify-items: center;
+  align-content: space-between;
+  height: 100vh;
+  gap: 0;
+}
+
+.wrapper--character-selection {
+  grid-auto-flow: column;
+  justify-content: space-evenly;
   place-items: center;
   height: 100vh;
   gap: 0;
@@ -93,10 +102,20 @@
 
 /* Main Menu */
 
-.wrapper--main-menu .container--options {
-  flex-direction: column;
-  gap: 1.4rem;
-  width: 22rem;
+.wrapper--main-menu .container--game-title {
+  padding: 2rem 3rem;
+  margin-block-start: 2rem;
+  background-color: #161238;
+  border: 4px solid white;
+  z-index: 1;
+}
+
+.wrapper--main-menu .container--buttons {
+  width: 100%;
+  justify-content: space-between;
+  gap: 8rem;
+  margin-block-end: 5rem;
+  z-index: 1;
 }
 
 /* Strategy Room */

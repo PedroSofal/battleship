@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Battle</title>
+  <title>Battleship | Battle</title>
 </head>
 <body style="margin: 0; padding: 0;">
   <div id="content" class="content" data-content="battle" style="display: none;">
     <header class="header">
-      <h2 class="header__title" id="nav-btn" data-en="Battle" data-pt="Batalha">Battle</h2>
+      <h2 class="header__title" id="navigate" data-en="Character Selection" data-pt="Seleção de Personagem">Character Selection</h2>
       <nav class="nav" id="nav-menu">
         <ul>
           <li class="nav__item" id="nav-battle" data-en="Restart battle" data-pt="Reiniciar batalha">Restart battle</li>
+          <li class="nav__item" id="nav-character-selection" data-en="Go back to character selection" data-pt="Voltar para a seleção de personagens">Go back to character selection</li>
           <li class="nav__item" id="nav-strategy-room" data-en="Go back to the strategy room" data-pt="Voltar para a sala de estratégia">Go back to the strategy room</li>
           <li class="nav__item" id="nav-main-menu" data-en="Exit to the main menu" data-pt="Sair para o menu principal">Exit to the main menu</li>
         </ul>
       </nav>
       <button class="secondary-button" id="see-result" data-en="See Results" data-pt="Ver Resultados">See Results</button>
-      <button class="header__options secondary-button" id="options-btn" data-en="Options" data-pt="Opções">Options</button>
+      <button class="header__options secondary-button" id="settings" data-en="Settings" data-pt="Opções">Settings</button>
     </header>
 
     <div class="wrapper wrapper--reaction" id="reaction-wrapper">
@@ -107,7 +108,7 @@
     </section>
   </dialog>
 
-  <dialog class="dialog dialog--options" id="options-modal">
+  <dialog class="dialog dialog--options" id="settings-modal">
     <section class="wrapper wrapper--options">
       <header class="container container--main-small container--title">
         <h1 id="result-title" data-en="Options" data-pt="Opções">Options</h1>
@@ -136,6 +137,14 @@
           <input id="sfx-volume-slider" type="range" min="0" max="1" step="0.1" value="1">
         </li>
         <li class="options__item">
+          <label class="label" data-en="Difficulty" data-pt="Dificuldade">Difficulty</label>
+          <div class="options-list">
+            <button class="selection-button icon difficulty-option" id="recruit" value="0" data-en="RECRUIT" data-pt="RECRUTA">RECRUIT</button>
+            <button class="selection-button icon difficulty-option" id="captain" value="1" data-en="CAPTAIN" data-pt="CAPITÃO">CAPTAIN</button>
+            <button class="selection-button icon difficulty-option" id="admiral" value="2" data-en="ADMIRAL" data-pt="ALMIRANTE">ADMIRAL</button>
+          </div>
+        </li>
+        <li class="options__item">
           <label class="label" data-en="Game speed" data-pt="Velocidade do jogo">Game speed</label>
           <div class="options-list">
             <button class="selection-button icon" id="normal-game-speed" value="0" data-en="NORMAL" data-pt="NORMAL">NORMAL</button>
@@ -145,7 +154,7 @@
       </ul>
       
       <footer class="container container--main-small container--footer">
-        <button class="main-button" id="close-options"><span data-en="Close" data-pt="Fechar">Close</span></button>
+        <button class="main-button" id="close-settings"><span data-en="Close" data-pt="Fechar">Close</span></button>
       </footer>
     </section>
   </dialog>

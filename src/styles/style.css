@@ -21,8 +21,8 @@
   --fs-400: 0.8rem;
   --fs-500: 0.95rem;
   --fs-600: 1.1rem;
-  --fs-700: 1.4rem;
-  --fs-900: 4.2rem;
+  --fs-700: 1.6rem;
+  --fs-900: 3.2rem;
 
   --icon-size: 2.2rem;
 }
@@ -53,7 +53,7 @@ body {
 }
 
 .content {
-  background-image: url('../assets/backgrounds/menu-background.jpg');
+  background-color: #110f26;
   min-height: 100vh;
 
   /* Also inline for better performance */

@@ -13,7 +13,6 @@ import DragAndDrop from "../helpers/drag-and-drop.js";
 import { charObjects } from '../factories/characters.js';
 import Animation from '../helpers/animations.js';
 import GameAudio from '../helpers/audio.js';
-import Header from '../helpers/header.js';
 import Settings from '../helpers/settings.js';
 import Quote from '../helpers/quote.js';
 import Navigation from '../helpers/navigation.js';
@@ -70,7 +69,7 @@ export default class StrategyRoom {
   }
 
   static loadCharacter() {
-    StrategyRoom.character = charObjects[sessionStorage.getItem('player-char')];
+    StrategyRoom.character = charObjects[sessionStorage.getItem('human-char')];
     StrategyRoom.characterName.textContent = StrategyRoom.character.fullName;
     StrategyRoom.characterPhoto.src = StrategyRoom.character.src;
 
@@ -117,8 +116,8 @@ export default class StrategyRoom {
 
   static nextScreen() {
     if (DragAndDrop.shipsPlaced === DragAndDrop.fleet.children.length) {
-      sessionStorage.setItem('route-safe', 2);
-      window.location.href = 'battle.html';
+      sessionStorage.setItem('route-safe', 3);
+      Navigation.toBattle();
     }
   }
 
@@ -127,11 +126,11 @@ export default class StrategyRoom {
     Game.init_INFOS();
     StrategyRoom.loadFleet();
     StrategyRoom.loadBoard();
-    Settings.loadAllSettings();
+    Navigation.init();
+    Settings.init();
     StrategyRoom.loadCharacter();
     StrategyRoom.setEventListeners();
     DragAndDrop.init();
-    Header.init();
     document.body.addEventListener('mousedown', StrategyRoom.playStrategyRoomMusic);
   }
 }

@@ -93,12 +93,12 @@ export default class Game {
   }
 
   static setPlayers() {
-    const playerName = sessionStorage.getItem('player-name');
-    const playerChar = charObjects[sessionStorage.getItem('player-char')];
+    const humanName = charObjects[sessionStorage.getItem('human-char')].name;
+    const humanChar = charObjects[sessionStorage.getItem('human-char')];
     const cpuName = charObjects[sessionStorage.getItem('cpu-char')].name;
     const cpuChar = charObjects[sessionStorage.getItem('cpu-char')];
 
-    const human = new Player(playerName, playerChar);
+    const human = new Player(humanName, humanChar);
     Game.player1 = human;
 
     let cpu;

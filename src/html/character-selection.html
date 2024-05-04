@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Battleship | Strategy Room</title>
+  <title>Battleship | Character Selection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body style="margin: 0; padding: 0;">
-  <div id="content" class="content" data-content="strategy-room" style="display: none;">
+  <div id="content" class="content" data-content="character-selection" style="display: none;">
     <header class="header">
       <h2 class="header__title" id="navigate" data-en="Character Selection" data-pt="Seleção de Personagem">Character Selection</h2>
       <nav class="nav" id="nav-menu">
@@ -19,58 +22,78 @@
       </nav>
       <button class="header__options secondary-button" id="settings" data-en="Settings" data-pt="Opções">Settings</button>
     </header>
-  
-    <main class="wrapper wrapper--strategy-room">
-      <div class="container container--main-big container--fleet" id="fleet">
-        <!-- <div class="ship">
-          <p class="ship__name">Carrier</p>
-          <div class="ship__yard">
-            <div class="ship__icon"></div>
+
+    <main class="wrapper wrapper--character-selection">
+      <section class="character-selection-wrapper">
+        <div class="character-option" id="nimitz">
+          <figure class="label label--character" for="nimitz">
+            <div class="img-container">
+              <img class="character-photo" width="250" height="250" src="../assets/characters/nimitz.jpg" alt="nimitz"/>
+            </div>
+            <figcaption class="character-name">Nimitz</figcaption>
+          </figure>
+        </div>
+        <div class="character-option" id="yamato">
+          <figure class="label label--character" for="yamato">
+            <div class="img-container">
+              <img class="character-photo" width="250" height="250" src="../assets/characters/yamato.jpg" alt="yamato"/>
+            </div>
+            <figcaption class="character-name">Yamato</figcaption>
+          </figure>
+        </div>
+        <div class="character-option" id="olafsson">
+          <figure class="label label--character" for="olafsson">
+            <div class="img-container">
+              <img class="character-photo" width="250" height="250" src="../assets/characters/olafsson.jpg" alt="olafsson"/>
+            </div>
+            <figcaption class="character-name">Olafsson</figcaption>
+          </figure>
+        </div>
+        <div class="character-option" id="violeta">
+          <figure class="label label--character" for="violeta">
+            <div class="img-container">
+              <img class="character-photo" width="250" height="250" src="../assets/characters/violeta.jpg" alt="violeta"/>
+            </div>
+            <figcaption class="character-name">Violeta</figcaption>
+          </figure>
+        </div>
+        <div class="character-option" id="rackham">
+          <figure class="label label--character" for="rackham">
+            <div class="img-container">
+              <img class="character-photo" width="250" height="250" src="../assets/characters/rackham.jpg" alt="rackham"/>
+            </div>
+            <figcaption class="character-name">Rackham</figcaption>
+          </figure>
+        </div>
+        <div class="character-option" id="noronha">
+          <figure class="label label--character" for="noronha">
+            <div class="img-container">
+              <img class="character-photo" width="250" height="250" src="../assets/characters/noronha.jpg" alt="noronha"/>
+            </div>
+            <figcaption class="character-name">Noronha</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="ready-wrapper">
+        <div class="opponents">
+          <div class="opponents__player opponents__player--selected" id="human-preview">
+            <img class="opponents__img animate" id="human-photo" width="80" height="80" src="../assets/characters/unknown.jpg" alt="question mark inside square">
+            <div class="opponents__info">
+              <p class="opponents__name" id="human-name">???</p>
+              <p class="opponents__type" data-en="Player" data-pt="Jogador">Player</p>
+            </div>
           </div>
-        </div> -->
-      </div>
-  
-      <div class="container container--main-big container--board container--strategy-board">
-        <p class="gameboard-name" data-en="Area of operations" data-pt="Área de operações">Area of operations</p>
-        <div class="gameboard-display">
-          <div id="strategy-board" data-activeAxis="x"></div>
-          <div class="gameboard-display__radar-signal not-clickable"></div>
-          <svg class="not-clickable" width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
-            <rect
-              class="dashed-border"
-              width='100%'
-              height='100%'
-              fill='none'
-              stroke-linecap='square'
-            />
-          </svg>
+          <div class="opponents__player" id="cpu-preview">
+            <img class="opponents__img animate" id="cpu-photo" width="80" height="80" src="../assets/characters/unknown.jpg" alt="question mark inside square">
+            <div class="opponents__info">
+              <p class="opponents__name" id="cpu-name">???</p>
+              <p class="opponents__type">CPU</p>
+            </div>
+          </div>
         </div>
-      </div>
-  
-      <div class="container container--secondary container--character-name">
-        <p class="character-name" id="character-name">???</p>
-      </div>
-  
-      <div class="container container--character-photo">
-        <img class="character-photo" id="character-photo" width="300px" src="../assets/characters/unknown.jpg" alt="question mark inside square">
-      </div>
-  
-      <div class="container container--secondary container--character-quotes">
-        <p class="character-quotes character-quotes--strategy" id="character-quotes"></p>
-      </div>
-  
-      <div class="container container--main-small container--footer">
-        <p class="instructions">
-          <span data-en="Change the axis with " data-pt="Alterne os eixos com ">Change the axis with </span>
-          <button class="key-button" id="y-axis-button">Z</button>
-          <span data-en=" and " data-pt=" e "> and </span>
-          <button class="key-button" id="x-axis-button">X</button>
-        </p>
-        <div>
-          <button class="secondary-button" id="resetFormation" data-en="Reset" data-pt="Limpar">Reset</button>
-          <button class="main-button" id="confirmFormation" disabled><span data-en="Confirm" data-pt="Confirmar">Confirm</span></button>
-        </div>
-      </div>
+        <button class="main-button" id="place-ships" disabled><span data-en="Place ships" data-pt="Posicionar navios">Place ships</span></button>
+      </section>
     </main>
   </div>
 
@@ -126,7 +149,7 @@
   </dialog>
 
   <div id="loader" class="loader" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4rem; background-color: #0C0C1C; height: 100vh;">
-    <img class="loader__img" src="../assets/backgrounds/bg2.jpg" width="896" height="512" alt="">
+    <img class="loader__img" src="../assets/backgrounds/bg3.jpg" width="896" height="512" alt="">
     <p class="loader__para" data-en="Loading..." data-pt="Carregando...">Loading...</p>
   </div>
 </body>

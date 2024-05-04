@@ -3,55 +3,35 @@ import '../../styles/main-menu.css';
 import '../../styles/containers.css';
 import '../../styles/buttons.css';
 import '../../styles/options.css';
+import '../../styles/dialogs.css';
+import '../../styles/options.css';
 
 import GameAudio from '../helpers/audio.js';
 import Settings from '../helpers/settings.js';
-import CharSelection from '../helpers/char-selection.js';
 import Navigation from '../helpers/navigation.js';
 
 class MainMenu {
-  static nameInput = document.querySelector('#name-input');
-  static langOptions = document.querySelectorAll('.language-radio');
-  static musicVolumeSlider = document.querySelector('#music-volume-slider');
-  static sfxVolumeSlider = document.querySelector('#sfx-volume-slider');
-  static difficultySelector = document.querySelector('#difficulty-selector');
-  static placeShipsBtn = document.querySelector('#place-ships');
+  static continueButton = document.querySelector('#continue');
+  static newGameButton = document.querySelector('#new-game');
+  static settingsButton = document.querySelector('#settings');
 
   static setEventListeners() {
-    MainMenu.nameInput.addEventListener('input', (e) => {
-      if (e.target.value.length > 0 && e.target.value.length <= 24) {
-        MainMenu.handleNameInput();
-      } else {
-        MainMenu.placeShipsBtn.disabled = true;
+    MainMenu.continueButton.addEventListener('click', () => {
+      if (localStorage.getItem('saved-game')) {
+        sessionStorage.setItem('route-safe', 3);
+        Navigation.toBattle();
       }
     });
 
-    MainMenu.langOptions.forEach(option => option.addEventListener('change', (e) => {
-      Settings.setLanguage(e.target);
-    }));
-
-    MainMenu.musicVolumeSlider.addEventListener('change', (e) => {
-      Settings.setMusicVolume(parseFloat(e.target.value));
-    });
-
-    MainMenu.sfxVolumeSlider.addEventListener('change', (e) => {
-      Settings.setSfxVolume(parseFloat(e.target.value));
-    });
-
-    MainMenu.difficultySelector.addEventListener('change', (e) => {
-      Settings.setDifficulty(e.target.value);
-    });
-
-    MainMenu.placeShipsBtn.addEventListener('click', () => {
-      MainMenu.nextScreen();
+    MainMenu.newGameButton.addEventListener('click', () => {
+      sessionStorage.setItem('route-safe', 1);
+      Navigation.toCharacterSelection();
     });
   }
 
-  static handleNameInput() {
-    CharSelection.playerName.textContent = MainMenu.nameInput.value;
-    CharSelection.activatePlayerSelection();
-    if (CharSelection.playerChar && CharSelection.cpuChar) {
-      MainMenu.placeShipsBtn.disabled = false;
+  static verifySavedGame() {
+    if (localStorage.getItem('saved-game')) {
+      MainMenu.continueButton.disabled = false;
     }
   }
 
@@ -60,17 +40,10 @@ class MainMenu {
     document.body.removeEventListener('mousedown', MainMenu.playMainMenuMusic);
   }
 
-  static nextScreen() {
-    if (MainMenu.nameInput.value && CharSelection.playerChar && CharSelection.cpuChar) {
-      sessionStorage.setItem('player-name', MainMenu.nameInput.value);
-      sessionStorage.setItem('route-safe', 1);
-      window.location.href = 'strategy-room.html';
-    }
-  }
-
   static init() {
     sessionStorage.clear();
-    Settings.loadAllSettings();
+    Settings.init();
+    MainMenu.verifySavedGame();
     MainMenu.setEventListeners();
     document.body.addEventListener('mousedown', MainMenu.playMainMenuMusic);
   }
