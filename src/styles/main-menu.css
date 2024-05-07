@@ -16,14 +16,39 @@
   overflow: hidden;
 }
 
-.menu-bg > * {
-  width: 1920px;
-  height: 1080px;
+.menu-bg * {
   margin-block-start: -8rem;
   position: absolute;
 }
 
-#menu-bg-middle {
+#clouds {
+  transform: translateX(50%);
+  animation: move-clouds 300s steps(100) infinite alternate;
+}
+
+@keyframes move-clouds {
+  to { transform: translateX(-50%); }
+}
+
+#sea-base {
+  animation: wave 3s steps(6) infinite;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+#sea-move1,
+#sea-move2 {
+  opacity: 0;
+}
+
+#ship {
   animation: sail 3s steps(6) infinite;
 }
 
@@ -34,6 +59,26 @@
   50% {
     transform: none;
   }
+}
+
+.helicopter {
+  transform: rotateZ(-5deg);
+  animation: fly 15s linear 2s infinite;
+}
+
+#helicopter1 {
+  top: 26rem;
+  right: 0;
+}
+
+#helicopter2 {
+  top: 28rem;
+  right: -12rem;
+  transform: scale(0.5) rotateZ(-5deg);
+}
+
+@keyframes fly {
+  100% { transform: translate(-300vw, -5rem) rotateZ(-5deg); }
 }
 
 /* CHARACTER SELECTION ***********/

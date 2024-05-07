@@ -34,6 +34,10 @@ import splash14 from '../../assets/explosions/splash14.png';
 import splash15 from '../../assets/explosions/splash15.png';
 import splash16 from '../../assets/explosions/splash16.png';
 
+import propeller1 from '../../assets/backgrounds/propeller1.png';
+import propeller2 from '../../assets/backgrounds/propeller2.png';
+import propeller3 from '../../assets/backgrounds/propeller3.png';
+
 export default class Animation {
   static explosion = [
     square_explosion1,
@@ -73,6 +77,14 @@ export default class Animation {
     splash16,
   ];
 
+  static propellers = [
+    propeller1,
+    propeller2,
+    propeller3,
+  ]
+
+  static seaMove1 = document.querySelector('#sea-move1');
+  static seaMove2 = document.querySelector('#sea-move2');
   static wrapper = document.querySelector('#reaction-wrapper');
   static characterPhoto = document.querySelector('#character-photo');
   static quoteTimer = null;
@@ -151,5 +163,29 @@ export default class Animation {
     setTimeout(() => {
       html.classList.remove('shake');
     }, 500);
+  }
+
+  static rotatePropeller(propeller) {
+    let index = 0;
+    function changePropellerSrc() {
+      propeller.src = Animation.propellers[index];
+      index = (index + 1) % Animation.propellers.length;
+    }
+
+    setInterval(changePropellerSrc, 100);
+  }
+
+  static moveSea() {
+    function changeSeaOpacity() {
+      setTimeout(() => {
+        Animation.seaMove1.style.opacity = 0;
+        Animation.seaMove2.style.opacity = 0;
+      }, 300);
+      setTimeout(() => Animation.seaMove1.style.opacity = 1, 600);
+      setTimeout(() => Animation.seaMove2.style.opacity = 1, 900);
+    }
+
+    changeSeaOpacity();
+    setInterval(changeSeaOpacity, 900);
   }
 }
