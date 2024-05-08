@@ -95,6 +95,7 @@
   top: 25%;
   left: -25%;
   position: absolute;
+  pointer-events: none;
 }
 
 #strategy-board[data-activeAxis=x] .square:not(.occupied)::after {
