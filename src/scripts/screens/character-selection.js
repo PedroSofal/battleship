@@ -1,5 +1,5 @@
 import '../../styles/style.css';
-import '../../styles/main-menu.css';
+import '../../styles/character-selection.css';
 import '../../styles/containers.css';
 import '../../styles/buttons.css';
 import '../../styles/options.css';

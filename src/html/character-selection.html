@@ -78,21 +78,22 @@
       <section class="ready-wrapper">
         <div class="opponents">
           <div class="opponents__player opponents__player--selected" id="human-preview">
-            <img class="opponents__img animate" id="human-photo" width="80" height="80" src="../assets/characters/unknown.jpg" alt="question mark inside square">
+            <img class="opponents__img animate" id="human-photo" width="120" height="120" src="../assets/characters/unknown.jpg" alt="question mark inside square">
             <div class="opponents__info">
               <p class="opponents__name" id="human-name">???</p>
               <p class="opponents__type" data-en="Player" data-pt="Jogador">Player</p>
             </div>
           </div>
+          <p>X</p>
           <div class="opponents__player" id="cpu-preview">
-            <img class="opponents__img animate" id="cpu-photo" width="80" height="80" src="../assets/characters/unknown.jpg" alt="question mark inside square">
+            <img class="opponents__img animate" id="cpu-photo" width="120" height="120" src="../assets/characters/unknown.jpg" alt="question mark inside square">
             <div class="opponents__info">
               <p class="opponents__name" id="cpu-name">???</p>
               <p class="opponents__type">CPU</p>
             </div>
           </div>
         </div>
-        <button class="main-button" id="place-ships" disabled><span data-en="Place ships" data-pt="Posicionar navios">Place ships</span></button>
+        <button class="main-button" id="place-ships" data-en="Place ships" data-pt="Posicionar navios" disabled>Place ships</button>
       </section>
     </main>
   </div>
@@ -143,7 +144,7 @@
       </ul>
       
       <footer class="container container--main-small container--footer">
-        <button class="main-button" id="close-settings"><span data-en="Close" data-pt="Fechar">Close</span></button>
+        <button class="main-button" id="close-settings" data-en="Close" data-pt="Fechar">Close</button>
       </footer>
     </section>
   </dialog>
