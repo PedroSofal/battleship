@@ -73,7 +73,7 @@ export default class StrategyRoom {
     StrategyRoom.characterName.textContent = StrategyRoom.character.fullName;
     StrategyRoom.characterPhoto.src = StrategyRoom.character.src;
 
-    Settings.setLanguageDataAttributes(StrategyRoom.characterQuotes, Quote.getPreparationQuote(StrategyRoom.character.name));
+    Settings.setLanguageDataAttributes(StrategyRoom.characterQuotes, Quote.getStrategyQuote('preparation', StrategyRoom.character.name));
     Animation.displayQuote(StrategyRoom.characterQuotes, StrategyRoom.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
     
     StrategyRoom.root.style.setProperty('--color-player', StrategyRoom.character.color);
@@ -94,7 +94,7 @@ export default class StrategyRoom {
     StrategyRoom.loadFleet();
     StrategyRoom.loadBoard();
     Settings.loadLanguageSettings();
-    Settings.setLanguageDataAttributes(StrategyRoom.characterQuotes, Quote.getResetQuote(StrategyRoom.character.name));
+    Settings.setLanguageDataAttributes(StrategyRoom.characterQuotes, Quote.getStrategyQuote('reset', StrategyRoom.character.name));
     Animation.displayQuote(StrategyRoom.characterQuotes, StrategyRoom.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
     StrategyRoom.confirmBtn.disabled = true;
     DragAndDrop.init();
@@ -105,7 +105,7 @@ export default class StrategyRoom {
       return ship.name.en === shipId;
     })
     const charName = StrategyRoom.character.name;
-    Settings.setLanguageDataAttributes(StrategyRoom.characterQuotes, Quote.getPlaceShipQuote(charName, ship));
+    Settings.setLanguageDataAttributes(StrategyRoom.characterQuotes, Quote.getStrategyQuote('placeShip', charName, ship));
     Animation.displayQuote(StrategyRoom.characterQuotes, StrategyRoom.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
   }
 

@@ -17,11 +17,11 @@ export default class Result {
     if (Game.player1.result === 'win') {
       Result.title.setAttribute('data-en', 'Victory!');
       Result.title.setAttribute('data-pt', 'Vitória!');
-      Settings.setLanguageDataAttributes(Result.quote, Quote.getOurVictoryQuote(Game.player1.char.name));
+      Settings.setLanguageDataAttributes(Result.quote, Quote.getBattleQuote('ourVictory', Game.player1.char.name));
     } else {
       Result.title.setAttribute('data-en', 'Defeat');
       Result.title.setAttribute('data-pt', 'Derrota');
-      Settings.setLanguageDataAttributes(Result.quote, Quote.getOurDefeatQuote(Game.player1.char.name));
+      Settings.setLanguageDataAttributes(Result.quote, Quote.getBattleQuote('ourDefeat', Game.player1.char.name));
     }
 
     Settings.loadLanguageSettings();

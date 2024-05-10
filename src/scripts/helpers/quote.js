@@ -41,75 +41,15 @@ export default class Quote {
     return replacedQuotes;
   }
 
-  static getPreparationQuote(char) {
+  static getStrategyQuote(quoteType, charName, shipName, enemyName) {
     const quoteArrays = [];
-    Object.values(Quote.strategyRoom).forEach(lang => quoteArrays.push(lang.preparation[char]));
-    return Quote.replacePlaceholders(Quote.randomize(quoteArrays));
+    Object.values(Quote.strategyRoom).forEach(lang => quoteArrays.push(lang[quoteType][charName]));
+    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), shipName, enemyName);
   }
 
-  static getPlaceShipQuote(char, ship) {
+  static getBattleQuote(quoteType, charName, shipName, enemyName) {
     const quoteArrays = [];
-    Object.values(Quote.strategyRoom).forEach(lang => quoteArrays.push(lang.placeShip[char]));
-    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship);
-  }
-
-  static getResetQuote(char, ship) {
-    const quoteArrays = [];
-    Object.values(Quote.strategyRoom).forEach(lang => quoteArrays.push(lang.reset[char]));
-    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship);
-  }
-
-  static getOurMissQuote(char, ship, enemy) {
-    const quoteArrays = [];
-    Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.ourMiss[char]));
-    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
-  }
-
-  static getOurHitQuote(char, ship, enemy) {
-    const quoteArrays = [];
-    Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.ourHit[char]));
-    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
-  }
-
-  static getOurSinkQuote(char, ship, enemy) {
-    const quoteArrays = [];
-    Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.ourSink[char]));
-    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
-  }
-
-  static getOurEscapeQuote(char, ship, enemy) {
-    const quoteArrays = [];
-    Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.ourEscape[char]));
-    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
-  }
-
-  static getTheirMissQuote(char, ship, enemy) {
-    const quoteArrays = [];
-    Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.theirMiss[char]));
-    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
-  }
-
-  static getTheirHitQuote(char, ship, enemy) {
-    const quoteArrays = [];
-    Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.theirHit[char]));
-    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
-  }
-
-  static getTheirSinkQuote(char, ship, enemy) {
-    const quoteArrays = [];
-    Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.theirSink[char]));
-    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
-  }
-
-  static getOurVictoryQuote(char, ship, enemy) {
-    const quoteArrays = [];
-    Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.ourVictory[char]));
-    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
-  }
-
-  static getOurDefeatQuote(char, ship, enemy) {
-    const quoteArrays = [];
-    Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.ourDefeat[char]));
-    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
+    Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang[quoteType][charName]));
+    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), shipName, enemyName);
   }
 }

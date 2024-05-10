@@ -62,13 +62,13 @@ export default class GameLoopHelper {
       switch(result) {
         case 'miss':
         case 'close':
-          quoteArray = Quote.getOurMissQuote(attacker.char.name, ship, defender.char.name);
+          quoteArray = Quote.getBattleQuote('ourMiss', attacker.char.name, ship, defender.char.name);
           break;
         case 'hit':
-          quoteArray = Quote.getOurHitQuote(attacker.char.name, ship, defender.char.name);
+          quoteArray = Quote.getBattleQuote('ourHit', attacker.char.name, ship, defender.char.name);
           break;
         case 'sunk':
-          quoteArray = Quote.getOurSinkQuote(attacker.char.name, ship, defender.char.name);
+          quoteArray = Quote.getBattleQuote('ourSink', attacker.char.name, ship, defender.char.name);
           break;
       }
     }
@@ -77,20 +77,20 @@ export default class GameLoopHelper {
       photo = defender.char.src;
       switch(result) {
         case 'miss':
-          quoteArray = Quote.getTheirMissQuote(defender.char.name, ship, attacker.char.name);
+          quoteArray = Quote.getBattleQuote('theirMiss', defender.char.name, ship, attacker.char.name);
           break;
         case 'close':
           if (Radar.countermeasure) {
-            quoteArray = Quote.getOurEscapeQuote(defender.char.name, ship, attacker.char.name);
+            quoteArray = Quote.getBattleQuote('ourEscape', defender.char.name, ship, attacker.char.name);
           } else {
-            quoteArray = Quote.getTheirMissQuote(defender.char.name, ship, attacker.char.name);
+            quoteArray = Quote.getBattleQuote('theirMiss', defender.char.name, ship, attacker.char.name);
           }
           break;
         case 'hit':
-          quoteArray = Quote.getTheirHitQuote(defender.char.name, ship, attacker.char.name);
+          quoteArray = Quote.getBattleQuote('theirHit', defender.char.name, ship, attacker.char.name);
           break;
         case 'sunk':
-          quoteArray = Quote.getTheirSinkQuote(defender.char.name, ship, attacker.char.name);
+          quoteArray = Quote.getBattleQuote('theirSink', defender.char.name, ship, attacker.char.name);
           break;
       }
     }
