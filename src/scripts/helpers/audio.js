@@ -14,9 +14,12 @@ import radarLock from '../../assets/audio/sfx/radar-lock.ogg';
 import missileAlert from '../../assets/audio/sfx/missile-alert.ogg';
 
 // MUSIC
-import strategyRoomSong1 from '../../assets/audio/music/no-time-to-die-hartzmann.mp3';
-import charSelectionSong1 from '../../assets/audio/music/corsairs-studio-kolomna.mp3';
+import mainMenuSong from '../../assets/audio/music/battle-ship-short-version-1-hot-dope.mp3';
+import charSelectionSong from '../../assets/audio/music/epic-benjamin-tissot.mp3';
+import strategyRoomSong from '../../assets/audio/music/fearsome-tipsy-pirates-mikhail-smusev.mp3';
 import battleSong1 from '../../assets/audio/music/dance-of-devils-giulio-fazio.mp3';
+import battleSong2 from '../../assets/audio/music/corsairs-studio-kolomna.mp3';
+import creditsSong from '../../assets/audio/music/no-time-to-die-hartzmann.mp3';
 
 export default class GameAudio {
   static miss = [miss1, miss2, miss3];
@@ -25,10 +28,10 @@ export default class GameAudio {
   static lastSink = [lastSink];
   static radarLock = [radarLock];
   static missileAlert = [missileAlert];
-  static mainMenu = [strategyRoomSong1];
-  static characterSelection = [charSelectionSong1];
-  static strategyRoom = [strategyRoomSong1];
-  static battle = [battleSong1, strategyRoomSong1, charSelectionSong1];
+  static mainMenu = [mainMenuSong];
+  static characterSelection = [charSelectionSong];
+  static strategyRoom = [strategyRoomSong];
+  static battle = [battleSong1, battleSong2];
   
   static radarLockInterval;
   static radarLockAudio;
