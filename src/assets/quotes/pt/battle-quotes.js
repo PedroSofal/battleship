@@ -205,4 +205,46 @@ export default class BattleQuotes {
       "Não baixem a guarda, pessoal! Matenham a calma e sigam com o plano.",
     ]
   }
+
+  static ourVictory = {
+    yamato: [
+      "A honra de nossa pátria foi preservada, graças à nossa determinação e lealdade! Que os inimigos se lembrem do dia em que desafiaram a esquadra de Yamato!",
+    ],
+    olafsson: [
+      "Vencemos a batalha com força e bravura! Comemorem, guerreiros, hoje marcharemos de volta às nossas terras, enquanto nosso grito de vitória ecoa pelos sete mares!",
+    ],
+    violeta: [
+      "Nada como a calmaria depois da tempestade. O silêncio da derrota do inimigo é mais estrondoso que qualquer canhão!",
+    ],
+    rackham: [
+      "Estas águas já sabiam que Rackham e sua destemida tripulação são invencíveis! Rumem de volta aos estaleiros, marujos, e preparem seus melhores trajes, pois hoje a noite celebraremos essa conquista!",
+    ],
+    nimitz: [
+      "Dever cumprido! A liberação destas águas será um avanço importante para assegurarmos o retorno do funcionamento das rotas comerciais, e um grande passo para o reestabelecimento da paz.",
+    ],
+    noronha: [
+      "Missão dada é missão cumprida! Graças ao ótimo trabalho de nossos marinheiros, nossa bandeira resplandece sobre os mares e nosso povo permanece soberano!",
+    ]
+  }
+
+  static ourDefeat = {
+    yamato: [
+      "Para um verdadeiro guerreiro, a derrota é apenas um teste para a sua determinação. O espírito de luta nunca se quebra. A próxima batalha será nossa redenção!",
+    ],
+    olafsson: [
+      "A guerra está apenas começando e nossa saga será escrita com sangue! Renasceremos das cinzas e lutaremos até que nossos inimigos se curvem!",
+    ],
+    violeta: [
+      "Nossos planos foram frustrados. Contudo, conhecemos as fraquezas do inimigo. É hora de nos retirarmos para refazer nosso plano de ação, esperando o momento certo para virar o jogo.",
+    ],
+    rackham: [
+      "A sorte nos abandonou e o mar cobrou um preço alto pela nossa ineficiência. A derrota pesa como uma âncora em meu coração, mas o arrojo de nosso povo é combustível para seguirmos navegando rumo à vitória.",
+    ],
+    nimitz: [
+      "Um verdadeiro mestre na arte da guerra sabe o momento de recuar e abortar a missão. O revés na batalha de hoje é doloroso, mas não é capaz de abalar nossa determinação em defender nossa nação e nossos ideais.",
+    ],
+    noronha: [
+      "A derrota é apenas mais um capítulo na nossa história de resistência. O momento é de permanecermos unidos e preparar nossa estratégia de contra-ataque.",
+    ]
+  }
 }

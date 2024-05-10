@@ -1,6 +1,9 @@
+import Game from '../helpers/game-control.js';
+import Quote from '../helpers/quote.js';
+import Settings from '../helpers/settings.js';
+
 export default class Result {
   static modal = document.querySelector('#result-modal');
-  static wrapper = document.querySelector('#result-wrapper');
   static title = document.querySelector('#result-title');
   static character = document.querySelector('#result-character');
   static quote = document.querySelector('#result-quote');
@@ -8,15 +11,22 @@ export default class Result {
   static playAgain = document.querySelector('#play-again');
   static seeResult = document.querySelector('#see-result');
 
-  static displayResult(winner) {
-    if (winner.type === 'human') {
-      Result.wrapper.setAttribute('data-result', 'win');
-      Result.title.textContent = 'Congratulations!';
-      Result.character.src = winner.char.src;
+  static displayResult() {
+    Result.character.src = Game.player1.char.src;
+
+    if (Game.player1.result === 'win') {
+      Result.title.setAttribute('data-en', 'Victory!');
+      Result.title.setAttribute('data-pt', 'Vitória!');
+      Settings.setLanguageDataAttributes(Result.quote, Quote.getOurVictoryQuote(Game.player1.char.name));
     } else {
-      Result.wrapper.setAttribute('data-result', 'lose');
-      Result.title.textContent = 'You have been defeated';
+      Result.title.setAttribute('data-en', 'Defeat');
+      Result.title.setAttribute('data-pt', 'Derrota');
+      Settings.setLanguageDataAttributes(Result.quote, Quote.getOurDefeatQuote(Game.player1.char.name));
     }
+
+    Settings.loadLanguageSettings();
+    Result.modal.showModal();
+    Result.modal.classList.add('dialog--open');
   }
 
   static setEventListeners() {
@@ -38,10 +48,8 @@ export default class Result {
     });
   }
 
-  static init(winner) {
-    Result.displayResult(winner);
+  static init() {
+    Result.displayResult();
     Result.setEventListeners();
-    Result.modal.showModal();
-    Result.modal.classList.add('dialog--open');
   }
 }

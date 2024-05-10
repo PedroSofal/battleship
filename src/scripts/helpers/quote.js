@@ -100,4 +100,16 @@ export default class Quote {
     Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.theirSink[char]));
     return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
   }
+
+  static getOurVictoryQuote(char, ship, enemy) {
+    const quoteArrays = [];
+    Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.ourVictory[char]));
+    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
+  }
+
+  static getOurDefeatQuote(char, ship, enemy) {
+    const quoteArrays = [];
+    Object.values(Quote.battle).forEach(lang => quoteArrays.push(lang.ourDefeat[char]));
+    return Quote.replacePlaceholders(Quote.randomize(quoteArrays), ship, enemy);
+  }
 }

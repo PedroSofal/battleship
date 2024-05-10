@@ -7,6 +7,7 @@ export default class Player {
     this.char = char;
     this.type = 'human';
     this.gameboard = new Gameboard(10, 10, new standardSet());
+    this.result = null;
   }
 
   attack(row, col, enemy) {

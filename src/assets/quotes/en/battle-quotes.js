@@ -205,4 +205,47 @@ export default class BattleQuotes {
       "Don't let your guard down, everyone! Stay calm and stick to the plan.",
     ]
   }
+
+  static ourVictory = {
+    yamato: [
+      "The honor of our homeland has been preserved, thanks to our determination and loyalty! Let our enemies remember the day they challenged the Yamato fleet!",
+    ],
+    olafsson: [
+      "We have won the battle with might and fearless hearts! Celebrate, warriors, fo today we shall march back to our homeland, while our cry of glory echoes across the seven seas!",
+    ],
+    violeta: [
+      "Nothing like the calm after the storm. The silence of the enemy's defeat is louder than any cannon!",
+    ],
+    rackham: [
+      "These waters already knew that Rackham and his fearless crew are invincible! Head back to the shipyards, marines, and prepare your finest attire, for tonight we celebrate this conquest!",
+    ],
+    nimitz: [
+      "Mission accomplished! The liberation of these waters will be a significant step towards securing the return of commercial routes and a major stride towards reestablishing peace.",
+    ],
+    noronha: [
+      "Mission given is mission accomplished! Thanks to the excellent work of our marines, our flag shines over the seas and our people remain sovereign!",
+    ]
+  }
+
+  static ourDefeat = {
+    yamato: [
+      "For a true warrior, defeat is just a test of determination. The fighting spirit never breaks. The next battle will be our redemption!",
+    ],
+    olafsson: [
+      "The war is just beginning, and our saga will be written in blood! We will rise from the ashes and fight until our enemies bow before us!",
+    ],
+    violeta: [
+      "Our plans have been thwarted. However, we know the weaknesses of the enemy. It's time to withdraw to redesign our action plan, waiting for the right moment to turn the tide.",
+    ],
+    rackham: [
+      "Luck has abandoned us, and the sea has exacted a high price for our inefficiency. Defeat weighs like an anchor in my heart, but the boldness of our people is fuel to keep sailing towards victory.",
+    ],
+    nimitz: [
+      "A true master of the art of war knows when to retreat and abort the mission. The setback in today's battle is painful, but it is not able to shake our determination to defend our nation and our ideals.",
+    ],
+    noronha: [
+      "Defeat is just another chapter in our history of resistance. Now is the time to remain united and prepare our counterattack strategy.",
+    ]
+  }
+
 }

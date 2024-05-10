@@ -8,6 +8,10 @@ button:disabled {
   opacity: 0.3;
 }
 
+button:focus-visible {
+  outline-style: none;
+}
+
 /* Main */
 
 .main-button {
@@ -96,10 +100,6 @@ button:disabled {
   border-style: none;
   background-color: transparent;
   color: var(--color-100);
-}
-
-.secondary-button:focus-visible {
-  outline-style: none;
 }
 
 /* Selection */

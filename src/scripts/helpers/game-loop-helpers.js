@@ -56,7 +56,7 @@ export default class GameLoopHelper {
     
     if (Math.random() < 0.5 && result !== 'sunk') return;
     const sayer = Math.random() < 0.5 ? 'attacker' : 'defender';
-console.log(attacker)
+
     if (sayer === 'attacker') {
       photo = attacker.char.src;
       switch(result) {
@@ -107,6 +107,7 @@ console.log(attacker)
   static handleGameOver(winner) {
     GameAudio.playRadarLockInfiniteLoop('stop');
     Radar.radarLockScreen.classList.remove('lightUp');
+    Game.player1.result = winner.type === 'human' ? 'win' : 'lose';
     Result.init(winner);
     Game.cpuBoard.querySelectorAll('.square').forEach(square => {
       GameLoopHelper.preventSquareClick(square);
