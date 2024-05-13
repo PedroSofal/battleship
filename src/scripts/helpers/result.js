@@ -1,6 +1,6 @@
-import Game from '../helpers/game-control.js';
-import Quote from '../helpers/quote.js';
-import Settings from '../helpers/settings.js';
+import Game from './game-control.js';
+import Quote from './quote.js';
+import Settings from './settings.js';
 
 export default class Result {
   static modal = document.querySelector('#result-modal');

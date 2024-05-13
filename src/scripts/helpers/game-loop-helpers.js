@@ -1,4 +1,4 @@
-import Result from '../screens/result.js';
+import Result from './result.js';
 import GameAudio from './audio.js';
 import Animation from './animations.js';
 import Radar from './radar.js';
