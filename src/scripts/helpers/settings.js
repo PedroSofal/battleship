@@ -36,12 +36,12 @@ export default class Settings {
     });
   }
   static openSettingsModal() {
-    Settings.settingsModal.classList.add('dialog--open');
+    Settings.settingsModal.classList.add('opened');
     Settings.settingsModal.showModal();
   }
 
   static closeSettingsModal() {
-    Settings.settingsModal.classList.remove('dialog--open');
+    Settings.settingsModal.classList.remove('opened');
     Settings.settingsModal.close();
   }
 

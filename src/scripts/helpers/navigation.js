@@ -1,4 +1,5 @@
 import Save from './save.js';
+import Settings from './settings.js';
 
 export default class Navigation {
   static navBtn = document.querySelector('#navigate');
@@ -7,6 +8,10 @@ export default class Navigation {
   static navCharacterSelection = document.querySelector('#nav-character-selection');
   static navStrategyRoom = document.querySelector('#nav-strategy-room');
   static navMainMenu = document.querySelector('#nav-main-menu');
+  static confirmNavModal = document.querySelector('#confirm-nav-modal');
+  static confirmNavPrompt = document.querySelector('#prompt');
+  static yes = document.querySelector('#yes');
+  static no = document.querySelector('#no');
 
   static setEventListeners() {
     Navigation.navBtn.addEventListener('click', Navigation.openNavigation);
@@ -27,6 +32,28 @@ export default class Navigation {
     }
   }
 
+  static confirmNavigation(message_EN, message_PT, yesBtn_EN, yesBtn_PT, noBtn_EN, noBtn_PT, destiny) {
+    Navigation.confirmNavPrompt.setAttribute('data-en', message_EN);
+    Navigation.confirmNavPrompt.setAttribute('data-pt', message_PT);
+    Navigation.yes.setAttribute('data-en', yesBtn_EN);
+    Navigation.yes.setAttribute('data-pt', yesBtn_PT);
+    Navigation.no.setAttribute('data-en', noBtn_EN);
+    Navigation.no.setAttribute('data-pt', noBtn_PT);
+    Settings.loadLanguageSettings();
+    Navigation.confirmNavModal.classList.add('opened');
+    Navigation.confirmNavModal.showModal();
+
+    Navigation.no.addEventListener('click', () => {
+      Navigation.confirmNavModal.close();
+    })
+
+    Navigation.yes.addEventListener('click', () => {
+      Navigation.confirmNavModal.close();
+      Save.deleteSavedGameData();
+      window.location.href = destiny;
+    })
+  }
+
   static toMainMenu() {
     window.location.href = 'index.html';
   }
@@ -36,11 +63,14 @@ export default class Navigation {
   }
   
   static backToCharacterSelection() {
-    const confirmation = prompt('Are you sure you want to go back to the character selection? All battle progress will be lost.');
-    
-    if (confirmation) {
-      window.location.href = 'character-selection.html';
-    }
+    const message_EN = 'Are you sure you want to go back to the character selection? All progress will be lost.';
+    const message_PT = 'Tem certeza que deseja voltar para a seleção de personagens? Todo o progresso será perdido.';
+    const yesBtn_EN = 'Yes, go back';
+    const yesBtn_PT = 'Sim, voltar';
+    const noBtn_EN = 'No, stay';
+    const noBtn_PT = 'Não, ficar';
+    const destiny = 'character-selection.html';
+    Navigation.confirmNavigation(message_EN, message_PT, yesBtn_EN, yesBtn_PT, noBtn_EN, noBtn_PT, destiny);
   }
 
   static toStrategyRoom() {
@@ -48,11 +78,14 @@ export default class Navigation {
   }
 
   static backToStrategyRoom() {
-    const confirmation = prompt('Are you sure you want to go back to the strategy room? All battle progress will be lost.');
-    
-    if (confirmation) {
-      window.location.href = 'strategy-room.html';
-    }
+    const message_EN = 'Are you sure you want to go back to the strategy room? All progress will be lost.';
+    const message_PT = 'Tem certeza que deseja voltar para a sala de estratégia? Todo o progresso será perdido.';
+    const yesBtn_EN = 'Yes, go back';
+    const yesBtn_PT = 'Sim, voltar';
+    const noBtn_EN = 'No, stay';
+    const noBtn_PT = 'Não, ficar';
+    const destiny = 'strategy-room.html';
+    Navigation.confirmNavigation(message_EN, message_PT, yesBtn_EN, yesBtn_PT, noBtn_EN, noBtn_PT, destiny);
   }
 
   static toBattle() {
@@ -60,12 +93,14 @@ export default class Navigation {
   }
 
   static reloadBattle() {
-    const confirmation = prompt('Are you sure you want to restart the battle?');
-    
-    if (confirmation) {
-      Save.deleteSavedGameData();
-      window.location.href = 'battle.html';
-    }
+    const message_EN = 'Are you sure you want to restart the battle?';
+    const message_PT = 'Tem certeza que deseja reiniciar a batalha?.';
+    const yesBtn_EN = 'Yes, restart';
+    const yesBtn_PT = 'Sim, reiniciar';
+    const noBtn_EN = 'No';
+    const noBtn_PT = 'Não';
+    const destiny = 'battle.html';
+    Navigation.confirmNavigation(message_EN, message_PT, yesBtn_EN, yesBtn_PT, noBtn_EN, noBtn_PT, destiny);
   }
 
   static routeGuard() {

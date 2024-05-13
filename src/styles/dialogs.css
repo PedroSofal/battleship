@@ -11,7 +11,7 @@
   transition: all 500ms ease-in-out;
 }
 
-.dialog--open {
+.dialog.opened {
   opacity: 1;
   transform: translate(0);
 }
@@ -22,6 +22,6 @@
   transition: all 500ms ease-in-out;
 }
 
-.dialog--open::backdrop {
+.dialog.dialog.opened::backdrop {
   opacity: 0.8;
 }

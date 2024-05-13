@@ -73,6 +73,11 @@
   column-gap: 0;
 }
 
+.wrapper--confirm-nav {
+  grid-template-rows: 1fr 130px;
+  width: 800px;
+}
+
 /* CONTAINERS ***********/
 
 .container {
@@ -252,4 +257,16 @@
   flex-direction: column;
   height: 100%;
   padding: 1.4rem;
+}
+
+/* Confirm Navigation Modal */
+
+.wrapper--confirm-nav .container--footer {
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.wrapper--confirm-nav .prompt {
+  padding: 1.4rem;
+  line-height: 1.4rem;
 }
