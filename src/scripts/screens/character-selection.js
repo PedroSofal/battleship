@@ -57,23 +57,23 @@ export default class CharSelection {
       opponent.classList.remove('opponents__player--selected');
     });
 
-    if (CharSelection.isSelecting === 'human' && !CharSelection.isEditing) {
+    if (CharSelection.isSelecting === 'human' && !CharSelection.cpuChar) {
       CharSelection.associateCharToHuman(selectedChar);
-      CharSelection.isSelecting = 'cpu'
+      CharSelection.isSelecting = 'cpu';
       CharSelection.cpuPreview.classList.add('opponents__player--selected');
       return;
     }
     
-    if (CharSelection.isSelecting === 'human' && CharSelection.isEditing) {
+    if (CharSelection.isSelecting === 'human' && CharSelection.cpuChar) {
       CharSelection.associateCharToHuman(selectedChar);
       CharSelection.deactivatePlayerSelection();
-      return
+      return;
     }
     
     if (CharSelection.isSelecting === 'cpu') {
       CharSelection.associateCharToCpu(selectedChar);
       CharSelection.deactivatePlayerSelection();
-      return
+      return;
     }
   }
 
@@ -150,7 +150,7 @@ export default class CharSelection {
 
   static hideChosenCharacter() {
     const chosenCharacter = document.querySelector('.char-selected');
-    chosenCharacter.classList.add('chosen');
+    if (chosenCharacter) chosenCharacter.classList.add('chosen');
   }
 
   static associateCharToHuman(selectedChar) {
@@ -160,7 +160,6 @@ export default class CharSelection {
     CharSelection.humanPhoto.alt = charObjects[selectedChar.id].name;
     CharSelection.humanPhoto.classList.remove('animate');
     setTimeout(() => CharSelection.humanPhoto.classList.add('animate'));
-    console.log(CharSelection.humanChar)
     localStorage.setItem('human-char', CharSelection.humanChar);
   }
 

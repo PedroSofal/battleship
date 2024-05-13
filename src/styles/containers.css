@@ -15,8 +15,8 @@
 }
 
 .wrapper--character-selection {
-  grid-auto-flow: column;
-  justify-content: space-evenly;
+  grid-template-columns: 1fr 1fr;
+  margin-inline: 6rem;
   place-items: center;
   height: 100vh;
   gap: 0;
