@@ -99,8 +99,7 @@ export default class CharSelection {
 
   static playerEditing(e) {
     const opponent = e.currentTarget.id.includes('human') ? 'human' : 'cpu';
-    console.log(opponent)
-    if (!sessionStorage.getItem('human-char') || !sessionStorage.getItem('cpu-char')) return;
+    if (!localStorage.getItem('human-char') || !localStorage.getItem('cpu-char')) return;
 
     CharSelection.placeShipsBtn.disabled = true;
     CharSelection.isSelecting = opponent;
@@ -131,7 +130,7 @@ export default class CharSelection {
 
   static restoreCharSelection() {
     const wasSelecting = CharSelection.isSelecting === 'human' ? 'cpu' : 'human';
-    const selectedChar = document.getElementById(sessionStorage.getItem(`${wasSelecting}-char`));
+    const selectedChar = document.getElementById(localStorage.getItem(`${wasSelecting}-char`));
     selectedChar.classList.add('char-selected');
     selectedChar.classList.add(`char-selected--${wasSelecting}`);
     CharSelection.charOptions.forEach(option => option.classList.remove('chosen'));
@@ -161,7 +160,8 @@ export default class CharSelection {
     CharSelection.humanPhoto.alt = charObjects[selectedChar.id].name;
     CharSelection.humanPhoto.classList.remove('animate');
     setTimeout(() => CharSelection.humanPhoto.classList.add('animate'));
-    sessionStorage.setItem('human-char', CharSelection.humanChar);
+    console.log(CharSelection.humanChar)
+    localStorage.setItem('human-char', CharSelection.humanChar);
   }
 
   static associateCharToCpu(selectedChar) {
@@ -171,7 +171,7 @@ export default class CharSelection {
     CharSelection.cpuPhoto.alt = charObjects[selectedChar.id].name;
     CharSelection.cpuPhoto.classList.remove('animate');
     setTimeout(() => CharSelection.cpuPhoto.classList.add('animate'));
-    sessionStorage.setItem('cpu-char', CharSelection.cpuChar);
+    localStorage.setItem('cpu-char', CharSelection.cpuChar);
   }
 
   static playCharacterSelectionMusic() {

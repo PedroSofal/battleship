@@ -24,10 +24,10 @@ export default class Battle {
 
   static init() {
     Game.init_BATTLE();
-    Battle.root.style.setProperty('--color-player', charObjects[sessionStorage.getItem('human-char')].color);
-    Battle.root.style.setProperty('--color-player-alpha', charObjects[sessionStorage.getItem('human-char')].colorAlpha);
-    Battle.root.style.setProperty('--color-cpu', charObjects[sessionStorage.getItem('cpu-char')].color);
-    Battle.root.style.setProperty('--color-cpu-alpha', charObjects[sessionStorage.getItem('cpu-char')].colorAlpha);
+    Battle.root.style.setProperty('--color-player', charObjects[localStorage.getItem('human-char')].color);
+    Battle.root.style.setProperty('--color-player-alpha', charObjects[localStorage.getItem('human-char')].colorAlpha);
+    Battle.root.style.setProperty('--color-cpu', charObjects[localStorage.getItem('cpu-char')].color);
+    Battle.root.style.setProperty('--color-cpu-alpha', charObjects[localStorage.getItem('cpu-char')].colorAlpha);
     document.body.addEventListener('mousedown', Battle.playBattleMusic);
     Navigation.init();
     Settings.init();

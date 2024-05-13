@@ -69,7 +69,7 @@ export default class StrategyRoom {
   }
 
   static loadCharacter() {
-    StrategyRoom.character = charObjects[sessionStorage.getItem('human-char')];
+    StrategyRoom.character = charObjects[localStorage.getItem('human-char')];
     StrategyRoom.characterName.textContent = StrategyRoom.character.fullName;
     StrategyRoom.characterPhoto.src = StrategyRoom.character.src;
 
@@ -78,7 +78,7 @@ export default class StrategyRoom {
     
     StrategyRoom.root.style.setProperty('--color-player', StrategyRoom.character.color);
     StrategyRoom.root.style.setProperty('--color-player-alpha', StrategyRoom.character.colorAlpha);
-    StrategyRoom.root.style.setProperty('--color-cpu', charObjects[sessionStorage.getItem('cpu-char')].color);
+    StrategyRoom.root.style.setProperty('--color-cpu', charObjects[localStorage.getItem('cpu-char')].color);
   }
 
   static loadBoard() {

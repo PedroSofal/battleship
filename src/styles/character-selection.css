@@ -174,7 +174,7 @@
   opacity: 1;
 }
 
-.opponents__player--selected#player-preview {
+.opponents__player--selected#human-preview {
   outline: 5px solid var(--color-player);
 }
 
