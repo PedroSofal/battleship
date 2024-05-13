@@ -1,17 +1,33 @@
+import confirmNavHTML from '../../html/components/confirm-nav-modal.html';
+document.body.innerHTML += confirmNavHTML;
+
 import Save from './save.js';
 import Settings from './settings.js';
 
 export default class Navigation {
-  static navBtn = document.querySelector('#navigate');
-  static navMenu = document.querySelector('#nav-menu');
-  static navBattle = document.querySelector('#nav-battle');
-  static navCharacterSelection = document.querySelector('#nav-character-selection');
-  static navStrategyRoom = document.querySelector('#nav-strategy-room');
-  static navMainMenu = document.querySelector('#nav-main-menu');
-  static confirmNavModal = document.querySelector('#confirm-nav-modal');
-  static confirmNavPrompt = document.querySelector('#prompt');
-  static yes = document.querySelector('#yes');
-  static no = document.querySelector('#no');
+  static navBtn = null;
+  static navMenu = null;
+  static navBattle = null;
+  static navCharacterSelection = null;
+  static navStrategyRoom = null;
+  static navMainMenu = null;
+  static confirmNavModal = null;
+  static confirmNavPrompt = null;
+  static yes = null;
+  static no = null;
+
+  static queryElements() {
+    Navigation.navBtn = document.querySelector('#navigate');
+    Navigation.navMenu = document.querySelector('#nav-menu');
+    Navigation.navBattle = document.querySelector('#nav-battle');
+    Navigation.navCharacterSelection = document.querySelector('#nav-character-selection');
+    Navigation.navStrategyRoom = document.querySelector('#nav-strategy-room');
+    Navigation.navMainMenu = document.querySelector('#nav-main-menu');
+    Navigation.confirmNavModal = document.querySelector('#confirm-nav-modal');
+    Navigation.confirmNavPrompt = document.querySelector('#prompt');
+    Navigation.yes = document.querySelector('#yes');
+    Navigation.no = document.querySelector('#no');
+  }
 
   static setEventListeners() {
     Navigation.navBtn.addEventListener('click', Navigation.openNavigation);
@@ -44,10 +60,12 @@ export default class Navigation {
     Navigation.confirmNavModal.showModal();
 
     Navigation.no.addEventListener('click', () => {
+      Navigation.confirmNavModal.classList.remove('opened');
       Navigation.confirmNavModal.close();
     })
 
     Navigation.yes.addEventListener('click', () => {
+      Navigation.confirmNavModal.classList.remove('opened');
       Navigation.confirmNavModal.close();
       Save.deleteSavedGameData();
       window.location.href = destiny;
@@ -146,6 +164,7 @@ export default class Navigation {
   }
 
   static init() {
+    Navigation.queryElements();
     Navigation.setEventListeners();
   }
 }

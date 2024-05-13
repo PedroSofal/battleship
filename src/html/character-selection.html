@@ -4,25 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Battleship | Character Selection</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body style="margin: 0; padding: 0;">
   <div id="content" class="content" data-content="character-selection" style="display: none;">
-    <header class="header">
-      <h2 class="header__title" id="navigate" data-en="Character Selection" data-pt="Seleção de Personagem">Character Selection</h2>
-      <nav class="nav" id="nav-menu">
-        <ul>
-          <li class="nav__item" id="nav-battle" data-en="Restart battle" data-pt="Reiniciar batalha">Restart battle</li>
-          <li class="nav__item" id="nav-character-selection" data-en="Go back to character selection" data-pt="Voltar para a seleção de personagens">Go back to character selection</li>
-          <li class="nav__item" id="nav-strategy-room" data-en="Go back to the strategy room" data-pt="Voltar para a sala de estratégia">Go back to the strategy room</li>
-          <li class="nav__item" id="nav-main-menu" data-en="Exit to the main menu" data-pt="Sair para o menu principal">Exit to the main menu</li>
-        </ul>
-      </nav>
-      <button class="header__options secondary-button" id="settings" data-en="Settings" data-pt="Opções">Settings</button>
-    </header>
-
+    <header class="header"></header>
+    
     <main class="wrapper wrapper--character-selection">
       <section class="character-selection-wrapper">
         <div class="character-option" id="nimitz">
@@ -98,57 +84,6 @@
       </section>
     </main>
   </div>
-
-  <dialog class="dialog dialog--options" id="settings-modal">
-    <section class="wrapper wrapper--options">
-      <header class="container container--main-small container--title">
-        <h1 id="result-title" data-en="Options" data-pt="Opções">Options</h1>
-      </header>
-
-      <ul class="container container--secondary container--options">
-        <li class="options__item">
-          <label class="label" data-en="Language" data-pt="Idioma">Language</label>
-          <div class="options-list">
-            <input class="language-radio lang-selected" type="radio" name="language" id="lang-en" value="en">
-            <label class="label" for="lang-en">
-              <img class="icon icon--flag" id="ukFlag" src="../assets/icons/flag-united-kingdom.jpg">
-            </label>
-            <input class="language-radio" type="radio" name="language" id="lang-pt" value="pt">
-            <label class="label" for="lang-pt">
-              <img class="icon icon--flag" id="brazilFlag" src="../assets/icons/flag-brazil.jpg">
-            </label>
-          </div>
-        </li>
-        <li class="options__item">
-          <label class="label" for="music-volume-slider" data-en="Volume - music" data-pt="Volume - música">Volume - music</label>
-          <input id="music-volume-slider" type="range" min="0" max="1" step="0.1" value="1">
-        </li>
-        <li class="options__item">
-          <label class="label" for="sfx-volume-slider" data-en="Volume - effects" data-pt="Volume - efeitos">Volume - effects</label>
-          <input id="sfx-volume-slider" type="range" min="0" max="1" step="0.1" value="1">
-        </li>
-        <li class="options__item">
-          <label class="label" data-en="Difficulty" data-pt="Dificuldade">Difficulty</label>
-          <div class="options-list">
-            <button class="selection-button icon difficulty-option" id="recruit" value="0" data-en="RECRUIT" data-pt="RECRUTA">RECRUIT</button>
-            <button class="selection-button icon difficulty-option" id="captain" value="1" data-en="CAPTAIN" data-pt="CAPITÃO">CAPTAIN</button>
-            <button class="selection-button icon difficulty-option" id="admiral" value="2" data-en="ADMIRAL" data-pt="ALMIRANTE">ADMIRAL</button>
-          </div>
-        </li>
-        <li class="options__item">
-          <label class="label" data-en="Game speed" data-pt="Velocidade do jogo">Game speed</label>
-          <div class="options-list">
-            <button class="selection-button icon" id="normal-game-speed" value="0" data-en="NORMAL" data-pt="NORMAL">NORMAL</button>
-            <button class="selection-button icon" id="fast-game-speed" value="1" data-en="FAST" data-pt="RÁPIDO">FAST</button>
-          </div>
-        </li>
-      </ul>
-      
-      <footer class="container container--secondary container--footer">
-        <button class="main-button" id="close-settings" data-en="Close" data-pt="Fechar">Close</button>
-      </footer>
-    </section>
-  </dialog>
 
   <div id="loader" class="loader" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4rem; background-color: #0C0C1C; height: 100vh;">
     <img class="loader__img" src="../assets/backgrounds/bg3.jpg" width="896" height="512">

@@ -13,11 +13,19 @@ export default class Game {
   static player2 = null;
   static turn = 'human';
 
-  static root = document.querySelector(':root');
-  static humanBoard = document.querySelector('#human-board');
-  static cpuBoard = document.querySelector('#cpu-board');
-  static wrapper = document.querySelector('.wrapper--battle');
-  static characterQuotes = document.querySelector('#character-quotes');
+  static root = null;
+  static humanBoard = null;
+  static cpuBoard = null;
+  static wrapper = null;
+  static characterQuotes = null;
+
+  static queryElements() {
+    Game.root = document.querySelector(':root');
+    Game.humanBoard = document.querySelector('#human-board');
+    Game.cpuBoard = document.querySelector('#cpu-board');
+    Game.wrapper = document.querySelector('.wrapper--battle');
+    Game.characterQuotes = document.querySelector('#character-quotes');
+  }
 
   static retrieveShipsPositions(player) {
     const shipsPositions = JSON.parse(localStorage.getItem(`${player.type}ShipsPositions`));
@@ -163,11 +171,13 @@ export default class Game {
   }
 
   static init_INFOS() {
+    Game.queryElements();
     Game.setPlayers();
     BoardRender.loadBoard(Game.player1);
   }
 
   static init_BATTLE() {
+    Game.queryElements();
     Game.setPlayers();
     BoardRender.loadBoard(Game.player1);
     BoardRender.loadBoard(Game.player2);

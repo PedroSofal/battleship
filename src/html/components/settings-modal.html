@@ -1,0 +1,50 @@
+<dialog class="dialog dialog--options" id="settings-modal">
+  <section class="wrapper wrapper--options">
+    <header class="container container--main-small container--title">
+      <h1 id="result-title" data-en="Options" data-pt="Opções">Options</h1>
+    </header>
+
+    <ul class="container container--secondary container--options">
+      <li class="options__item">
+        <label class="label" data-en="Language" data-pt="Idioma">Language</label>
+        <div class="options-list">
+          <input class="language-radio lang-selected" type="radio" name="language" id="lang-en" value="en">
+          <label class="label" for="lang-en">
+            <img class="icon icon--flag" id="ukFlag" src="../../assets/icons/flag-united-kingdom.jpg">
+          </label>
+          <input class="language-radio" type="radio" name="language" id="lang-pt" value="pt">
+          <label class="label" for="lang-pt">
+            <img class="icon icon--flag" id="brazilFlag" src="../../assets/icons/flag-brazil.jpg">
+          </label>
+        </div>
+      </li>
+      <li class="options__item">
+        <label class="label" for="music-volume-slider" data-en="Volume - music" data-pt="Volume - música">Volume - music</label>
+        <input id="music-volume-slider" type="range" min="0" max="1" step="0.1" value="1">
+      </li>
+      <li class="options__item">
+        <label class="label" for="sfx-volume-slider" data-en="Volume - effects" data-pt="Volume - efeitos">Volume - effects</label>
+        <input id="sfx-volume-slider" type="range" min="0" max="1" step="0.1" value="1">
+      </li>
+      <li class="options__item">
+        <label class="label" data-en="Difficulty" data-pt="Dificuldade">Difficulty</label>
+        <div class="options-list">
+          <button class="selection-button icon difficulty-option" id="recruit" value="0" data-en="RECRUIT" data-pt="RECRUTA">RECRUIT</button>
+          <button class="selection-button icon difficulty-option" id="captain" value="1" data-en="CAPTAIN" data-pt="CAPITÃO">CAPTAIN</button>
+          <button class="selection-button icon difficulty-option" id="admiral" value="2" data-en="ADMIRAL" data-pt="ALMIRANTE">ADMIRAL</button>
+        </div>
+      </li>
+      <li class="options__item">
+        <label class="label" data-en="Game speed" data-pt="Velocidade do jogo">Game speed</label>
+        <div class="options-list">
+          <button class="selection-button icon" id="normal-game-speed" value="0" data-en="NORMAL" data-pt="NORMAL">NORMAL</button>
+          <button class="selection-button icon" id="fast-game-speed" value="1" data-en="FAST" data-pt="RÁPIDO">FAST</button>
+        </div>
+      </li>
+    </ul>
+    
+    <footer class="container container--secondary container--footer">
+      <button class="main-button" id="close-settings" data-en="Close" data-pt="Fechar">Close</button>
+    </footer>
+  </section>
+</dialog>

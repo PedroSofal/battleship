@@ -4,14 +4,19 @@ import StrategyRoom from '../screens/strategy-room.js';
 import BoardHelper from './board-helpers.js';
 
 export default class DragAndDrop {
-  static board = document.querySelector('#strategy-board');
-  static fleet = document.querySelector('#fleet');
+  static board = null;
+  static fleet = null;
   static grid = [];
   static axis = 'row';
   static hoveredSquare = null;
   static selectedShip = null;
   static shipsPlaced = 0;
   static humanShipsPositions = {};
+
+  static queryElements() {
+    DragAndDrop.board = document.querySelector('#strategy-board');
+    DragAndDrop.fleet = document.querySelector('#fleet');
+  }
 
   static setEventListeners() {
     window.addEventListener('keypress', (e) => DragAndDrop.changeAxis(e.key));
@@ -152,6 +157,7 @@ export default class DragAndDrop {
   }
 
   static init() {
+    DragAndDrop.queryElements();
     DragAndDrop.grid = BoardHelper.objectsGridFromHtmlSquares(DragAndDrop.board.children);
     DragAndDrop.shipsPlaced = 0;
     DragAndDrop.setEventListeners();

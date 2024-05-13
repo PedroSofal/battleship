@@ -1,3 +1,6 @@
+import headerHTML from '../../html/components/header.html';
+document.querySelector('header').innerHTML += headerHTML;
+
 import '../../styles/style.css';
 import '../../styles/containers.css';
 import '../../styles/buttons.css';
@@ -37,6 +40,12 @@ export default class StrategyRoom {
     StrategyRoom.resetBtn.addEventListener('click', StrategyRoom.resetFormation);
     StrategyRoom.xAxisBtn.addEventListener('click', () => DragAndDrop.changeAxis('x'));
     StrategyRoom.yAxisBtn.addEventListener('click', () => DragAndDrop.changeAxis('z'));
+  }
+
+  static loadTitle() {
+    const title = document.querySelector('.header__title');
+    title.setAttribute('data-en', 'Strategy Room');
+    title.setAttribute('data-pt', 'Sala de Estratégia');
   }
 
   static loadFleet() {
@@ -124,6 +133,7 @@ export default class StrategyRoom {
   static init() {
     Save.deleteSavedGameData();
     Game.init_INFOS();
+    StrategyRoom.loadTitle();
     StrategyRoom.loadFleet();
     StrategyRoom.loadBoard();
     Navigation.init();

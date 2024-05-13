@@ -1,3 +1,6 @@
+import headerHTML from '../../html/components/header.html';
+document.querySelector('header').innerHTML += headerHTML;
+
 import '../../styles/style.css';
 import '../../styles/character-selection.css';
 import '../../styles/containers.css';
@@ -41,6 +44,12 @@ export default class CharSelection {
     });
 
     CharSelection.placeShipsBtn.addEventListener('click', CharSelection.nextScreen);
+  }
+
+  static loadTitle() {
+    const title = document.querySelector('.header__title');
+    title.setAttribute('data-en', 'Character Selection');
+    title.setAttribute('data-pt', 'Seleção de Personagem');
   }
 
   static playerSelection = function(e) {
@@ -187,6 +196,7 @@ export default class CharSelection {
 
   static init() {
     Save.deleteSavedGameData();
+    CharSelection.loadTitle();
     Navigation.init();
     Settings.init();
     CharSelection.setEventListeners();

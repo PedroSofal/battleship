@@ -1,15 +1,29 @@
+import settingsHTML from '../../html/components/settings-modal.html';
+document.body.innerHTML += settingsHTML;
+
 import GameAudio from './audio.js';
 import GameSpeed from './speed.js';
 
 export default class Settings {
-  static settingsButton = document.querySelector('#settings');
-  static closeSettings = document.querySelector('#close-settings');
-  static settingsModal = document.querySelector('#settings-modal');
-  static langOptions = document.querySelectorAll('.language-radio');
-  static speedOptions = document.querySelectorAll('[id$="game-speed"]');
-  static difficultyOptions = document.querySelectorAll('.difficulty-option');
-  static musicVolumeSlider = document.querySelector('#music-volume-slider');
-  static sfxVolumeSlider = document.querySelector('#sfx-volume-slider');
+  static settingsButton = null;
+  static closeSettings = null;
+  static settingsModal = null;
+  static langOptions = null;
+  static speedOptions = null;
+  static difficultyOptions = null;
+  static musicVolumeSlider = null;
+  static sfxVolumeSlider = null;
+
+  static queryElements() {
+    Settings.settingsButton = document.querySelector('#settings');
+    Settings.closeSettings = document.querySelector('#close-settings');
+    Settings.settingsModal = document.querySelector('#settings-modal');
+    Settings.langOptions = document.querySelectorAll('.language-radio');
+    Settings.speedOptions = document.querySelectorAll('[id$="game-speed"]');
+    Settings.difficultyOptions = document.querySelectorAll('.difficulty-option');
+    Settings.musicVolumeSlider = document.querySelector('#music-volume-slider');
+    Settings.sfxVolumeSlider = document.querySelector('#sfx-volume-slider');
+  }
 
   static setEventListeners() {
     Settings.settingsButton.addEventListener('click', Settings.openSettingsModal);
@@ -154,6 +168,7 @@ export default class Settings {
   }
 
   static init() {
+    Settings.queryElements();
     Settings.loadAllSettings();
     Settings.setEventListeners();
   }
