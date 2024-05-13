@@ -127,6 +127,7 @@ export default class Game {
     Game.randomizeCpuShipsPositions();
     BoardRender.updateBoard(Game.player2);
     Game.setSquaresClickListeners();
+    Game.cpuBoard.classList.add('active');
   }
 
   static loadGame(savedGame) {
@@ -141,11 +142,16 @@ export default class Game {
 
     if (Game.turn === 'cpu') {
       GameLoop.botPlays();
+      Game.humanBoard.classList.add('active');
+    } else {
+      Game.cpuBoard.classList.add('active');
     }
   }
 
   static nextPlayer() {
     Game.turn = Game.turn === 'human' ? 'cpu' : 'human';
+    Game.humanBoard.classList.toggle('active');
+    Game.cpuBoard.classList.toggle('active');
   }
 
   static gameOver() {

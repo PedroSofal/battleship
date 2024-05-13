@@ -20,7 +20,9 @@ export default class CharSelection {
 
   static charOptions = document.querySelectorAll('.character-option');
   static charSelectionWrapper = document.querySelector('.character-selection-wrapper');
+  static opponentsContainer = document.querySelector('.opponents');
   static opponents = document.querySelectorAll('.opponents__player');
+  static status = document.querySelector('.opponents__status');
   static humanPreview = document.querySelector('#human-preview');
   static cpuPreview = document.querySelector('#cpu-preview');
   static placeShipsBtn = document.querySelector('#place-ships');
@@ -86,7 +88,11 @@ export default class CharSelection {
       opponent.classList.add('opponents__player--selectable');
     });
 
+    CharSelection.opponentsContainer.classList.add('ready');
     CharSelection.charSelectionWrapper.classList.add('closed');
+    CharSelection.status.setAttribute('data-en', 'READY!');
+    CharSelection.status.setAttribute('data-pt', 'PRONTO!');
+    Settings.loadLanguageSettings();
     CharSelection.isEditing = false;
     CharSelection.placeShipsBtn.disabled = false;
   }
@@ -133,7 +139,11 @@ export default class CharSelection {
 
   static enableCharacterEditing() {
     CharSelection.isEditing = true;
+    CharSelection.opponentsContainer.classList.remove('ready');
     CharSelection.charSelectionWrapper.classList.remove('closed');
+    CharSelection.status.setAttribute('data-en', 'Awaiting...');
+    CharSelection.status.setAttribute('data-pt', 'Aguardando...');
+    Settings.loadLanguageSettings();
     CharSelection.charOptions.forEach(option => {
       option.addEventListener('click', CharSelection.playerSelection);
     });

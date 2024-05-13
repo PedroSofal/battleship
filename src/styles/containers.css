@@ -105,8 +105,8 @@
 .wrapper--main-menu .container--game-title {
   padding: 1.5rem 2rem;
   margin-block-start: 2rem;
-  background-color: #161238;
-  border: 4px solid;
+  background-color: var(--color-850);
+  border: 5px solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(#d7d8f0, #3f5192);
   z-index: 1;
@@ -220,15 +220,21 @@
 
 .wrapper--options .container--options {
   flex-direction: column;
-  gap: 1.4rem;
-  width: 45rem;
-  padding: 2rem;
+  width: 50rem;
+}
+
+.wrapper--options .container--options.container--secondary:hover {
+  border: 5px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(#d7d8f0, #3f5192);
+  background-color: var(--color-850);
 }
 
 .wrapper--options .container--footer {
   justify-content: center;
   align-items: center;
   gap: 1.4rem;
+  overflow: hidden;
 }
 
 /* Result Modal */
