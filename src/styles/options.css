@@ -53,8 +53,12 @@ input[type="range"]::-moz-range-thumb {
   outline-offset: 1rem;
 }
 
-.icon:hover {
+.icon:not([data-content="battle"] .difficulty-option):hover {
   opacity: 1;
+}
+
+[data-content="battle"] .options__item--difficulty {
+  opacity: 0.3;
 }
 
 /* .select {

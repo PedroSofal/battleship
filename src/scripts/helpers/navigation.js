@@ -1,5 +1,5 @@
 import confirmNavHTML from '../../html/components/confirm-nav-modal.html';
-document.body.innerHTML += confirmNavHTML;
+document.querySelector('#content').innerHTML += confirmNavHTML;
 
 import Save from './save.js';
 import Settings from './settings.js';

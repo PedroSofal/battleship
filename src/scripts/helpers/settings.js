@@ -1,5 +1,5 @@
 import settingsHTML from '../../html/components/settings-modal.html';
-document.body.innerHTML += settingsHTML;
+document.querySelector('#content').innerHTML += settingsHTML;
 
 import GameAudio from './audio.js';
 import GameSpeed from './speed.js';
@@ -38,6 +38,7 @@ export default class Settings {
     }));
 
     Settings.difficultyOptions.forEach(option => option.addEventListener('click', (e) => {
+      if (document.querySelector('[data-content="battle"]')) return;
       Settings.setDifficulty(e.target.value);
     }));
 
