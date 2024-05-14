@@ -8,6 +8,7 @@ import { charObjects } from '../factories/characters.js';
 import Save from './save.js';
 import GameLoop from './game-loop.js';
 import Radar from './radar.js';
+import Result from './result.js';
 
 export default class Game {
   static player1 = null;
@@ -148,6 +149,14 @@ export default class Game {
     BoardRender.updateBoard(Game.player2);
     Game.setSquaresClickListeners();
     Game.turn = savedGame.nextTurn;
+
+    if (Game.gameOver()) {
+      Result.init();
+      Game.cpuBoard.querySelectorAll('.ship__icon').forEach(ship => {
+        ship.classList.add('revealed');
+      });
+      return;
+    }
 
     if (Game.turn === 'cpu') {
       GameLoop.botPlays();
