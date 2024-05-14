@@ -25,3 +25,22 @@
 .dialog.dialog.opened::backdrop {
   opacity: 0.8;
 }
+
+.activation-screen {
+  position: fixed;
+  margin: auto;
+  inset: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+}
+
+.activation-screen::backdrop {
+  background-color: var(--color-900);
+  opacity: 0.8;
+}
+
+.activation-screen:focus-visible {
+  outline: none;
+}

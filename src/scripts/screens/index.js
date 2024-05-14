@@ -1,3 +1,6 @@
+import activationScreenHTML from '../../html/components/activation-screen.html';
+document.querySelector('#content').innerHTML += activationScreenHTML;
+
 import '../../styles/style.css';
 import '../../styles/main-menu.css';
 import '../../styles/layouts.css';
@@ -12,6 +15,7 @@ import Navigation from '../helpers/navigation.js';
 import Animation from '../helpers/animations.js';
 
 class MainMenu {
+  static activationScreen = document.querySelector('#activation-screen');
   static continueButton = document.querySelector('#continue');
   static newGameButton = document.querySelector('#new-game');
   static settingsButton = document.querySelector('#settings');
@@ -30,6 +34,16 @@ class MainMenu {
       sessionStorage.setItem('route-safe', 1);
       Navigation.toCharacterSelection();
     });
+
+    window.addEventListener('click', MainMenu.closeActivationScreen);
+    window.addEventListener('keydown', MainMenu.closeActivationScreen);
+  }
+
+  static closeActivationScreen() {
+    MainMenu.activationScreen.close();
+    window.removeEventListener('click', MainMenu.closeActivationScreen);
+    window.removeEventListener('keydown', MainMenu.closeActivationScreen);
+    MainMenu.playMainMenuMusic();
   }
 
   static verifySavedGame() {
@@ -40,18 +54,17 @@ class MainMenu {
 
   static playMainMenuMusic() {
     GameAudio.playMusic(GameAudio.mainMenu);
-    document.body.removeEventListener('mousedown', MainMenu.playMainMenuMusic);
   }
 
   static init() {
     sessionStorage.clear();
+    MainMenu.activationScreen.showModal();
     Animation.rotatePropeller(MainMenu.propeller1);
     Animation.rotatePropeller(MainMenu.propeller2);
     Animation.moveSea();
     Settings.init();
     MainMenu.verifySavedGame();
     MainMenu.setEventListeners();
-    document.body.addEventListener('mousedown', MainMenu.playMainMenuMusic);
   }
 }
 
