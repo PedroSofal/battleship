@@ -40,16 +40,34 @@
   position: absolute;
 }
 
-#clouds {
-  transform: translateX(50%);
-  animation: move-clouds 300s steps(100) infinite alternate;
+#sky {
+  width: 3840px;
+  height: 1080px;
+  background-image: url(../assets/backgrounds/sky.jpg);
+  animation: move-sky 80s steps(240) infinite;
 }
 
-@keyframes move-clouds {
+@keyframes move-sky {
   to { transform: translateX(-50%); }
 }
 
+
+#clouds {
+  transform: translateX(100%);
+  animation: move-clouds 60s steps(60) infinite;
+}
+
+@keyframes move-clouds {
+  to { transform: translateX(-100%); }
+}
+
 #sea-base {
+  animation: wave 3s steps(6) infinite;
+}
+
+#sea-move1,
+#sea-move2 {
+  opacity: 0;
   animation: wave 3s steps(6) infinite;
 }
 
@@ -62,18 +80,13 @@
   }
 }
 
-#sea-move1,
-#sea-move2 {
-  opacity: 0;
-}
-
 #ship {
   animation: sail 3s steps(6) infinite;
 }
 
 @keyframes sail {
   0%, 100% {
-    transform: translate(0.8%, 1.2%) rotateZ(1deg);
+    transform: translate(5px, 10px) rotateZ(1deg);
   }
   50% {
     transform: none;
