@@ -2,8 +2,10 @@ import headerHTML from '../../html/components/header.html';
 document.querySelector('header').innerHTML += headerHTML;
 
 import '../../styles/style.css';
-import '../../styles/containers.css';
+import '../../styles/layouts.css';
 import '../../styles/buttons.css';
+import '../../styles/strategy-room.css';
+import '../../styles/header.css';
 import '../../styles/options.css';
 import '../../styles/gameboards.css';
 import '../../styles/ships.css';

@@ -1,19 +1,23 @@
-/* CHARACTER SELECTION ***********/
+/* WRAPPERS ***********/
 
-.character-selection-wrapper {
-  position: relative;
-  display: grid;
-  grid-template-columns: 250px 250px;
-  gap: 1rem;
+.character-selection {
+  grid-template-columns: 1fr 1fr;
+  margin-inline: 6rem;
+  place-items: center;
+  place-content: center;
 }
+
+.character-options {
+  position: relative;
+  grid-template-columns: 250px 250px;
+}
+
+/* CHARACTERS ***********/
 
 .character-option {
   outline-offset: 2rem;
   transition: all 100ms ease-in-out;
   overflow: hidden;
-  border: 4px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(#d7d8f0, #3f5192);
 }
 
 .character-option.chosen {
@@ -128,9 +132,9 @@
   opacity: 0.3;
 }
 
-/* READY UP ***********/
+/* READY ***********/
 
-.ready-wrapper {
+.ready {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -143,9 +147,6 @@
   align-items: center;
   gap: 1rem;
   padding: 5rem;
-  border: 4px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(#d7d8f0, #3f5192);
   background-color: var(--color-800);
   transition: all 100ms ease-in;
 }

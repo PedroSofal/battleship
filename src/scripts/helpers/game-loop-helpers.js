@@ -108,7 +108,7 @@ export default class GameLoopHelper {
     GameAudio.playRadarLockInfiniteLoop('stop');
     Radar.radarLockScreen.classList.remove('lightUp');
     Game.player1.result = winner.type === 'human' ? 'win' : 'lose';
-    Result.init(winner);
+    Result.init();
     Game.cpuBoard.querySelectorAll('.square').forEach(square => {
       GameLoopHelper.preventSquareClick(square);
     });

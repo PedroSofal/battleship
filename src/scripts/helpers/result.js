@@ -3,17 +3,27 @@ import Quote from './quote.js';
 import Settings from './settings.js';
 
 export default class Result {
-  static modal = document.querySelector('#result-modal');
-  static title = document.querySelector('#result-title');
-  static character = document.querySelector('#result-character');
-  static quote = document.querySelector('#result-quote');
-  static seeBoards = document.querySelector('#see-boards');
-  static playAgain = document.querySelector('#play-again');
-  static seeResult = document.querySelector('#see-result');
+  static modal = null;
+  static title = null;
+  static character = null;
+  static quote = null;
+  static seeBoards = null;
+  static playAgain = null;
+  static seeResult = null;
+
+  static queryElements() {
+    Result.modal = document.querySelector('#result-modal');
+    Result.title = document.querySelector('#result-title');
+    Result.character = document.querySelector('#result-character');
+    Result.quote = document.querySelector('#result-quote');
+    Result.seeBoards = document.querySelector('#see-boards');
+    Result.playAgain = document.querySelector('#play-again');
+    Result.seeResult = document.querySelector('#see-result');
+  }
 
   static displayResult() {
     Result.character.src = Game.player1.char.src;
-
+    
     if (Game.player1.result === 'win') {
       Result.title.setAttribute('data-en', 'Victory!');
       Result.title.setAttribute('data-pt', 'Vitória!');
@@ -26,29 +36,30 @@ export default class Result {
 
     Settings.loadLanguageSettings();
     Result.modal.showModal();
-    Result.modal.classList.add('dialog--open');
+    Result.modal.classList.add('opened');
   }
 
   static setEventListeners() {
     Result.seeBoards.addEventListener('click', () => {
       Result.modal.close();
-      Result.modal.classList.remove('dialog--open');
+      Result.modal.classList.remove('opened');
       Result.seeResult.classList.add('visible');
     });
     
     Result.playAgain.addEventListener('click', () => {
-      Result.modal.classList.remove('dialog--open');
+      Result.modal.classList.remove('opened');
       window.location.href = 'index.html';
     });
 
     Result.seeResult.addEventListener('click', () => {
       Result.modal.showModal();
-      Result.modal.classList.add('dialog--open');
+      Result.modal.classList.add('opened');
       Result.seeResult.classList.remove('visible');
     });
   }
 
   static init() {
+    Result.queryElements();
     Result.displayResult();
     Result.setEventListeners();
   }

@@ -3,8 +3,9 @@ document.querySelector('header').innerHTML += headerHTML;
 
 import '../../styles/style.css';
 import '../../styles/character-selection.css';
-import '../../styles/containers.css';
+import '../../styles/layouts.css';
 import '../../styles/buttons.css';
+import '../../styles/header.css';
 import '../../styles/options.css';
 import '../../styles/navigation.css';
 import '../../styles/dialogs.css';
@@ -22,7 +23,7 @@ export default class CharSelection {
   static isEditing = false;
 
   static charOptions = document.querySelectorAll('.character-option');
-  static charSelectionWrapper = document.querySelector('.character-selection-wrapper');
+  static charOptionsList = document.querySelector('#character-options-list');
   static opponentsContainer = document.querySelector('.opponents');
   static opponents = document.querySelectorAll('.opponents__player');
   static status = document.querySelector('.opponents__status');
@@ -98,7 +99,7 @@ export default class CharSelection {
     });
 
     CharSelection.opponentsContainer.classList.add('ready');
-    CharSelection.charSelectionWrapper.classList.add('closed');
+    CharSelection.charOptionsList.classList.add('closed');
     CharSelection.status.setAttribute('data-en', 'READY!');
     CharSelection.status.setAttribute('data-pt', 'PRONTO!');
     Settings.loadLanguageSettings();
@@ -148,7 +149,7 @@ export default class CharSelection {
   static enableCharacterEditing() {
     CharSelection.isEditing = true;
     CharSelection.opponentsContainer.classList.remove('ready');
-    CharSelection.charSelectionWrapper.classList.remove('closed');
+    CharSelection.charOptionsList.classList.remove('closed');
     CharSelection.status.setAttribute('data-en', 'Awaiting...');
     CharSelection.status.setAttribute('data-pt', 'Aguardando...');
     Settings.loadLanguageSettings();

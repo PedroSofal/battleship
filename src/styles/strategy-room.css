@@ -1,0 +1,64 @@
+/* WRAPPER ***********/
+
+.strategy-room {
+  grid-template-columns: 434px 640px 300px;
+  grid-template-rows: 60px 300px 260px 120px;
+  grid-template-areas:
+    "fleet board charName"
+    "fleet board charPhoto"
+    "fleet board charQuotes"
+    "fleet footer footer";
+}
+
+/* CONTAINERS ***********/
+
+.strategy-room__fleet {
+  grid-area: fleet;
+  gap: 1.4rem;
+  padding: 1.8rem 2.2rem;
+}
+
+.strategy-room__board-container {
+  grid-area: board;
+}
+
+.strategy-room__character-name {
+  grid-area: charName;
+}
+
+.strategy-room__character-photo {
+  grid-area: charPhoto;
+}
+
+.strategy-room__character-quotes {
+  grid-area: charQuotes;
+  padding: 0.6rem 1rem;
+}
+
+.strategy-room__footer {
+  grid-area: footer;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.4rem;
+}
+
+.strategy-room__formation-actions {
+  gap: 2rem;
+}
+
+/* TEXTS ***********/
+
+.strategy-room__character-name p {
+  font-size: var(--fs-300);
+  text-align: center;
+}
+
+.strategy-room__character-quotes p {
+  font-family: var(--sec-ff);
+  font-style: italic;
+  font-size: var(--fs-500);
+}
+
+.instructions {
+  font-family: var(--sec-ff);
+}

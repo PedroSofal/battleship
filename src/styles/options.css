@@ -1,4 +1,24 @@
-/* Global */
+/* WRAPPER ***********/
+
+.options {
+  grid-template-rows: 130px 1fr 130px;
+  width: 50rem;
+}
+
+/* CONTAINERS ***********/
+
+.options__list:hover {
+  border: 5px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(#d7d8f0, #3f5192);
+  background-color: var(--color-850);
+}
+
+.options__footer {
+  overflow: hidden;
+}
+
+/* OPTIONS ***********/
 
 .options__item {
   display: flex;
@@ -76,8 +96,6 @@ input[type="range"]::-moz-range-thumb {
   background-color: var(--color-750);
   outline: 2px solid var(--color-100);
 } */
-
-/* Language */
 
 .language-radio {
   display: none;

@@ -9,27 +9,27 @@
   <div id="content" class="content" data-content="battle" style="display: none;">
     <header class="header"></header>
 
-    <div class="wrapper wrapper--reaction" id="reaction-wrapper">
-      <div class="container container--character-photo">
+    <div class="wrapper wrapper--with-gap | reaction" id="reaction-wrapper">
+      <div class="container | reaction__character-photo">
         <img class="character-photo" id="character-photo" width="150" height="150" src="../assets/characters/unknown.jpg">
       </div>
-      <div class="container container--secondary container--character-quotes">
-        <p class="character-quotes character-quotes--battle" id="character-quotes"></p>
+      <div class="container container--secondary | reaction__character-quotes">
+        <p id="character-quotes"></p>
       </div>
     </div>
 
-    <main class="wrapper wrapper--battle">
-      <div class="container container--secondary container--radar-lock-warning">
-        <svg class="radar-lock-screen" width="130" height="130" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <main class="wrapper wrapper--with-gap wrapper--centered | battle-displays">
+      <div class="container container--secondary | radar-lock">
+        <svg class="radar-lock__screen" width="130" height="130" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M65 0V15M65 115V130M110.962 19.0381L100.355 29.6447M29.6446 100.355L19.038 110.962M130 65H115M15 65H0M110.962 110.962L100.355 100.355M29.6446 29.6447L19.038 19.0381M65 24V33.4615M65 96.5385V106M93.9914 36.0086L87.301 42.6989M42.6989 87.3011L36.0086 93.9914M106 65H96.5385M33.4615 65H24M93.9914 93.9914L87.301 87.3011M42.6989 42.6989L36.0086 36.0086M65 47.5V54.5M65 75.5V82.5M82.5 65H75.5M54.5 65H47.5M123 65C123 97.0325 97.0325 123 65 123C32.9675 123 7 97.0325 7 65C7 32.9675 32.9675 7 65 7C97.0325 7 123 32.9675 123 65ZM101 65C101 84.8823 84.8823 101 65 101C45.1177 101 29 84.8823 29 65C29 45.1177 45.1177 29 65 29C84.8823 29 101 45.1177 101 65ZM79 65C79 72.732 72.732 79 65 79C57.268 79 51 72.732 51 65C51 57.268 57.268 51 65 51C72.732 51 79 57.268 79 65Z" stroke="#202040" stroke-width="2"/>
-          <g class="radar-lock-friendly">
+          <g class="radar-lock__friendly">
             <circle cx="59" cy="59" r="2"/>
             <circle cx="72" cy="63" r="2"/>
             <circle cx="74" cy="53" r="2"/>
             <circle cx="67" cy="70" r="2"/>
             <circle cx="53" cy="72" r="2"/>
           </g>
-          <g class="radar-lock-foe">
+          <g class="radar-lock__foe">
             <path d="M124.685 96L115.5 113.818L106.315 96L124.685 96Z" stroke="#FF0000" stroke-width="2"/>
             <path d="M21.6848 86L12.5 103.818L3.31522 86L21.6848 86Z" stroke="#FF0000" stroke-width="2"/>
             <path d="M53.6848 8L44.5 25.8175L35.3152 8L53.6848 8Z" stroke="#FF0000" stroke-width="2"/>
@@ -39,11 +39,11 @@
         </svg>
       </div>
 
-      <div class="container container--secondary container--countermeasure">
-        <p class="countermeasure-indicator" id="countermeasure">COUNTER</p>
+      <div class="container container--secondary container--centered | countermeasure">
+        <p class="countermeasure__indicator" id="countermeasure">COUNTER</p>
       </div>
 
-      <div class="container container--main-big container--board container--human-board">
+      <div class="container container--main-big container--centered container--column container--board | battle__human-board-container">
         <p class="gameboard-name" data-en="Defense display" data-pt="Tela de defesa">Defense display</p>
         <div class="gameboard-display">
           <div id="human-board"></div>
@@ -60,7 +60,7 @@
         </div>
       </div>
 
-      <div class="container container--main-big container--board container--cpu-board">
+      <div class="container container--main-big container--centered container--column container--board | battle__cpu-board-container">
         <p class="gameboard-name" data-en="Attack display" data-pt="Tela de ataque">Attack display</p>
         <div class="gameboard-display">
           <div id="cpu-board"></div>
@@ -79,17 +79,17 @@
   </main>
 
   <dialog class="dialog" id="result-modal">
-    <section class="wrapper wrapper--result">
-      <header class="container container--main-small container--result-display">
-        <h1 id="result-title"></h1>
+    <section class="wrapper wrapper--with-gap | result">
+      <header class="container container--main-small container--centered | result__header">
+        <h1 data-en="Result" data-pt="Resultado" id="result-title"></h1>
       </header>
       <div class="container container--character">
         <img class="character" id="result-character" width="240" src="../assets/characters/unknown.jpg">
       </div>
-      <div class="container container--secondary container--sayings">
-        <p class="sayings" id="result-quote">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente exercitationem nihil aperiam.</p>
+      <div class="container container--secondary | result__quote">
+        <p id="result-quote">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente exercitationem nihil aperiam.</p>
       </div>
-      <footer class="container container--main-small container--footer">
+      <footer class="container container--main-small | result__footer">
         <button class="main-button main-button--small" id="see-boards" data-en="See boards" data-pt="Esconder">See boards</button>
         <button class="main-button main-button--small" id="play-again"><span data-en="Play again" data-pt="Jogar novamente">Play again</span></button>
       </footer>

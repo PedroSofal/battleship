@@ -1,6 +1,22 @@
+/* WRAPPER ***********/
+
+.main-menu {
+  grid-auto-flow: row;
+  justify-content: center;
+  justify-items: center;
+  align-content: space-between;
+}
+
 /* LOGO ***********/
 
-.game-title {
+.main-menu__title-container {
+  padding: 2rem;
+  margin-block-start: 2rem;
+  background-color: var(--color-850);
+  z-index: 1;
+}
+
+.main-menu__title {
   margin: 0;
   font-size: var(--fs-900);
   pointer-events: none;
@@ -82,4 +98,14 @@
 
 @keyframes fly {
   100% { transform: translate(-300vw, -5rem) rotateZ(-5deg); }
+}
+
+/* BUTTONS ***********/
+
+.main-menu__buttons {
+  width: 100%;
+  justify-content: space-between;
+  gap: 8rem;
+  margin-block-end: 5rem;
+  z-index: 1;
 }

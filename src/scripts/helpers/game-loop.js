@@ -12,13 +12,14 @@ export default class GameLoop {
 
     GameLoopHelper.roundAftermath(Game.player2, attack);
     GameLoopHelper.preventSquareClick(e.target);
-    Game.nextPlayer();
 
     if (Game.gameOver()) {
       GameLoopHelper.handleGameOver(Game.player1);
       return;
     }
 
+    Game.nextPlayer();
+    
     setTimeout(() => {
       GameLoop.botPlays();
     }, delay);
