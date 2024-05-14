@@ -2,11 +2,17 @@ import GameAudio from './audio.js';
 import Settings from './settings.js';
 
 export default class Radar {
-  static radarLockScreen = document.querySelector('.container--radar-lock-warning');
-  static radarLockFoes = document.querySelectorAll('.radar-lock-foe > path');
-  static countermeasureIndicator = document.querySelector('#countermeasure');
+  static radarLockScreen = null;
+  static radarLockFoes = null;
+  static countermeasureIndicator = null;
 
   static countermeasure = false;
+
+  static queryElements() {
+    Radar.radarLockScreen = document.querySelector('#radar-lock');
+    Radar.radarLockFoes = document.querySelectorAll('#radar-lock-foe > path');
+    Radar.countermeasureIndicator = document.querySelector('#countermeasure-indicator');
+  }
 
   static triggerRadar(attack) {
     Radar.countermeasure = false;
@@ -56,9 +62,13 @@ export default class Radar {
     Radar.countermeasureIndicator.classList.remove('lightUp');
 
     if (result === 'sunk') {
-      const friendIndicators = document.querySelector('.radar-lock-friendly');
+      const friendIndicators = document.querySelector('#radar-lock-friendly');
       const firstFriend = friendIndicators.querySelectorAll('circle:not(.sunken)')[0];
       firstFriend.classList.add('sunken');
     }
+  }
+
+  static init() {
+    Radar.queryElements();
   }
 }

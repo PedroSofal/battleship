@@ -7,6 +7,7 @@ import BoardHelper from './board-helpers.js';
 import { charObjects } from '../factories/characters.js';
 import Save from './save.js';
 import GameLoop from './game-loop.js';
+import Radar from './radar.js';
 
 export default class Game {
   static player1 = null;
@@ -23,7 +24,7 @@ export default class Game {
     Game.root = document.querySelector(':root');
     Game.humanBoard = document.querySelector('#human-board');
     Game.cpuBoard = document.querySelector('#cpu-board');
-    Game.wrapper = document.querySelector('.wrapper--battle');
+    Game.wrapper = document.querySelector('#battle-displays');
     Game.characterQuotes = document.querySelector('#character-quotes');
   }
 
@@ -174,6 +175,7 @@ export default class Game {
     Game.queryElements();
     Game.setPlayers();
     BoardRender.loadBoard(Game.player1);
+    Radar.init();
   }
 
   static init_BATTLE() {
@@ -181,6 +183,7 @@ export default class Game {
     Game.setPlayers();
     BoardRender.loadBoard(Game.player1);
     BoardRender.loadBoard(Game.player2);
+    Radar.init();
 
     const savedGame = Save.retrieveSavedGameData();
     if (savedGame) {

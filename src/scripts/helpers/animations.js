@@ -83,10 +83,6 @@ export default class Animation {
     propeller3,
   ]
 
-  static seaMove1 = document.querySelector('#sea-move1');
-  static seaMove2 = document.querySelector('#sea-move2');
-  static wrapper = document.querySelector('#reaction-wrapper');
-  static characterPhoto = document.querySelector('#character-photo');
   static quoteTimer = null;
   static activeReactions = 0;
 
@@ -110,17 +106,20 @@ export default class Animation {
   }
 
   static displayReaction(html, quote, photo) {
+    const wrapper = document.querySelector('#reaction-wrapper');
+    const characterPhoto = document.querySelector('#character-photo');
+
     Animation.activeReactions++;
-    Animation.characterPhoto.src = photo;
-    Animation.wrapper.style.transitionDuration = `${Settings.getGameSpeed().reactionWrapperSlide}ms`;
-    Animation.wrapper.classList.add('entra');
-    Animation.characterPhoto.classList.add('entra');
+    characterPhoto.src = photo;
+    wrapper.style.transitionDuration = `${Settings.getGameSpeed().reactionWrapperSlide}ms`;
+    wrapper.classList.add('entra');
+    characterPhoto.classList.add('entra');
     Animation.displayQuote(html, quote);
 
     setTimeout(() => {
       if (Animation.activeReactions <= 1) {
-        Animation.wrapper.classList.remove('entra');
-        Animation.characterPhoto.classList.remove('entra');
+        wrapper.classList.remove('entra');
+        characterPhoto.classList.remove('entra');
       }
       Animation.activeReactions--;
     }, Settings.getGameSpeed().reactionSpan);
@@ -176,13 +175,16 @@ export default class Animation {
   }
 
   static moveSea() {
+    const seaMove1 = document.querySelector('#sea-move1');
+    const seaMove2 = document.querySelector('#sea-move2');
+
     function changeSeaOpacity() {
       setTimeout(() => {
-        Animation.seaMove1.style.opacity = 0;
-        Animation.seaMove2.style.opacity = 0;
+        seaMove1.style.opacity = 0;
+        seaMove2.style.opacity = 0;
       }, 300);
-      setTimeout(() => Animation.seaMove1.style.opacity = 1, 600);
-      setTimeout(() => Animation.seaMove2.style.opacity = 1, 900);
+      setTimeout(() => seaMove1.style.opacity = 1, 600);
+      setTimeout(() => seaMove2.style.opacity = 1, 900);
     }
 
     changeSeaOpacity();
