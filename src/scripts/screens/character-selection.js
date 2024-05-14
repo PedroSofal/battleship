@@ -197,6 +197,7 @@ export default class CharSelection {
 
   static init() {
     Save.deleteSavedGameData();
+    GameAudio.liberate();
     CharSelection.loadTitle();
     Navigation.init();
     Settings.init();

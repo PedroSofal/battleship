@@ -11,6 +11,9 @@ import Radar from './radar.js';
 import Result from './result.js';
 
 export default class Game {
+  static enable = false;
+  static waitForLiberation = () => null;
+
   static player1 = null;
   static player2 = null;
   static turn = 'human';
@@ -148,21 +151,25 @@ export default class Game {
     BoardRender.updateBoard(Game.player1);
     BoardRender.updateBoard(Game.player2);
     Game.setSquaresClickListeners();
-    Game.turn = savedGame.nextTurn;
 
-    if (Game.gameOver()) {
-      Result.init();
-      Game.cpuBoard.querySelectorAll('.ship__icon').forEach(ship => {
-        ship.classList.add('revealed');
-      });
-      return;
-    }
+    Game.waitForLiberation = () => {
+      if (Game.gameOver()) {
+        Result.init();
+        Game.cpuBoard.querySelectorAll('.ship__icon').forEach(ship => {
+          ship.classList.add('revealed');
+        });
+        return;
+      }
 
-    if (Game.turn === 'cpu') {
-      GameLoop.botPlays();
-      Game.humanBoard.classList.add('active');
-    } else {
-      Game.cpuBoard.classList.add('active');
+      Game.turn = savedGame.nextTurn;
+      if (savedGame.radarLock) Radar.activateRadarLockAlert();
+  
+      if (Game.turn === 'cpu') {
+        GameLoop.botPlays();
+        Game.humanBoard.classList.add('active');
+      } else {
+        Game.cpuBoard.classList.add('active');
+      }
     }
   }
 
@@ -178,6 +185,11 @@ export default class Game {
     } else {
       return false;
     }
+  }
+
+  static liberate() {
+    Game.enable = true;
+    Game.waitForLiberation();
   }
 
   static init_INFOS() {

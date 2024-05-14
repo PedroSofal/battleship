@@ -92,6 +92,7 @@ export default class DragAndDrop {
       
       DragAndDrop.shipsPlaced++;
       if (DragAndDrop.shipsPlaced === DragAndDrop.fleet.children.length) {
+        DragAndDrop.board.classList.add('active');
         localStorage.setItem('humanShipsPositions', JSON.stringify(DragAndDrop.humanShipsPositions));
         StrategyRoom.confirmBtn.disabled = false;
       }

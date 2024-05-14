@@ -23,21 +23,29 @@ export default class Radar {
   static radarLockAlert(square) {
     if (square.content !== 'water') {
       if (square.content.hits === 1) {
-        setTimeout(() => {
-          GameAudio.playRadarLockInfiniteLoop('start');
-        }, Settings.getGameSpeed().radarLockAlarmDelay);
-        setTimeout(() => {
-          Radar.radarLockScreen.classList.add('lightUp');
-        }, Settings.getGameSpeed().radarLockScreenDelay);
+        Radar.activateRadarLockAlert();
       }
   
       if (square.content.isSunk()) {
-        setTimeout(() => {
-          GameAudio.playRadarLockInfiniteLoop('stop');
-          Radar.radarLockScreen.classList.remove('lightUp');
-      }, Settings.getGameSpeed().sinkRoundDelay);
+        Radar.deactivateRadarLockAlert();
       }
     }
+  }
+
+  static activateRadarLockAlert() {
+    setTimeout(() => {
+      GameAudio.playRadarLockInfiniteLoop('start');
+    }, Settings.getGameSpeed().radarLockAlarmDelay);
+    setTimeout(() => {
+      Radar.radarLockScreen.classList.add('lightUp');
+    }, Settings.getGameSpeed().radarLockScreenDelay);
+  }
+
+  static deactivateRadarLockAlert() {
+    setTimeout(() => {
+      GameAudio.playRadarLockInfiniteLoop('stop');
+      Radar.radarLockScreen.classList.remove('lightUp');
+    }, Settings.getGameSpeed().sinkRoundDelay);
   }
 
   static missileLaunchAlert(result) {

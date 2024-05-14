@@ -22,6 +22,9 @@ import battleSong2 from '../../assets/audio/music/corsairs-studio-kolomna.mp3';
 import creditsSong from '../../assets/audio/music/no-time-to-die-hartzmann.mp3';
 
 export default class GameAudio {
+  static enable = false;
+  static queue = [];
+
   static miss = [miss1, miss2, miss3];
   static hit = [hit1, hit2, hit3];
   static sink = [sink1, sink2];
@@ -39,11 +42,21 @@ export default class GameAudio {
   static currentSong = new Audio();
   static musicVolume = 1;
 
+  static liberate() {
+    GameAudio.enable = true;
+    GameAudio.queue.forEach(audio => audio.play());
+  }
+
   static playSfx(category) {
     const random = Math.floor(Math.random() * category.length);
     const audio = new Audio(category[random]);
     audio.volume = parseFloat(localStorage.getItem('sfx-vol'));
-    audio.play();
+
+    if (GameAudio.enable) {
+      audio.play();
+    } else {
+      GameAudio.queue.push(audio);
+    }
   }
 
   static playRadarLockInfiniteLoop(action) {
@@ -53,7 +66,11 @@ export default class GameAudio {
             GameAudio.radarLockAudio = new Audio(GameAudio.radarLock[0]);
           }
           GameAudio.radarLockAudio.volume = parseFloat(localStorage.getItem('sfx-vol'));
-          GameAudio.radarLockAudio.play();
+          if (GameAudio.enable) {
+            GameAudio.radarLockAudio.play();
+          } else {
+            GameAudio.queue.push(GameAudio.radarLockAudio);
+          }
         }, 1500);
     } else if (action === 'stop') {
         clearInterval(GameAudio.radarLockInterval);
@@ -67,7 +84,11 @@ export default class GameAudio {
   static playMissileAlert(category) {
     const audio = new Audio(category[0]);
     audio.volume = parseFloat(localStorage.getItem('sfx-vol'));
-    audio.play();
+    if (GameAudio.enable) {
+      audio.play();
+    } else {
+      GameAudio.queue.push(audio);
+    }
     setTimeout(() => {
       audio.muted = true;
     }, Settings.getGameSpeed().missileAlertCut);
@@ -83,12 +104,20 @@ export default class GameAudio {
       
       GameAudio.currentSong.src = category[GameAudio.currentSongIndex];
       GameAudio.currentSong.muted = true;
-      GameAudio.currentSong.play();
+      if (GameAudio.enable) {
+        GameAudio.currentSong.play();
+      } else {
+        GameAudio.queue.push(GameAudio.currentSong);
+      }
     });
 
     GameAudio.currentSong.src = category[0];
     GameAudio.currentSong.volume = parseFloat(localStorage.getItem('music-vol'));
-    GameAudio.currentSong.play();
+    if (GameAudio.enable) {
+      GameAudio.currentSong.play();
+    } else {
+      GameAudio.queue.push(GameAudio.currentSong);
+    }
   }
 
   static setMusicVolume(volume) {

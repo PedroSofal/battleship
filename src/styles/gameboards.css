@@ -143,12 +143,12 @@
   to { stroke-dashoffset: 0; }
 }
 
-.container--strategy-board .dashed-border,
-.container--human-board .dashed-border {
+.strategy-room__board-container .dashed-border,
+.battle__human-board-container .dashed-border {
   stroke: var(--color-player);
 }
 
-.container--cpu-board .dashed-border {
+.battle__cpu-board-container .dashed-border {
   stroke: var(--color-cpu);
 }
 

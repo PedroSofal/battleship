@@ -45,7 +45,9 @@ export default class GameLoopHelper {
     BoardRender.updateBoard(Game.player1);
     BoardRender.updateBoard(Game.player2);
     GameLoopHelper.callClickAnimation(attack.className, attackedHtmlSquare);
-    Save.saveRound(player, attack);
+    
+    const isRadarLockAlarmActive = GameAudio.radarLockInterval ? true : false;
+    Save.saveRound(player, attack, isRadarLockAlarmActive);
   }
 
   static updateBattleQuote(attack, attacker, defender) {

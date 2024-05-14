@@ -39,24 +39,24 @@ export default class Battle {
     Battle.activationScreen.close();
     window.removeEventListener('click', Battle.closeActivationScreen);
     window.removeEventListener('keydown', Battle.closeActivationScreen);
-    Battle.playBattleMusic();
+    GameAudio.liberate();
+    Game.liberate();
   }
 
   static playBattleMusic() {
     GameAudio.playMusic(GameAudio.battle);
-    document.body.removeEventListener('mousedown', Battle.playBattleMusic);
   }
 
   static init() {
     Battle.activationScreen.showModal();
     Battle.setEventListeners();
+    Battle.playBattleMusic();
     Game.init_BATTLE();
     Battle.loadTitle();
     Battle.root.style.setProperty('--color-player', charObjects[localStorage.getItem('human-char')].color);
     Battle.root.style.setProperty('--color-player-alpha', charObjects[localStorage.getItem('human-char')].colorAlpha);
     Battle.root.style.setProperty('--color-cpu', charObjects[localStorage.getItem('cpu-char')].color);
     Battle.root.style.setProperty('--color-cpu-alpha', charObjects[localStorage.getItem('cpu-char')].colorAlpha);
-    document.body.addEventListener('mousedown', Battle.playBattleMusic);
     Navigation.init();
     Settings.init();
   }

@@ -98,6 +98,7 @@ export default class StrategyRoom {
 
   static resetFormation() {
     StrategyRoom.strategyBoard.innerHTML = '';
+    StrategyRoom.strategyBoard.classList.remove('active');
     StrategyRoom.fleet.innerHTML = '';
     Game.player1.gameboard.resetGameboard();
     BoardRender.loadBoard(Game.player1);
@@ -134,6 +135,7 @@ export default class StrategyRoom {
 
   static init() {
     Save.deleteSavedGameData();
+    GameAudio.liberate();
     Game.init_INFOS();
     StrategyRoom.loadTitle();
     StrategyRoom.loadFleet();

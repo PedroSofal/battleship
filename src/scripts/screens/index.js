@@ -43,7 +43,7 @@ class MainMenu {
     MainMenu.activationScreen.close();
     window.removeEventListener('click', MainMenu.closeActivationScreen);
     window.removeEventListener('keydown', MainMenu.closeActivationScreen);
-    MainMenu.playMainMenuMusic();
+    GameAudio.liberate();
   }
 
   static verifySavedGame() {
@@ -59,6 +59,7 @@ class MainMenu {
   static init() {
     sessionStorage.clear();
     MainMenu.activationScreen.showModal();
+    MainMenu.playMainMenuMusic();
     Animation.rotatePropeller(MainMenu.propeller1);
     Animation.rotatePropeller(MainMenu.propeller2);
     Animation.moveSea();

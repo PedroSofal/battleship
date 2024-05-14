@@ -13,11 +13,12 @@ export default class Save {
   //   });
   // }
 
-  static saveRound(player, attackedSquare) {
+  static saveRound(player, attackedSquare, isRadarLockAlarmActive) {
     const saveFile = Save.retrieveSavedGameData() ?? Save.saveFileTemplate;
 
     if (player.type === 'human') {
       saveFile.humanBoard.push(attackedSquare.coords);
+      saveFile.radarLock = isRadarLockAlarmActive;
       saveFile.nextTurn = 'human';
     } else {
       saveFile.cpuBoard.push(attackedSquare.coords);
