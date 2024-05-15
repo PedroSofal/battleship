@@ -152,6 +152,7 @@ export default class Game {
     BoardRender.updateBoard(Game.player2);
     Game.setSquaresClickListeners();
     Game.player2.sequence = savedGame.cpuSequence;
+    Radar.updateFriendIndicators(Game.player1);
 
     Game.waitForLiberation = () => {
       if (Game.gameOver()) {

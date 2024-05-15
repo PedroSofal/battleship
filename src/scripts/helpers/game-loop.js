@@ -38,7 +38,7 @@ export default class GameLoop {
     }, Settings.getGameSpeed().triggerRadarDelay);
 
     setTimeout(() => {
-      Radar.resolveRadarAlert(attack.className);
+      Radar.resolveRadarAlert(Game.player1);
       GameLoopHelper.roundAftermath(Game.player1, attack);
       
       if (attack.className === 'hit' || attack.className === 'sunk') {

@@ -63,14 +63,21 @@ export default class Radar {
     Radar.countermeasureIndicator.classList.add('lightUp');
   }
 
-  static resolveRadarAlert(result) {
+  static resolveRadarAlert(player1) {
     Radar.radarLockFoes.forEach(foe => foe.classList.remove('lightUp'));
     Radar.countermeasureIndicator.classList.remove('lightUp');
+    Radar.updateFriendIndicators(player1);
+  }
 
-    if (result === 'sunk') {
-      const friendIndicators = document.querySelector('#radar-lock-friendly');
-      const firstFriend = friendIndicators.querySelectorAll('circle:not(.sunken)')[0];
-      firstFriend.classList.add('sunken');
+  static updateFriendIndicators(player1) {
+    const ships = Object.values(player1.gameboard.ships);
+    const friendIndicators = document.querySelectorAll('#radar-lock-friendly circle');
+    friendIndicators.forEach(indicator => indicator.classList.remove('sunken'));
+
+    for (let i = 0; i < ships.length; i++) {
+      if (ships[i].isSunk()) {
+        friendIndicators[i].classList.add('sunken');
+      }
     }
   }
 
