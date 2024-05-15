@@ -47,7 +47,7 @@ export default class GameLoopHelper {
     GameLoopHelper.callClickAnimation(attack.className, attackedHtmlSquare);
     
     const isRadarLockAlarmActive = GameAudio.radarLockInterval ? true : false;
-    Save.saveRound(player, attack, isRadarLockAlarmActive);
+    Save.saveRound(player, attack, isRadarLockAlarmActive, Game.player2.sequence);
   }
 
   static updateBattleQuote(attack, attacker, defender) {

@@ -101,7 +101,7 @@ export default class AI {
         possibleMoves.push([square.coords[0], square.coords[1] - 1]);
       }
     }
-
+    
     return this.getRandomAdjacency(possibleMoves);
   }
 
