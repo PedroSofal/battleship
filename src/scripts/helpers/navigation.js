@@ -77,7 +77,10 @@ export default class Navigation {
   }
   
   static toCharacterSelection() {
-    window.location.href = 'character-selection.html';
+    document.querySelector('.menu-bg').classList.add('transition');
+    setTimeout(() => {
+      window.location.href = 'character-selection.html';
+    }, 1000);
   }
   
   static backToCharacterSelection() {

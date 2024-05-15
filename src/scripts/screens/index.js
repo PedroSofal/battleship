@@ -15,6 +15,7 @@ import Navigation from '../helpers/navigation.js';
 import Animation from '../helpers/animations.js';
 
 class MainMenu {
+  static content = document.querySelector('#content');
   static activationScreen = document.querySelector('#activation-screen');
   static continueButton = document.querySelector('#continue');
   static newGameButton = document.querySelector('#new-game');
@@ -41,9 +42,10 @@ class MainMenu {
 
   static closeActivationScreen() {
     MainMenu.activationScreen.close();
+    MainMenu.content.classList.remove('blurred');
+    GameAudio.liberate();
     window.removeEventListener('click', MainMenu.closeActivationScreen);
     window.removeEventListener('keydown', MainMenu.closeActivationScreen);
-    GameAudio.liberate();
   }
 
   static verifySavedGame() {

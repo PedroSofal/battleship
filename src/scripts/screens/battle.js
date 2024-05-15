@@ -22,6 +22,8 @@ import Navigation from '../helpers/navigation.js';
 
 export default class Battle {
   static root = document.querySelector(':root');
+  static content = document.querySelector('#content');
+  static displays = document.querySelector('#battle-displays');
   static activationScreen = document.querySelector('#activation-screen');
 
   static setEventListeners() {
@@ -37,10 +39,12 @@ export default class Battle {
 
   static closeActivationScreen() {
     Battle.activationScreen.close();
-    window.removeEventListener('click', Battle.closeActivationScreen);
-    window.removeEventListener('keydown', Battle.closeActivationScreen);
+    Battle.content.classList.remove('blurred');
+    Battle.displays.classList.remove('invisible');
     GameAudio.liberate();
     Game.liberate();
+    window.removeEventListener('click', Battle.closeActivationScreen);
+    window.removeEventListener('keydown', Battle.closeActivationScreen);
   }
 
   static playBattleMusic() {

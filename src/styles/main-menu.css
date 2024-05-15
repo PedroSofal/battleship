@@ -33,6 +33,13 @@
   border-image-source: linear-gradient(#d7d8f0, #3f5192);
   margin-block-start: 6rem;
   overflow: hidden;
+  transition: all 1s ease-in;
+}
+
+.menu-bg.transition {
+  filter: blur(10px);
+  transform: scale(1.3);
+  opacity: 0;
 }
 
 .menu-bg * {

@@ -4,6 +4,7 @@
   grid-template-columns: 150px 650px 650px 150px;
   grid-template-rows: 150px 500px;
   margin-top: 1rem;
+  transition: all 1.2s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .reaction {
