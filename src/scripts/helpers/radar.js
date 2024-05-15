@@ -42,10 +42,8 @@ export default class Radar {
   }
 
   static deactivateRadarLockAlert() {
-    setTimeout(() => {
-      GameAudio.playRadarLockInfiniteLoop('stop');
-      Radar.radarLockScreen.classList.remove('lightUp');
-    }, Settings.getGameSpeed().sinkRoundDelay);
+    GameAudio.playRadarLockInfiniteLoop('stop');
+    Radar.radarLockScreen.classList.remove('lightUp');
   }
 
   static missileLaunchAlert(result) {

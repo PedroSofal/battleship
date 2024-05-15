@@ -6,23 +6,17 @@ export default class Save {
     cpuShipsPositions: [],
   }
 
-  // static setEventListeners() {
-  //   window.addEventListener('beforeunload', function(e) {
-  //     e.preventDefault();
-  //     e.returnValue = '';
-  //   });
-  // }
-
-  static saveRound(player, attackedSquare, isRadarLockAlarmActive, cpuSequence) {
+  static saveRound(player, attackedSquare, isRadarLockAlarmActive) {
     const saveFile = Save.retrieveSavedGameData() ?? Save.saveFileTemplate;
-    saveFile.radarLock = isRadarLockAlarmActive;
-    saveFile.cpuSequence = cpuSequence;
+
+    saveFile.radarLock = isRadarLockAlarmActive
 
     if (player.type === 'human') {
       saveFile.humanBoard.push(attackedSquare.coords);
       saveFile.nextTurn = 'human';
     } else {
       saveFile.cpuBoard.push(attackedSquare.coords);
+      saveFile.cpuSequence = player.sequence;
       saveFile.nextTurn = 'cpu';
     }
 
