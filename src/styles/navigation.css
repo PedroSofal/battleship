@@ -1,20 +1,28 @@
 /* WRAPPER ***********/
 
 .confirm-nav {
-  grid-template-rows: 1fr 130px;
-  width: 800px;
+  display: grid;
+  gap: var(--main-gap-size);
+  grid-template-rows: auto auto;
+  width: min(50rem, 80vw);
 }
 
 /* CONTAINERS ***********/
 
-.confirm-nav__footer {
-  justify-content: space-evenly;
-  align-items: center;
+.confirm-nav__prompt {
+  padding: 1.75rem;
+  font-size: var(--fs-500);
+  line-height: 1.75rem;
 }
 
-.confirm-nav__prompt {
-  padding: 1.4rem;
-  line-height: 1.4rem;
+.confirm-nav__footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  row-gap: 3rem;
+  padding: 3rem 2rem;
 }
 
 /* OTHER ***********/
@@ -22,7 +30,7 @@
 .nav {
   display: none;
   position: absolute;
-  top: 3rem;
+  top: min(3.75rem, 7vmin);
 }
 
 .nav.opened {
@@ -33,9 +41,10 @@
   display: none;
   list-style: none;
   font-family: var(--sec-ff);
+  font-size: var(--fs-600);
   background-color: var(--color-900);
-  margin-block: 0.2rem;
-  padding: 0.5rem 1rem;
+  margin-block: 0.25rem;
+  padding: 0.625rem 1.25rem;
   cursor: pointer;
 }
 

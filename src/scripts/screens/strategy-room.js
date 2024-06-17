@@ -2,7 +2,6 @@ import headerHTML from '../../html/components/header.html';
 document.querySelector('header').innerHTML += headerHTML;
 
 import '../../styles/style.css';
-import '../../styles/layouts.css';
 import '../../styles/buttons.css';
 import '../../styles/strategy-room.css';
 import '../../styles/header.css';
@@ -23,10 +22,14 @@ import Quote from '../helpers/quote.js';
 import Navigation from '../helpers/navigation.js';
 import Save from '../helpers/save.js';
 
+function isTouchEnabled() {
+  return window.matchMedia('(pointer: coarse)').matches ? true : false;
+}
+
 export default class StrategyRoom {
   static root = document.querySelector(':root');
   static fleet = document.querySelector('#fleet');
-  static strategyBoard = document.querySelector('#strategy-board');
+  static strategyBoard = document.querySelector('#human-board');
   static characterName = document.querySelector('#character-name');
   static characterPhoto = document.querySelector('#character-photo');
   static characterQuotes = document.querySelector('#character-quotes');
@@ -34,6 +37,10 @@ export default class StrategyRoom {
   static resetBtn = document.querySelector('#resetFormation');
   static xAxisBtn = document.querySelector('#x-axis-button');
   static yAxisBtn = document.querySelector('#y-axis-button');
+  static instructions = document.querySelector('.instructions');
+  static instructionsPara = document.querySelector('.instructions__para');
+  static openInstructionsButton = document.querySelector('#open-instructions');
+  static closeInstructionsButton = document.querySelector('#close-instructions');
 
   static character = null;
 
@@ -42,6 +49,8 @@ export default class StrategyRoom {
     StrategyRoom.resetBtn.addEventListener('click', StrategyRoom.resetFormation);
     StrategyRoom.xAxisBtn.addEventListener('click', () => DragAndDrop.changeAxis('x'));
     StrategyRoom.yAxisBtn.addEventListener('click', () => DragAndDrop.changeAxis('z'));
+    StrategyRoom.closeInstructionsButton.addEventListener('click', StrategyRoom.closeInstructions)
+    StrategyRoom.openInstructionsButton.addEventListener('click', StrategyRoom.openInstructions)
   }
 
   static loadTitle() {
@@ -68,8 +77,8 @@ export default class StrategyRoom {
       shipName.setAttribute('data-pt', shipObject.name.pt);
       shipDrag.setAttribute('draggable', 'true');
       shipIcon.id = shipObject.name.en;
-      shipIcon.style.background = `url(${shipObject.src}) no-repeat center`;
-      shipIcon.style.mask = `url(${shipObject.src}) no-repeat center`;
+      shipIcon.style.backgroundImage = `url(${shipObject.src})`;
+      shipIcon.style.maskImage = `url(${shipObject.src})`;
       
       shipDrag.appendChild(shipIcon);
       shipYard.appendChild(shipDrag);
@@ -92,11 +101,29 @@ export default class StrategyRoom {
     StrategyRoom.root.style.setProperty('--color-cpu', charObjects[localStorage.getItem('cpu-char')].color);
   }
 
-  static loadBoard() {
-    StrategyRoom.strategyBoard.appendChild(BoardRender.getHumanBoard());
+  static loadInstructions() {
+    let instructions;
+    if (isTouchEnabled()) {
+      instructions =
+      `
+        <span data-en="Touch the board to change the axis" data-pt="Toque no tabuleiro para alternar os eixos">Touch the board to change the axis</span>
+      `
+    } else {
+      instructions =
+      `
+        <span data-en="Change the axis with " data-pt="Alterne os eixos com ">Change the axis with </span>
+        <button class="key-button" id="y-axis-button">Z</button>
+        <span data-en=" and " data-pt=" e "> and </span>
+        <button class="key-button" id="x-axis-button">X</button>
+      `
+    }
+
+    StrategyRoom.instructionsPara.innerHTML = instructions;
   }
 
   static resetFormation() {
+    if (DragAndDrop.shipsPlaced === 0) return;
+
     StrategyRoom.strategyBoard.innerHTML = '';
     StrategyRoom.strategyBoard.classList.remove('active');
     StrategyRoom.fleet.innerHTML = '';
@@ -104,11 +131,11 @@ export default class StrategyRoom {
     BoardRender.loadBoard(Game.player1);
 
     StrategyRoom.loadFleet();
-    StrategyRoom.loadBoard();
     Settings.loadLanguageSettings();
     Settings.setLanguageDataAttributes(StrategyRoom.characterQuotes, Quote.getStrategyQuote('reset', StrategyRoom.character.name));
     Animation.displayQuote(StrategyRoom.characterQuotes, StrategyRoom.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
     StrategyRoom.confirmBtn.disabled = true;
+    StrategyRoom.resetBtn.disabled = true;
     DragAndDrop.init();
   }
 
@@ -119,6 +146,14 @@ export default class StrategyRoom {
     const charName = StrategyRoom.character.name;
     Settings.setLanguageDataAttributes(StrategyRoom.characterQuotes, Quote.getStrategyQuote('placeShip', charName, ship));
     Animation.displayQuote(StrategyRoom.characterQuotes, StrategyRoom.characterQuotes.getAttribute(`data-${localStorage.getItem('lang')}`));
+  }
+
+  static closeInstructions() {
+    StrategyRoom.instructions.classList.add('hidden');
+  }
+
+  static openInstructions() {
+    StrategyRoom.instructions.classList.remove('hidden');
   }
 
   static playStrategyRoomMusic() {
@@ -139,7 +174,7 @@ export default class StrategyRoom {
     Game.init_INFOS();
     StrategyRoom.loadTitle();
     StrategyRoom.loadFleet();
-    StrategyRoom.loadBoard();
+    StrategyRoom.loadInstructions();
     Navigation.init();
     Settings.init();
     StrategyRoom.loadCharacter();

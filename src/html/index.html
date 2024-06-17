@@ -9,28 +9,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body style="margin: 0; padding: 0;">
-  <div id="content" class="content blurred" style="display: none;">
-    <main class="wrapper wrapper--without-gap wrapper--fullscreen | main-menu">
-      <div class="container silver-border | main-menu__title-container">
+  <div id="content" class="blurred | content content--main-menu" style="display: none;">
+    <main class="main-menu">
+      <div class="silver-border | main-menu__title-container">
         <h1 class="main-menu__title">BATTLESHIP</h1>
       </div>
-      <figure class="menu-bg">
+      <figure class="silver-border | menu-bg">
         <div id="sky"></div>
-        <img id="clouds" width="1920" height="1080" src="../assets/backgrounds/clouds.png">
-        <img id="sea-base" width="1920" height="1080" src="../assets/backgrounds/sea-base.png">
-        <img id="ship" width="1920" height="1080" src="../assets/backgrounds/ship.png">
-        <img id="sea-move1" width="1920" height="1080" src="../assets/backgrounds/sea-move1.png">
-        <img id="sea-move2" width="1920" height="1080" src="../assets/backgrounds/sea-move2.png">
+        <img id="clouds" src="../assets/backgrounds/clouds.png">
+        <img id="sea-base" src="../assets/backgrounds/sea-base.png">
+        <img id="ship" src="../assets/backgrounds/ship.png">
+        <img id="sea-move1" src="../assets/backgrounds/sea-move1.png">
+        <img id="sea-move2" src="../assets/backgrounds/sea-move2.png">
         <div class="helicopter" id="helicopter1">
-          <img width="322" height="103" src="../assets/backgrounds/helicopter.png">
-          <img class="propeller" width="322" height="103" src="../assets/backgrounds/propeller2.png">
+          <img src="../assets/backgrounds/helicopter.png">
+          <img class="propeller" src="../assets/backgrounds/propeller2.png">
         </div>
         <div class="helicopter" id="helicopter2">
-          <img width="322" height="103" src="../assets/backgrounds/helicopter.png">
-          <img class="propeller" width="322" height="103" src="../assets/backgrounds/propeller2.png">
+          <img src="../assets/backgrounds/helicopter.png">
+          <img class="propeller" src="../assets/backgrounds/propeller2.png">
         </div>
       </figure>
-      <section class="container | main-menu__buttons">
+      <section class="main-menu__buttons">
         <button class="main-button" id="continue" data-en="Continue" data-pt="Continuar" disabled>Continue</button>
         <button class="main-button" id="new-game" data-en="New Game" data-pt="Novo Jogo">New Game</button>
         <button class="main-button" id="settings" data-en="Settings" data-pt="Opções">Settings</button>
@@ -38,9 +38,9 @@
     </main>
   </div>
 
-  <div id="loader" class="loader" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4rem; background-color: #0C0C1C; height: 100vh;">
-    <img class="loader__img" src="../assets/backgrounds/bg3.jpg" width="896" height="512">
-    <p class="loader__para" data-en="Loading..." data-pt="Carregando...">Loading...</p>
+  <div id="loader" class="loader" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: clamp(1rem, 5vh, 5rem); height: 100svh; background-color: #0C0C1C; overflow: hidden;">
+    <img class="loader__img" src="../assets/backgrounds/bg3.jpg" style="width: clamp(20rem, 90vmin, 56rem);">
+    <p class="loader__para" data-en="Loading..." data-pt="Carregando..." style="font-size: clamp(1rem, 2vmin, 1.6rem);">Loading...</p>
   </div>
 </body>
 </html>

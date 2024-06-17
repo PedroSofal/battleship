@@ -5,7 +5,6 @@ document.querySelector('#content').innerHTML += activationScreenHTML;
 
 import '../../styles/style.css';
 import '../../styles/battle.css';
-import '../../styles/layouts.css';
 import '../../styles/buttons.css';
 import '../../styles/header.css';
 import '../../styles/options.css';

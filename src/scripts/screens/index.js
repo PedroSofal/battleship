@@ -3,7 +3,6 @@ document.querySelector('#content').innerHTML += activationScreenHTML;
 
 import '../../styles/style.css';
 import '../../styles/main-menu.css';
-import '../../styles/layouts.css';
 import '../../styles/buttons.css';
 import '../../styles/options.css';
 import '../../styles/dialogs.css';
@@ -37,6 +36,7 @@ class MainMenu {
     });
 
     window.addEventListener('click', MainMenu.closeActivationScreen);
+    window.addEventListener('touchend', MainMenu.closeActivationScreen);
     window.addEventListener('keydown', MainMenu.closeActivationScreen);
   }
 
@@ -60,12 +60,12 @@ class MainMenu {
 
   static init() {
     sessionStorage.clear();
+    Settings.init();
     MainMenu.activationScreen.showModal();
     MainMenu.playMainMenuMusic();
     Animation.rotatePropeller(MainMenu.propeller1);
     Animation.rotatePropeller(MainMenu.propeller2);
     Animation.moveSea();
-    Settings.init();
     MainMenu.verifySavedGame();
     MainMenu.setEventListeners();
   }

@@ -3,7 +3,6 @@ document.querySelector('header').innerHTML += headerHTML;
 
 import '../../styles/style.css';
 import '../../styles/character-selection.css';
-import '../../styles/layouts.css';
 import '../../styles/buttons.css';
 import '../../styles/header.css';
 import '../../styles/options.css';
@@ -26,7 +25,7 @@ export default class CharSelection {
   static charOptionsList = document.querySelector('#character-options-list');
   static opponentsContainer = document.querySelector('.opponents');
   static opponents = document.querySelectorAll('.opponents__player');
-  static status = document.querySelector('.opponents__status');
+  static status = document.querySelector('#status');
   static humanPreview = document.querySelector('#human-preview');
   static cpuPreview = document.querySelector('#cpu-preview');
   static placeShipsBtn = document.querySelector('#place-ships');

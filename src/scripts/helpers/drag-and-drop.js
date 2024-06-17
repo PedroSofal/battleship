@@ -14,12 +14,13 @@ export default class DragAndDrop {
   static humanShipsPositions = {};
 
   static queryElements() {
-    DragAndDrop.board = document.querySelector('#strategy-board');
+    DragAndDrop.board = document.querySelector('#human-board');
     DragAndDrop.fleet = document.querySelector('#fleet');
   }
 
   static setEventListeners() {
     window.addEventListener('keypress', (e) => DragAndDrop.changeAxis(e.key));
+    DragAndDrop.board.addEventListener('touchend', () => DragAndDrop.changeAxis());
     DragAndDrop.addFleetEventListeners();
     DragAndDrop.addBoardEventListeners();
   }
@@ -91,6 +92,8 @@ export default class DragAndDrop {
       e.target.appendChild(draggingShip);
       
       DragAndDrop.shipsPlaced++;
+      StrategyRoom.resetBtn.disabled = false;
+
       if (DragAndDrop.shipsPlaced === DragAndDrop.fleet.children.length) {
         DragAndDrop.board.classList.add('active');
         localStorage.setItem('humanShipsPositions', JSON.stringify(DragAndDrop.humanShipsPositions));
@@ -137,14 +140,21 @@ export default class DragAndDrop {
   }
 
   static changeAxis(key) {
-    if (key === 'x') {
+    function setAxisToX() {
       DragAndDrop.axis = 'row';
       DragAndDrop.board.setAttribute('data-activeAxis', 'x');
     }
 
-    if (key === 'z') {
+    function setAxisToY() {
       DragAndDrop.axis = 'col';
       DragAndDrop.board.setAttribute('data-activeAxis', 'y');
+    }
+
+    if (key) {
+      if (key === 'x') setAxisToX();
+      if (key === 'z') setAxisToY();
+    } else {
+      DragAndDrop.axis === 'col' ? setAxisToX() : setAxisToY();
     }
   }
 
@@ -159,7 +169,7 @@ export default class DragAndDrop {
 
   static init() {
     DragAndDrop.queryElements();
-    DragAndDrop.grid = BoardHelper.objectsGridFromHtmlSquares(DragAndDrop.board.children);
+    DragAndDrop.grid = BoardHelper.objectsGridFromHTMLBoard(DragAndDrop.board);
     DragAndDrop.shipsPlaced = 0;
     DragAndDrop.setEventListeners();
   }

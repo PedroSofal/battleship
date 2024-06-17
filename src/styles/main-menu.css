@@ -1,17 +1,19 @@
 /* WRAPPER ***********/
 
 .main-menu {
+  display: grid;
   grid-auto-flow: row;
   justify-content: center;
   justify-items: center;
   align-content: space-between;
+  height: min(100svh, 67.5rem);
 }
 
 /* LOGO ***********/
 
 .main-menu__title-container {
-  padding: 2rem;
-  margin-block-start: 2rem;
+  padding: clamp(0.6rem, 3.5vmin, 2.4rem) clamp(1rem, 4.5vmin, 3rem);
+  margin-block-start: clamp(1rem, 4.5vh, 3rem);
   background-color: var(--color-850);
   z-index: 1;
 }
@@ -25,15 +27,21 @@
 /* ANIMATED BG ***********/
 
 .menu-bg {
+  --distance-from-top: min(13vh, 15vw, 8.5rem);
+
+  display: flex;
+  justify-content: center;
   position: absolute;
-  width: calc(100% + 8px);
-  height: 84vh;
-  border: 4px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(#d7d8f0, #3f5192);
-  margin-block-start: 6rem;
+  width: min(215vh, 135vw);
+  min-width: 18rem;
+  max-width: calc(120rem + var(--silver-border-width) * 2);
+  height: min(84vh, 60vw);
+  min-height: 12rem;
+  max-height: 57rem;
+  margin-block-start: var(--distance-from-top);
   overflow: hidden;
-  transition: all 1s ease-in;
+  container-type: size;
+  /* transition: all 1s ease-in; */
 }
 
 .menu-bg.transition {
@@ -43,24 +51,31 @@
 }
 
 .menu-bg * {
-  margin-block-start: -8rem;
   position: absolute;
 }
 
+.menu-bg > *:not(.helicopter) {
+  width: min(215vh, 135vw, calc(120rem + var(--silver-border-width) * 2));
+  min-width: 22rem;
+  margin-block-start: max(calc(var(--distance-from-top) - 34vh), -9.5rem);
+}
+
 #sky {
-  width: 3840px;
-  height: 1080px;
+  width: 200cqw;
+  height: calc(min(107.5cqh, 42.2cqw) - var(--distance-from-top));
   background-image: url(../assets/backgrounds/sky.jpg);
+  background-position-y: bottom;
+  background-size: contain;
   animation: move-sky 80s steps(240) infinite;
 }
 
 @keyframes move-sky {
-  to { transform: translateX(-50%); }
+  to { transform: translateX(-25%); }
 }
 
 
 #clouds {
-  transform: translateX(100%);
+  transform: translateX(100cqw);
   animation: move-clouds 60s steps(60) infinite;
 }
 
@@ -83,7 +98,7 @@
     transform: none;
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(max(-1cqh, 0.25rem));
   }
 }
 
@@ -93,7 +108,7 @@
 
 @keyframes sail {
   0%, 100% {
-    transform: translate(5px, 10px) rotateZ(1deg);
+    transform: translate(max(0.5cqw, 0.1875rem), max(2cqh, 0.25rem)) rotateZ(1deg);
   }
   50% {
     transform: none;
@@ -102,30 +117,138 @@
 
 .helicopter {
   animation: fly 15s linear 2s infinite;
+  margin-block-start: var(--distance-from-top);
+}
+
+.helicopter > img {
+  width: clamp(6rem, 50cqmin, 20.125rem);
+  height: auto;
 }
 
 #helicopter1 {
-  top: 26rem;
+  top: 0cqh;
   right: 0;
   transform: rotateZ(-5deg);
 }
 
 #helicopter2 {
-  top: 28rem;
-  right: -10rem;
-  transform: translateX(5rem) scale(0.6) rotateZ(-5deg);
+  top: 15cqb;
+  right: -12cqw;
+  transform: translateX(10cqw) scale(0.6) rotateZ(-5deg);
 }
 
 @keyframes fly {
-  100% { transform: translate(-300vw, -5rem) rotateZ(-5deg); }
+  100% { transform: translateX(-300vw) rotateZ(-5deg); }
 }
 
 /* BUTTONS ***********/
 
 .main-menu__buttons {
-  width: 100%;
+  display: flex;
   justify-content: space-between;
-  gap: 8rem;
-  margin-block-end: 5rem;
+  column-gap: min(12vw, 10rem);
+  row-gap: min(6vh, 4rem);
+  width: 100%;
+  margin-block-end: min(max(calc(-20rem + 42vh), 8vh), 8.5rem);
   z-index: 1;
+}
+
+/* MEDIA QUERIES ***********/
+
+@media (max-aspect-ratio: 11/8) {
+  .menu-bg {
+    height: max(60vh, min(65vh, 52vw));
+  }
+
+  .menu-bg > *:not(.helicopter) {
+    margin-block-start: max(calc(var(--distance-from-top) - 24vw + 4vh), -9.5rem);
+  }
+
+  #sky {
+    height: calc(min(max(44cqw, 109cqh), max(92cqh, 46cqw)) - var(--distance-from-top));
+  }
+}
+
+@media (max-aspect-ratio: 7/8) {
+  .main-menu {
+    align-content: center;
+    row-gap: 5vh;
+  }
+
+  .main-menu > * {
+    margin: 0;
+  }
+
+  .menu-bg {
+    position: relative;
+    width: 100vw;
+    height: min(40vh, 65vw);
+    border-inline: 0 !important;
+  }
+
+  .menu-bg > *:not(.helicopter) {
+    margin-block-start: min(calc(var(--distance-from-top) - 34vw + 8vh), -6vw);
+  }
+
+  .main-menu__buttons {
+    flex-direction: column;
+  }
+  
+  #helicopter1 {
+    top: -10cqh;
+  }
+  
+  #helicopter2 {
+    top: 10cqb;
+  }
+
+  #sky {
+    height: calc(63cqw - var(--distance-from-top));
+  }
+}
+
+@media (min-aspect-ratio: 3/1) {
+  .main-menu {
+    grid-template-columns: auto auto;
+    align-items: center;
+    align-content: center;
+    column-gap: 6vw;
+  }
+
+  .menu-bg {
+    --distance-from-top: min(-8vh, 15vw);
+    grid-column: 1 / 2;
+    position: relative;
+    width: min(200vh, 55vw);
+    height: min(75vh, 60vw);
+  }
+
+  .menu-bg > *:not(.helicopter) {
+    /* margin-block-start: calc(var(--distance-from-top) + 0rem - min(25vh, 14vw)); */
+    margin-block-start: calc(var(--distance-from-top) - 10vh);
+  }
+
+  .main-menu__title-container {
+    display: flex;
+    margin: 0;
+  }
+
+  .main-menu__buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+    margin: 0;
+  }
+
+  #helicopter1 {
+    top: 30cqh;
+  }
+
+  #helicopter2 {
+    top: 50cqh;
+  }
+
+  #sky {
+    height: calc(min(92cqh, 42cqw) - var(--distance-from-top));
+  }
 }

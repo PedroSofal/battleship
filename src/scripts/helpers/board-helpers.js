@@ -1,18 +1,19 @@
 export default class BoardHelper {
-  static objectsGridFromHtmlSquares(squares) {
+  static objectsGridFromHTMLBoard(board) {
     const grid = [];
-    const matrix = Array.from(squares).map(row => Array.from(row.children)).flat();
+    const rows = board.children;
 
-    for (let i = 0; i < matrix.length; i++) {
-      const row = Array.from(matrix[i].children);
+    for (let i = 0; i < rows.length; i++) {
+      const cols = rows[i].children;
       grid.push([]);
-      for (let j = 0; j < row.length; j++) {
+      for (let j = 0; j < cols.length; j++) {
         grid[i].push({
           coords: [i, j],
-          htmlElement: row[j],
+          htmlElement: cols[j],
         });
       }
     }
+
     return grid;
   }
 
@@ -34,9 +35,9 @@ export default class BoardHelper {
   }
 
   static querySquareByCoords(board, coords) {
-    const grid = BoardHelper.objectsGridFromHtmlSquares([board]);
+    const grid = BoardHelper.objectsGridFromHTMLBoard(board);
     const row = coords[0];
     const col = coords[1];
-    return grid[0][row].htmlElement.children[col];
+    return grid[row][col].htmlElement;
   }
 }

@@ -1,36 +1,53 @@
 /* GAMEBOARDS STRUCTURE ***********/
 
-.gameboard-name {
-  align-self: flex-start;
-  font-size: var(--fs-300);
+.display {
+  --rows: 10;
+  --cols: 10;
+  --board-border: 0.2em;
+  --board-padding: 0.3em;
+  --board-width: calc(var(--square-size) * var(--cols) + calc(calc(var(--board-border) + var(--board-padding)) * 2));
+  --board-height: calc(var(--square-size) * var(--rows) + calc(calc(var(--board-border) + var(--board-padding)) * 2));
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6em;
+  padding: clamp(1em, min(5vh, 3vw), 2.5em);
 }
 
-.gameboard-display {
+.display__name {
+  align-self: flex-start;
+  font-size: var(--fs-small);
+}
+
+.display__gameboard {
   position: relative;
-  min-width: 520px;
-  min-height: 520px;
+  min-width: var(--board-width);
+  min-height: var(--board-height);
+  border-width: var(--board-border);
+  border-style: solid;
+  border-color: var(--color-200);
+  padding: var(--board-padding);
   background-color: var(--color-900);
   overflow: hidden;
-  border: 4px solid;
-  border-color: var(--color-200);
-  padding: 6px;
 }
 
-.gameboard-display:hover {
+.display__gameboard:hover {
   border-image-slice: 1;
   border-image-source: linear-gradient(#d7d8f0, #3f5192);
 }
 
-.gameboard-display > * {
+.display__gameboard > * {
   position: absolute;
 }
 
-.board {
+.display__grid {
   display: grid;
-  grid-template-rows: repeat(10, 50px);
+  grid-template-rows: repeat(var(--rows), var(--square-size));
 }
 
-.human-board {
+.display__grid--human {
   background: radial-gradient(
     var(--color-player-alpha),
     transparent
@@ -39,7 +56,7 @@
 
 .row {
   display: grid;
-  grid-template-columns: repeat(10, 50px);
+  grid-template-columns: repeat(var(--cols), var(--square-size));
 }
 
 /* SQUARES ***********/
@@ -51,19 +68,19 @@
   background-size: 100% 100%;
   outline-width: 1px;
   outline-style: solid;
-  outline-offset: -3px;
+  outline-offset: -0.15rem;
 }
 
-.human-board .square {
+.display__grid--human .square {
   outline-color: var(--color-player);
 }
 
-.cpu-board .square {
+.display__grid--cpu .square {
   outline-color: var(--color-cpu);
   cursor: crosshair;
 }
 
-.cpu-board .square:not(.occupied):not(.miss):not(.hit):not(.close):not(.sunk):hover {
+.display__grid--cpu .square:not(.occupied):not(.miss):not(.hit):not(.close):not(.sunk):hover {
   /* Hover untouched squares */
   background-color: var(--color-cpu-alpha);
 }
@@ -82,18 +99,18 @@
 
 .explosion {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: var(--square-size);
+  height: var(--square-size);
   z-index: 1;
 }
 
 /* Strategy Board */
 
-#strategy-board .square:not(.occupied) {
+.display--strategy #human-board .square:not(.occupied) {
   position: relative;
 }
 
-#strategy-board .square:not(.occupied)::after {
+.display--strategy #human-board .square:not(.occupied)::after {
   content: '~~';
   color: var(--color-player-alpha);
   font-family: var(--sec-ff);
@@ -106,7 +123,7 @@
   pointer-events: none;
 }
 
-#strategy-board[data-activeAxis=x] .square:not(.occupied)::after {
+.display--strategy #human-board[data-activeAxis=x] .square:not(.occupied)::after {
   animation: x-axis 700ms infinite steps(3);
 }
 
@@ -115,7 +132,7 @@
   to { transform: translateX(100%); }
 }
 
-#strategy-board[data-activeAxis=y] .square:not(.occupied)::after {
+.display--strategy #human-board[data-activeAxis=y] .square:not(.occupied)::after {
   animation: y-axis 600ms infinite steps(3);
 }
 
@@ -128,10 +145,18 @@
 
 /* Border */
 
+.display__gameboard svg {
+  width: calc(var(--square-size) * var(--rows));
+  height: calc(var(--square-size) * var(--cols));
+}
+
 .dashed-border {
-  stroke-width: 5;
-  stroke-dasharray: 250 250;
-  stroke-dashoffset: 130;
+  --spin-dasharray: calc(var(--square-size) * var(--rows));
+  --static-dasharray: calc(var(--spin-dasharray) / 2);
+
+  stroke-width: 5px;
+  stroke-dasharray: var(--static-dasharray) var(--static-dasharray);
+  stroke-dashoffset: calc(var(--spin-dasharray) / 4);
 }
 
 .active ~ svg .dashed-border {
@@ -139,21 +164,17 @@
 }
 
 @keyframes stroke-spin {
-  from { stroke-dashoffset: 500; }
+  from { stroke-dashoffset: var(--spin-dasharray); }
   to { stroke-dashoffset: 0; }
 }
 
-.strategy-room__board-container .dashed-border,
-.battle__human-board-container .dashed-border {
+.display--strategy .dashed-border,
+.display--defense .dashed-border {
   stroke: var(--color-player);
 }
 
-.battle__cpu-board-container .dashed-border {
+.display--attack .dashed-border {
   stroke: var(--color-cpu);
-}
-
-.not-clickable {
-  pointer-events: none;
 }
 
 /* Radar */

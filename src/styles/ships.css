@@ -1,19 +1,21 @@
 .ship {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 4cqmin;
 }
 
 .ship__name {
-  padding-left: 0.8rem;
-  font-size: var(--fs-300);
+  align-self: start;
+  font-size: var(--fs-small);
   text-transform: capitalize;
 }
 
 .ship__yard {
-  padding: 0.8rem;
-  height: calc(50px + 1.6rem);
-  border-bottom: 2px solid var(--color-100);
+  --ship-yard-padding: 6cqmin;
+  height: calc(var(--square-size) + var(--ship-yard-padding) * 2);
+  padding: var(--ship-yard-padding);
+  border-bottom: max(1px, 1cqmin) solid var(--color-100);
+  font-size: var(--fs-normal);
   background-color: var(--color-900);
 }
 
@@ -22,28 +24,34 @@
 }
 
 .ship__icon {
-  height: 50px;
-  transform-origin: 25px 25px;
+  height: var(--square-size);
+  background-size: contain;
+  mask-size: contain;
+  background-position: center;
+  mask-position: center;
+  background-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  transform-origin: calc(var(--square-size) / 2) calc(var(--square-size) / 2);
 }
 
 .ship__icon#carrier {
-  width: 250px;
+  width: calc(var(--square-size) * 5);
 }
 
 .ship__icon#battleship {
-  width: 200px;
+  width: calc(var(--square-size) * 4);
 }
 
 .ship__icon#cruiser {
-  width: 150px;
+  width: calc(var(--square-size) * 3);
 }
 
 .ship__icon#submarine {
-  width: 150px;
+  width: calc(var(--square-size) * 3);
 }
 
 .ship__icon#destroyer {
-  width: 100px;
+  width: calc(var(--square-size) * 2);
 }
 
 /* DRAG AND DROP ***********/
@@ -80,17 +88,17 @@
 
 /* SHIPS ON GAMEBOARD ***********/
 
-#human-board .ship__icon,
-#cpu-board .ship__icon {
+.display--attack .ship__icon,
+.display--defense .ship__icon {
   position: absolute;
 }
 
-.cpu-board .ship__icon {
+.display__grid--cpu .ship__icon {
   visibility: hidden;
   opacity: 0;
 }
 
-.cpu-board .ship__icon:not(sunken).revealed {
+.display__grid--cpu .ship__icon:not(sunken).revealed {
   visibility: visible;
   opacity: 1;
   transition: opacity 1s ease-in-out;

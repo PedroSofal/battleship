@@ -48,8 +48,6 @@ export default class Game {
       backendBoard.placeShip(row, col, axis, ship);
       Game.renderShipIcons(frontendBoard, row, col, axis, ship);
     }
-
-    Game[`${player.type}Board`].appendChild(frontendBoard);
   }
 
   static randomizeCpuShipsPositions() {
@@ -70,17 +68,16 @@ export default class Game {
     }
 
     localStorage.setItem('cpuShipsPositions', JSON.stringify(cpuShipsPositions));
-    Game.cpuBoard.appendChild(cpuFrontendBoard);
   }
 
   static renderShipIcons(board, row, col, axis, ship) {
-    const grid = BoardHelper.objectsGridFromHtmlSquares([board]);
+    const grid = BoardHelper.objectsGridFromHTMLBoard(board);
     const shipIcon = document.createElement('div');
 
     shipIcon.classList = 'ship__icon';
     shipIcon.id = ship.name.en;
-    shipIcon.style.background = `url(${ship.src}) no-repeat center`;
-    shipIcon.style.mask = `url(${ship.src}) no-repeat center`;
+    shipIcon.style.backgroundImage = `url(${ship.src})`;
+    shipIcon.style.maskImage = `url(${ship.src})`;
     if (axis === 'col') shipIcon.classList.add('rotated');
 
     grid[row][col].htmlElement.appendChild(shipIcon);
@@ -93,7 +90,7 @@ export default class Game {
   }
 
   static setSquaresClickListeners() {
-    const clickableSquares = document.querySelectorAll('.cpu-board [class="col square"]');
+    const clickableSquares = document.querySelectorAll('#cpu-board [class="col square"]');
     clickableSquares.forEach(square => {
       square.addEventListener('click', Game.handleClick);
     });
@@ -207,6 +204,8 @@ export default class Game {
     BoardRender.loadBoard(Game.player1);
     BoardRender.loadBoard(Game.player2);
     Radar.init();
+    // Game.player1.result = 'win'
+    // Result.init();
 
     const savedGame = Save.retrieveSavedGameData();
     if (savedGame) {

@@ -4,6 +4,7 @@
   inset: 0;
   padding: 0;
   border: none;
+  overflow: hidden;
   background: transparent;
   color: inherit;
   opacity: 0;
@@ -22,7 +23,7 @@
   transition: all 500ms ease-in-out;
 }
 
-.dialog.dialog.opened::backdrop {
+.dialog.opened::backdrop {
   opacity: 0.8;
 }
 
@@ -34,6 +35,8 @@
   border: none;
   background: transparent;
   color: inherit;
+  font-size: var(--fs-700);
+  text-align: center;
 }
 
 .activation-screen::backdrop {

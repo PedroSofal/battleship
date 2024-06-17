@@ -155,8 +155,8 @@ export default class Navigation {
     document.onreadystatechange = () => {
       if (document.readyState === 'complete') {
         setTimeout(() => {
-          document.querySelector('#content').style.display = 'block';
-          document.querySelector('#loader').style.display = 'none';
+          document.querySelector('#content').classList.add('shown');
+          document.querySelector('#loader').classList.add('hidden');
         }, 500);
       }
     }

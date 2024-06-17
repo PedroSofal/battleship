@@ -9,12 +9,12 @@
   <div id="content" class="content" data-content="character-selection" style="display: none;">
     <header class="header"></header>
     
-    <main class="wrapper wrapper--without-gap wrapper--fullscreen wrapper--centered | character-selection">
-      <section class="wrapper wrapper--with-gap | character-options" id="character-options-list">
+    <main class="character-selection">
+      <section class="character-options" id="character-options-list">
         <div class="silver-border | character-option" id="nimitz">
           <figure class="label label--character" for="nimitz">
             <div class="img-container">
-              <img class="character-photo" width="250" height="250" src="../assets/characters/nimitz.jpg"/>
+              <img class="character-photo" src="../assets/characters/nimitz.jpg"/>
             </div>
             <figcaption class="character-name">Nimitz</figcaption>
           </figure>
@@ -22,7 +22,7 @@
         <div class="silver-border | character-option" id="yamato">
           <figure class="label label--character" for="yamato">
             <div class="img-container">
-              <img class="character-photo" width="250" height="250" src="../assets/characters/yamato.jpg"/>
+              <img class="character-photo" src="../assets/characters/yamato.jpg"/>
             </div>
             <figcaption class="character-name">Yamato</figcaption>
           </figure>
@@ -30,7 +30,7 @@
         <div class="silver-border | character-option" id="olafsson">
           <figure class="label label--character" for="olafsson">
             <div class="img-container">
-              <img class="character-photo" width="250" height="250" src="../assets/characters/olafsson.jpg"/>
+              <img class="character-photo" src="../assets/characters/olafsson.jpg"/>
             </div>
             <figcaption class="character-name">Olafsson</figcaption>
           </figure>
@@ -38,7 +38,7 @@
         <div class="silver-border | character-option" id="violeta">
           <figure class="label label--character" for="violeta">
             <div class="img-container">
-              <img class="character-photo" width="250" height="250" src="../assets/characters/violeta.jpg"/>
+              <img class="character-photo" src="../assets/characters/violeta.jpg"/>
             </div>
             <figcaption class="character-name">Violeta</figcaption>
           </figure>
@@ -46,7 +46,7 @@
         <div class="silver-border | character-option" id="rackham">
           <figure class="label label--character" for="rackham">
             <div class="img-container">
-              <img class="character-photo" width="250" height="250" src="../assets/characters/rackham.jpg"/>
+              <img class="character-photo" src="../assets/characters/rackham.jpg"/>
             </div>
             <figcaption class="character-name">Rackham</figcaption>
           </figure>
@@ -54,7 +54,7 @@
         <div class="silver-border | character-option" id="noronha">
           <figure class="label label--character" for="noronha">
             <div class="img-container">
-              <img class="character-photo" width="250" height="250" src="../assets/characters/noronha.jpg"/>
+              <img class="character-photo" src="../assets/characters/noronha.jpg"/>
             </div>
             <figcaption class="character-name">Noronha</figcaption>
           </figure>
@@ -62,32 +62,34 @@
       </section>
 
       <section class="ready">
-        <div class="silver-border | opponents">
-          <div class="opponents__player opponents__player--selected" id="human-preview">
-            <img class="opponents__img animate" id="human-photo" width="120" height="120" src="../assets/characters/unknown.jpg">
-            <div class="opponents__info">
-              <p class="opponents__name" id="human-name">???</p>
-              <p class="opponents__type" data-en="Player" data-pt="Jogador">Player</p>
+        <div class="silver-border | ready__opponents-wrapper">
+          <div class="opponents">
+            <div class="opponents__player opponents__player--selected" id="human-preview">
+              <img class="opponents__img animate" id="human-photo" src="../assets/characters/unknown.jpg">
+              <div class="opponents__info">
+                <p class="opponents__name" id="human-name">???</p>
+                <p class="opponents__type" data-en="Player" data-pt="Jogador">Player</p>
+              </div>
+            </div>
+            <p class="opponents__versus" data-en="VS" data-pt="X">VS</p>
+            <div class="opponents__player" id="cpu-preview">
+              <img class="opponents__img animate" id="cpu-photo" src="../assets/characters/unknown.jpg">
+              <div class="opponents__info">
+                <p class="opponents__name" id="cpu-name">???</p>
+                <p class="opponents__type">CPU</p>
+              </div>
             </div>
           </div>
-          <p data-en="VS" data-pt="X">VS</p>
-          <div class="opponents__player" id="cpu-preview">
-            <img class="opponents__img animate" id="cpu-photo" width="120" height="120" src="../assets/characters/unknown.jpg">
-            <div class="opponents__info">
-              <p class="opponents__name" id="cpu-name">???</p>
-              <p class="opponents__type">CPU</p>
-            </div>
-          </div>
-          <p class="opponents__status" data-en="Awaiting..." data-pt="Aguardando...">Awaiting...</p>
+          <p class="ready__status" id="status" data-en="Awaiting..." data-pt="Aguardando...">Awaiting...</p>
         </div>
         <button class="main-button" id="place-ships" data-en="Place ships" data-pt="Posicionar navios" disabled>Place ships</button>
       </section>
     </main>
   </div>
 
-  <div id="loader" class="loader" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4rem; background-color: #0C0C1C; height: 100vh;">
-    <img class="loader__img" src="../assets/backgrounds/bg3.jpg" width="896" height="512">
-    <p class="loader__para" data-en="Loading..." data-pt="Carregando...">Loading...</p>
+  <div id="loader" class="loader" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: clamp(1rem, 5vh, 5rem); height: 100svh; background-color: #0C0C1C; overflow: hidden;">
+    <img class="loader__img" src="../assets/backgrounds/bg3.jpg" style="width: clamp(20rem, 90vmin, 56rem);">
+    <p class="loader__para" data-en="Loading..." data-pt="Carregando..." style="font-size: clamp(1rem, 2vmin, 1.6rem);">Loading...</p>
   </div>
 </body>
 </html>

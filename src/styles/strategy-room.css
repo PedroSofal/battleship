@@ -1,8 +1,15 @@
 /* WRAPPER ***********/
 
 .strategy-room {
-  grid-template-columns: 434px 640px 300px;
-  grid-template-rows: 60px 300px 260px 120px;
+  --fs-small: clamp(0.45rem, 0.8em, 1rem);
+  --fs-medium: clamp(0.75rem, 1em, 1.2rem);
+  font-size: min(1.75vh, 1.2vw, 1.2rem);
+  
+  display: grid;
+  gap: var(--main-gap-size);
+  place-content: center;
+  grid-template-columns: 25em 36em 15em;
+  grid-template-rows: 3em 16em 16em 8em;
   grid-template-areas:
     "fleet board charName"
     "fleet board charPhoto"
@@ -14,51 +21,181 @@
 
 .strategy-room__fleet {
   grid-area: fleet;
-  gap: 1.4rem;
-  padding: 1.8rem 2.2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  column-gap: 3cqmin;
+  padding-inline: min(3.5cqmin, 2.4rem);
+  container-type: size;
+  overflow: auto;
 }
 
-.strategy-room__board-container {
+.display--strategy {
   grid-area: board;
 }
 
 .strategy-room__character-name {
   grid-area: charName;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 1em;
 }
 
 .strategy-room__character-photo {
   grid-area: charPhoto;
+
+  display: flex;
 }
 
 .strategy-room__character-quotes {
   grid-area: charQuotes;
-  padding: 0.6rem 1rem;
+
+  display: flex;
+  padding: 0.6em 1em;
+  overflow-y: auto;
 }
 
 .strategy-room__footer {
   grid-area: footer;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.4rem;
-}
-
-.strategy-room__formation-actions {
-  gap: 2rem;
-}
-
-/* TEXTS ***********/
-
-.strategy-room__character-name p {
-  font-size: var(--fs-300);
-  text-align: center;
-}
-
-.strategy-room__character-quotes p {
-  font-family: var(--sec-ff);
-  font-style: italic;
-  font-size: var(--fs-500);
+  
+  height: unset !important;
+  /* padding: 1em 1.4em; */
 }
 
 .instructions {
+  --fs-instructions: max(0.75rem, 1.8vmin);
+
+  width: 60vmin;
+  right: var(--outer-margin);
+  bottom: var(--outer-margin);
+  position: fixed;
+  padding: 0.6em 1em;
+  font-size: var(--fs-instructions);
+  line-height: 2em;
+  z-index: 1;
+  transform-origin: right;
+  transition: all 100ms ease-in-out;
+}
+
+.instructions.hidden {
+  visibility: hidden;
+  transform: scaleX(0);
+}
+
+/* CONTENTS ***********/
+
+.character-photo {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.character-name {
+  font-size: var(--fs-small);
+  text-align: center;
+}
+
+.character-quotes {
   font-family: var(--sec-ff);
+  font-style: italic;
+  font-size: var(--fs-medium);
+}
+
+/* MEDIA QUERIES ***********/
+
+@media (max-aspect-ratio: 4/3) and (min-aspect-ratio: 3/4) {
+  .strategy-room {
+    font-size: min(1.55vh, 1.45vw);
+    grid-template-columns: 17em 8em 38em;
+    grid-template-rows: 7em 38em 8em;
+    grid-template-areas:
+      "charName charPhoto charQuotes"
+      "fleet fleet board"
+      "fleet fleet footer";
+  }
+}
+
+@media (max-aspect-ratio: 3/4) {
+  .strategy-room {
+    font-size: min(1.15vh);
+    grid-template-columns: 12em 8em minmax(auto, 24em);
+    grid-template-rows: 8em 20em 38em 8em;
+    grid-template-areas:
+      "charName charPhoto charQuotes"
+      "fleet fleet fleet"
+      "board board board"
+      "footer footer footer";
+    margin-inline: var(--outer-margin);
+  }
+
+  .display__name {
+    align-self: center !important;
+  }
+
+  .strategy-room__fleet {
+    padding-inline: 2cqmin;
+  }
+
+  .ship:last-child .ship__name {
+    width: 80px; /* FIX: add sylabical break */
+    word-break: break-all;
+  }
+}
+
+@media (max-aspect-ratio: 1/2), (max-width: 380px) and (orientation: portrait) {
+  .strategy-room {
+    font-size: min(1.3vh, 2.7vw);
+    grid-template-columns: 4em auto auto;
+    grid-template-rows: 4em 7em 12em 35em 7em;
+    grid-template-areas:
+      "charPhoto charName ."
+      "charQuotes charQuotes charQuotes"
+      "fleet fleet fleet"
+      "board board board"
+      "footer footer footer";
+    gap: 0.6em;
+  }
+
+  .strategy-room__fleet {
+    font-size: 1.6em;
+    border-width: 0.6em;
+    padding-inline: 1em;
+    column-gap: 2cqmin;
+  }
+
+  .ship:last-child .ship__name {
+    width: 100%;
+  }
+}
+
+@media (min-aspect-ratio: 5/2) {
+  .strategy-room {
+    font-size: min(2.4vh, 1vw);
+    grid-template-columns: 20em auto 36em;
+    grid-template-rows: 4em 16em 4em 8em;
+    grid-template-areas:
+      "charName board fleet"
+      "charPhoto board fleet"
+      "charQuotes board fleet"
+      "charQuotes board footer";
+  }
+
+  .strategy-room__fleet {
+    padding-inline: 2cqmin;
+    gap: 2cqmin;
+  }
+
+  .ship {
+    gap: 0 !important;
+  }
+
+  .ship:last-child .ship__name {
+    width: 80px;
+    word-break: break-all;
+  }
 }

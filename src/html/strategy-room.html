@@ -9,8 +9,8 @@
   <div id="content" class="content" data-content="strategy-room" style="display: none;">
     <header class="header"></header>
   
-    <main class="wrapper wrapper--with-gap wrapper--fullscreen wrapper--centered | strategy-room">
-      <div class="container container--main-big container--column | strategy-room__fleet" id="fleet">
+    <main class="strategy-room">
+      <div class="big-frame | strategy-room__fleet" id="fleet">
         <!-- <div class="ship">
           <p class="ship__name">Carrier</p>
           <div class="ship__yard">
@@ -19,12 +19,12 @@
         </div> -->
       </div>
   
-      <div class="container container--main-big container--centered container--column container--board | strategy-room__board-container">
-        <p class="gameboard-name" data-en="Area of operations" data-pt="Área de operações">Area of operations</p>
-        <div class="gameboard-display">
-          <div id="strategy-board" data-activeAxis="x"></div>
-          <div class="gameboard-display__radar-signal not-clickable"></div>
-          <svg class="not-clickable" width='500px' height='500px' xmlns='http://www.w3.org/2000/svg'>
+      <div class="big-frame | display display--strategy">
+        <p class="display__name" data-en="Area of operations" data-pt="Área de operações">Area of operations</p>
+        <div class="display__gameboard">
+          <div class="display__grid display__grid--human" id="human-board" data-activeAxis="x"></div>
+          <div class="not-clickable | gameboard-display__radar-signal"></div>
+          <svg class="not-clickable | display__svg" xmlns='http://www.w3.org/2000/svg'>
             <rect
               class="dashed-border"
               width='100%'
@@ -36,36 +36,41 @@
         </div>
       </div>
   
-      <div class="container container--secondary container--centered container--column | strategy-room__character-name">
-        <p id="character-name">???</p>
+      <div class="secondary-frame | strategy-room__character-name">
+        <p class="character-name" id="character-name">???</p>
       </div>
   
-      <div class="container | strategy-room__character-photo">
-        <img class="character-photo" id="character-photo" width="300px" src="../assets/characters/unknown.jpg" alt="question mark inside square">
+      <div class="strategy-room__character-photo">
+        <img class="character-photo" id="character-photo" src="../assets/characters/unknown.jpg" alt="question mark inside square">
       </div>
   
-      <div class="container container--secondary | strategy-room__character-quotes">
-        <p id="character-quotes"></p>
+      <div class="secondary-frame | strategy-room__character-quotes">
+        <p class="character-quotes" id="character-quotes"></p>
       </div>
   
-      <div class="container container--main-small | strategy-room__footer">
-        <p class="instructions">
+      <div class="small-frame footer | strategy-room__footer">
+        <button class="main-button main-button--small" id="resetFormation" data-en="Reset" data-pt="Limpar" disabled>Reset</button>
+        <button class="main-button main-button--small" id="confirmFormation" data-en="Confirm" data-pt="Confirmar" disabled>Confirm</button>
+      </div>
+    </main>
+
+    <aside>
+      <div class="secondary-frame | instructions">
+        <button class="close-button" id="close-instructions">X</button>
+        <p class="instructions__para">
           <span data-en="Change the axis with " data-pt="Alterne os eixos com ">Change the axis with </span>
           <button class="key-button" id="y-axis-button">Z</button>
           <span data-en=" and " data-pt=" e "> and </span>
           <button class="key-button" id="x-axis-button">X</button>
         </p>
-        <div class="container | strategy-room__formation-actions">
-          <button class="main-button main-button--small" id="resetFormation" data-en="Reset" data-pt="Limpar">Reset</button>
-          <button class="main-button main-button--small" id="confirmFormation" data-en="Confirm" data-pt="Confirmar" disabled>Confirm</button>
-        </div>
       </div>
-    </main>
+      <button class="help-button" id="open-instructions">?</button>
+    </aside>
   </div>
 
-  <div id="loader" class="loader" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4rem; background-color: #0C0C1C; height: 100vh;">
-    <img class="loader__img" src="../assets/backgrounds/bg2.jpg" width="896" height="512">
-    <p class="loader__para" data-en="Loading..." data-pt="Carregando...">Loading...</p>
+  <div id="loader" class="loader" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: clamp(1rem, 5vh, 5rem); height: 100svh; background-color: #0C0C1C; overflow: hidden;">
+    <img class="loader__img" src="../assets/backgrounds/bg2.jpg" style="width: clamp(20rem, 90vmin, 56rem);">
+    <p class="loader__para" data-en="Loading..." data-pt="Carregando..." style="font-size: clamp(1rem, 2vmin, 1.6rem);">Loading...</p>
   </div>
 </body>
 </html>

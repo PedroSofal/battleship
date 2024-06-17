@@ -27,13 +27,13 @@ button:focus-visible {
 
 .main-button::before {
   content: '';
-  display: block;
-  width: calc(100% + 2.6rem);
-  height: 4rem;
-  border: 4px solid white;
+  display: inline;
+  width: calc(100% + 2.1875em);
+  height: calc(100% + 2.1875em);
+  border: max(0.1875em, 0.5vmin) solid white;
   position: absolute;
-  top: -1.3rem;
-  left: -1.3rem;
+  top: -1.1875em;
+  left: -1.1875em;
   z-index: -1;
   background-color: white;
   transform: translateY(80%) scaleX(0%);
@@ -58,39 +58,11 @@ button:focus-visible {
   font-size: var(--fs-600);
 }
 
-.main-button--small::before {
-  height: 3.5rem;
-}
-
-/* .main-button {
-  border: 0;
-  border-radius: 8px;
-  padding: 1.1rem 0.8rem;
-  font-family: var(--main-ff);
-  font-size: var(--fs-600);
-  color: var(--color-100);
-  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%,#00DDEB);
-  box-shadow: rgba(64, 40, 196, 0.2) 0 15px 30px -5px;
+/*
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-}
-
-.main-button:active,
-.main-button:hover {
-  box-shadow: rgba(151, 65, 252, 0.5) 0 15px 30px -5px;
-}
-
-.main-button span {
-  background-color: rgb(5, 6, 45);
-  padding: 1rem 1.6rem;
-  border-radius: 6px;
-  transition: all 100ms ease-in-out;
-}
-
-.main-button:hover span {
-  background: none;
-} */
+*/
 
 /* Secondary */
 
@@ -102,10 +74,44 @@ button:focus-visible {
   color: var(--color-100);
 }
 
+.close-button {
+  --close-button-size: max(0.75rem, 1.8vmin);
+  position: absolute;
+  top: calc(var(--close-button-size) * -1);
+  left: calc(var(--close-button-size) * -1);
+  width: calc(var(--close-button-size) * 2);
+  height: calc(var(--close-button-size) * 2);
+  border-style: none;
+  border-radius: 50%;
+  font-family: var(--main-ff);
+  font-size: var(--close-button-size);
+  background-color: var(--color-600);
+  color: var(--color-100);
+}
+
+.help-button {
+  position: fixed;
+  right: var(--outer-margin);
+  bottom: var(--outer-margin);
+  padding: clamp(0.8rem, 3vmin, 1.5rem);
+  border-style: none;
+  border-radius: 50%;
+  font-family: var(--main-ff);
+  font-size: var(--fs-700);
+  background-color: var(--color-900);
+  color: var(--color-100);
+  transition: transform 50ms ease-in-out;
+}
+
+.help-button:hover {
+  background-color: var(--color-850);
+  transform: scale(1.1);
+}
+
 /* Selection */
 
 .selection-button {
-  padding: 0.6rem;
+  padding: 0.75rem;
   border-style: none;
   font-family: var(--main-ff);
   background-color: transparent;
@@ -119,8 +125,8 @@ button:focus-visible {
 /* Key */
 
 .key-button {
-  padding: 0.4rem;
-  border-radius: 5px;
+  padding: 0.5rem;
+  border-radius: 0.3125rem;
   font-family: var(--main-ff);
   font-size: var(--fs-400);
   color: var(--color-100);

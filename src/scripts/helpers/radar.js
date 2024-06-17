@@ -9,8 +9,8 @@ export default class Radar {
   static countermeasure = false;
 
   static queryElements() {
-    Radar.radarLockScreen = document.querySelector('#radar-lock');
-    Radar.radarLockFoes = document.querySelectorAll('#radar-lock-foe > path');
+    Radar.radarLockScreen = document.querySelector('#mini-radar');
+    Radar.radarLockFoes = document.querySelectorAll('#mini-radar-foe > path');
     Radar.countermeasureIndicator = document.querySelector('#countermeasure-indicator');
   }
 
@@ -71,7 +71,7 @@ export default class Radar {
 
   static updateFriendIndicators(player1) {
     const ships = Object.values(player1.gameboard.ships);
-    const friendIndicators = document.querySelectorAll('#radar-lock-friendly circle');
+    const friendIndicators = document.querySelectorAll('#mini-radar__friendly circle');
     friendIndicators.forEach(indicator => indicator.classList.remove('sunken'));
 
     for (let i = 0; i < ships.length; i++) {
