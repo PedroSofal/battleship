@@ -14,7 +14,7 @@
 .main-menu__title-container {
   padding: clamp(0.6rem, 3.5vmin, 2.4rem) clamp(1rem, 4.5vmin, 3rem);
   margin-block-start: clamp(1rem, 4.5vh, 3rem);
-  background-color: var(--color-850);
+  background-color: var(--color-800);
   z-index: 1;
 }
 

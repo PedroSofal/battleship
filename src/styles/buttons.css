@@ -12,6 +12,10 @@ button:focus-visible {
   outline-style: none;
 }
 
+button:hover {
+  color: var(--color-main-button);
+}
+
 /* Main */
 
 .main-button {
@@ -30,12 +34,12 @@ button:focus-visible {
   display: inline;
   width: calc(100% + 2.1875em);
   height: calc(100% + 2.1875em);
-  border: max(0.1875em, 0.5vmin) solid white;
+  border: max(0.1875em, 0.5vmin) solid var(--color-main-button);
   position: absolute;
   top: -1.1875em;
   left: -1.1875em;
   z-index: -1;
-  background-color: white;
+  background-color: var(--color-main-button);
   transform: translateY(80%) scaleX(0%);
 }
 
@@ -45,8 +49,8 @@ button:focus-visible {
 }
 
 @keyframes show-button-container {
-  50% { transform: translateY(0) scaleX(30%); background-color: white; }
-  100% { transform: translateY(0) scaleX(100%); background-color: #161238; }
+  50% { transform: translateY(0) scaleX(30%); background-color: var(--color-main-button); }
+  100% { transform: translateY(0) scaleX(100%); background-color: var(--color-800); }
 }
 
 @keyframes hue-rotate {
@@ -58,15 +62,13 @@ button:focus-visible {
   font-size: var(--fs-600);
 }
 
-/*
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-*/
+.main-button--white {
+  color: var(--color-main-button);
+}
 
 /* Secondary */
 
-.secondary-button {
+.header-button {
   font-family: var(--main-ff);
   font-size: var(--fs-600);
   border-style: none;
@@ -85,7 +87,7 @@ button:focus-visible {
   border-radius: 50%;
   font-family: var(--main-ff);
   font-size: var(--close-button-size);
-  background-color: var(--color-600);
+  background-color: var(--color-accent-2);
   color: var(--color-100);
 }
 
@@ -104,7 +106,7 @@ button:focus-visible {
 }
 
 .help-button:hover {
-  background-color: var(--color-850);
+  background-color: var(--color-800);
   transform: scale(1.1);
 }
 
@@ -130,15 +132,15 @@ button:focus-visible {
   font-family: var(--main-ff);
   font-size: var(--fs-400);
   color: var(--color-100);
-  background-color: var(--color-800);
+  background-color: var(--color-700);
   cursor: pointer;
-  transition: all 100ms ease-in-out;
+  transition: all 50ms ease-in-out;
 }
 
 .key-button:hover {
-  background-color:var(--color-750);
+  background-color:var(--color-600);
 }
 
 .key-button:active {
-  background-color:var(--color-850);
+  background-color:var(--color-900);
 }

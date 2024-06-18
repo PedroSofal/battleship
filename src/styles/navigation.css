@@ -49,7 +49,7 @@
 }
 
 .nav__item:hover {
-  background-color: var(--color-500);
+  background-color: var(--color-accent-1);
 }
 
 .nav__item#nav-main-menu,

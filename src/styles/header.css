@@ -10,7 +10,7 @@
 }
 
 .header:hover {
-  background-color: #161238;
+  background-color: var(--color-800);
 }
 
 .header__title {

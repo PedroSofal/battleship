@@ -20,7 +20,7 @@
 }
 
 .ship__yard:hover {
-  background: var(--color-850);
+  background: var(--color-800);
 }
 
 .ship__icon {
@@ -79,11 +79,11 @@
 }
 
 .dragover--allowed-placement {
-  background-color: #4CAF50;
+  background-color: var(--color-allowed);
 }
 
 .dragover--not-allowed-placement {
-  background-color: red;
+  background-color: var(--color-not-allowed);
 }
 
 /* SHIPS ON GAMEBOARD ***********/

@@ -27,7 +27,7 @@
   min-height: var(--board-height);
   border-width: var(--board-border);
   border-style: solid;
-  border-color: var(--color-200);
+  border-color: var(--color-300);
   padding: var(--board-padding);
   background-color: var(--color-900);
   overflow: hidden;
@@ -35,7 +35,7 @@
 
 .display__gameboard:hover {
   border-image-slice: 1;
-  border-image-source: linear-gradient(#d7d8f0, #3f5192);
+  border-image-source: var(--gradient-silver);
 }
 
 .display__gameboard > * {
@@ -48,10 +48,7 @@
 }
 
 .display__grid--human {
-  background: radial-gradient(
-    var(--color-player-alpha),
-    transparent
-  );
+  background: var(--gradient-human-board);
 }
 
 .row {
@@ -89,12 +86,12 @@
 
 .close,
 .miss {
-  background: radial-gradient(#2d78be, #00488b, transparent);
+  background: var(--gradient-miss);
 }
 
 .sunk,
 .hit {
-  background: radial-gradient(#ff6e35, #ff0015, transparent);
+  background: var(--gradient-hit);
 }
 
 .explosion {
@@ -186,11 +183,7 @@
   top: 50%;
   left: 50%;
   transform-origin: 0 0;
-  background-image: linear-gradient(
-    to top right,
-    var(--color-player) 0%,
-    transparent 50%
-  );
+  background-image: var(--gradient-radar-sweep);
   animation: sweep 5s infinite linear;
 }
 
