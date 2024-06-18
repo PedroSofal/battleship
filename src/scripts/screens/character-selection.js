@@ -47,7 +47,7 @@ export default class CharSelection {
   }
 
   static loadTitle() {
-    const title = document.querySelector('.header__title');
+    const title = document.querySelector('#title');
     title.setAttribute('data-en', 'Character Selection');
     title.setAttribute('data-pt', 'Seleção de Personagem');
   }

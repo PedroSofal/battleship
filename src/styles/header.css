@@ -26,3 +26,17 @@
   display: inline;
   visibility: visible;
 }
+
+.mobile-button {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .mobile-button {
+    display: unset;
+  }
+
+  .desktop-button {
+    display: none;
+  }
+}

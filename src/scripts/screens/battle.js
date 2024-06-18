@@ -31,7 +31,7 @@ export default class Battle {
   }
 
   static loadTitle() {
-    const title = document.querySelector('.header__title');
+    const title = document.querySelector('#title');
     title.setAttribute('data-en', 'Battle');
     title.setAttribute('data-pt', 'Batalha');
   }

@@ -54,7 +54,7 @@ export default class StrategyRoom {
   }
 
   static loadTitle() {
-    const title = document.querySelector('.header__title');
+    const title = document.querySelector('#title');
     title.setAttribute('data-en', 'Strategy Room');
     title.setAttribute('data-pt', 'Sala de Estratégia');
   }
