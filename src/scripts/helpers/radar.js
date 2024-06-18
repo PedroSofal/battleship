@@ -71,7 +71,7 @@ export default class Radar {
 
   static updateFriendIndicators(player1) {
     const ships = Object.values(player1.gameboard.ships);
-    const friendIndicators = document.querySelectorAll('#mini-radar__friendly circle');
+    const friendIndicators = document.querySelectorAll('#mini-radar-friendly circle');
     friendIndicators.forEach(indicator => indicator.classList.remove('sunken'));
 
     for (let i = 0; i < ships.length; i++) {
