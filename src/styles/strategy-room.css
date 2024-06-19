@@ -62,7 +62,6 @@
   grid-area: footer;
   
   height: unset !important;
-  /* padding: 1em 1.4em; */
 }
 
 .instructions {
@@ -104,6 +103,33 @@
   font-size: var(--fs-500);
 }
 
+.ship {
+  display: flex;
+  flex-direction: column;
+  gap: 4cqmin;
+}
+
+.ship__name {
+  align-self: start;
+  font-size: var(--fs-300);
+  text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ship__yard {
+  --ship-yard-padding: 6cqmin;
+  height: calc(var(--square-size) + var(--ship-yard-padding) * 2);
+  padding: var(--ship-yard-padding);
+  border-bottom: max(1px, 1cqmin) solid var(--color-100);
+  background-color: var(--color-900);
+}
+
+.ship__yard:hover {
+  background: var(--color-800);
+}
+
 /* MEDIA QUERIES ***********/
 
 @media (max-aspect-ratio: 4/3) and (min-aspect-ratio: 3/4) {
@@ -121,7 +147,7 @@
 @media (max-aspect-ratio: 3/4) {
   .strategy-room {
     font-size: min(1.15vh);
-    grid-template-columns: 12em 8em minmax(auto, 24em);
+    grid-template-columns: 11em 8em minmax(auto, 24em);
     grid-template-rows: 8em 20em 38em 8em;
     grid-template-areas:
       "charName charPhoto charQuotes"
@@ -136,42 +162,41 @@
   }
 
   .strategy-room__fleet {
-    padding-inline: 2cqmin;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    align-content: space-evenly;
+  }
+
+  .ship {
+    width: fit-content;
   }
 
   .ship:last-child .ship__name {
-    width: 80px; /* FIX: add sylabical break */
-    word-break: break-all;
+    width: 9em;
   }
 }
 
-@media (max-aspect-ratio: 1/2), (max-width: 380px) and (orientation: portrait) {
+@media (max-aspect-ratio: 6/13) {
   .strategy-room {
     font-size: min(1.3vh, 2.7vw);
     grid-template-columns: 4em auto auto;
-    grid-template-rows: 4em 7em 12em 35em 7em;
+    grid-template-rows: 4em 7em 17em 35em 7em;
     grid-template-areas:
       "charPhoto charName ."
       "charQuotes charQuotes charQuotes"
       "fleet fleet fleet"
       "board board board"
       "footer footer footer";
-    gap: 0.6em;
   }
 
   .strategy-room__fleet {
-    font-size: 1.6em;
-    border-width: 0.6em;
-    padding-inline: 1em;
-    column-gap: 2cqmin;
-  }
-
-  .ship:last-child .ship__name {
-    width: 100%;
+    padding: 2cqmin;
+    row-gap: 2cqmin;
   }
 }
 
-@media (min-aspect-ratio: 5/2) {
+@media (min-aspect-ratio: 4/2) {
   .strategy-room {
     font-size: min(2.4vh, 1vw);
     grid-template-columns: 20em auto 36em;
@@ -184,16 +209,21 @@
   }
 
   .strategy-room__fleet {
-    padding-inline: 2cqmin;
+    padding: 2cqmin;
     gap: 2cqmin;
+    justify-content: center;
+    align-content: space-evenly;
   }
 
   .ship {
-    gap: 0 !important;
+    gap: 0.2rem;
+  }
+
+  .ship__yard {
+    --ship-yard-padding: 4cqmin;
   }
 
   .ship:last-child .ship__name {
-    width: 80px;
-    word-break: break-all;
+    width: 12em;
   }
 }
