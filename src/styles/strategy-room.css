@@ -1,8 +1,6 @@
 /* WRAPPER ***********/
 
 .strategy-room {
-  --fs-small: clamp(0.45rem, 0.8em, 1rem);
-  --fs-medium: clamp(0.75rem, 1em, 1.2rem);
   font-size: min(1.75vh, 1.2vw, 1.2rem);
   
   display: grid;
@@ -96,14 +94,14 @@
 }
 
 .character-name {
-  font-size: var(--fs-small);
+  font-size: var(--fs-300);
   text-align: center;
 }
 
 .character-quotes {
   font-family: var(--sec-ff);
   font-style: italic;
-  font-size: var(--fs-medium);
+  font-size: var(--fs-500);
 }
 
 /* MEDIA QUERIES ***********/

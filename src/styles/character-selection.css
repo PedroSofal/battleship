@@ -1,9 +1,6 @@
 /* WRAPPERS ***********/
 
-.character-selection {
-  --fs-small: max(0.8rem, 1.8vmin);
-  --fs-medium: max(0.8rem, 2vmin);
-  
+.character-selection {  
   display: grid;
   grid-template: auto / 2fr 3fr;
   place-content: center;
@@ -11,7 +8,6 @@
   gap: 2rem;
   width: 80%;
   margin: 0 auto;
-  /* padding-bottom: calc(1.25rem + var(--fs-700)); */
 }
 
 .character-options {
@@ -77,7 +73,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--sec-ff);
-  font-size: var(--fs-small);
+  font-size: var(--fs-500);
   font-style: italic;
   cursor: pointer;
   letter-spacing: 1.25rem;
@@ -236,19 +232,19 @@
 .opponents__name {
   --opp-name-grow: 55cqmin;
   width: clamp(9ch, var(--opp-name-grow), 12ch);
-  font-size: var(--fs-medium);
+  font-size: var(--fs-600);
   overflow-wrap: break-word;
   text-transform: capitalize;
 }
 
 .opponents__type {
   font-family: var(--sec-ff);
-  font-size: var(--fs-small);
+  font-size: var(--fs-500);
 }
 
 .ready__status {
   padding: 1rem;
-  font-size: var(--fs-medium);
+  font-size: var(--fs-600);
   font-style: italic;
 }
 
@@ -257,7 +253,7 @@
 }
 
 .opponents__versus {
-  font-size: var(--fs-small);
+  font-size: var(--fs-500);
 }
 
 /* MEDIA QUERIES ***********/

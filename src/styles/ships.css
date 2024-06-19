@@ -6,7 +6,7 @@
 
 .ship__name {
   align-self: start;
-  font-size: var(--fs-small);
+  font-size: var(--fs-300);
   text-transform: capitalize;
 }
 
@@ -15,7 +15,6 @@
   height: calc(var(--square-size) + var(--ship-yard-padding) * 2);
   padding: var(--ship-yard-padding);
   border-bottom: max(1px, 1cqmin) solid var(--color-100);
-  font-size: var(--fs-normal);
   background-color: var(--color-900);
 }
 

@@ -18,7 +18,7 @@
 
 .display__name {
   align-self: flex-start;
-  font-size: var(--fs-small);
+  font-size: var(--fs-300);
 }
 
 .display__gameboard {
