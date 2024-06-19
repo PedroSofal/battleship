@@ -27,7 +27,7 @@ export default class Battle {
 
   static setEventListeners() {
     window.addEventListener('click', Battle.closeActivationScreen);
-    window.addEventListener('keydown', Battle.closeActivationScreen);
+    window.addEventListener('keypress', Battle.closeActivationScreen);
   }
 
   static loadTitle() {
@@ -38,12 +38,12 @@ export default class Battle {
 
   static closeActivationScreen() {
     Battle.activationScreen.close();
-    Battle.content.classList.remove('blurred');
+    Battle.content.classList.remove('blurry');
     Battle.displays.classList.remove('invisible');
     GameAudio.liberate();
     Game.liberate();
     window.removeEventListener('click', Battle.closeActivationScreen);
-    window.removeEventListener('keydown', Battle.closeActivationScreen);
+    window.removeEventListener('keypress', Battle.closeActivationScreen);
   }
 
   static playBattleMusic() {

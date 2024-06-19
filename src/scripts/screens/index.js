@@ -37,15 +37,15 @@ class MainMenu {
 
     window.addEventListener('click', MainMenu.closeActivationScreen);
     window.addEventListener('touchend', MainMenu.closeActivationScreen);
-    window.addEventListener('keydown', MainMenu.closeActivationScreen);
+    window.addEventListener('keypress', MainMenu.closeActivationScreen);
   }
 
   static closeActivationScreen() {
     MainMenu.activationScreen.close();
-    MainMenu.content.classList.remove('blurred');
+    MainMenu.content.classList.remove('blurry');
     GameAudio.liberate();
     window.removeEventListener('click', MainMenu.closeActivationScreen);
-    window.removeEventListener('keydown', MainMenu.closeActivationScreen);
+    window.removeEventListener('keypress', MainMenu.closeActivationScreen);
   }
 
   static verifySavedGame() {
