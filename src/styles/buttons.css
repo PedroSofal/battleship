@@ -77,10 +77,9 @@ button:hover {
 }
 
 .close-button {
+  box-sizing: content-box;
   --close-button-size: max(0.75rem, 1.8vmin);
-  position: absolute;
-  top: calc(var(--close-button-size) * -1);
-  left: calc(var(--close-button-size) * -1);
+
   width: calc(var(--close-button-size) * 2);
   height: calc(var(--close-button-size) * 2);
   border-style: none;
@@ -89,6 +88,11 @@ button:hover {
   font-size: var(--close-button-size);
   background-color: var(--color-accent-2);
   color: var(--color-100);
+}
+
+.close-button--big {
+  --close-button-size: max(0.9rem, 2vmin);
+  padding: 0.3rem 0.21rem 0.21rem 0.3rem;
 }
 
 .help-button {
@@ -116,6 +120,7 @@ button:hover {
   padding: 0.75rem;
   border-style: none;
   font-family: var(--main-ff);
+  font-size: var(--fs-600);
   background-color: transparent;
   color: var(--color-100);
 }

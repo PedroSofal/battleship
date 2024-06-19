@@ -84,6 +84,12 @@
   transform: scaleX(0);
 }
 
+.instructions__close-button {
+  position: absolute;
+  top: calc(var(--close-button-size) * -1);
+  left: calc(var(--close-button-size) * -1);
+}
+
 /* CONTENTS ***********/
 
 .character-photo {

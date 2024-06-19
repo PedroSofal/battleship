@@ -30,7 +30,6 @@
   --gradient-human-board: radial-gradient(var(--color-player-alpha), transparent);
   --gradient-radar-sweep: linear-gradient(to top right, var(--color-player) 0%, transparent 50%);
 
-  /* --fs-300: 0.875em; */
   --fs-300: clamp(0.5rem, min(0.3885rem + 0.5vw, 1.6vh), 0.85rem);
   --fs-400: clamp(0.5rem, min(0.3885rem + 0.65vw, 2.1vh), 1rem);
   --fs-500: clamp(0.6rem, min(0.465rem + 0.4459vw, 4vh), 1rem);
@@ -38,7 +37,7 @@
   --fs-700: clamp(1.2rem, 2.5vmin, 2.4em);
   --fs-900: clamp(1.5rem, 7.5vmin, 5em);
 
-  --icon-size: 2.75rem;
+  --icon-size: clamp(2rem, 8vmin, 2.75rem);
   --square-size: min(2.85em, 3.125rem);
   --main-gap-size: clamp(0.5em, 2vmin, 1.25em);
   --silver-border-width: clamp(0.2em, 0.5vmin, 0.5em);
@@ -112,7 +111,7 @@ h1 {
   align-items: center;
   column-gap: min(3em, 4vw);
   row-gap: 2em;
-  padding: 1.6em;
+  padding: min(1.6em, 4vh);
   height: clamp(100%, min(16vh, 24vw), 8.125rem);
 }
 

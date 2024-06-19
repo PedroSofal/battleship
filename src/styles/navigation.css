@@ -30,7 +30,7 @@
 .nav {
   display: none;
   position: absolute;
-  top: min(3.75rem, 7vmin);
+  top: clamp(1.5rem, 7vmin, 3.75rem);
 }
 
 .nav.opened {
@@ -41,7 +41,7 @@
   display: none;
   list-style: none;
   font-family: var(--sec-ff);
-  font-size: var(--fs-600);
+  font-size: 1.125rem;
   background-color: var(--color-900);
   margin-block: 0.25rem;
   padding: 0.625rem 1.25rem;
