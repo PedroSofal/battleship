@@ -43,14 +43,7 @@ export default class Navigation {
   }
 
   static closeNavigation(e) {
-    let parent;
-    if (e.pointerType === 'touch') {
-      parent = e.target.parentNode.parentNode;
-    } else {
-      parent = e.target.parentNode;
-    }
-
-    if (parent !== Navigation.navBtn) {
+    if (!e.target.closest('#navigate')) {
       Navigation.navMenu.classList.remove('opened');
     }
   }
