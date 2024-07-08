@@ -19,7 +19,7 @@ import charSelectionSong from '../../assets/audio/music/epic-benjamin-tissot.mp3
 import strategyRoomSong from '../../assets/audio/music/fearsome-tipsy-pirates-mikhail-smusev.mp3';
 import battleSong1 from '../../assets/audio/music/dance-of-devils-giulio-fazio.mp3';
 import battleSong2 from '../../assets/audio/music/corsairs-studio-kolomna.mp3';
-import creditsSong from '../../assets/audio/music/no-time-to-die-hartzmann.mp3';
+import battleSong3 from '../../assets/audio/music/no-time-to-die-hartzmann.mp3';
 
 export default class GameAudio {
   static enable = false;
@@ -34,7 +34,7 @@ export default class GameAudio {
   static mainMenu = [mainMenuSong];
   static characterSelection = [charSelectionSong];
   static strategyRoom = [strategyRoomSong];
-  static battle = [battleSong1, battleSong2, strategyRoomSong, charSelectionSong];
+  static battle = [battleSong1, battleSong2, battleSong3, strategyRoomSong, charSelectionSong];
   
   static radarLockInterval;
   static radarLockAudio;
