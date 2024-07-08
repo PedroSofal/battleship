@@ -1,0 +1,1 @@
+module.exports = '<div>Mocked HTML</div>';

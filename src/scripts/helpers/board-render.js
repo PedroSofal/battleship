@@ -11,28 +11,6 @@ export default class BoardRender {
   static getCpuBoard() {
     return BoardRender.loadedCpuBoard;
   }
-  
-  // static loadBoard(player) {
-  //   const boardContainer = document.createElement('div');
-  //   const numberOfRows = player.gameboard.maxRow + 1;
-  //   const numberOfCols = player.gameboard.maxCol + 1;
-  
-  //   for (let i = 0; i < numberOfRows; i++) {
-  //     const boardRow = document.createElement('div');
-  //     boardRow.className = 'row';
-  //     boardContainer.appendChild(boardRow);
-  
-  //     for (let j = 0; j < numberOfCols; j++) {
-  //       const boardCol = document.createElement('div');
-  //       boardCol.className = 'col square';
-  //       boardRow.appendChild(boardCol);
-  //     }
-  //   }
-  
-  //   boardContainer.className = `board ${player.type}-board`;
-  //   if (player.type === 'human') BoardRender.loadedHumanBoard = boardContainer;
-  //   if (player.type === 'cpu') BoardRender.loadedCpuBoard = boardContainer;
-  // }
 
   static loadBoard(player) {
     const boardContainer = document.querySelector(`#${player.type}-board`);
