@@ -39,7 +39,7 @@ I hope you enjoy playing as much as I did developing this project! Thank you ver
 
 ## Play Online
 
-You can play the online version of the game [here](https://github.com/PedroSofal/battleship).
+You can play the online version of the game [here](https://pedrosofal.github.io/battleship).
 
 ## Local Installation
 
