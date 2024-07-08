@@ -12,7 +12,7 @@ Additionally, I intentionally developed the game using multiple HTML files to re
 
 This is my first project of this scale, and it has been a source of immense learning, particularly regarding code organization. I did my best to build a readable and scalable code environment, and I attempted to implement the BEM convention for CSS, but it is definitely something that can be improved in the future.
 
-However, without a doubt, my biggest challenge was making the game responsive. Since it is a fullscreen game, I had to work on responsiveness on both axes, using more obscure measurement units like vmin, vmax, cqmin, cqh, cqw, etc. Over time, I intend to refine this feature of the game.
+However, without a doubt, my biggest challenge was making the game responsive. Since it is a fullscreen game, I had to work on responsiveness on both axes, using more obscure measurement units like vmin, vmax, cqmin, cqh, cqw, etc. I've noticed that the positioning of some elements in real mobile devices may differ from what the browsers devtools show as a preview. Over time, I intend to refine this feature of the game.
 
 Overall, there is still much room for code improvement, but I am happy with the result so far, especially since the initial goal of this project was greatly exceeded.
 
@@ -26,6 +26,7 @@ I hope you enjoy playing as much as I did developing this project! Thank you ver
 - 2 languages: portuguese and english;
 - 2 game speed modes;
 - Separate audio volume controls for music and sound effects;
+- Auto save;
 - Responsive interface to screen width and height changes.
 
 ## Technologies Used
@@ -40,20 +41,6 @@ I hope you enjoy playing as much as I did developing this project! Thank you ver
 ## Play Online
 
 You can play the online version of the game [here](https://pedrosofal.github.io/battleship).
-
-## Local Installation
-
-If you wish, you can also play the game locally:
-
-1. Clone this repository:
-    ```bash
-    git clone https://github.com/PedroSofal/battleship.git
-    ```
-2. Go to the following directory:
-    ```bash
-    cd battleship/dist
-    ```
-3. Open the file `index.html` on your browser.
 
 ## How to Play
 

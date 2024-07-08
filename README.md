@@ -12,7 +12,7 @@ Também, propositalmente, desenvolvi o jogo utilizando múltiplos arquivos HTML 
 
 Este é meu primeiro projeto deste porte, tendo sido fonte de um enorme aprendizado, principalmente em relação à organização do código. Dei meu máximo para construir um ambiente de código legível e escalável, tentei implementar a convenção BEM para CSS, mas definitivamente é algo que pode melhorar no futuro.
 
-No entanto, sem dúvida, meu maior desafio foi tornar o jogo responsivo, pois ao se tratar de um game em tela cheia, precisei trabalhar a responsividade nos dois eixos, utilizando unidades de medidas mais obscuras como vmin, vmax, cqmin, cqh, cqw, etc. Com o tempo, pretendo ir refinando esta funcionalidade do jogo.
+No entanto, sem dúvida, meu maior desafio foi tornar o jogo responsivo, pois ao se tratar de um game em tela cheia, precisei trabalhar a responsividade nos dois eixos, utilizando unidades de medidas mais obscuras como vmin, vmax, cqmin, cqh, cqw, etc. Reparei que alguns posicionamentos diferem da prévia do devtools dos navegadores, em relação a dispositivos móveis reais. Com o tempo, pretendo ir refinando esta funcionalidade do jogo.
 
 No geral, ainda há muito espaço para melhora do código, mas estou feliz com o resultado até aqui, até porque o objetivo inicial com este projeto foi muito superado.
 
@@ -26,6 +26,7 @@ Espero que você se divirta jogando, o mesmo tanto que eu me diverti desenvolven
 - 2 idiomas: português e inglês;
 - 2 modos de velocidade da partida;
 - Controles de volume de áudio separados para músicas e efeitos sonoros;
+- Salvamento automático;
 - Interface responsiva a mudanças na largura e altura da tela.
 
 ## Tecnologias Utilizadas
@@ -40,20 +41,6 @@ Espero que você se divirta jogando, o mesmo tanto que eu me diverti desenvolven
 ## Jogar Online
 
 Você pode jogar a versão online do jogo [aqui](https://pedrosofal.github.io/battleship).
-
-## Instalação Local
-
-Se preferir, você também pode rodar o jogo localmente:
-
-1. Clone este repositório:
-    ```bash
-    git clone https://github.com/PedroSofal/battleship.git
-    ```
-2. Navegue até o seguinte diretório:
-    ```bash
-    cd battleship/dist
-    ```
-3. Abra o arquivo `index.html` no seu navegador.
 
 ## Como Jogar
 
