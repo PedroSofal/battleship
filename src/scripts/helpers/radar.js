@@ -27,6 +27,9 @@ export default class Radar {
       }
   
       if (square.content.isSunk()) {
+        // immediately sets radar audio to false so it gets caught in the save file
+        GameAudio.isRadarLockAudioPlaying = false;
+        
         setTimeout(() => {
           Radar.deactivateRadarLockAlert();
         }, Settings.getGameSpeed().sinkRoundDelay);

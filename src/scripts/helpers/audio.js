@@ -61,7 +61,6 @@ export default class GameAudio {
         GameAudio.play(GameAudio.radarLockAudio);
       }, 1500);
     } else if (action === 'stop') {
-      GameAudio.isRadarLockAudioPlaying = false;
       clearInterval(GameAudio.radarLockInterval);
       if (GameAudio.radarLockAudio) {
         GameAudio.radarLockAudio.pause();
