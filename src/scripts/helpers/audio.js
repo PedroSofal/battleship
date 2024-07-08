@@ -62,13 +62,11 @@ export default class GameAudio {
       }, 1500);
     } else if (action === 'stop') {
       GameAudio.isRadarLockAudioPlaying = false;
-      setTimeout(() => {
-        clearInterval(GameAudio.radarLockInterval);
-        if (GameAudio.radarLockAudio) {
-          GameAudio.radarLockAudio.pause();
-          GameAudio.radarLockAudio.currentTime = 0;
-        }
-      }, Settings.getGameSpeed().sinkRoundDelay);
+      clearInterval(GameAudio.radarLockInterval);
+      if (GameAudio.radarLockAudio) {
+        GameAudio.radarLockAudio.pause();
+        GameAudio.radarLockAudio.currentTime = 0;
+      }
     }
   }
 

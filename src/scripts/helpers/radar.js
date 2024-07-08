@@ -27,7 +27,9 @@ export default class Radar {
       }
   
       if (square.content.isSunk()) {
-        Radar.deactivateRadarLockAlert();
+        setTimeout(() => {
+          Radar.deactivateRadarLockAlert();
+        }, Settings.getGameSpeed().sinkRoundDelay);
       }
     }
   }
