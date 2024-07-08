@@ -18,7 +18,7 @@ No geral, ainda há muito espaço para melhora do código, mas estou feliz com o
 
 Espero que você se divirta jogando, o mesmo tanto que eu me diverti desenvolvendo este projeto! Muito obrigado.
 
-## Recursos
+## Recursos do Jogo
 
 - Modo de jogo Jogador vs Computador;
 - 3 níveis de dificuldade;
@@ -26,7 +26,6 @@ Espero que você se divirta jogando, o mesmo tanto que eu me diverti desenvolven
 - 2 idiomas: português e inglês;
 - 2 modos de velocidade da partida;
 - Controles de volume de áudio separados para músicas e efeitos sonoros;
-- Route-guard;
 - Interface responsiva a mudanças na largura e altura da tela.
 
 ## Tecnologias Utilizadas
