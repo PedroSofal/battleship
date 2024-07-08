@@ -34,7 +34,7 @@
   --fs-400: clamp(0.5rem, min(0.3885rem + 0.65vw, 2.1vh), 1rem);
   --fs-500: clamp(0.6rem, min(0.465rem + 0.4459vw, 4vh), 1rem);
   --fs-600: clamp(0.7rem, 2vmin, 1.2em);
-  --fs-700: clamp(1.2rem, 2.5vmin, 2.4em);
+  --fs-700: clamp(1.1rem, 2.5vmin, 2.4em);
   --fs-900: clamp(1.5rem, 7.5vmin, 5em);
 
   --icon-size: clamp(2rem, 8vmin, 2.75rem);
