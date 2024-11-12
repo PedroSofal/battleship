@@ -88,6 +88,6 @@ You are allowed to share the project as long as you give proper credit and do no
 ## Author
 
 - Name: Pedro Sofal
-- LinkedIn: https://www.linkedin.com/in/pedro-sofal-2315212a8/
+- LinkedIn: https://www.linkedin.com/in/pedrosofal/
 - Behance: https://www.behance.net/pedrosofal
 - Email: pedrosofal@gmail.com
